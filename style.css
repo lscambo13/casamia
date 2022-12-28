@@ -1,0 +1,192 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url("/wallpapers/space-wallpaper-20082314113712.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  font-family: "Ubuntu Mono", monospace;
+}
+
+#overlay {
+  position: fixed; /* Sit on top of the page content */
+  display: block; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+  z-index: 0; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}
+
+.wrap {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.flex-main-container-vertical {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-main-container-vertical > div {
+  margin: 2%;
+  z-index: 1;
+}
+
+#heading {
+  color: antiquewhite;
+  font-size: 4rem;
+  margin-bottom: -60px;
+}
+
+.search {
+  width: 40%;
+  height: 46px;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid rgba(250, 235, 215, 1);
+  border-right: none;
+  padding: 20px 40px 20px 20px;
+  height: 100%;
+  border-radius: 50px 0px 0px 50px;
+  outline: none;
+  font-size: 1rem;
+  color: #9dbfaf;
+  backdrop-filter: blur(50px);
+  background-color: rgba(95, 158, 160, 0.1);
+}
+
+.searchTerm:focus {
+  color: rgba(250, 235, 215, 0.7);
+}
+
+.searchButton {
+  width: 50px;
+  height: 100%;
+  visibility: visible;
+  margin-left: 0px;
+  border: 2px solid rgba(250, 235, 215, 1);
+  background: rgba(250, 235, 215, 1);
+  text-align: center;
+  border-radius: 0px 50px 50px 0px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.flex-sub-container-horizontal {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+}
+
+.flex-sub-container-horizontal > div {
+  color: antiquewhite;
+  width: 6rem;
+  height: 6rem;
+  margin: 2%;
+  display: flex;
+  flex-direction: row;
+  border-radius: 50%;
+  font-size: 5rem;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(24px);
+  background-color: rgba(95, 158, 160, 0.4);
+}
+
+.flex-sub-container-horizontal > div > i {
+  font-size: 2.5rem;
+}
+
+.flex-sub-container-horizontal > div:hover {
+  animation: animation_fade-in 0.5s;
+  animation-fill-mode: both;
+  animation-iteration-count: 1;
+}
+
+.animation_slide_up {
+  animation: animation_slide_up 0.5s;
+  animation-fill-mode: both;
+  animation-iteration-count: 1;
+}
+
+.animation_slide_down {
+  animation: animation_slide_down 0.5s;
+  animation-fill-mode: both;
+  animation-iteration-count: 1;
+}
+
+@keyframes animation_slide_up {
+  0% {
+    transform: translateY(180px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes animation_slide_down {
+  0% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(180px);
+    opacity: 0;
+  }
+}
+
+@keyframes animation_fade-in {
+  0% {
+    background-color: rgba(95, 158, 160, 0.398);
+  }
+  100% {
+    background-color: rgba(211, 197, 90, 0.656);
+  }
+}
+
+.flex-wallpaper-horizontal {
+  display: flex;
+  overflow-x: scroll;
+  width: 100%;
+  opacity: 0;
+  flex-direction: horizontal;
+  justify-content: start;
+  position: fixed;
+  bottom: 0%;
+  background-color: rgba(127, 255, 212, 0.221);
+  backdrop-filter: blur(24px);
+}
+
+.flex-wallpaper-horizontal > img {
+  width: 150px;
+  height: 100px;
+  margin: 24px;
+  border: 2px solid #ffffff;
+  border-radius: 20px;
+}
+
+.flex-wallpaper-horizontal > img:hover {
+  box-shadow: 0px 0px 10px #fff;
+  scale: 1.1;
+}
