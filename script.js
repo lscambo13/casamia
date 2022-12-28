@@ -2,16 +2,16 @@
 // var wallpapers = fs.readdirSync("./wallpapers/");
 
 const wallpapers_list = [
-  "https://wallpaperforu.com/wp-content/uploads/2021/01/nature-wallpaper-21012223471720.jpg",
-  "https://wallpaperforu.com/wp-content/uploads/2020/07/neon-wallpaper-20070214060650.jpg",
-  "https://wallpaperforu.com/wp-content/uploads/2020/08/space-wallpaper-20082314113712.jpg",
-  "https://wallpaperforu.com/wp-content/uploads/2020/07/car-wallpaper-20072612433540.jpg",
-  "https://wallpaperforu.com/wp-content/uploads/2020/09/black-wallpaper-20091514274141.jpg",
-  "https://wallpaperforu.com/wp-content/uploads/2020/07/car-wallpaper-2007261221435.jpg",
-  "https://wallpaperforu.com/wp-content/uploads/2021/06/Wallpaper-4k-Dark-Blue-Lines-Grid-Lines-Backgrounds-P2.jpg",
-  "https://wallpaperforu.com/wp-content/uploads/2021/06/Wallpaper-4k-High-Resolution-Mac-3840x2160px-4k-Free-Dow1.jpg",
-  "https://wallpaperforu.com/wp-content/uploads/2020/07/black-wallpaper-20072315472168.jpg",
-  "https://wallpaperforu.com/wp-content/uploads/2020/07/dark-wallpaper-2007281321438.jpg",
+  "https://github.com/lscambo13/my-home-page/raw/main/wallpapers/nature-wallpaper-21012223471720.jpg",
+  "https://github.com/lscambo13/my-home-page/raw/main/wallpapers/neon-wallpaper-20070214060650.jpg",
+  "https://github.com/lscambo13/my-home-page/raw/main/wallpapers/space-wallpaper-20082314113712.jpg",
+  "https://github.com/lscambo13/my-home-page/raw/main/wallpapers/car-wallpaper-20072612433540.jpg",
+  "https://github.com/lscambo13/my-home-page/raw/main/wallpapers/black-wallpaper-20091514274141.jpg",
+  "https://github.com/lscambo13/my-home-page/raw/main/wallpapers/car-wallpaper-2007261221435.jpg",
+  "https://github.com/lscambo13/my-home-page/raw/main/wallpapers/Wallpaper-4k-Dark-Blue-Lines-Grid-Lines-Backgrounds-P2.jpg",
+  "https://github.com/lscambo13/my-home-page/raw/main/wallpapers/Wallpaper-4k-High-Resolution-Mac-3840x2160px-4k-Free-Dow1.jpg",
+  "https://github.com/lscambo13/my-home-page/raw/main/wallpapers/black-wallpaper-20072315472168.jpg",
+  "https://github.com/lscambo13/my-home-page/raw/main/wallpapers/dark-wallpaper-2007281321438.jpg",
 ];
 
 const n = wallpapers_list.length;
