@@ -1,11 +1,12 @@
 body {
   margin: 0;
   padding: 0;
-  background-image: url("https://github.com/lscambo13/my-home-page/raw/main/wallpapers/space-wallpaper-20082314113712.jpg");
+  background-image: url("");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
+  background-color: rgb(40, 40, 40);
   font-family: "Ubuntu Mono", monospace;
 }
 
@@ -20,15 +21,34 @@ body {
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
   z-index: 0; /* Specify a stack order in case you're using a different order for other elements */
-  cursor: pointer; /* Add a pointer on hover */
+  cursor: auto; /* Add a pointer on hover */
 }
 
-.wrap {
+#wrap {
   width: 100%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0px;
+  padding-bottom: 200px;
+  scale: 1;
+}
+
+@media screen and (max-width: 1080px) {
+  .flex-sub-container-horizontal {
+    width: 50% !important;
+    margin-top: 32px;
+  }
+
+  .search {
+    width: 66%;
+  }
+
+  .flex-wallpaper-horizontal {
+    padding-bottom: 2%;
+    padding-top: 2%;
+  }
 }
 
 .flex-main-container-vertical {
@@ -40,7 +60,6 @@ body {
 }
 
 .flex-main-container-vertical > div {
-  margin: 2%;
   z-index: 1;
 }
 
@@ -51,14 +70,15 @@ body {
 }
 
 .search {
-  width: 40%;
+  max-width: fit-content;
   height: 46px;
-  position: relative;
   display: flex;
+  justify-content: center;
 }
 
 .searchTerm {
-  width: 100%;
+  width: 960px;
+  max-width: 60%;
   border: 3px solid rgba(250, 235, 215, 1);
   border-right: none;
   padding: 20px 40px 20px 20px;
@@ -94,7 +114,8 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  width: 60%;
+  margin-top: 32px;
+  width: 100%;
 }
 
 .flex-sub-container-horizontal > div {
@@ -122,71 +143,61 @@ body {
   animation-iteration-count: 1;
 }
 
-.animation_slide_up {
-  animation: animation_slide_up 0.5s;
-  animation-fill-mode: both;
-  animation-iteration-count: 1;
-}
-
-.animation_slide_down {
-  animation: animation_slide_down 0.5s;
-  animation-fill-mode: both;
-  animation-iteration-count: 1;
-}
-
-@keyframes animation_slide_up {
-  0% {
-    transform: translateY(180px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes animation_slide_down {
-  0% {
-    transform: translateY(0px);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(180px);
-    opacity: 0;
-  }
-}
-
-@keyframes animation_fade-in {
-  0% {
-    background-color: rgba(95, 158, 160, 0.398);
-  }
-  100% {
-    background-color: rgba(211, 197, 90, 0.656);
-  }
-}
-
 .flex-wallpaper-horizontal {
   display: flex;
   overflow-x: scroll;
   width: 100%;
+  height: fit-content;
   opacity: 0;
   flex-direction: horizontal;
   justify-content: start;
   position: fixed;
   bottom: 0%;
+  scale: 1;
   background-color: rgba(127, 255, 212, 0.221);
   backdrop-filter: blur(24px);
 }
 
-.flex-wallpaper-horizontal > img {
-  width: 150px;
-  height: 100px;
+.thumb-group {
+  width: 160px;
+  height: 90px;
   margin: 24px;
   border: 2px solid #ffffff;
   border-radius: 20px;
 }
 
-.flex-wallpaper-horizontal > img:hover {
+.thumb-group:hover {
   box-shadow: 0px 0px 10px #fff;
-  scale: 1.1;
+  animation: animation_zoom 0.25s;
+  animation-fill-mode: both;
+  animation-iteration-count: 1;
+}
+.thumb-group:hover > .thumb-title {
+  animation: animation_appear 0.25s;
+  animation-fill-mode: both;
+  animation-iteration-count: 1;
+  opacity: 1;
+}
+
+.thumbnail {
+  position: relative;
+  border-radius: 18px;
+}
+
+.thumb-title {
+  position: absolute;
+  border-radius: 0 0 18px 18px;
+  border: 0px solid #fff;
+  border-top: none;
+  padding-top: 4px;
+  margin-top: 66px;
+  margin-left: 0px;
+  padding-left: 12px;
+  padding-bottom: 4px;
+  z-index: 2;
+  width: 148px;
+  opacity: 0;
+  backdrop-filter: blur(24px);
+  background-color: rgba(255, 255, 255, 0.5);
+  pointer-events: none;
 }
