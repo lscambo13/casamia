@@ -3,44 +3,44 @@
     <title>Home Page</title>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js"></script>
-    <script src="app.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin/>
+
     <link
       href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="animations.css">
     <link rel="stylesheet" href="icons.css"/>
-    <link rel="stylesheet" href="https://github.com/lscambo13/my-home-page/raw/main/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://github.com/lscambo13/my-home-page/raw/main/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <div id="overlay"></div>
   </head>
 
   <body>      
-    <div class="wrap">
+    <div id="wrap" class="startup_slide_down">
     <div class="flex-main-container-vertical">
       <div id="heading">
         <h1>Search</h1>
       </div>
 
-
-        <div class="search">
+      <div class="search">
           <input
             type="text"
             class="searchTerm"
             onkeypress="enter_handler(event)"
             placeholder="What are you looking for?"/>
-          <button type="submit" class="searchButton" onclick="search_google()">
+          <button type="submit" class="searchButton" onclick="search_google()" title="Search Google">
             <i class="fa fa-google"></i>
           </button>
         </div>
       
-
       <div class="flex-sub-container-horizontal">
         <div onclick="search_movies()"><i class="flaticon-movies"></i></div>
         <div onclick="search_tv()"><i class="flaticon-tv"></i></div>
-        <div><i></i></div>
-        <div><i></i></div>
+        <div onclick="search_games()"><i class="flaticon-games"></i></div>
+        <div  onclick="search_ebooks()"><i class="flaticon-ebook"></i></div>
         <div><i></i></div>
         <div><i></i></div>
         <div><i></i></div>
@@ -53,6 +53,5 @@
   </div>
   <div class="flex-wallpaper-horizontal" id="wallpapers">
     </div>
-  <script>add_wallpapers_to_html_list()</script>
   </body>
 </html>
