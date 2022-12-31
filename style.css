@@ -29,7 +29,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   padding-top: 0px;
   padding-bottom: 50px;
   scale: 1;
@@ -99,13 +98,13 @@ body {
   justify-content: center;
   align-items: center;
   margin-top: 32px;
-  width: 100%;
+  width: 110%;
 }
 
 .flex-sub-container-horizontal > div {
   color: antiquewhite;
-  width: 10rem;
-  height: 10rem;
+  width: 14rem;
+  height: 14rem;
   margin: 2%;
   display: flex;
   flex-direction: row;
