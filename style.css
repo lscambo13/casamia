@@ -31,24 +31,8 @@ body {
   justify-content: center;
   align-items: center;
   padding-top: 0px;
-  padding-bottom: 200px;
+  padding-bottom: 50px;
   scale: 1;
-}
-
-@media screen and (max-width: 1080px) {
-  .flex-sub-container-horizontal {
-    width: 50% !important;
-    margin-top: 32px;
-  }
-
-  .search {
-    width: 66%;
-  }
-
-  .flex-wallpaper-horizontal {
-    padding-bottom: 2%;
-    padding-top: 2%;
-  }
 }
 
 .flex-main-container-vertical {
@@ -65,27 +49,27 @@ body {
 
 #heading {
   color: antiquewhite;
-  font-size: 4rem;
-  margin-bottom: -60px;
+  font-size: 7rem;
+  margin-bottom: -40px;
 }
 
 .search {
   max-width: fit-content;
-  height: 46px;
+  height: 90px;
   display: flex;
   justify-content: center;
 }
 
 .searchTerm {
-  width: 960px;
+  width: 1024px;
   max-width: 60%;
   border: 3px solid rgba(250, 235, 215, 1);
   border-right: none;
-  padding: 20px 40px 20px 20px;
-  height: 100%;
+  padding: 0px 40px 0px 20px;
+  max-height: 90px;
   border-radius: 50px 0px 0px 50px;
   outline: none;
-  font-size: 1rem;
+  font-size: 3rem;
   color: #9dbfaf;
   backdrop-filter: blur(50px);
   background-color: rgba(95, 158, 160, 0.1);
@@ -96,7 +80,7 @@ body {
 }
 
 .searchButton {
-  width: 50px;
+  width: 100px;
   height: 100%;
   visibility: visible;
   margin-left: 0px;
@@ -105,7 +89,7 @@ body {
   text-align: center;
   border-radius: 0px 50px 50px 0px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 50px;
 }
 
 .flex-sub-container-horizontal {
@@ -120,13 +104,13 @@ body {
 
 .flex-sub-container-horizontal > div {
   color: antiquewhite;
-  width: 6rem;
-  height: 6rem;
+  width: 10rem;
+  height: 10rem;
   margin: 2%;
   display: flex;
   flex-direction: row;
   border-radius: 50%;
-  font-size: 5rem;
+  font-size: 7rem;
   justify-content: center;
   align-items: center;
   backdrop-filter: blur(24px);
@@ -134,7 +118,7 @@ body {
 }
 
 .flex-sub-container-horizontal > div > i {
-  font-size: 2.5rem;
+  font-size: 5rem;
 }
 
 .flex-sub-container-horizontal > div:hover {
@@ -200,4 +184,10 @@ body {
   backdrop-filter: blur(24px);
   background-color: rgba(255, 255, 255, 0.5);
   pointer-events: none;
+}
+
+@media only screen and (max-width: 600px) {
+  #heading > h1 {
+    font-size: 8rem !important;
+  }
 }
