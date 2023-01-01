@@ -29,26 +29,25 @@
 
       <div class="search">
           <input
+            title="Search"
             type="text"
             class="searchTerm"
             onkeypress="enter_handler(event)"
-            placeholder=""/>
+            placeholder=""
+            name="search"
+            autocomplete="on"/>
           <button type="submit" class="searchButton" onclick="search_google()" title="Search Google">
             <i class="fa fa-google"></i>
           </button>
         </div>
       
-      <div class="flex-sub-container-horizontal">
+      <div class="flex-sub-container-horizontal" >
         <div onclick="search_movies()"><i class="flaticon-movies"></i></div>
         <div onclick="search_tv()"><i class="flaticon-tv"></i></div>
         <div onclick="search_games()"><i class="flaticon-games"></i></div>
         <div onclick="search_ebooks()"><i class="flaticon-ebook"></i></div>
-        <div><i></i></div>
-        <div><i></i></div>
-        <div><i></i></div>
-        <div><i></i></div>
-        <div><i></i></div>
-        <div onclick="hide_wallpapers()"><i class="fa fa-gear"></i></div>
+        <div onclick="create_new_bookmark()" id="add_bookmark_button"><i class="fa fa-plus"></i></div>
+        <div onclick="hide_wallpapers()" id="settings_button"><i class="fa fa-gear"></i></div>
       </div>
     </div>
   </div>

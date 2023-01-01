@@ -36,8 +36,106 @@ let wallpapers_list = [
     title: "Grid",
   },
 ];
+var holdTimeout = null;
 
-var selected_wallpaper = wallpapers_list[1].file;
+// BOOKMARKs -- start
+
+let custom_bookmarks = [
+  {
+    link: "",
+    name: "",
+  },
+];
+
+function load_bookmarks() {
+  custom_bookmarks = JSON.parse(localStorage.getItem("saved_bookmarks"));
+  if (custom_bookmarks == null) {
+    custom_bookmarks = [];
+    return;
+  }
+  for (let n of custom_bookmarks) {
+    add_bookmark_to_html(n.link, n.name);
+  }
+}
+
+function add_bookmark_to_html(link, name) {
+  var bookmark_container = document.getElementsByClassName(
+    "flex-sub-container-horizontal"
+  )[0];
+
+  var new_bookmark = document.createElement("a");
+  var i = document.createElement("span");
+  new_bookmark.className = "custom_bookmark";
+  new_bookmark.setAttribute("href", link);
+  new_bookmark.setAttribute("onmouseenter", "remove_bookmark(event)");
+  new_bookmark.setAttribute("onmouseleave", "remove_timeout(event)");
+  i.textContent = name;
+  new_bookmark.appendChild(i);
+  bookmark_container.appendChild(new_bookmark);
+}
+
+function create_new_bookmark() {
+  var link = prompt("Type link");
+  if (link == null) return;
+  while (!isUrlValid(link)) {
+    alert("Please type a website link");
+    link = prompt("Type link");
+  }
+
+  var name = prompt("Type name");
+  if (name == null) return;
+  if (name == "") {
+    name = link.replace("www.", "");
+    if (name.includes("//")) {
+      name = name.split("//")[1];
+    }
+  }
+  name = name.substring(0, 3).toUpperCase();
+
+  if (!link.includes("http")) {
+    link = "https://" + link;
+  }
+  add_bookmark_to_html(link, name);
+  save_bookmarks(link, name);
+}
+
+function save_bookmarks(link, name) {
+  custom_bookmarks.push({
+    link: link,
+    name: name,
+  });
+  localStorage.setItem("saved_bookmarks", JSON.stringify(custom_bookmarks));
+}
+
+function remove_bookmark(event) {
+  if (holdTimeout != null) {
+    clearTimeout(holdTimeout);
+  }
+  holdTimeout = setTimeout(() => {
+    if (confirm("Remove this bookmark?")) {
+      remove_bookmark_from_localstorage(event.target.href);
+      event.target.style.display = "none";
+    }
+  }, 1000);
+}
+
+function remove_timeout(event) {
+  clearTimeout(holdTimeout);
+}
+
+function remove_bookmark_from_localstorage(link) {
+  custom_bookmarks = custom_bookmarks.filter((elem) => {
+    return !link.includes(elem.link);
+  });
+  localStorage.setItem("saved_bookmarks", JSON.stringify(custom_bookmarks));
+}
+
+// BOOKMARKs -- end
+
+var selected_wallpaper = localStorage.getItem("wallpaper");
+if (selected_wallpaper == null) {
+  selected_wallpaper = wallpapers_list[4].file;
+}
 
 const wallpapers_url =
   "https://github.com/lscambo13/my-home-page/raw/main/wallpapers/";
@@ -50,6 +148,7 @@ function set_wallpaper(fileName) {
   document.body.style.backgroundAttachment = "fixed";
   document.body.style.backgroundPosition = "center";
   selected_wallpaper = fileName;
+  localStorage.setItem("wallpaper", selected_wallpaper);
 }
 
 function change_wallpaper(event) {
@@ -81,6 +180,7 @@ function highlight_set_wallpaper() {
 function hide_wallpapers() {
   const film_roll = document.getElementById("wallpapers");
   const wrap = document.getElementById("wrap");
+  film_roll.style.display = "flex";
   if (
     film_roll.classList.length < 2 ||
     film_roll.classList[1] == "animation_slide_down"
@@ -143,6 +243,14 @@ function search_ebooks() {
   window.open(url);
 }
 
+function isUrlValid(userInput) {
+  var res = userInput.match(
+    /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g
+  );
+  if (res == null) return false;
+  else return true;
+}
+
 function enter_handler(event) {
   if (event.key == "Enter") {
     search_google();
@@ -178,4 +286,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
   set_wallpaper(selected_wallpaper);
   highlight_set_wallpaper();
+  load_bookmarks();
 });

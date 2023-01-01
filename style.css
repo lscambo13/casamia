@@ -144,7 +144,8 @@ body {
   margin-bottom: 8em;
 }
 
-.flex-sub-container-horizontal > div {
+.flex-sub-container-horizontal > div,
+a {
   color: antiquewhite;
 
   width: clamp(1em, 3em, 8em);
@@ -155,6 +156,7 @@ body {
   border-radius: 50%;
   justify-content: center;
   align-items: center;
+
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   background-color: rgba(95, 158, 160, 0.4);
@@ -166,6 +168,10 @@ body {
   font-size: clamp(0.5em, 1.5em, 4em);
 }
 
+.flex-sub-container-horizontal > a > i {
+  font-size: clamp(0.5em, 1.5em, 4em);
+}
+
 .flex-sub-container-horizontal > div:hover {
   animation: animation_fade-in 0.5s;
   animation-fill-mode: both;
@@ -173,12 +179,11 @@ body {
 }
 
 .flex-wallpaper-horizontal {
-  display: flex;
   max-height: 14em;
   flex-wrap: wrap;
   overflow-x: auto;
   width: 100%;
-  opacity: 0;
+  display: none;
   flex-direction: column;
   justify-content: start;
   position: fixed;
@@ -236,4 +241,28 @@ body {
   -webkit-backdrop-filter: blur(24px);
   background-color: rgba(255, 255, 255, 0.5);
   pointer-events: none;
+}
+
+#add_bookmark_button {
+  background-color: #3e8966;
+  order: 1336;
+}
+#settings_button {
+  background-color: rgb(109, 70, 70);
+  order: 1337;
+}
+#settings_button::after {
+  background-color: rgb(109, 70, 70);
+  order: 1337;
+}
+.custom_bookmark {
+  background-color: rgb(143, 85, 94) !important;
+  text-decoration: none;
+}
+.custom_bookmark > span {
+  pointer-events: none;
+}
+.custom_bookmark:hover {
+  background-color: rgb(187, 112, 123) !important;
+  text-decoration: none;
 }
