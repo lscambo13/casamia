@@ -37,7 +37,7 @@ let wallpapers_list = [
   },
 ];
 
-var selected_wallpaper = wallpapers_list[4].file;
+var selected_wallpaper = wallpapers_list[1].file;
 
 const wallpapers_url =
   "https://github.com/lscambo13/my-home-page/raw/main/wallpapers/";
@@ -45,6 +45,10 @@ const wallpapers_url =
 function set_wallpaper(fileName) {
   document.body.style.backgroundImage =
     "url(" + wallpapers_url + fileName + ")";
+  document.body.style.backgroundRepeat = "no-repeat";
+  document.body.style.backgroundSize = "cover";
+  document.body.style.backgroundAttachment = "fixed";
+  document.body.style.backgroundPosition = "center";
   selected_wallpaper = fileName;
 }
 
@@ -62,10 +66,14 @@ function highlight_set_wallpaper() {
   for (let n of available_wallpapers) {
     var thumbnail = n.getElementsByClassName("thumbnail")[0];
     var title = n.getElementsByClassName("thumb-title")[0];
+    n.classList.add("animate");
+
     if (thumbnail.src.replace("-thumb", "").includes(selected_wallpaper)) {
       title.style.opacity = "1";
+      n.classList.remove("animate");
     } else {
       title.style.opacity = "0";
+      n.classList.add("animate");
     }
   }
 }
