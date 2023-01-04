@@ -85,7 +85,7 @@
 
 @keyframes animation2_slide_up {
   0% {
-    transform: translateY(25vh);
+    transform: translateY(15vh);
     opacity: 1;
   }
   100% {
@@ -100,7 +100,7 @@
     opacity: 0.75;
   }
   100% {
-    transform: translateY(25vh);
+    transform: translateY(15vh);
     opacity: 1;
   }
 }
@@ -117,7 +117,7 @@
     opacity: 0;
   }
   100% {
-    transform: translateY(25vh);
+    transform: translateY(15vh);
     opacity: 1;
   }
 }
