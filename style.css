@@ -8,7 +8,7 @@
 body {
   background-color: rgb(40, 40, 40);
   font-family: "Ubuntu Mono", monospace;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 #overlay {
@@ -37,7 +37,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 @media (orientation: landscape) {
@@ -101,7 +101,7 @@ body {
 
 .searchTerm {
   width: 80%;
-  min-height: 2em;
+  min-height: 3em;
   min-width: 10em;
   border: 0.2em solid rgba(250, 235, 215, 1);
   border-right: none;
@@ -126,9 +126,9 @@ body {
 }
 
 .searchButton {
-  width: clamp(2em, 20%, 3em);
-  min-height: 2em;
-  min-width: 2em;
+  width: clamp(3em, 20%, 4em);
+  min-height: 3em;
+  min-width: 3em;
   border: 0em solid rgba(250, 235, 215, 1);
   background: rgba(250, 235, 215, 1);
   text-align: center;
@@ -255,12 +255,12 @@ a {
 #add_bookmark_button {
   background-color: #3e896672;
   backdrop-filter: blur(1em);
+  -webkit-backdrop-filter: blur(1em);
   order: 1336;
 }
 #add_bookmark_button:hover {
   background-color: rgba(255, 187, 0, 0.4);
   transition: 200ms;
-  order: 1336;
 }
 #add_bookmark_button:hover > i {
   transition: 750ms;
@@ -269,12 +269,12 @@ a {
 #settings_button {
   background-color: rgba(152, 51, 51, 0.4);
   backdrop-filter: blur(1em);
+  -webkit-backdrop-filter: blur(1em);
   order: 1337;
 }
 #settings_button:hover {
   background-color: rgba(255, 187, 0, 0.4);
   transition: 200ms;
-  order: 1337;
 }
 #settings_button:hover > i {
   transition: 750ms;
