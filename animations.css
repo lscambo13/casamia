@@ -85,19 +85,23 @@
 
 @keyframes animation2_slide_up {
   0% {
-    transform: translateY(180px);
+    transform: translateY(25vh);
+    opacity: 1;
   }
   100% {
     transform: translateY(0);
+    opacity: 0.75;
   }
 }
 
 @keyframes animation2_slide_down {
   0% {
-    transform: translateY(0px);
+    transform: translateY(0);
+    opacity: 0.75;
   }
   100% {
-    transform: translateY(180px);
+    transform: translateY(25vh);
+    opacity: 1;
   }
 }
 
@@ -109,11 +113,11 @@
 
 @keyframes startup_slide_down {
   0% {
-    transform: translateY(0px);
+    transform: translateY(0);
     opacity: 0;
   }
   100% {
-    transform: translateY(180px);
+    transform: translateY(25vh);
     opacity: 1;
   }
 }

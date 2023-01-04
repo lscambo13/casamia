@@ -8,7 +8,7 @@
 body {
   background-color: rgb(40, 40, 40);
   font-family: "Ubuntu Mono", monospace;
-  font-size: 32px;
+  font-size: 16px;
 }
 
 #overlay {
@@ -37,16 +37,22 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  font-size: 32px;
+  font-size: 16px;
+}
+
+@media (orientation: landscape) {
+  #heading {
+  }
 }
 
 @media only screen and (min-width: 1024px) {
+  body {
+    font-size: 32px;
+  }
   .flex-main-container-vertical {
     padding-left: 10vw !important;
     padding-right: 10vw !important;
-  }
-  #heading {
-    font-size: clamp(1em, 10vh, 8em) !important;
+    font-size: 32px;
   }
   .search {
     width: 60vw !important;
@@ -57,12 +63,13 @@ body {
 }
 
 @media only screen and (min-width: 600px) {
+  body {
+    font-size: 28px;
+  }
   .flex-main-container-vertical {
     padding-left: 10vw;
     padding-right: 10vw;
-  }
-  #heading {
-    font-size: clamp(1em, 10vh, 8em);
+    font-size: 28px;
   }
   .search {
     width: 80vw;
@@ -78,7 +85,7 @@ body {
 
 #heading {
   color: antiquewhite;
-  font-size: clamp(1em, 12vw, 8em);
+  font-size: clamp(1em, 2.5em, 10em);
   cursor: default;
 }
 
@@ -98,19 +105,19 @@ body {
   min-width: 10em;
   border: 0.2em solid rgba(250, 235, 215, 1);
   border-right: none;
-  padding: 0px 40px 0px 20px;
-  border-radius: 50px 0px 0px 50px;
+  padding: 0 2em 0 1em;
+  border-radius: 2.5em 0 0 2.5em;
   outline: none;
   font-size: 1em;
   color: #9dbfaf;
-  backdrop-filter: blur(50px);
-  -webkit-backdrop-filter: blur(50px);
+  backdrop-filter: blur(1em);
+  -webkit-backdrop-filter: blur(1em);
   caret-color: rgba(250, 235, 215, 1);
   background-color: rgba(95, 158, 160, 0.1);
 }
 
 .searchTerm:focus {
-  color: rgba(250, 235, 215, 0.864);
+  color: rgba(250, 235, 215, 0.8);
   background-color: rgba(250, 235, 215, 0.2);
 }
 
@@ -125,7 +132,7 @@ body {
   border: 0em solid rgba(250, 235, 215, 1);
   background: rgba(250, 235, 215, 1);
   text-align: center;
-  border-radius: 0px 50px 50px 0px;
+  border-radius: 0 2.5em 2.5em 0;
   cursor: pointer;
   font-size: clamp(1em, 1em, 2em);
 }
@@ -139,6 +146,7 @@ body {
   height: fit-content;
   display: flex;
   flex-wrap: wrap;
+  padding: 0.5em;
   justify-content: center;
   align-items: center;
   margin-bottom: 8em;
@@ -148,8 +156,8 @@ body {
 a {
   color: antiquewhite;
 
-  width: clamp(1em, 3em, 8em);
-  height: clamp(1em, 3em, 8em);
+  width: clamp(1em, 4em, 8em);
+  height: clamp(1em, 4em, 8em);
   margin: 2%;
   display: flex;
   flex-direction: row;
@@ -157,29 +165,28 @@ a {
   justify-content: center;
   align-items: center;
 
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(1em);
+  -webkit-backdrop-filter: blur(1em);
   background-color: rgba(95, 158, 160, 0.4);
   cursor: pointer;
   caret-color: transparent;
 }
 
 .flex-sub-container-horizontal > div > i {
-  font-size: clamp(0.5em, 1.5em, 4em);
+  font-size: clamp(0.5em, 2em, 4em);
 }
 
 .flex-sub-container-horizontal > a > i {
-  font-size: clamp(0.5em, 1.5em, 4em);
+  font-size: clamp(0.5em, 2em, 4em);
 }
 
 .flex-sub-container-horizontal > div:hover {
-  animation: animation_fade-in 0.5s;
-  animation-fill-mode: both;
-  animation-iteration-count: 1;
+  background-color: rgba(255, 187, 0, 0.4);
+  transition: 750ms;
 }
 
 .flex-wallpaper-horizontal {
-  max-height: 14em;
+  max-height: 10em;
   flex-wrap: wrap;
   overflow-x: auto;
   width: 100%;
@@ -189,22 +196,21 @@ a {
   position: fixed;
   bottom: 0%;
   padding: 0.75em;
-  background-color: rgba(127, 255, 212, 0.221);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background-color: rgba(127, 255, 212, 0.3);
+  backdrop-filter: blur(1em);
+  -webkit-backdrop-filter: blur(1em);
 }
 
 .thumb-group {
-  width: 256px;
-  height: 180px;
+  width: 8em;
+  height: 4.8em;
   margin: 0.5em;
-  border: 2px solid #ffffff;
-  border-radius: 20px;
+  border-radius: 1em;
   cursor: pointer;
 }
 
 .thumb-group:hover {
-  box-shadow: 0px 0px 10px #fff;
+  box-shadow: 0 0 0.5em #fff;
   animation: animation_zoom 0.25s;
   animation-fill-mode: both;
   animation-iteration-count: 1;
@@ -219,50 +225,71 @@ a {
 
 .thumbnail {
   position: relative;
-  width: 252px;
-  height: 176px;
-  border-radius: 18px;
+  width: 8.05em;
+  height: 4.8em;
+  border: 0.1em solid antiquewhite;
+
+  margin-left: -0.04em;
+  border-radius: 0.9em;
 }
 
 .thumb-title {
   position: absolute;
-  border-radius: 0 0 18px 18px;
-  border: 0px solid #fff;
+  border-radius: 0 0 0.75em 0.75em;
+  border: 0 solid antiquewhite;
   border-top: none;
-  padding-top: 4px;
-  margin-top: 136px;
-  margin-left: 0px;
-  padding-left: 12px;
-  padding-bottom: 4px;
+  width: 7.85em;
+  padding-top: 0.3em;
+  margin-top: 3.1em;
+  margin-left: 0.05em;
+  padding-left: 0.75em;
+  padding-bottom: 0.3em;
   z-index: 2;
-  width: 252px;
   opacity: 0;
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(1em);
+  -webkit-backdrop-filter: blur(1em);
+  background-color: rgba(250, 235, 215, 0.25);
   pointer-events: none;
 }
 
 #add_bookmark_button {
-  background-color: #3e8966;
+  background-color: #3e896672;
+  backdrop-filter: blur(1em);
   order: 1336;
 }
+#add_bookmark_button:hover {
+  background-color: rgba(255, 187, 0, 0.4);
+  transition: 200ms;
+  order: 1336;
+}
+#add_bookmark_button:hover > i {
+  transition: 750ms;
+  rotate: 360deg;
+}
 #settings_button {
-  background-color: rgb(109, 70, 70);
+  background-color: rgba(152, 51, 51, 0.4);
+  backdrop-filter: blur(1em);
   order: 1337;
 }
-#settings_button::after {
-  background-color: rgb(109, 70, 70);
+#settings_button:hover {
+  background-color: rgba(255, 187, 0, 0.4);
+  transition: 200ms;
   order: 1337;
+}
+#settings_button:hover > i {
+  transition: 750ms;
+  rotate: 360deg;
 }
 .custom_bookmark {
-  background-color: rgb(143, 85, 94) !important;
+  background-color: rgba(56, 121, 218, 0.4);
   text-decoration: none;
 }
 .custom_bookmark > span {
+  font-weight: bolder;
   pointer-events: none;
 }
 .custom_bookmark:hover {
-  background-color: rgb(187, 112, 123) !important;
+  background-color: rgba(255, 187, 0, 0.4) !important;
+  transition: 750ms;
   text-decoration: none;
 }
