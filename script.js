@@ -207,14 +207,17 @@ function hide_wallpapers_alt() {
   const wrap = document.getElementById("wrap");
   film_roll.style.display = "flex";
   if (
-    film_roll.classList[1] == "animation_slide_up"
+    film_roll.classList.length < 2 ||
+    film_roll.classList[1] == "animation_slide_down"
   ) {
+return ;    
+  } else {
     film_roll.classList.remove("animation_slide_up");
     film_roll.classList.add("animation_slide_down");
 
+    // wrap.style.paddingTop = "90px";
     wrap.classList.remove("animation2_slide_up");
     wrap.classList.add("animation2_slide_down");
-    // wrap.style.paddingTop = "0px";
   }
 }
 
