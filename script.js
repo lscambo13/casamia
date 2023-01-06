@@ -300,6 +300,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     bar.appendChild(thumb);
   }
+  
+    thumb.className = "thumb-group";
+    thumb.setAttribute("onclick", "hide_wallpapers()");
+    var div = document.createElement("h3");
+    div.innerHTML = "Close";
+    thumb.appendChild(div);
+    bar.appendChild(thumb)
 
   set_wallpaper(selected_wallpaper);
   highlight_set_wallpaper();
