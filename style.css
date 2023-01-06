@@ -97,6 +97,8 @@ body {
   margin-top: 2em;
   margin-bottom: 2em;
   cursor: default;
+  margin-inline: 1em;
+  box-sizing: border-box;
 }
 
 .searchTerm {
