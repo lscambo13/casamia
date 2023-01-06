@@ -152,6 +152,7 @@ function set_wallpaper(fileName) {
 }
 
 function change_wallpaper(event) {
+  event.stopPropagation();
   let selection = event.target.title;
   let wallpaper = wallpapers_list.filter((item) => {
     return item.title == selection;
@@ -177,7 +178,9 @@ function highlight_set_wallpaper() {
   }
 }
 
-function hide_wallpapers() {
+function hide_wallpapers(event) {
+  console.log("click gear");
+  event.stopPropagation();
   const film_roll = document.getElementById("wallpapers");
   const wrap = document.getElementById("wrap");
   film_roll.style.display = "flex";
@@ -203,21 +206,23 @@ function hide_wallpapers() {
 }
 
 function hide_wallpapers_alt() {
+  console.log("click bg");
   const film_roll = document.getElementById("wallpapers");
   const wrap = document.getElementById("wrap");
-  film_roll.style.display = "flex";
   if (
-    film_roll.classList.length < 2 ||
-    film_roll.classList[1] == "animation_slide_down"
+    film_roll.classList.length == 2 &&
+    film_roll.classList[1] == "animation_slide_up"
   ) {
-return ;    
-  } else {
+    console.log("click if");
+
     film_roll.classList.remove("animation_slide_up");
     film_roll.classList.add("animation_slide_down");
 
     // wrap.style.paddingTop = "90px";
     wrap.classList.remove("animation2_slide_up");
     wrap.classList.add("animation2_slide_down");
+  } else {
+    console.log("click else");
   }
 }
 
