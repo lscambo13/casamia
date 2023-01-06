@@ -178,9 +178,11 @@ function highlight_set_wallpaper() {
   }
 }
 
-function hide_wallpapers(event) {
-  console.log("click gear");
-  event.stopPropagation();
+function hide_wallpapers(event, noevent = false) {
+  if (!noevent) {
+    event.stopPropagation();
+  }
+
   const film_roll = document.getElementById("wallpapers");
   const wrap = document.getElementById("wrap");
   film_roll.style.display = "flex";
@@ -190,18 +192,15 @@ function hide_wallpapers(event) {
   ) {
     film_roll.classList.remove("animation_slide_down");
     film_roll.classList.add("animation_slide_up");
-
     wrap.classList.remove("animation2_slide_down");
     wrap.classList.remove("startup_slide_down");
     wrap.classList.add("animation2_slide_up");
-    // wrap.style.paddingTop = "0px";
   } else {
     film_roll.classList.remove("animation_slide_up");
     film_roll.classList.add("animation_slide_down");
-
-    // wrap.style.paddingTop = "90px";
     wrap.classList.remove("animation2_slide_up");
     wrap.classList.add("animation2_slide_down");
+    //window.open("#", "_self");
   }
 }
 
@@ -213,16 +212,11 @@ function hide_wallpapers_alt() {
     film_roll.classList.length == 2 &&
     film_roll.classList[1] == "animation_slide_up"
   ) {
-    console.log("click if");
-
+    //window.open("#", "_self");
     film_roll.classList.remove("animation_slide_up");
     film_roll.classList.add("animation_slide_down");
-
-    // wrap.style.paddingTop = "90px";
     wrap.classList.remove("animation2_slide_up");
     wrap.classList.add("animation2_slide_down");
-  } else {
-    console.log("click else");
   }
 }
 
@@ -311,4 +305,14 @@ document.addEventListener("DOMContentLoaded", () => {
   set_wallpaper(selected_wallpaper);
   highlight_set_wallpaper();
   load_bookmarks();
+});
+
+window.addEventListener("hashchange", () => {
+  var url = document.URL;
+
+  if (!url.includes("#wallpapers")) {
+    console.log("url found");
+    hide_wallpapers_alt();
+  }
+  console.log("go back");
 });
