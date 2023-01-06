@@ -278,6 +278,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // Add wallpapers to HTML
   const n = wallpapers_list.length;
   var bar = document.getElementById("wallpapers");
+  
+  var thumb = document.createElement("div");
+  thumb.className = "thumb-group";
+  thumb.setAttribute("onclick", "hide_wallpapers()");
+  var h3 = document.createElement("h3");
+  h3.innerHTML = "Close";
+  h3.style.textAlignment ="center"
+  thumb.appendChild(h3);
+  bar.appendChild(thumb);
+  
+  
 
   for (let n of wallpapers_list) {
     var input = n.file;
@@ -300,13 +311,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     bar.appendChild(thumb);
   }
-  var thumb = document.createElement("div");
-  thumb.className = "thumb-group";
-  thumb.setAttribute("onclick", "hide_wallpapers()");
-  var h3 = document.createElement("h3");
-  h3.textContent = "Close";
-  thumb.appendChild(h3);
-  bar.appendChild(thumb);
+  
 
   set_wallpaper(selected_wallpaper);
   highlight_set_wallpaper();
