@@ -202,6 +202,22 @@ function hide_wallpapers() {
   }
 }
 
+function hide_wallpapers_alt() {
+  const film_roll = document.getElementById("wallpapers");
+  const wrap = document.getElementById("wrap");
+  film_roll.style.display = "flex";
+  if (
+    film_roll.classList[1] == "animation_slide_up"
+  ) {
+    film_roll.classList.remove("animation_slide_up");
+    film_roll.classList.add("animation_slide_down");
+
+    wrap.classList.remove("animation2_slide_up");
+    wrap.classList.add("animation2_slide_down");
+    // wrap.style.paddingTop = "0px";
+  }
+}
+
 const ext_domain = "https://x1337x.ws/sort-category-search/";
 
 function search_google() {
