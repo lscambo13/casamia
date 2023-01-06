@@ -97,8 +97,7 @@ body {
   margin-top: 2em;
   margin-bottom: 2em;
   cursor: default;
-  margin-inline: 1em;
-  box-sizing: border-box;
+  padding-inline: 2em;
 }
 
 .searchTerm {
@@ -152,10 +151,10 @@ body {
   justify-content: center;
   align-items: center;
   margin-bottom: 8em;
+  box-sizing: border-box;
 }
 
-.flex-sub-container-horizontal > div,
-a {
+.flex-sub-container-horizontal > div {
   color: antiquewhite;
 
   width: clamp(1em, 4em, 8em);
@@ -166,7 +165,7 @@ a {
   border-radius: 50%;
   justify-content: center;
   align-items: center;
-
+  text-decoration: none;
   backdrop-filter: blur(1em);
   -webkit-backdrop-filter: blur(1em);
   background-color: rgba(95, 158, 160, 0.4);
@@ -269,20 +268,51 @@ a {
   rotate: 360deg;
 }
 #settings_button {
-  background-color: rgba(152, 51, 51, 0.4);
+  color: antiquewhite;
+
+  width: clamp(1em, 4em, 8em);
+  height: clamp(1em, 4em, 8em);
+  margin: 2%;
+  display: flex;
+  flex-direction: row;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
   backdrop-filter: blur(1em);
   -webkit-backdrop-filter: blur(1em);
+  background-color: rgba(224, 163, 110, 0.4);
+  cursor: pointer;
+  caret-color: transparent;
   order: 1337;
+}
+#settings_button > a {
+  color: antiquewhite;
+  font-size: clamp(0.5em, 2em, 4em);
 }
 #settings_button:hover {
   background-color: rgba(255, 187, 0, 0.4);
   transition: 200ms;
 }
-#settings_button:hover > i {
+#settings_button:hover > a > i {
   transition: 750ms;
   rotate: 360deg;
 }
 .custom_bookmark {
+  color: antiquewhite;
+
+  width: clamp(1em, 4em, 8em);
+  height: clamp(1em, 4em, 8em);
+  margin: 2%;
+  display: flex;
+  flex-direction: row;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(1em);
+  -webkit-backdrop-filter: blur(1em);
+  cursor: pointer;
+  caret-color: transparent;
   background-color: rgba(56, 121, 218, 0.4);
   text-decoration: none;
 }
