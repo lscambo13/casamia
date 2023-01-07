@@ -178,6 +178,68 @@ function highlight_set_wallpaper() {
   }
 }
 
+function enable_blur(event) {
+  event.stopPropagation();
+  var checkbox_blur = document.getElementById("blur-setting");
+  var overlay = document.getElementById("overlay");
+  if (checkbox_blur.checked == true) {
+    overlay.style.backdropFilter = "blur(1em)";
+    localStorage.setItem("blur_wallpaper", "blur(1em)");
+  } else {
+    overlay.style.backdropFilter = "blur(0em)";
+    localStorage.setItem("blur_wallpaper", "blur(0em)");
+  }
+}
+
+function enable_wallpaper(event) {
+  event.stopPropagation();
+  var checkbox_wall = document.getElementById("wallpaper-setting");
+  var overlay = document.getElementById("overlay");
+  if (checkbox_wall.checked == false) {
+    overlay.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    localStorage.setItem("disable_wallpaper", "rgba(0, 0, 0, 0.5)");
+  } else {
+    overlay.style.backgroundColor = "rgb(0, 0, 0)";
+    localStorage.setItem("disable_wallpaper", "rgb(0, 0, 0)");
+  }
+}
+
+function load_settings() {
+  var checkbox_wall = document.getElementById("wallpaper-setting");
+  var checkbox_blur = document.getElementById("blur-setting");
+  var overlay = document.getElementById("overlay");
+  console.log("load");
+  // Blur
+  var blur = localStorage.getItem("blur_wallpaper");
+  if (blur != null) {
+    console.log("not null");
+
+    overlay.style.backdropFilter = blur;
+    if (blur == "blur(1em)") {
+      console.log("blur on");
+      checkbox_blur.checked = true;
+    } else {
+      console.log("blur off");
+      checkbox_blur.checked = false;
+    }
+  } else {
+    checkbox_blur.checked = false;
+  }
+
+  // Lights out
+  var wall = localStorage.getItem("disable_wallpaper");
+  if (wall != null) {
+    overlay.style.backgroundColor = wall;
+    if (wall != "rgba(0, 0, 0, 0.5)") {
+      checkbox_wall.checked = true;
+    } else {
+      checkbox_wall.checked = false;
+    }
+  } else {
+    checkbox_wall.checked = false;
+  }
+}
+
 function hide_wallpapers(event, noevent = false) {
   if (!noevent) {
     event.stopPropagation();
@@ -305,6 +367,7 @@ document.addEventListener("DOMContentLoaded", () => {
   set_wallpaper(selected_wallpaper);
   highlight_set_wallpaper();
   load_bookmarks();
+  load_settings();
 });
 
 window.addEventListener("hashchange", () => {

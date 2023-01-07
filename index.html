@@ -53,6 +53,13 @@
     </div>
   </div>
   </div>
-  <div class="flex-wallpaper-horizontal" id="wallpapers"></div>
+  <div class="flex-wallpaper-horizontal" id="wallpapers">
+    <div class="settings" onclick="event.stopPropagation()">
+      <form action="" class="setting-option">
+        <label for="blur-setting"  class="setting-title" >Enable Blur <input type="checkbox" id="blur-setting" checked="false" onclick="enable_blur(event)"></label><br>
+        <label for="wallpaper-setting"  class="setting-title" >Lights Out &nbsp<input type="checkbox" id="wallpaper-setting" checked="false" onclick="enable_wallpaper(event)"></label>
+      </form><br>
+      <span class="setting-option" onclick="hide_wallpapers_alt()">Close</span>
+  </div>
   </body>
 </html>
