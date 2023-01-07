@@ -19,10 +19,8 @@
 
 <br>
 
-### _A Preview (Tap to enlarge)_
+### _A Preview_
 
 <br>
 
-<a href="https://github.com/lscambo13/my-home-page/raw/main/screenshots/Screenshot%20(166).png"> <img src="https://github.com/lscambo13/my-home-page/raw/main/screenshots/Screenshot%20(166).png" alt="Default Look" style="height: 417px; width:380px; border-radius:16px;"/></a>
-
-<a href="https://github.com/lscambo13/my-home-page/raw/main/screenshots/Screenshot%20(167).png"><img src="https://github.com/lscambo13/my-home-page/raw/main/screenshots/Screenshot%20(167).png" alt="Customised Look" style="height: 417px; width:380px; border-radius:16px;"/></a>
+<img src="https://github.com/lscambo13/my-home-page/raw/main/screenshots/Screenshot%20(166).png" alt="Default Look" style="height: 373px; width:340px; border-radius:16px;"/> <img src="https://github.com/lscambo13/my-home-page/raw/main/screenshots/Screenshot%20(167).png" alt="Customised Look" style="height: 373px; width:340px; border-radius:16px;"/>
