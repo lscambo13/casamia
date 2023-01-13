@@ -86,22 +86,22 @@
 @keyframes animation2_slide_up {
   0% {
     transform: translateY(15vh);
-    opacity: 1;
+    /* opacity: 1; */
   }
   100% {
     transform: translateY(0);
-    opacity: 0.75;
+    /* opacity: 0.75; */
   }
 }
 
 @keyframes animation2_slide_down {
   0% {
     transform: translateY(0);
-    opacity: 0.75;
+    /* opacity: 0.75; */
   }
   100% {
     transform: translateY(15vh);
-    opacity: 1;
+    /* opacity: 1; */
   }
 }
 
