@@ -138,8 +138,24 @@ body {
   font-size: clamp(1em, 1em, 2em);
 }
 
-.searchButton:hover {
-  color: #487560;
+.searchButton > i {
+  background-size: 2;
+  padding: 0.1em;
+  background-color: transparent;
+  border-radius: 1em;
+}
+
+.searchButton:hover > i {
+  background-color: rgb(219, 210, 195);
+  color: #5f8775;
+  padding: 0.5em;
+  transition: all 200ms;
+}
+.searchButton:active > i {
+  padding: 0.7em;
+  background-color: transparent;
+  color: #9dbfaf;
+  transition: all 200ms;
 }
 
 .flex-sub-container-horizontal {
@@ -177,12 +193,8 @@ body {
   font-size: clamp(0.5em, 2em, 4em);
 }
 
-.flex-sub-container-horizontal > a > i {
-  font-size: clamp(0.5em, 2em, 4em);
-}
-
 .flex-sub-container-horizontal > div:hover {
-  background-color: rgba(255, 187, 0, 0.4);
+  background-color: rgba(255, 187, 0, 0.4) !important;
   transition: 750ms;
 }
 
@@ -279,17 +291,13 @@ body {
   -webkit-backdrop-filter: blur(1em);
   order: 1336;
 }
-#add_bookmark_button:hover {
-  background-color: rgba(255, 187, 0, 0.4);
-  transition: 200ms;
-}
-#add_bookmark_button:hover > i {
+#add_bookmark_button:active > i {
   transition: 750ms;
   rotate: 360deg;
 }
+
 #settings_button {
   color: antiquewhite;
-
   width: clamp(1em, 4em, 8em);
   height: clamp(1em, 4em, 8em);
   margin: 2%;
@@ -310,11 +318,7 @@ body {
   color: antiquewhite;
   font-size: clamp(0.5em, 2em, 4em);
 }
-#settings_button:hover {
-  background-color: rgba(255, 187, 0, 0.4);
-  transition: 200ms;
-}
-#settings_button:hover > a > i {
+#settings_button:not(:active) > a > i {
   transition: 750ms;
   rotate: 360deg;
 }
@@ -340,9 +344,4 @@ body {
   font-weight: bolder;
   font-size: 1.5em;
   pointer-events: none;
-}
-.custom_bookmark:hover {
-  background-color: rgba(255, 187, 0, 0.4) !important;
-  transition: 750ms;
-  text-decoration: none;
 }
