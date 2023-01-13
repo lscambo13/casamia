@@ -293,7 +293,7 @@ body {
   -webkit-backdrop-filter: blur(1em);
   order: 1336;
 }
-#add_bookmark_button:not(:active):active > i {
+#add_bookmark_button:not(:active) > i {
   transition: 750ms;
   rotate: 360deg;
 }
