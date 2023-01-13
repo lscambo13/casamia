@@ -145,16 +145,18 @@ body {
   border-radius: 1em;
 }
 
-.searchButton:hover > i {
+/* .searchButton:hover > i {
   background-color: rgb(219, 210, 195);
   color: #5f8775;
   padding: 0.5em;
   transition: all 200ms;
-}
+} */
+
 .searchButton:active > i {
   padding: 0.7em;
-  background-color: transparent;
-  color: #9dbfaf;
+  background-color: #d0d4d2;
+  padding: 0.8em;
+  color: #44906c;
   transition: all 200ms;
 }
 
@@ -291,7 +293,7 @@ body {
   -webkit-backdrop-filter: blur(1em);
   order: 1336;
 }
-#add_bookmark_button:active > i {
+#add_bookmark_button:not(:active):active > i {
   transition: 750ms;
   rotate: 360deg;
 }
@@ -324,7 +326,6 @@ body {
 }
 .custom_bookmark {
   color: antiquewhite;
-
   width: clamp(1em, 4em, 8em);
   height: clamp(1em, 4em, 8em);
   margin: 2%;
