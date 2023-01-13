@@ -65,12 +65,17 @@ function add_bookmark_to_html(link, name) {
 
   var new_bookmark = document.createElement("a");
   var i = document.createElement("span");
+  var d = document.createElement("div");
   new_bookmark.className = "custom_bookmark";
   new_bookmark.setAttribute("href", link);
-  new_bookmark.setAttribute("onmouseenter", "remove_bookmark(event)");
-  new_bookmark.setAttribute("onmouseleave", "remove_timeout(event)");
+  // new_bookmark.setAttribute("onmouseenter", "remove_bookmark(event)");
+  // new_bookmark.setAttribute("onmouseleave", "remove_timeout(event)");
   i.textContent = name;
+  d.textContent = "x";
+  d.classList.add("cross");
+  d.setAttribute("onclick", "remove_bookmark(event)");
   new_bookmark.appendChild(i);
+  new_bookmark.appendChild(d);
   bookmark_container.appendChild(new_bookmark);
 }
 
@@ -108,19 +113,15 @@ function save_bookmarks(link, name) {
 }
 
 function remove_bookmark(event) {
-  if (holdTimeout != null) {
-    clearTimeout(holdTimeout);
+  event.preventDefault();
+  console.log("click " + event.target.parentNode.href);
+  event.stopPropagation();
+  if (confirm("Remove this bookmark?")) {
+    remove_bookmark_from_localstorage(event.target.parentNode.href);
+    event.target.parentNode.style.display = "none";
+    //event.target.style.display = "none";
   }
-  holdTimeout = setTimeout(() => {
-    if (confirm("Remove this bookmark?")) {
-      remove_bookmark_from_localstorage(event.target.href);
-      event.target.style.display = "none";
-    }
-  }, 1000);
-}
-
-function remove_timeout(event) {
-  clearTimeout(holdTimeout);
+  return;
 }
 
 function remove_bookmark_from_localstorage(link) {
@@ -240,6 +241,30 @@ function load_settings() {
   }
 }
 
+function remove_bookmark_v2(visible) {
+  var custom_bookmark = document.getElementsByClassName("custom_bookmark");
+  var cross = document.getElementsByClassName("cross");
+  var n = custom_bookmark.length;
+  switch (visible) {
+    case "show": {
+      for (var i = 0; i < n; i++) {
+        custom_bookmark[i].classList.add("removable");
+        cross[i].style.opacity = 1;
+        console.log(custom_bookmark[i].href);
+      }
+      break;
+    }
+    case "hide": {
+      for (var i = 0; i < n; i++) {
+        custom_bookmark[i].classList.remove("removable");
+        cross[i].style.opacity = 0;
+        console.log(custom_bookmark[i].href);
+      }
+      break;
+    }
+  }
+}
+
 function hide_wallpapers(event, noevent = false) {
   if (!noevent) {
     event.stopPropagation();
@@ -247,6 +272,7 @@ function hide_wallpapers(event, noevent = false) {
 
   const film_roll = document.getElementById("wallpapers");
   const wrap = document.getElementById("wrap");
+
   film_roll.style.display = "flex";
   if (
     film_roll.classList.length < 2 ||
@@ -257,12 +283,14 @@ function hide_wallpapers(event, noevent = false) {
     wrap.classList.remove("animation2_slide_down");
     wrap.classList.remove("startup_slide_down");
     wrap.classList.add("animation2_slide_up");
+    remove_bookmark_v2("show");
   } else {
     film_roll.classList.remove("animation_slide_up");
     film_roll.classList.add("animation_slide_down");
     wrap.classList.remove("animation2_slide_up");
     wrap.classList.add("animation2_slide_down");
     //window.open("#", "_self");
+    remove_bookmark_v2("hide");
   }
 }
 
@@ -279,6 +307,7 @@ function hide_wallpapers_alt() {
     film_roll.classList.add("animation_slide_down");
     wrap.classList.remove("animation2_slide_up");
     wrap.classList.add("animation2_slide_down");
+    remove_bookmark_v2("hide");
   }
 }
 

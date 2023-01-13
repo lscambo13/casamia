@@ -346,3 +346,19 @@ body {
   font-size: 1.5em;
   pointer-events: none;
 }
+.removable {
+  border: 0.1em solid tomato;
+  transition: 300ms;
+}
+.cross {
+  position: fixed;
+  margin-top: 2.2em;
+  margin-left: 2.6em;
+  transition: 150ms;
+  padding-inline-start: 0.35em;
+  width: clamp(0.375em, 1.25em, 3em);
+  height: clamp(0.375em, 1.25em, 3em);
+  background-color: tomato;
+  border-radius: 50%;
+  opacity: 0;
+}
