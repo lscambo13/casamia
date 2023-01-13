@@ -142,7 +142,7 @@ body {
   background-size: 2;
   padding: 0.1em;
   background-color: transparent;
-  border-radius: 1em;
+  border-radius: 2em;
 }
 
 /* .searchButton:hover > i {
