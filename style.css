@@ -3,17 +3,19 @@
   padding: 0;
   box-sizing: border-box !important;
   caret-color: transparent;
+  /* background-color: rgba(220, 20, 60, 0.12); */
 }
 
 body {
   background-color: rgb(40, 40, 40);
   font-family: "Ubuntu Mono", monospace;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 input[type="checkbox"] {
-  width: 1.3em;
-  height: 1.3em;
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
 }
 
 #overlay {
@@ -44,7 +46,7 @@ input[type="checkbox"] {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 @media only screen and (min-width: 1024px) {
@@ -83,6 +85,11 @@ input[type="checkbox"] {
   }
 }
 
+@media only screen and (min-width: 370px) {
+  body {
+    font-size: 18px;
+  }
+}
 .flex-main-container-vertical > div {
   z-index: 1;
 }
@@ -91,7 +98,7 @@ input[type="checkbox"] {
   color: antiquewhite;
   font-size: clamp(1em, 2.5em, 10em);
   cursor: default;
-  padding-inline: 1em;
+  padding-inline: 0em;
 }
 
 .search {
@@ -214,11 +221,12 @@ input[type="checkbox"] {
   flex-direction: column;
   justify-content: start;
   position: fixed;
-  bottom: 0%;
+  bottom: 0;
   padding: 0.75em;
   background-color: rgba(127, 255, 212, 0.3);
   backdrop-filter: blur(1em);
   -webkit-backdrop-filter: blur(1em);
+  z-index: 9;
 }
 
 .thumb-group {
@@ -230,20 +238,20 @@ input[type="checkbox"] {
 }
 .settings {
   display: flex;
-  max-height: 4.8em;
-  width: 10em;
-  margin: 0;
-  margin-block: 0.5em;
-  flex-wrap: wrap;
+
+  width: 8em;
+  height: 5.8em;
+  width: fit-content;
   cursor: pointer;
+  flex-direction: column;
+  justify-content: space-evenly;
   box-sizing: border-box;
 }
 
 .setting-option {
   padding-block: 0.3em;
   padding-inline: 1em;
-  margin-bottom: 0.5em;
-  width: 9em;
+  width: fit-content;
   background-color: rgba(250, 235, 215, 0.7);
   border-radius: 1em;
   cursor: pointer;
@@ -377,4 +385,8 @@ input[type="checkbox"] {
 .button {
   padding-inline: 1em;
   padding-block: 0.5em;
+}
+
+#import-bookmarks {
+  display: none;
 }
