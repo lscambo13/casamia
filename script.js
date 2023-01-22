@@ -81,31 +81,6 @@ function add_bookmark_to_html(link, name) {
   bookmark_container.appendChild(new_bookmark);
 }
 
-function create_new_bookmark() {
-  var link = prompt("Type link");
-  if (link == null) return;
-  while (!isUrlValid(link)) {
-    alert("Please type a website link");
-    link = prompt("Type link");
-  }
-
-  var name = prompt("Type name");
-  if (name == null) return;
-  if (name == "") {
-    name = link.replace("www.", "");
-    if (name.includes("//")) {
-      name = name.split("//")[1];
-    }
-  }
-  name = name.substring(0, 3).toUpperCase();
-
-  if (!link.includes("http")) {
-    link = "https://" + link;
-  }
-  add_bookmark_to_html(link, name);
-  save_bookmarks(link, name);
-}
-
 function save_bookmarks(link, name) {
   custom_bookmarks.push({
     link: link,
@@ -240,7 +215,48 @@ function isUrlValid(userInput) {
   else return true;
 }
 
-// User interactable click events-- -
+function download_bookmarks_plain(filename, text) {
+  var element = document.createElement("a");
+  element.setAttribute(
+    "href",
+    "data:text/plain;charset=utf-8," + encodeURIComponent(text)
+  );
+  element.setAttribute("download", filename);
+
+  element.style.display = "none";
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
+}
+
+// User interactable click events ---
+
+function create_new_bookmark() {
+  var link = prompt("Type link");
+  if (link == null) return;
+  while (!isUrlValid(link)) {
+    alert("Please type a website link");
+    link = prompt("Type link");
+  }
+
+  var name = prompt("Type name");
+  if (name == null) return;
+  if (name == "") {
+    name = link.replace("www.", "");
+    if (name.includes("//")) {
+      name = name.split("//")[1];
+    }
+  }
+  name = name.substring(0, 3).toUpperCase();
+
+  if (!link.includes("http")) {
+    link = "https://" + link;
+  }
+  add_bookmark_to_html(link, name);
+  save_bookmarks(link, name);
+}
 
 function remove_bookmark(event) {
   event.preventDefault();
@@ -358,11 +374,30 @@ function toggle_labs(event) {
 
 function export_bookmarks(event) {
   event.stopPropagation();
-  console.log("export");
-  var n = JSON.parse(localStorage.saved_bookmarks);
-  for (let i in n) {
-    console.log(n[i]);
+  var bookmarks_string = localStorage.saved_bookmarks;
+  var d = new Date();
+  download_bookmarks_plain(
+    `home-page-bookmarks-${d.getFullYear()}-${
+      d.getMonth() + 1
+    }-${d.getDate()}.json`,
+    bookmarks_string
+  );
+}
+
+function import_bookmarks(event) {
+  event.stopPropagation();
+  var file = event.target.files[0].text();
+
+  function result(file) {
+    var imported_bookmarks = JSON.parse(file);
+
+    for (let i of imported_bookmarks) {
+      save_bookmarks(i.link, i.name);
+    }
+    window.location.reload();
   }
+
+  file.then(result);
 }
 
 // Event Listeners ---
