@@ -365,7 +365,7 @@ input[type="checkbox"] {
   height: clamp(0.375em, 1.25em, 3em);
   background-color: tomato;
   border-radius: 50%;
-  opacity: 0;
+  display: none;
 }
 .labs {
   position: fixed;

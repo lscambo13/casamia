@@ -216,7 +216,7 @@ function toggle_remove_indicators(visible) {
     case "show": {
       for (var i = 0; i < n; i++) {
         custom_bookmark[i].classList.add("removable");
-        cross[i].style.opacity = 1;
+        cross[i].style.display = "block";
         console.log(custom_bookmark[i].href);
       }
       break;
@@ -224,7 +224,7 @@ function toggle_remove_indicators(visible) {
     case "hide": {
       for (var i = 0; i < n; i++) {
         custom_bookmark[i].classList.remove("removable");
-        cross[i].style.opacity = 0;
+        cross[i].style.display = "none";
         console.log(custom_bookmark[i].href);
       }
       break;
