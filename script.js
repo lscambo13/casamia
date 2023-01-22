@@ -36,7 +36,9 @@ let wallpapers_list = [
     title: "Grid",
   },
 ];
-var holdTimeout = null;
+
+const wallpapers_url =
+  "https://github.com/lscambo13/my-home-page/raw/main/wallpapers/";
 
 // BOOKMARKs -- start
 
@@ -112,18 +114,6 @@ function save_bookmarks(link, name) {
   localStorage.setItem("saved_bookmarks", JSON.stringify(custom_bookmarks));
 }
 
-function remove_bookmark(event) {
-  event.preventDefault();
-  console.log("click " + event.target.parentNode.href);
-  event.stopPropagation();
-  if (confirm("Remove this bookmark?")) {
-    remove_bookmark_from_localstorage(event.target.parentNode.href);
-    event.target.parentNode.style.display = "none";
-    //event.target.style.display = "none";
-  }
-  return;
-}
-
 function remove_bookmark_from_localstorage(link) {
   custom_bookmarks = custom_bookmarks.filter((elem) => {
     return !link.includes(elem.link);
@@ -138,9 +128,6 @@ if (selected_wallpaper == null) {
   selected_wallpaper = wallpapers_list[4].file;
 }
 
-const wallpapers_url =
-  "https://github.com/lscambo13/my-home-page/raw/main/wallpapers/";
-
 function set_wallpaper(fileName) {
   document.body.style.backgroundImage =
     "url(" + wallpapers_url + fileName + ")";
@@ -150,16 +137,6 @@ function set_wallpaper(fileName) {
   document.body.style.backgroundPosition = "center";
   selected_wallpaper = fileName;
   localStorage.setItem("wallpaper", selected_wallpaper);
-}
-
-function change_wallpaper(event) {
-  event.stopPropagation();
-  let selection = event.target.title;
-  let wallpaper = wallpapers_list.filter((item) => {
-    return item.title == selection;
-  })[0].file;
-  set_wallpaper(wallpaper);
-  highlight_set_wallpaper();
 }
 
 function highlight_set_wallpaper() {
@@ -179,35 +156,12 @@ function highlight_set_wallpaper() {
   }
 }
 
-function enable_blur(event) {
-  event.stopPropagation();
-  var checkbox_blur = document.getElementById("blur-setting");
-  var overlay = document.getElementById("overlay");
-  if (checkbox_blur.checked == true) {
-    overlay.style.backdropFilter = "blur(1em)";
-    localStorage.setItem("blur_wallpaper", "blur(1em)");
-  } else {
-    overlay.style.backdropFilter = "blur(0em)";
-    localStorage.setItem("blur_wallpaper", "blur(0em)");
-  }
-}
-
-function enable_wallpaper(event) {
-  event.stopPropagation();
-  var checkbox_wall = document.getElementById("wallpaper-setting");
-  var overlay = document.getElementById("overlay");
-  if (checkbox_wall.checked == false) {
-    overlay.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
-    localStorage.setItem("disable_wallpaper", "rgba(0, 0, 0, 0.5)");
-  } else {
-    overlay.style.backgroundColor = "rgb(0, 0, 0)";
-    localStorage.setItem("disable_wallpaper", "rgb(0, 0, 0)");
-  }
-}
-
 function load_settings() {
   var checkbox_wall = document.getElementById("wallpaper-setting");
   var checkbox_blur = document.getElementById("blur-setting");
+  var checkbox_labs = document.getElementById("labs-setting");
+  var labs_div = document.getElementById("labs");
+
   var overlay = document.getElementById("overlay");
   console.log("load");
   // Blur
@@ -239,9 +193,22 @@ function load_settings() {
   } else {
     checkbox_wall.checked = false;
   }
+
+  // Labs
+  var labs = localStorage.getItem("labs");
+  if (labs != null) {
+    labs_div.style.display = labs;
+    if (labs == "block") {
+      checkbox_labs.checked = true;
+    } else {
+      checkbox_labs.checked = false;
+    }
+  } else {
+    checkbox_labs.checked = false;
+  }
 }
 
-function remove_bookmark_v2(visible) {
+function toggle_remove_indicators(visible) {
   var custom_bookmark = document.getElementsByClassName("custom_bookmark");
   var cross = document.getElementsByClassName("cross");
   var n = custom_bookmark.length;
@@ -265,6 +232,38 @@ function remove_bookmark_v2(visible) {
   }
 }
 
+function isUrlValid(userInput) {
+  var res = userInput.match(
+    /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g
+  );
+  if (res == null) return false;
+  else return true;
+}
+
+// User interactable click events-- -
+
+function remove_bookmark(event) {
+  event.preventDefault();
+  console.log("click " + event.target.parentNode.href);
+  event.stopPropagation();
+  if (confirm("Remove this bookmark?")) {
+    remove_bookmark_from_localstorage(event.target.parentNode.href);
+    event.target.parentNode.style.display = "none";
+    //event.target.style.display = "none";
+  }
+  return;
+}
+
+function change_wallpaper(event) {
+  event.stopPropagation();
+  let selection = event.target.title;
+  let wallpaper = wallpapers_list.filter((item) => {
+    return item.title == selection;
+  })[0].file;
+  set_wallpaper(wallpaper);
+  highlight_set_wallpaper();
+}
+
 function hide_wallpapers(event, noevent = false) {
   if (!noevent) {
     event.stopPropagation();
@@ -283,14 +282,40 @@ function hide_wallpapers(event, noevent = false) {
     wrap.classList.remove("animation2_slide_down");
     wrap.classList.remove("startup_slide_down");
     wrap.classList.add("animation2_slide_up");
-    remove_bookmark_v2("show");
+    toggle_remove_indicators("show");
   } else {
     film_roll.classList.remove("animation_slide_up");
     film_roll.classList.add("animation_slide_down");
     wrap.classList.remove("animation2_slide_up");
     wrap.classList.add("animation2_slide_down");
     //window.open("#", "_self");
-    remove_bookmark_v2("hide");
+    toggle_remove_indicators("hide");
+  }
+}
+
+function toggle_blur(event) {
+  event.stopPropagation();
+  var checkbox_blur = document.getElementById("blur-setting");
+  var overlay = document.getElementById("overlay");
+  if (checkbox_blur.checked == true) {
+    overlay.style.backdropFilter = "blur(1em)";
+    localStorage.setItem("blur_wallpaper", "blur(1em)");
+  } else {
+    overlay.style.backdropFilter = "blur(0em)";
+    localStorage.setItem("blur_wallpaper", "blur(0em)");
+  }
+}
+
+function toggle_wallpaper(event) {
+  event.stopPropagation();
+  var checkbox_wall = document.getElementById("wallpaper-setting");
+  var overlay = document.getElementById("overlay");
+  if (checkbox_wall.checked == false) {
+    overlay.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    localStorage.setItem("disable_wallpaper", "rgba(0, 0, 0, 0.5)");
+  } else {
+    overlay.style.backgroundColor = "rgb(0, 0, 0)";
+    localStorage.setItem("disable_wallpaper", "rgb(0, 0, 0)");
   }
 }
 
@@ -307,64 +332,40 @@ function hide_wallpapers_alt() {
     film_roll.classList.add("animation_slide_down");
     wrap.classList.remove("animation2_slide_up");
     wrap.classList.add("animation2_slide_down");
-    remove_bookmark_v2("hide");
+    toggle_remove_indicators("hide");
   }
-}
-
-const ext_domain = "https://x1337x.ws/sort-category-search/";
-
-function search_google() {
-  var input = document.getElementsByClassName("searchTerm")[0].value;
-  if (document.getElementsByClassName("searchTerm")[0].value != "") {
-    input = input.split(" ").join("+");
-    url = "https://www.google.com/search?q=" + input;
-    window.open(url);
-  } else {
-    alert("You need to enter a search query.");
-  }
-}
-
-function search_movies() {
-  var input = document.getElementsByClassName("searchTerm")[0].value;
-  input = input.split(" ").join("%20");
-  url = ext_domain + input + "/Movies/time/desc/1/";
-  window.open(url);
-}
-
-function search_tv() {
-  var input = document.getElementsByClassName("searchTerm")[0].value;
-  input = input.split(" ").join("%20");
-  url = ext_domain + input + "/TV/size/desc/1/";
-  window.open(url);
-}
-
-function search_games() {
-  var input = document.getElementsByClassName("searchTerm")[0].value;
-  input = input.split(" ").join("%20");
-  url = ext_domain + input + "/Games/time/desc/1/";
-  window.open(url);
-}
-
-function search_ebooks() {
-  var input = document.getElementsByClassName("searchTerm")[0].value;
-  input = input.split(" ").join("%20");
-  url = ext_domain + input + "/Other/seeders/desc/1/";
-  window.open(url);
-}
-
-function isUrlValid(userInput) {
-  var res = userInput.match(
-    /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g
-  );
-  if (res == null) return false;
-  else return true;
 }
 
 function enter_handler(event) {
   if (event.key == "Enter") {
-    search_google();
+    search.default();
   }
 }
+
+function toggle_labs(event) {
+  event.stopPropagation();
+  var checkbox_labs = document.getElementById("labs-setting");
+  var labs_div = document.getElementById("labs");
+
+  if (checkbox_labs.checked == true) {
+    labs_div.style.display = "block";
+    localStorage.setItem("labs", "block");
+  } else {
+    labs_div.style.display = "none";
+    localStorage.setItem("labs", "none");
+  }
+}
+
+function export_bookmarks(event) {
+  event.stopPropagation();
+  console.log("export");
+  var n = JSON.parse(localStorage.saved_bookmarks);
+  for (let i in n) {
+    console.log(n[i]);
+  }
+}
+
+// Event Listeners ---
 
 document.addEventListener("DOMContentLoaded", () => {
   // Add wallpapers to HTML
@@ -408,3 +409,72 @@ window.addEventListener("hashchange", () => {
   }
   console.log("go back");
 });
+
+// Classes ---
+
+class utils {
+  static getSearchTerm() {
+    return document.getElementsByClassName("searchTerm")[0];
+  }
+}
+
+class search {
+  constructor() {}
+  static ext_domain = "https://x1337x.ws/sort-category-search/";
+  static default_domain = "https://www.google.com/search?q=";
+  static x1337x = "https://x1337x.ws/home/";
+
+  static default = function () {
+    var input = utils.getSearchTerm().value;
+    if (input != "") {
+      input = input.split(" ").join("+");
+      var url = search.default_domain + input;
+      window.open(url);
+    } else {
+      alert("You need to enter a search query.");
+    }
+  };
+
+  static movies = function () {
+    var input = utils.getSearchTerm().value;
+    if (input != "") {
+      input = input.split(" ").join("%20");
+      var url = search.ext_domain + input + "/Movies/time/desc/1/";
+      window.open(url);
+    } else {
+      window.open(search.x1337x);
+    }
+  };
+
+  static tv = function () {
+    var input = utils.getSearchTerm().value;
+    if (input != "") {
+      input = input.split(" ").join("%20");
+      var url = search.ext_domain + input + "/TV/size/desc/1/";
+      window.open(url);
+    } else {
+      window.open(search.x1337x);
+    }
+  };
+
+  static games = function () {
+    var input = utils.getSearchTerm().value;
+    if (input != "") {
+      input = input.split(" ").join("%20");
+      var url = search.ext_domain + input + "/Games/time/desc/1/";
+      window.open(url);
+    } else {
+      window.open(search.x1337x);
+    }
+  };
+  static ebooks() {
+    var input = utils.getSearchTerm().value;
+    if (input != "") {
+      input = input.split(" ").join("%20");
+      var url = search.ext_domain + input + "/Other/seeders/desc/1/";
+      window.open(url);
+    } else {
+      window.open(search.x1337x);
+    }
+  }
+}

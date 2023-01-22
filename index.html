@@ -1,54 +1,54 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <title>Home Page</title>
-    <meta name="theme-color" content="black">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" />
-    <script src="script.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin/>
+<head>
+  <title>Home Page</title>
+  <meta name="theme-color" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="animations.css">
-    <link rel="stylesheet" href="icons.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <div id="overlay"></div>
-  </head>
+  <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin />
 
-  <body onclick="hide_wallpapers_alt()">      
-    <div id="wrap" class="startup_slide_down">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="icons.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body onclick="hide_wallpapers_alt()">
+
+  <div id="overlay"></div>
+  <div class="labs" id="labs">
+    <button class="button" onclick="export_bookmarks(event)">Export Bookmarks</button>
+    <button class="button">Import Bookmarks</button>
+    <button class="button">Test 3</button>
+  </div>
+  <div id="wrap" class="startup_slide_down">
     <div class="flex-main-container-vertical">
       <div id="heading">
         <h1>Search</h1>
       </div>
 
       <div class="search">
-          <input
-            title="Search"
-            type="text"
-            class="searchTerm"
-            onkeypress="enter_handler(event)"
-            placeholder=""
-            name="search"
-            autocomplete="on"/>
-          <button type="submit" class="searchButton" onclick="search_google()" title="Search Google">
-            <i class="fa fa-google"></i>
-          </button>
-        </div>
-      
-      <div class="flex-sub-container-horizontal" >
-        <div onclick="search_movies()"><i class="flaticon-movies"></i></div>
-        <div onclick="search_tv()"><i class="flaticon-tv"></i></div>
-        <div onclick="search_games()"><i class="flaticon-games"></i></div>
-        <div onclick="search_ebooks()"><i class="flaticon-ebook"></i></div>
+        <input title="Search" type="text" class="searchTerm" onkeypress="enter_handler(event)" placeholder=""
+          name="search" autocomplete="on" />
+        <button type="submit" class="searchButton" onclick="search.default()" title="Search Google">
+          <i class="fa fa-google"></i>
+        </button>
+      </div>
+
+      <div class="flex-sub-container-horizontal">
+        <div onclick="search.movies()"><i class="flaticon-movies"></i></div>
+        <div onclick="search.tv()"><i class="flaticon-tv"></i></div>
+        <div onclick="search.games()"><i class="flaticon-games"></i></div>
+        <div onclick="search.ebooks()"><i class="flaticon-ebook"></i></div>
         <div onclick="create_new_bookmark()" id="add_bookmark_button"><i class="fa fa-plus"></i></div>
-        <div onclick="hide_wallpapers(event)" id="settings_button"><a href="#wallpapers"><i class="fa fa-gear"></i></a></div>
+        <div onclick="hide_wallpapers(event)" id="settings_button"><a href="#wallpapers"><i class="fa fa-gear"></i></a>
+        </div>
       </div>
     </div>
   </div>
@@ -56,10 +56,16 @@
   <div class="flex-wallpaper-horizontal" id="wallpapers">
     <div class="settings" onclick="event.stopPropagation()">
       <form action="" class="setting-option">
-        <label for="blur-setting"  class="setting-title" >Enable Blur <input type="checkbox" id="blur-setting" checked="false" onclick="enable_blur(event)"></label><br>
-        <label for="wallpaper-setting"  class="setting-title" >Lights Out &nbsp<input type="checkbox" id="wallpaper-setting" checked="false" onclick="enable_wallpaper(event)"></label>
+        <label for="blur-setting" class="setting-title">Enable Blur <input type="checkbox" id="blur-setting"
+            checked="false" onclick="toggle_blur(event)"></label><br>
+        <label for="wallpaper-setting" class="setting-title">Lights Out &nbsp<input type="checkbox"
+            id="wallpaper-setting" checked="false" onclick="toggle_wallpaper(event)"></label>
       </form><br>
-      <span class="setting-option" onclick="hide_wallpapers_alt()">Close</span>
-  </div>
-  </body>
+      <form action="" class="setting-option">
+        <label for="labs-setting" class="setting-title">Labs <input type="checkbox" id="labs-setting" checked="false"
+            onclick="toggle_labs(event)"></label><br>
+        <!-- <span class="setting-option" onclick="hide_wallpapers_alt()">Labs</span> -->
+    </div>
+</body>
+
 </html>

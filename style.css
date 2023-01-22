@@ -11,6 +11,11 @@ body {
   font-size: 18px;
 }
 
+input[type="checkbox"] {
+  width: 1.3em;
+  height: 1.3em;
+}
+
 #overlay {
   position: fixed; /* Sit on top of the page content */
   display: block; /* Hidden by default */
@@ -361,4 +366,15 @@ body {
   background-color: tomato;
   border-radius: 50%;
   opacity: 0;
+}
+.labs {
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: none;
+  z-index: 10;
+}
+.button {
+  padding-inline: 1em;
+  padding-block: 0.5em;
 }
