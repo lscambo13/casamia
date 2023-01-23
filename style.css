@@ -82,12 +82,18 @@ input[type="checkbox"] {
   background-color: rgba(95, 158, 160, 0.1);
 }
 
-.searchTerm:focus {
-  color: rgba(250, 235, 215, 0.8);
-  background-color: rgba(250, 235, 215, 0.2);
+.searchTerm::-webkit-search-cancel-button {
+  filter: invert() grayscale();
+  margin-inline-start: 1em;
+  margin-inline-end: -0.75em;
 }
 
-.searchTerm:hover {
+.searchTerm:focus {
+  color: rgba(250, 235, 215, 0.8);
+}
+
+.searchTerm:hover,
+.searchTerm:focus {
   background-color: rgba(250, 235, 215, 0.2);
 }
 
