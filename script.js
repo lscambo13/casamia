@@ -52,8 +52,8 @@ let wallpapers_list = [
     title: "Pink",
   },
   {
-    file: "peaceful-wallpaper-3840x2160-thumb.jpg",
-    title: "Peaceful Desert",
+    file: "peaceful-wallpaper-3840x2160.jpg",
+    title: "Desert 2",
   },
   {
     file: "coast_aerial_view_beautiful_landscape-wallpaper-3840x2160.jpg",
@@ -236,7 +236,7 @@ function load_settings() {
   var wall = localStorage.getItem("disable_wallpaper");
   if (wall != null) {
     overlay.style.backgroundColor = wall;
-    if (wall != "rgba(0, 0, 0, 0.5)") {
+    if (wall != "rgba(0, 0, 0, 0.375)") {
       checkbox_wall.checked = true;
     } else {
       checkbox_wall.checked = false;
@@ -403,11 +403,24 @@ function toggle_wallpaper(event) {
   var checkbox_wall = document.getElementById("wallpaper-setting");
   var overlay = document.getElementById("overlay");
   if (checkbox_wall.checked == false) {
-    overlay.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
-    localStorage.setItem("disable_wallpaper", "rgba(0, 0, 0, 0.5)");
+    overlay.style.backgroundColor = "rgba(0, 0, 0, 0.375)";
+    localStorage.setItem("disable_wallpaper", "rgba(0, 0, 0, 0.375)");
   } else {
     overlay.style.backgroundColor = "rgb(0, 0, 0)";
     localStorage.setItem("disable_wallpaper", "rgb(0, 0, 0)");
+  }
+}
+
+function toggle_dim(event) {
+  event.stopPropagation();
+  var checkbox_wall = document.getElementById("dim-setting");
+  var overlay = document.getElementById("overlay");
+  if (checkbox_wall.checked == false) {
+    overlay.style.backgroundColor = "rgba(0, 0, 0, 0.375)";
+    localStorage.setItem("dim_wallpaper", "rgba(0, 0, 0, 0.375)");
+  } else {
+    overlay.style.backgroundColor = "rgb(0, 0, 0, 0.25)";
+    localStorage.setItem("dim_wallpaper", "rgb(0, 0, 0, 0.25)");
   }
 }
 
@@ -522,6 +535,15 @@ window.addEventListener("hashchange", () => {
     hide_wallpapers_alt();
   }
   console.log("go back");
+});
+
+window.addEventListener("wheel", function (e) {
+  var item = document.getElementById("wallpapers");
+  if (e.deltaY > 0) {
+    if (item.classList[1] == "animation_slide_up") item.scrollLeft += 100;
+  } else {
+    if (item.classList[1] == "animation_slide_up") item.scrollLeft -= 100;
+  }
 });
 
 // Classes ---
