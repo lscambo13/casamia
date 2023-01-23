@@ -35,6 +35,82 @@ let wallpapers_list = [
     file: "Wallpaper-4k-Dark-Blue-Lines-Grid-Lines-Backgrounds-P2.jpg",
     title: "Grid",
   },
+  {
+    file: "desert-wallpaper-3840x2160.jpg",
+    title: "Desert",
+  },
+  {
+    file: "cute_anime_girl_2-wallpaper-3840x2160.jpg",
+    title: "Anime 2",
+  },
+  {
+    file: "bicycle_aesthetic-wallpaper-3840x2160.jpg",
+    title: "Bicycle",
+  },
+  {
+    file: "pink_aesthetic-wallpaper-3840x2160.jpg",
+    title: "Pink",
+  },
+  {
+    file: "peaceful-wallpaper-3840x2160-thumb.jpg",
+    title: "Peaceful Desert",
+  },
+  {
+    file: "coast_aerial_view_beautiful_landscape-wallpaper-3840x2160.jpg",
+    title: "Beach",
+  },
+  {
+    file: "batman_car_night-wallpaper-3840x2160.jpg",
+    title: "Batman",
+  },
+  {
+    file: "1440p-Wallpaper-Free-Download.jpg",
+    title: "Neon 2",
+  },
+  {
+    file: "1440p-HD-Wallpaper-Free-download.png",
+    title: "Neon 3",
+  },
+  {
+    file: "arrival_at_saturn-wallpaper-7680x4320.jpg",
+    title: "Saturn",
+  },
+  {
+    file: "HP-Wallpaper.jpg",
+    title: "HP",
+  },
+  {
+    file: "pink_desert_blue_sky-wallpaper-2880x1620.jpg",
+    title: "Pink 2",
+  },
+  {
+    file: "pink_sea_aesthetic-wallpaper-2880x1620.jpg",
+    title: "Pink 3",
+  },
+  {
+    file: "bay_10-wallpaper-3840x2160.jpg",
+    title: "Beach 2",
+  },
+  {
+    file: "pink_umbrellas-wallpaper-5120x2880.jpg",
+    title: "Umbrellas",
+  },
+  {
+    file: "peter_morales-wallpaper-3840x2160.jpg",
+    title: "Spiderman",
+  },
+  {
+    file: "miles_morales_night_spark-wallpaper-3840x2160.jpg",
+    title: "Spiderman 2",
+  },
+  {
+    file: "pastel_macarons_aesthetic-wallpaper-5120x2880.jpg",
+    title: "Macarons",
+  },
+  {
+    file: "billie_eilish-wallpaper-5120x2880.jpg",
+    title: "Billie Eilish",
+  },
 ];
 
 const wallpapers_url =
