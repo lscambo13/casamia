@@ -330,17 +330,24 @@ input[type="checkbox"] {
   display: none;
 }
 .labs {
-  position: fixed;
-  top: 0.25em;
-  right: 0.25em;
-  padding: 0.5em;
+  position: absolute;
+  padding-bottom: 0.5em;
+  padding-inline: 0.375em;
   border-radius: 0.5em;
   background-color: cadetblue;
-  display: block;
+  display: none;
   text-align: center;
-  width: fit-content;
-  margin: auto;
   z-index: 10;
+  border: 1px solid #d3d3d3;
+}
+#mydivheader {
+  padding: 0em;
+  cursor: move;
+  z-index: 11;
+  /* border-radius: 0.5em 0.5em 0 0; */
+
+  background-color: transparent;
+  color: #fff;
 }
 .button {
   padding-inline: 1em;
