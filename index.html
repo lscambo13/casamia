@@ -58,17 +58,15 @@
   </div>
   <div class="flex-wallpaper-horizontal" id="wallpapers">
     <div class="settings" onclick="event.stopPropagation()">
-      <form action="" class="setting-option">
+      <div class="setting-option">
         <label for="blur-setting" class="setting-title">Enable Blur <input type="checkbox" id="blur-setting"
             checked="false" onclick="toggle_blur(event)"></label><br>
         <label for="wallpaper-setting" class="setting-title">Lights Out &nbsp<input type="checkbox"
-            id="wallpaper-setting" checked="false" onclick="toggle_wallpaper(event)"></label>
-      </form>
-      <form action="" class="setting-option">
+            id="wallpaper-setting" checked="false" onclick="toggle_wallpaper(event)"></label><br>
         <label for="labs-setting" class="setting-title">Labs <input type="checkbox" id="labs-setting" checked="false"
-            onclick="toggle_labs(event)"></label><br>
-        <!-- <span class="setting-option" onclick="hide_wallpapers_alt()">Labs</span> -->
-    </div>
+            onclick="toggle_labs(event)"></label>
+      </div>
+
 </body>
 
 </html>

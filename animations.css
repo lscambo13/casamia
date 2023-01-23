@@ -86,14 +86,14 @@
   }
   100% {
     transform: translateY(0);
-    padding-bottom: 10em;
+    padding-bottom: 8em;
   }
 }
 
 @keyframes animation2_slide_down {
   0% {
     transform: translateY(0);
-    padding-bottom: 10em;
+    padding-bottom: 8em;
   }
   100% {
     transform: translateY(15vh);

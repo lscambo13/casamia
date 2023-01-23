@@ -3,13 +3,14 @@
   padding: 0;
   box-sizing: border-box !important;
   caret-color: transparent;
+  /* outline: crimson solid 2px; */
   /* background-color: rgba(220, 20, 60, 0.12); */
 }
 
 body {
   background-color: rgb(40, 40, 40);
   font-family: "Ubuntu Mono", monospace;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 input[type="checkbox"] {
@@ -34,62 +35,14 @@ input[type="checkbox"] {
 }
 
 #wrap {
-  margin: 0;
-  padding: 0;
-  display: flex;
+  max-width: 1024px;
+  margin: auto;
 }
 
 .flex-main-container-vertical {
-  max-width: 100vw;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  font-size: 14px;
+  margin: auto;
 }
 
-@media only screen and (min-width: 1024px) {
-  body {
-    font-size: 32px;
-  }
-  .flex-main-container-vertical {
-    padding-left: 10vw !important;
-    padding-right: 10vw !important;
-    align-items: center;
-    font-size: 32px;
-  }
-  .search {
-    width: 60vw !important;
-  }
-  .flex-sub-container-horizontal {
-    width: 50vw !important;
-  }
-}
-
-@media only screen and (min-width: 600px) {
-  body {
-    font-size: 28px;
-  }
-  .flex-main-container-vertical {
-    padding-left: 10vw;
-    padding-right: 10vw;
-    font-size: 28px;
-    align-items: center;
-  }
-  .search {
-    width: 80vw;
-  }
-  .flex-sub-container-horizontal {
-    width: 80vw !important;
-  }
-}
-
-@media only screen and (min-width: 370px) {
-  body {
-    font-size: 18px;
-  }
-}
 .flex-main-container-vertical > div {
   z-index: 1;
 }
@@ -98,24 +51,23 @@ input[type="checkbox"] {
   color: antiquewhite;
   font-size: clamp(1em, 2.5em, 10em);
   cursor: default;
-  padding-inline: 0em;
+  text-align: center;
 }
 
 .search {
-  max-width: 100vw;
   display: flex;
+  flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
   margin-top: 2em;
   margin-bottom: 2em;
+  text-align: center;
   cursor: default;
-  padding-inline: 1em;
 }
 
 .searchTerm {
-  width: 85%;
+  width: 66%;
   min-height: 3em;
-  min-width: 10em;
   border: 0.2em solid rgba(250, 235, 215, 1);
   border-right: none;
   padding: 0 2em 0 1em;
@@ -123,6 +75,7 @@ input[type="checkbox"] {
   outline: none;
   font-size: 1em;
   color: #9dbfaf;
+  margin-inline-end: 0;
   backdrop-filter: blur(1em);
   -webkit-backdrop-filter: blur(1em);
   caret-color: rgba(250, 235, 215, 1);
@@ -142,6 +95,7 @@ input[type="checkbox"] {
   width: clamp(3em, 20%, 4em);
   min-height: 3em;
   min-width: 3em;
+  margin-inline-start: 0;
   border: 0em solid rgba(250, 235, 215, 1);
   background: rgba(250, 235, 215, 1);
   text-align: center;
@@ -173,15 +127,15 @@ input[type="checkbox"] {
 }
 
 .flex-sub-container-horizontal {
-  max-width: 100vw;
-  height: min-content;
+  /* max-width: 100vw; */
+  /* height: min-content; */
   display: flex;
   flex-wrap: wrap;
   padding: 0.5em;
   justify-content: center;
   align-items: center;
   margin-bottom: 1em;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
 }
 
 .flex-sub-container-horizontal > div {
@@ -214,11 +168,11 @@ input[type="checkbox"] {
 
 .flex-wallpaper-horizontal {
   max-height: 10em;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   overflow-x: auto;
   width: 100%;
   display: none;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: start;
   position: fixed;
   bottom: 0;
@@ -236,24 +190,19 @@ input[type="checkbox"] {
   border-radius: 1em;
   cursor: pointer;
 }
-.settings {
-  display: flex;
 
-  width: 8em;
-  height: 5.8em;
-  width: fit-content;
+.settings {
+  min-width: 9em;
+  min-height: 4.8em;
+  margin: 0.5em;
+  border-radius: 1em;
+  background-color: rgba(250, 235, 215, 0.7);
   cursor: pointer;
-  flex-direction: column;
-  justify-content: space-evenly;
-  box-sizing: border-box;
 }
 
 .setting-option {
-  padding-block: 0.3em;
+  padding-block: 0.8em;
   padding-inline: 1em;
-  width: fit-content;
-  background-color: rgba(250, 235, 215, 0.7);
-  border-radius: 1em;
   cursor: pointer;
 }
 
@@ -276,7 +225,6 @@ input[type="checkbox"] {
   width: 8.05em;
   height: 4.8em;
   border: 0.1em solid antiquewhite;
-
   margin-left: -0.04em;
   border-radius: 0.9em;
 }
@@ -377,9 +325,15 @@ input[type="checkbox"] {
 }
 .labs {
   position: fixed;
-  top: 0;
-  right: 0;
-  display: none;
+  top: 0.25em;
+  right: 0.25em;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  background-color: cadetblue;
+  display: block;
+  text-align: center;
+  width: fit-content;
+  margin: auto;
   z-index: 10;
 }
 .button {
@@ -389,4 +343,22 @@ input[type="checkbox"] {
 
 #import-bookmarks {
   display: none;
+}
+
+@media only screen and (min-width: 370px) {
+  body {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  body {
+    font-size: 22px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  body {
+    font-size: 24px;
+  }
 }
