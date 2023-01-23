@@ -144,7 +144,6 @@ input[type="checkbox"] {
 
 .flex-sub-container-horizontal > div {
   color: antiquewhite;
-
   width: clamp(1em, 4em, 8em);
   height: clamp(1em, 4em, 8em);
   margin: 2%;
@@ -159,6 +158,7 @@ input[type="checkbox"] {
   background-color: rgba(95, 158, 160, 0.4);
   cursor: pointer;
   caret-color: transparent;
+  border: 0.075em solid antiquewhite;
 }
 
 .flex-sub-container-horizontal > div > i {
@@ -304,6 +304,8 @@ input[type="checkbox"] {
   cursor: pointer;
   caret-color: transparent;
   background-color: rgba(56, 121, 218, 0.4);
+  border: 0.075em solid antiquewhite;
+
   text-decoration: none;
 }
 .custom_bookmark > span {
