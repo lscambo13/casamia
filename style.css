@@ -31,7 +31,7 @@ input[type="checkbox"] {
   background-color: rgba(0, 0, 0, 0.375); /* Black background with opacity */
   z-index: 0; /* Specify a stack order in case you're using a different order for other elements */
   cursor: auto; /* Add a pointer on hover */
-  transition: 250ms;
+  transition: 300ms;
 }
 
 #wrap {
@@ -226,7 +226,7 @@ input[type="checkbox"] {
 
 .thumbnail {
   position: relative;
-  width: 8.05em;
+  width: 7.05em;
   height: 4.8em;
   border: 0.1em solid antiquewhite;
   margin-left: -0.04em;
@@ -238,14 +238,18 @@ input[type="checkbox"] {
   border-radius: 0 0 0.75em 0.75em;
   border: 0 solid antiquewhite;
   border-top: none;
-  width: 7.85em;
+  width: 6.85em;
   padding-top: 0.3em;
   margin-top: 3.1em;
   margin-left: 0.05em;
   padding-left: 0.75em;
+  padding-right: 0.25em;
   padding-bottom: 0.3em;
   z-index: 2;
   opacity: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   backdrop-filter: blur(1em);
   -webkit-backdrop-filter: blur(1em);
   background-color: rgba(250, 235, 215, 0.25);
