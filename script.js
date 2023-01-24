@@ -122,6 +122,7 @@ let custom_bookmarks = [
   {
     link: "",
     name: "",
+    id: 0,
   },
 ];
 
@@ -132,11 +133,11 @@ function load_bookmarks() {
     return;
   }
   for (let n of custom_bookmarks) {
-    add_bookmark_to_html(n.link, n.name);
+    add_bookmark_to_html(n.link, n.name, n.id);
   }
 }
 
-function add_bookmark_to_html(link, name) {
+function add_bookmark_to_html(link, name, id) {
   var bookmark_container = document.getElementsByClassName(
     "flex-sub-container-horizontal"
   )[0];
@@ -146,6 +147,7 @@ function add_bookmark_to_html(link, name) {
   var d = document.createElement("div");
   new_bookmark.className = "custom_bookmark";
   new_bookmark.setAttribute("href", link);
+  new_bookmark.setAttribute("id", id);
   // new_bookmark.setAttribute("onmouseenter", "remove_bookmark(event)");
   // new_bookmark.setAttribute("onmouseleave", "remove_timeout(event)");
   i.textContent = name;
@@ -157,17 +159,18 @@ function add_bookmark_to_html(link, name) {
   bookmark_container.appendChild(new_bookmark);
 }
 
-function save_bookmarks(link, name) {
+function save_bookmarks(link, name, id) {
   custom_bookmarks.push({
     link: link,
     name: name,
+    id: id,
   });
   localStorage.setItem("saved_bookmarks", JSON.stringify(custom_bookmarks));
 }
 
-function remove_bookmark_from_localstorage(link) {
+function remove_bookmark_from_localstorage(id) {
   custom_bookmarks = custom_bookmarks.filter((elem) => {
-    return !link.includes(elem.link);
+    return id != elem.id;
   });
   localStorage.setItem("saved_bookmarks", JSON.stringify(custom_bookmarks));
 }
@@ -180,14 +183,27 @@ if (selected_wallpaper == null) {
 }
 
 function set_wallpaper(fileName) {
-  document.body.style.backgroundImage =
-    "url(" + wallpapers_url + fileName + ")";
+  var input = fileName.split(".").join("-thumb.");
+  document.body.style.backgroundImage = "url(" + wallpapers_url + input + ")";
   document.body.style.backgroundRepeat = "no-repeat";
   document.body.style.backgroundSize = "cover";
   document.body.style.backgroundAttachment = "fixed";
   document.body.style.backgroundPosition = "center";
   selected_wallpaper = fileName;
-  localStorage.setItem("wallpaper", selected_wallpaper);
+  var overlay = document.getElementById("overlay");
+  overlay.style.backdropFilter = "blur(1em)";
+  var temp = new Image();
+  temp.src = wallpapers_url + fileName;
+  temp.onload = (e) => {
+    document.body.style.backgroundImage =
+      "url(" + wallpapers_url + fileName + ")";
+    document.body.style.backgroundRepeat = "no-repeat";
+    document.body.style.backgroundSize = "cover";
+    document.body.style.backgroundAttachment = "fixed";
+    document.body.style.backgroundPosition = "center";
+    localStorage.setItem("wallpaper", selected_wallpaper);
+    loadBlur();
+  };
 }
 
 function highlight_set_wallpaper() {
@@ -207,45 +223,11 @@ function highlight_set_wallpaper() {
   }
 }
 
-function load_settings() {
-  var checkbox_wall = document.getElementById("wallpaper-setting");
-  var checkbox_blur = document.getElementById("blur-setting");
+function loadLabs() {
+  // Labs
   var checkbox_labs = document.getElementById("labs-setting");
   var labs_div = document.getElementById("labs");
 
-  var overlay = document.getElementById("overlay");
-  console.log("load");
-  // Blur
-  var blur = localStorage.getItem("blur_wallpaper");
-  if (blur != null) {
-    console.log("not null");
-
-    overlay.style.backdropFilter = blur;
-    if (blur == "blur(1em)") {
-      console.log("blur on");
-      checkbox_blur.checked = true;
-    } else {
-      console.log("blur off");
-      checkbox_blur.checked = false;
-    }
-  } else {
-    checkbox_blur.checked = false;
-  }
-
-  // Lights out
-  var wall = localStorage.getItem("disable_wallpaper");
-  if (wall != null) {
-    overlay.style.backgroundColor = wall;
-    if (wall != "rgba(0, 0, 0, 0.375)") {
-      checkbox_wall.checked = true;
-    } else {
-      checkbox_wall.checked = false;
-    }
-  } else {
-    checkbox_wall.checked = false;
-  }
-
-  // Labs
   var labs = localStorage.getItem("labs");
   if (labs != null) {
     labs_div.style.display = labs;
@@ -259,6 +241,48 @@ function load_settings() {
   }
 }
 
+function loadLights() {
+  // Lights out
+  var checkbox_wall = document.getElementById("wallpaper-setting");
+  var overlay = document.getElementById("overlay");
+
+  var wall = localStorage.getItem("disable_wallpaper");
+  if (wall != null) {
+    overlay.style.backgroundColor = wall;
+    if (wall != "rgba(0, 0, 0, 0.375)") {
+      checkbox_wall.checked = true;
+    } else {
+      checkbox_wall.checked = false;
+    }
+  } else {
+    checkbox_wall.checked = false;
+  }
+}
+
+function loadBlur() {
+  // Blur
+  var checkbox_blur = document.getElementById("blur-setting");
+  var overlay = document.getElementById("overlay");
+
+  var blur = localStorage.getItem("blur_wallpaper");
+  if (blur != null) {
+    overlay.style.backdropFilter = blur;
+    if (blur == "blur(1em)") {
+      checkbox_blur.checked = true;
+    } else {
+      checkbox_blur.checked = false;
+    }
+  } else {
+    checkbox_blur.checked = false;
+  }
+}
+
+function load_settings() {
+  loadBlur();
+  loadLights();
+  loadLabs();
+}
+
 function toggle_remove_indicators(visible) {
   var custom_bookmark = document.getElementsByClassName("custom_bookmark");
   var cross = document.getElementsByClassName("cross");
@@ -268,7 +292,6 @@ function toggle_remove_indicators(visible) {
       for (var i = 0; i < n; i++) {
         custom_bookmark[i].classList.add("removable");
         cross[i].style.display = "block";
-        console.log(custom_bookmark[i].href);
       }
       break;
     }
@@ -276,7 +299,6 @@ function toggle_remove_indicators(visible) {
       for (var i = 0; i < n; i++) {
         custom_bookmark[i].classList.remove("removable");
         cross[i].style.display = "none";
-        console.log(custom_bookmark[i].href);
       }
       break;
     }
@@ -292,6 +314,22 @@ function isUrlValid(userInput) {
 }
 
 function download_bookmarks_plain(filename, text) {
+  var element = document.createElement("a");
+  element.setAttribute(
+    "href",
+    "data:text/plain;charset=utf-8," + encodeURIComponent(text)
+  );
+  element.setAttribute("download", filename);
+
+  element.style.display = "none";
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
+}
+
+function download_wallpaper(filename, text) {
   var element = document.createElement("a");
   element.setAttribute(
     "href",
@@ -330,16 +368,18 @@ function create_new_bookmark() {
   if (!link.includes("http")) {
     link = "https://" + link;
   }
-  add_bookmark_to_html(link, name);
-  save_bookmarks(link, name);
+  var id = Date.now();
+
+  add_bookmark_to_html(link, name, id);
+  save_bookmarks(link, name, id);
 }
 
 function remove_bookmark(event) {
   event.preventDefault();
-  console.log("click " + event.target.parentNode.href);
+  console.log("click " + event.target.parentNode.id);
   event.stopPropagation();
   if (confirm("Remove this bookmark?")) {
-    remove_bookmark_from_localstorage(event.target.parentNode.href);
+    remove_bookmark_from_localstorage(event.target.parentNode.id);
     event.target.parentNode.style.display = "none";
     //event.target.style.display = "none";
   }
@@ -386,7 +426,7 @@ function hide_wallpapers(event, noevent = false) {
 }
 
 function toggle_blur(event) {
-  event.stopPropagation();
+  //event.stopPropagation();
   var checkbox_blur = document.getElementById("blur-setting");
   var overlay = document.getElementById("overlay");
   if (checkbox_blur.checked == true) {
@@ -425,7 +465,6 @@ function toggle_dim(event) {
 }
 
 function hide_wallpapers_alt() {
-  console.log("click bg");
   const film_roll = document.getElementById("wallpapers");
   const wrap = document.getElementById("wrap");
   if (
@@ -473,20 +512,64 @@ function export_bookmarks(event) {
   );
 }
 
+function wait(ms) {
+  var now = Date.now();
+  var end = now + ms;
+  while (now < end) {
+    now = Date.now();
+  }
+}
+
 function import_bookmarks(event) {
   event.stopPropagation();
   var file = event.target.files[0].text();
 
   function result(file) {
     var imported_bookmarks = JSON.parse(file);
+    var ids = [];
+
+    for (let bookmark of custom_bookmarks) {
+      ids.push(bookmark.id);
+    }
 
     for (let i of imported_bookmarks) {
-      save_bookmarks(i.link, i.name);
+      if (ids.includes(i.id)) {
+        wait(1);
+        i.id = Date.now();
+      }
+      ids.push(i.id);
+      save_bookmarks(i.link, i.name, i.id);
     }
+
     window.location.reload();
   }
 
   file.then(result);
+}
+
+function reset_all(event) {
+  if (
+    confirm(
+      "This will reset everything.\nThere is no going back.\n\nAre you sure?"
+    )
+  ) {
+    localStorage.clear();
+    window.location.reload();
+  }
+}
+
+function download_wallpaper() {
+  console.log(wallpapers_url + selected_wallpaper);
+  var element = document.createElement("a");
+  element.setAttribute("href", wallpapers_url + selected_wallpaper);
+  element.setAttribute("download", selected_wallpaper);
+  element.style.display = "none";
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
+  alert(
+    "If the download doesn't start, disable the pop-up blocker extensions."
+  );
 }
 
 // Event Listeners ---
