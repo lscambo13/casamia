@@ -183,14 +183,9 @@ if (selected_wallpaper == null) {
 }
 
 function set_wallpaper(fileName) {
-  var input = fileName.split(".").join("-thumb.");
-  document.body.style.backgroundImage = "url(" + wallpapers_url + input + ")";
-  document.body.style.backgroundRepeat = "no-repeat";
-  document.body.style.backgroundSize = "cover";
-  document.body.style.backgroundAttachment = "fixed";
-  document.body.style.backgroundPosition = "center";
   selected_wallpaper = fileName;
   var overlay = document.getElementById("overlay");
+  console.log("test " + overlay.style.backdropFilter);
   overlay.style.backdropFilter = "blur(1em)";
   var temp = new Image();
   temp.src = wallpapers_url + fileName;
@@ -204,6 +199,12 @@ function set_wallpaper(fileName) {
     localStorage.setItem("wallpaper", selected_wallpaper);
     loadBlur();
   };
+  var input = fileName.split(".").join("-thumb.");
+  document.body.style.backgroundImage = "url(" + wallpapers_url + input + ")";
+  document.body.style.backgroundRepeat = "no-repeat";
+  document.body.style.backgroundSize = "cover";
+  document.body.style.backgroundAttachment = "fixed";
+  document.body.style.backgroundPosition = "center";
 }
 
 function highlight_set_wallpaper() {
@@ -274,6 +275,7 @@ function loadBlur() {
     }
   } else {
     checkbox_blur.checked = false;
+    overlay.style.backdropFilter = "blur(0em)";
   }
 }
 
@@ -567,9 +569,9 @@ function download_wallpaper() {
   document.body.appendChild(element);
   element.click();
   document.body.removeChild(element);
-  alert(
+  /* alert(
     "If the download doesn't start, disable the pop-up blocker extensions."
-  );
+  ); */
 }
 
 // Event Listeners ---
@@ -600,11 +602,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     bar.appendChild(thumb);
   }
-
+  load_settings();
   set_wallpaper(selected_wallpaper);
   highlight_set_wallpaper();
   load_bookmarks();
-  load_settings();
 
   // Make the DIV element draggable:
   dragElement(document.getElementById("labs"));
@@ -661,8 +662,7 @@ class search {
       var url = search.ext_domain + input + "/Movies/time/desc/1/";
       window.open(url);
     } else {
-      window.open(search.x1337x);
-    }
+      alert("You need to enter a search query."); }
   };
 
   static tv = function () {
@@ -672,7 +672,7 @@ class search {
       var url = search.ext_domain + input + "/TV/size/desc/1/";
       window.open(url);
     } else {
-      window.open(search.x1337x);
+      alert("You need to enter a search query.");
     }
   };
 
@@ -683,7 +683,7 @@ class search {
       var url = search.ext_domain + input + "/Games/time/desc/1/";
       window.open(url);
     } else {
-      window.open(search.x1337x);
+      alert("You need to enter a search query.");
     }
   };
   static ebooks() {
@@ -693,7 +693,7 @@ class search {
       var url = search.ext_domain + input + "/Other/seeders/desc/1/";
       window.open(url);
     } else {
-      window.open(search.x1337x);
+      alert("You need to enter a search query.");
     }
   }
 }
