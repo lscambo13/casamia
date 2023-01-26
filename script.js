@@ -549,6 +549,17 @@ function import_bookmarks(event) {
   file.then(result);
 }
 
+function reset_bookmarks(event) {
+  if (
+    confirm(
+      "This will reset bookmarks.\nMake sure you have a backup to import later on.\n\nAre you sure?"
+    )
+  ) {
+    localStorage.removeItem("saved_bookmarks");
+    window.location.reload();
+  }
+}
+
 function reset_all(event) {
   if (
     confirm(
