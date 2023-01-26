@@ -1,13 +1,14 @@
 [
-  { "link": "https://cs.rin.ru/forum/search.php", "name": "CSR", "id": 1 },
+  { "link": "https://cs.rin.ru/forum/search.php", "name": "RIN", "id": 1 },
   { "link": "https://www.youtube.com/", "name": "YT", "id": 2 },
-  { "link": "https://www.reddit.com/", "name": "R/", "id": 3 },
-  { "link": "http://www.gmail.com/", "name": "GML", "id": 4 },
+  { "link": "https://www.reddit.com/", "name": "R", "id": 3 },
+  { "link": "http://www.gmail.com/", "name": "GM", "id": 4 },
   {
     "link": "https://github.com/lscambo13?tab=repositories",
     "name": "GH",
     "id": 5
   },
   { "link": "http://fitgirl-repacks.site/", "name": "FG", "id": 6 },
-  { "link": "https://x1337x.ws/home/", "name": "37X", "id": 7 }
+  { "link": "https://x1337x.ws/home/", "name": "37X", "id": 7 },
+  { "link": "https://psa.pm/", "name": "PSA", "id": 8 }
 ]
