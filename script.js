@@ -113,8 +113,7 @@ let wallpapers_list = [
   },
 ];
 
-const wallpapers_url =
-  "https://github.com/lscambo13/my-home-page/raw/main/wallpapers/";
+const wallpapers_url = "./wallpapers/";
 
 // BOOKMARKs -- start
 
@@ -662,7 +661,8 @@ class search {
       var url = search.ext_domain + input + "/Movies/time/desc/1/";
       window.open(url);
     } else {
-      alert("You need to enter a search query."); }
+      alert("You need to enter a search query.");
+    }
   };
 
   static tv = function () {
