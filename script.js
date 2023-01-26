@@ -114,6 +114,7 @@ let wallpapers_list = [
 ];
 
 const wallpapers_url = "./wallpapers/";
+// "https://github.com/lscambo13/my-home-page/raw/main/wallpapers/";
 
 // BOOKMARKs -- start
 
