@@ -393,6 +393,8 @@ input[type="checkbox"] {
 .button {
   padding-inline: 1em;
   padding-block: 0.5em;
+  font-size: 0.5em;
+  margin-top: 1em;
 }
 
 #import-bookmarks {
@@ -413,25 +415,27 @@ input[type="checkbox"] {
   padding: 0.5em;
 }
 
-.footer>ul * {
-  color: rgba(255, 255, 255, 0.375);
-  text-decoration: none;
-  transition: 150ms;
-}
 
-.footer>* {
+
+.footer * {
   display: flex;
-  color: rgba(255, 255, 255, 0.375);
+  color: rgba(255, 255, 255, 0.5);
   gap: 1em;
-  font-size: 0.8em;
+  font-size: 0.85em;
   line-height: 1.5em;
   list-style: none;
   transition: 150ms;
+  text-decoration: none;
 }
 
-.footer>*:hover,
-.footer>ul>li>*:hover {
+.footer *:hover {
   color: rgba(255, 255, 255, 1);
+}
+
+.ext_favicon {
+  width: 60%;
+  height: 60%;
+  border-radius: 50%;
 }
 
 /* @media (prefers-color-scheme: dark) {

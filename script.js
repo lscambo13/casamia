@@ -151,6 +151,7 @@ function add_bookmark_to_html(link, name, id) {
   // new_bookmark.setAttribute("onmouseenter", "remove_bookmark(event)");
   // new_bookmark.setAttribute("onmouseleave", "remove_timeout(event)");
   i.textContent = name;
+  i.className = "custom_link_name";
   d.textContent = "🞬";
   d.classList.add("cross");
   d.setAttribute("onclick", "remove_bookmark(event)");
@@ -585,7 +586,22 @@ function download_wallpaper() {
   ); */
 }
 
-function toggle_favicons(event) {}
+function toggle_favicons(event) {
+  // http://www.google.com/s2/favicons?domain=google.com
+  var custom_bookmarks = document.getElementsByClassName("custom_bookmark");
+  var spans = document.getElementsByClassName("custom_link_name");
+  for (let i of spans) {
+    i.style.display = "none";
+  }
+
+  for (let i of custom_bookmarks) {
+    var new_icon = document.createElement("img");
+    new_icon.className = "ext_favicon";
+    var domain = i.href;
+    new_icon.src = "http://www.google.com/s2/favicons?sz=256&domain=" + domain;
+    i.appendChild(new_icon);
+  }
+}
 
 // Event Listeners ---
 
