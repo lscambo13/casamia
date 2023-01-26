@@ -5,6 +5,7 @@
   <title>Home Page</title>
   <meta name="theme-color" content="black">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
   <link rel="stylesheet" href="style.css" />
   <script src="script.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -22,8 +23,9 @@
 <body onclick="hide_wallpapers_alt()">
 
   <div id="overlay"></div>
+
   <div class="labs" id="labs">
-    <div id="mydivheader">----</div>
+    <div id="mydivheader">- - -</div>
     <button class="button" onclick="export_bookmarks(event)">Export Bookmarks</button>
     <button class="button">
       <label for="import-bookmarks">Import Bookmarks</label>
@@ -36,6 +38,7 @@
     <label for="dim-setting" class="setting-title none">Dim Less <input type="checkbox" id="dim-setting" checked="false"
         onclick="toggle_dim(event)"></label><br>
   </div>
+
   <div id="wrap" class="startup_slide_down">
     <div class="flex-main-container-vertical">
       <div id="heading">
@@ -61,7 +64,7 @@
       </div>
     </div>
   </div>
-  </div>
+
   <div class="flex-wallpaper-horizontal" id="wallpapers">
     <div class="settings" onclick="event.stopPropagation()">
       <div class="setting-option">
@@ -72,6 +75,18 @@
         <label for="labs-setting" class="setting-title">Labs <input type="checkbox" id="labs-setting" checked="false"
             onclick="toggle_labs(event)"></label>
       </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <ul>
+      <li><a href="#" title="GitHub">GitHub</a></li>
+      <li><a href="#" title="Telegram">Telegram</a></li>
+      <li><a href="#" title="Terms">Terms</a></li>
+      <li><a href="#" title="About">About</a></li>
+    </ul>
+    <p>© 2023 lscambo13</p>
+  </footer>
 
 </body>
 

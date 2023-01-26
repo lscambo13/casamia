@@ -1,3 +1,10 @@
+:root {
+  --accent-color: ;
+  --primary-color: ;
+  --secondary-color: ;
+
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -11,6 +18,12 @@ body {
   background-color: rgb(40, 40, 40);
   font-family: "Ubuntu Mono", monospace;
   font-size: 14px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  align-items: center;
 }
 
 input[type="checkbox"] {
@@ -20,32 +33,41 @@ input[type="checkbox"] {
 }
 
 #overlay {
-  position: fixed; /* Sit on top of the page content */
-  display: block; /* Hidden by default */
-  width: 100%; /* Full width (cover the whole page) */
-  height: 100%; /* Full height (cover the whole page) */
+  position: fixed;
+  /* Sit on top of the page content */
+  display: block;
+  /* Hidden by default */
+  width: 100%;
+  /* Full width (cover the whole page) */
+  height: 100%;
+  /* Full height (cover the whole page) */
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.375); /* Black background with opacity */
-  z-index: 0; /* Specify a stack order in case you're using a different order for other elements */
-  cursor: auto; /* Add a pointer on hover */
+  background-color: rgba(0, 0, 0, 0.375);
+  /* Black background with opacity */
+  z-index: 0;
+  /* Specify a stack order in case you're using a different order for other elements */
+  cursor: auto;
+  /* Add a pointer on hover */
   transition: 300ms;
 }
 
 #wrap {
   max-width: 1024px;
   margin: auto;
+  flex: 1;
+  z-index: 2;
 }
 
 .flex-main-container-vertical {
   margin: auto;
 }
 
-.flex-main-container-vertical > div {
-  z-index: 1;
-}
+/* .flex-main-container-vertical > div {
+  z-index: 2;
+} */
 
 #heading {
   color: antiquewhite;
@@ -83,18 +105,15 @@ input[type="checkbox"] {
 }
 
 .searchTerm::-webkit-search-cancel-button {
-  filter: invert() grayscale();
+  filter: grayscale() invert() brightness(200%);
   margin-inline-start: 1em;
   margin-inline-end: -0.75em;
-}
-
-.searchTerm:focus {
-  color: rgba(250, 235, 215, 0.8);
 }
 
 .searchTerm:hover,
 .searchTerm:focus {
   background-color: rgba(250, 235, 215, 0.2);
+  color: rgba(250, 235, 215, 1);
 }
 
 .searchButton {
@@ -107,10 +126,11 @@ input[type="checkbox"] {
   text-align: center;
   border-radius: 0 2.5em 2.5em 0;
   cursor: pointer;
+  color: #333333;
   font-size: clamp(1em, 1em, 2em);
 }
 
-.searchButton > i {
+.searchButton>i {
   background-size: 2;
   padding: 0.1em;
   background-color: transparent;
@@ -124,7 +144,7 @@ input[type="checkbox"] {
   transition: all 200ms;
 } */
 
-.searchButton:active > i {
+.searchButton:active>i {
   padding: 0.7em;
   background-color: #d0d4d2;
   padding: 0.8em;
@@ -142,7 +162,7 @@ input[type="checkbox"] {
   /* box-sizing: border-box; */
 }
 
-.flex-sub-container-horizontal > div {
+.flex-sub-container-horizontal>div {
   color: antiquewhite;
   width: clamp(1em, 4em, 8em);
   height: clamp(1em, 4em, 8em);
@@ -161,13 +181,15 @@ input[type="checkbox"] {
   border: 0.075em solid antiquewhite;
 }
 
-.flex-sub-container-horizontal > div > i {
+.flex-sub-container-horizontal>div>i {
   font-size: clamp(0.5em, 2em, 4em);
 }
 
-.flex-sub-container-horizontal > div:hover {
-  background-color: rgba(255, 187, 0, 0.4) !important;
-  transition: 750ms;
+.flex-sub-container-horizontal>*:hover,
+#add_bookmark_button:hover,
+#settings_button:hover {
+  background-color: rgba(255, 187, 0, 0.4);
+  transition: 500ms;
 }
 
 .flex-wallpaper-horizontal {
@@ -184,7 +206,7 @@ input[type="checkbox"] {
   background-color: rgba(127, 255, 212, 0.3);
   backdrop-filter: blur(1em);
   -webkit-backdrop-filter: blur(1em);
-  z-index: 9;
+  z-index: 2;
 }
 
 .thumb-group {
@@ -218,7 +240,7 @@ input[type="checkbox"] {
   transition: 1000ms;
 }
 
-.animate:hover > .thumb-title {
+.animate:hover>.thumb-title {
   animation: animation_appear 0.25s;
   animation-fill-mode: both;
   animation-iteration-count: 1;
@@ -262,7 +284,8 @@ input[type="checkbox"] {
   -webkit-backdrop-filter: blur(1em);
   order: 1336;
 }
-#add_bookmark_button:not(:active) > i {
+
+#add_bookmark_button:not(:active)>i {
   transition: 750ms;
   rotate: 360deg;
 }
@@ -285,14 +308,17 @@ input[type="checkbox"] {
   caret-color: transparent;
   order: 1337;
 }
-#settings_button > a {
+
+#settings_button>a {
   color: antiquewhite;
   font-size: clamp(0.5em, 2em, 4em);
 }
-#settings_button:not(:active) > a > i {
+
+#settings_button:not(:active)>a>i {
   transition: 750ms;
   rotate: 360deg;
 }
+
 .custom_bookmark {
   color: antiquewhite;
   width: clamp(1em, 4em, 8em);
@@ -312,15 +338,18 @@ input[type="checkbox"] {
 
   text-decoration: none;
 }
-.custom_bookmark > span {
+
+.custom_bookmark>span {
   font-weight: bolder;
   font-size: 1.5em;
   pointer-events: none;
 }
+
 .removable {
   border: 0.1em solid tomato;
   transition: 300ms;
 }
+
 .cross {
   position: fixed;
   margin-top: 2.2em;
@@ -335,25 +364,30 @@ input[type="checkbox"] {
   border-radius: 50%;
   display: none;
 }
+
 .labs {
   position: absolute;
   padding-bottom: 0.5em;
   padding-inline: 0.375em;
   border-radius: 0.5em;
-  background-color: cadetblue;
+  background-color: rgba(95, 158, 160, 0.4);
+  backdrop-filter: blur(0.3em);
+  -webkit-backdrop-filter: blur(0.3em);
   display: none;
   text-align: center;
-  z-index: 10;
+  z-index: 3;
   border: 1px solid #d3d3d3;
 }
+
 #mydivheader {
   padding: 0em;
   cursor: move;
-  z-index: 11;
+  z-index: 4;
   /* border-radius: 0.5em 0.5em 0 0; */
   background-color: transparent;
   color: #fff;
 }
+
 .button {
   padding-inline: 1em;
   padding-block: 0.5em;
@@ -367,6 +401,45 @@ input[type="checkbox"] {
   display: none;
 }
 
+.footer {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+  padding: 0.5em;
+}
+
+.footer>ul * {
+  color: rgba(255, 255, 255, 0.375);
+  text-decoration: none;
+  transition: 150ms;
+}
+
+.footer>* {
+  display: flex;
+  color: rgba(255, 255, 255, 0.375);
+  gap: 1em;
+  font-size: 0.8em;
+  line-height: 1.5em;
+  list-style: none;
+  transition: 150ms;
+}
+
+.footer>*:hover,
+.footer>ul>li>*:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
+/* @media (prefers-color-scheme: dark) {
+  .searchButton {
+    background-color: darkslategray;
+  }
+
+  .
+} */
+
 @media only screen and (min-width: 370px) {
   body {
     font-size: 18px;
@@ -376,6 +449,12 @@ input[type="checkbox"] {
 @media only screen and (min-width: 600px) {
   body {
     font-size: 22px;
+  }
+
+  .footer {
+    flex-direction: row;
+    justify-content: space-between;
+    padding-inline: 2em;
   }
 }
 
