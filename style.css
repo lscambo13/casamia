@@ -326,7 +326,9 @@ input[type="checkbox"] {
   margin-top: 2.2em;
   margin-left: 2.6em;
   transition: 150ms;
-  padding-inline-start: 0.35em;
+  text-align: center;
+  line-height: 1.4em;
+  padding-inline-start: 0.05em;
   width: clamp(0.375em, 1.25em, 3em);
   height: clamp(0.375em, 1.25em, 3em);
   background-color: tomato;

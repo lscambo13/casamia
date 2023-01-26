@@ -151,7 +151,7 @@ function add_bookmark_to_html(link, name, id) {
   // new_bookmark.setAttribute("onmouseenter", "remove_bookmark(event)");
   // new_bookmark.setAttribute("onmouseleave", "remove_timeout(event)");
   i.textContent = name;
-  d.textContent = "x";
+  d.textContent = "🞬";
   d.classList.add("cross");
   d.setAttribute("onclick", "remove_bookmark(event)");
   new_bookmark.appendChild(i);
@@ -573,6 +573,8 @@ function download_wallpaper() {
     "If the download doesn't start, disable the pop-up blocker extensions."
   ); */
 }
+
+function toggle_favicons(event) {}
 
 // Event Listeners ---
 
