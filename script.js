@@ -209,7 +209,7 @@ function add_bookmark_to_html(link, name, id) {
   // new_bookmark.setAttribute("onmouseleave", "remove_timeout(event)");
   i.textContent = name;
   i.className = "custom_link_name";
-  d.innerHTML = "&#10006";
+  d.innerHTML = "&#215;";
   d.classList.add("cross");
   d.setAttribute("onclick", "remove_bookmark(event)");
   new_bookmark.appendChild(i);

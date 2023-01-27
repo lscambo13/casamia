@@ -439,10 +439,12 @@ input[type="checkbox"] {
   margin-left: 2.8em;
   transition: 150ms;
   text-align: center;
-  line-height: 1.4em;
+  line-height: 1.2em;
   padding-inline-start: 0.02em;
-  width: clamp(0.375em, 1.25em, 3em);
-  height: clamp(0.375em, 1.25em, 3em);
+  /* padding: 0.5em; */
+  width: 1.25em;
+  height: 1.25em;
+  /* height: clamp(0.375em, 1.25em, 3em); */
   background-color: tomato;
   border-radius: 50%;
   display: none;
