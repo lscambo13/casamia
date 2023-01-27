@@ -106,8 +106,13 @@ input[type="checkbox"] {
 
 .searchTerm::-webkit-search-cancel-button {
   filter: grayscale() invert() brightness(200%);
-  margin-inline-start: 1em;
-  margin-inline-end: -0.75em;
+  margin-inline-start: 0.7em;
+  margin-inline-end: -1.25em;
+  transition: 200ms;
+}
+
+.searchTerm::-webkit-search-cancel-button:hover {
+  scale: 1.1;
 }
 
 .searchTerm:hover,
@@ -355,11 +360,11 @@ input[type="checkbox"] {
 .cross {
   position: fixed;
   margin-top: 2.2em;
-  margin-left: 2.6em;
+  margin-left: 2.2em;
   transition: 150ms;
   text-align: center;
   line-height: 1.4em;
-  padding-inline-start: 0.05em;
+  padding-inline-start: 0.02em;
   width: clamp(0.375em, 1.25em, 3em);
   height: clamp(0.375em, 1.25em, 3em);
   background-color: tomato;
@@ -412,6 +417,7 @@ input[type="checkbox"] {
   flex-direction: column;
   align-items: center;
   z-index: 1;
+  gap: 0.25em;
   padding: 0.5em;
 }
 
@@ -433,8 +439,8 @@ input[type="checkbox"] {
 }
 
 .ext_favicon {
-  width: 60%;
-  height: 60%;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
 }
 

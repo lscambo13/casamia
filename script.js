@@ -152,7 +152,7 @@ function add_bookmark_to_html(link, name, id) {
   // new_bookmark.setAttribute("onmouseleave", "remove_timeout(event)");
   i.textContent = name;
   i.className = "custom_link_name";
-  d.textContent = "🞬";
+  d.innerHTML = "&#10006";
   d.classList.add("cross");
   d.setAttribute("onclick", "remove_bookmark(event)");
   new_bookmark.appendChild(i);
@@ -590,16 +590,15 @@ function toggle_favicons(event) {
   // http://www.google.com/s2/favicons?domain=google.com
   var custom_bookmarks = document.getElementsByClassName("custom_bookmark");
   var spans = document.getElementsByClassName("custom_link_name");
-  for (let i of spans) {
-    i.style.display = "none";
-  }
 
-  for (let i of custom_bookmarks) {
+  for (let i = 0; i < custom_bookmarks.length; i++) {
+    spans[i].style.display = "none";
+
     var new_icon = document.createElement("img");
     new_icon.className = "ext_favicon";
-    var domain = i.href;
-    new_icon.src = "http://www.google.com/s2/favicons?sz=256&domain=" + domain;
-    i.appendChild(new_icon);
+    var domain = custom_bookmarks[i].href;
+    new_icon.src = "http://www.google.com/s2/favicons?sz=32&domain=" + domain;
+    custom_bookmarks[i].appendChild(new_icon);
   }
 }
 

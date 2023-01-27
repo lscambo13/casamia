@@ -14,6 +14,7 @@
   0% {
     transform: translateY(10em);
   }
+
   100% {
     transform: translateY(0em);
   }
@@ -23,19 +24,20 @@
   0% {
     transform: translateY(0em);
   }
+
   100% {
     transform: translateY(10em);
   }
 }
 
-@keyframes animation_fade-in {
+/* @keyframes animation_fade-in {
   0% {
     background-color: rgba(95, 158, 160, 0.398);
   }
   100% {
     background-color: rgba(211, 197, 90, 0.656);
   }
-}
+} */
 
 .animation_appear {
   animation: animation_appear 0.5s;
@@ -47,6 +49,7 @@
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -62,6 +65,7 @@
   0% {
     scale: 1;
   }
+
   100% {
     scale: 1.1;
   }
@@ -81,9 +85,10 @@
 
 @keyframes animation2_slide_up {
   0% {
-    padding-top: 15vh;
+    padding-top: 10vh;
     padding-bottom: 0em;
   }
+
   100% {
     padding-top: 0vh;
     padding-bottom: 8em;
@@ -95,8 +100,9 @@
     padding-top: 0vh;
     padding-bottom: 8em;
   }
+
   100% {
-    padding-top: 15vh;
+    padding-top: 10vh;
     padding-bottom: 0em;
   }
 }
@@ -111,7 +117,8 @@
   0% {
     padding-top: 0;
   }
+
   100% {
-    padding-top: 15vh;
+    padding-top: 10vh;
   }
 }
