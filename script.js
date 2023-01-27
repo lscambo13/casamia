@@ -2,114 +2,170 @@ let wallpapers_list = [
   {
     file: "car-wallpaper-20072612433540.jpg",
     title: "Anime",
+    color: "pink",
+    theme: "light",
   },
   {
     file: "neon-wallpaper-20070214060650.jpg",
     title: "Neon",
+    color: "pink",
+    theme: "light",
   },
   {
     file: "Wallpaper-4k-High-Resolution-Mac-3840x2160px-4k-Free-Dow1.jpg",
     title: "Abstract",
+    color: "earth",
+    theme: "light",
   },
   {
     file: "nature-wallpaper-21012223471720.jpg",
     title: "Nature",
+    color: "red",
+    theme: "light",
   },
   {
     file: "space-wallpaper-20082314113712.jpg",
     title: "Space",
+    color: "earth",
+    theme: "light",
   },
   {
     file: "car-wallpaper-2007261221435.jpg",
     title: "Night",
+    color: "yellow",
+    theme: "light",
   },
   {
     file: "black-wallpaper-20072315472168.jpg",
     title: "Lucifer",
+    color: "earth",
+    theme: "light",
   },
   {
     file: "black-wallpaper-20091514274141.jpg",
     title: "Superheroes",
+    color: "yellow",
+    theme: "light",
   },
   {
     file: "Wallpaper-4k-Dark-Blue-Lines-Grid-Lines-Backgrounds-P2.jpg",
     title: "Grid",
+    color: "earth",
+    theme: "light",
   },
   {
     file: "desert-wallpaper-3840x2160.jpg",
     title: "Desert",
+    color: "earth",
+    theme: "light",
   },
   {
     file: "cute_anime_girl_2-wallpaper-3840x2160.jpg",
     title: "Anime 2",
+    color: "pink",
+    theme: "light",
   },
   {
     file: "bicycle_aesthetic-wallpaper-3840x2160.jpg",
     title: "Bicycle",
+    color: "light-pink",
+    theme: "light",
   },
   {
     file: "pink_aesthetic-wallpaper-3840x2160.jpg",
     title: "Pink",
+    color: "light-pink",
+    theme: "light",
   },
   {
     file: "peaceful-wallpaper-3840x2160.jpg",
     title: "Desert 2",
+    color: "red",
+    theme: "light",
   },
   {
     file: "coast_aerial_view_beautiful_landscape-wallpaper-3840x2160.jpg",
     title: "Beach",
+    color: "green",
+    theme: "light",
   },
   {
     file: "batman_car_night-wallpaper-3840x2160.jpg",
     title: "Batman",
+    color: "red",
+    theme: "light",
   },
   {
     file: "1440p-Wallpaper-Free-Download.jpg",
     title: "Neon 2",
+    color: "pink",
+    theme: "light",
   },
   {
     file: "1440p-HD-Wallpaper-Free-download.png",
     title: "Neon 3",
+    color: "pink",
+    theme: "light",
   },
   {
     file: "arrival_at_saturn-wallpaper-7680x4320.jpg",
     title: "Saturn",
+    color: "earth",
+    theme: "light",
   },
   {
     file: "HP-Wallpaper.jpg",
     title: "HP",
+    color: "pink",
+    theme: "light",
   },
   {
     file: "pink_desert_blue_sky-wallpaper-2880x1620.jpg",
     title: "Pink 2",
+    color: "light-pink",
+    theme: "light",
   },
   {
     file: "pink_sea_aesthetic-wallpaper-2880x1620.jpg",
     title: "Pink 3",
+    color: "light-pink",
+    theme: "light",
   },
   {
     file: "bay_10-wallpaper-3840x2160.jpg",
     title: "Beach 2",
+    color: "green",
+    theme: "light",
   },
   {
     file: "pink_umbrellas-wallpaper-5120x2880.jpg",
     title: "Umbrellas",
+    color: "pink",
+    theme: "light",
   },
   {
     file: "peter_morales-wallpaper-3840x2160.jpg",
     title: "Spiderman",
+    color: "red",
+    theme: "light",
   },
   {
     file: "miles_morales_night_spark-wallpaper-3840x2160.jpg",
     title: "Spiderman 2",
+    color: "yellow",
+    theme: "light",
   },
   {
     file: "pastel_macarons_aesthetic-wallpaper-5120x2880.jpg",
     title: "Macarons",
+    color: "light-pink",
+    theme: "light",
   },
   {
     file: "billie_eilish-wallpaper-5120x2880.jpg",
     title: "Billie Eilish",
+    color: "earth",
+    theme: "light",
   },
 ];
 
@@ -145,6 +201,7 @@ function add_bookmark_to_html(link, name, id) {
   var new_bookmark = document.createElement("a");
   var i = document.createElement("span");
   var d = document.createElement("div");
+  new_bookmark.setAttribute("onclick", "display_loading(event)");
   new_bookmark.className = "custom_bookmark";
   new_bookmark.setAttribute("href", link);
   new_bookmark.setAttribute("id", id);
@@ -181,31 +238,50 @@ function remove_bookmark_from_localstorage(id) {
 var selected_wallpaper = localStorage.getItem("wallpaper");
 if (selected_wallpaper == null) {
   selected_wallpaper = wallpapers_list[4].file;
+  // var color = wallpapers_list[4].color;
 }
+var color = wallpapers_list.filter((item) => {
+  return item.file == selected_wallpaper;
+})[0].color;
 
-function set_wallpaper(fileName) {
+function set_wallpaper(fileName, color) {
   selected_wallpaper = fileName;
+  var glow_color = color;
   var overlay = document.getElementById("overlay");
   console.log("test " + overlay.style.backdropFilter);
   overlay.style.backdropFilter = "blur(1em)";
   var temp = new Image();
   temp.src = wallpapers_url + fileName;
   temp.onload = (e) => {
-    document.body.style.backgroundImage =
-      "url(" + wallpapers_url + fileName + ")";
-    document.body.style.backgroundRepeat = "no-repeat";
-    document.body.style.backgroundSize = "cover";
-    document.body.style.backgroundAttachment = "fixed";
-    document.body.style.backgroundPosition = "center";
+    apply_wallpaper(selected_wallpaper);
     localStorage.setItem("wallpaper", selected_wallpaper);
     loadBlur();
   };
-  var input = fileName.split(".").join("-thumb.");
+
+  change_glow(glow_color);
+  var input_thumb = fileName.split(".").join("-thumb.");
+  apply_wallpaper(input_thumb);
+}
+
+function apply_wallpaper(input) {
   document.body.style.backgroundImage = "url(" + wallpapers_url + input + ")";
   document.body.style.backgroundRepeat = "no-repeat";
   document.body.style.backgroundSize = "cover";
   document.body.style.backgroundAttachment = "fixed";
   document.body.style.backgroundPosition = "center";
+}
+
+function change_glow(color, opacity) {
+  var glow_overlay = document.getElementById("gradient_overlay");
+  var wallpapers_roll_overlay = document.getElementById("wallpapers");
+  var glow_setting = localStorage.getItem("glow");
+  if (opacity != null) {
+    if (glow_setting != "1") glow_overlay.style.opacity = opacity;
+  }
+  if (color != null) {
+    wallpapers_roll_overlay.style.background = `var(--${color}-gradient)`;
+    glow_overlay.style.background = `var(--${color}-gradient)`;
+  }
 }
 
 function highlight_set_wallpaper() {
@@ -308,6 +384,13 @@ function toggle_remove_indicators(visible) {
   }
 }
 
+function display_loading(element) {
+  // console.log(element);
+  // element.stopPropagation();
+  // element.preventDefault();
+  element.target.classList.toggle("loader");
+}
+
 function isUrlValid(userInput) {
   var res = userInput.match(
     /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g
@@ -392,11 +475,19 @@ function remove_bookmark(event) {
 function change_wallpaper(event) {
   event.stopPropagation();
   let selection = event.target.title;
-  let wallpaper = wallpapers_list.filter((item) => {
-    return item.title == selection;
-  })[0].file;
-  set_wallpaper(wallpaper);
+  var wall = get_wallpaper_details(selection);
+  set_wallpaper(wall[0], wall[1]);
   highlight_set_wallpaper();
+}
+
+function get_wallpaper_details(title) {
+  let wallpaper = wallpapers_list.filter((item) => {
+    return item.title == title;
+  })[0].file;
+  let color = wallpapers_list.filter((item) => {
+    return item.title == title;
+  })[0].color;
+  return [wallpaper, color];
 }
 
 function hide_wallpapers(event, noevent = false) {
@@ -406,7 +497,6 @@ function hide_wallpapers(event, noevent = false) {
 
   const film_roll = document.getElementById("wallpapers");
   const wrap = document.getElementById("wrap");
-
   film_roll.style.display = "flex";
   if (
     film_roll.classList.length < 2 ||
@@ -417,6 +507,7 @@ function hide_wallpapers(event, noevent = false) {
     wrap.classList.remove("animation2_slide_down");
     wrap.classList.remove("startup_slide_down");
     wrap.classList.add("animation2_slide_up");
+    change_glow(null, 1);
     toggle_remove_indicators("show");
   } else {
     film_roll.classList.remove("animation_slide_up");
@@ -424,6 +515,8 @@ function hide_wallpapers(event, noevent = false) {
     wrap.classList.remove("animation2_slide_up");
     wrap.classList.add("animation2_slide_down");
     //window.open("#", "_self");
+    change_glow(null, 0);
+
     toggle_remove_indicators("hide");
   }
 }
@@ -480,6 +573,7 @@ function hide_wallpapers_alt() {
     wrap.classList.remove("animation2_slide_up");
     wrap.classList.add("animation2_slide_down");
     toggle_remove_indicators("hide");
+    change_glow(null, 0);
   }
 }
 
@@ -602,6 +696,20 @@ function toggle_favicons(event) {
   }
 }
 
+function toggle_glow() {
+  var gradient_overlay = document.getElementById("gradient_overlay");
+  var glow = localStorage.getItem("glow");
+  if (glow == null || glow == "0") {
+    glow = "1";
+    gradient_overlay.style.opacity = 1;
+    localStorage.setItem("glow", "1");
+  } else if (glow == "1") {
+    glow = "0";
+    gradient_overlay.style.opacity = 0;
+    localStorage.setItem("glow", "0");
+  }
+}
+
 // Event Listeners ---
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -631,7 +739,7 @@ document.addEventListener("DOMContentLoaded", () => {
     bar.appendChild(thumb);
   }
   load_settings();
-  set_wallpaper(selected_wallpaper);
+  set_wallpaper(selected_wallpaper, color);
   highlight_set_wallpaper();
   load_bookmarks();
 

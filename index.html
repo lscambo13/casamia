@@ -23,6 +23,7 @@
 <body onclick="hide_wallpapers_alt()">
 
   <div id="overlay"></div>
+  <div id="gradient_overlay"></div>
 
   <div class="labs" id="labs">
     <div id="mydivheader">...</div>
@@ -33,6 +34,7 @@
     </button>
     <button class="button" onclick="download_wallpaper()">Download Wallpaper</button>
     <button class="button" onclick="toggle_favicons(event)">Toggle Favicons</button>
+    <button class="button" onclick="toggle_glow(event)">Toggle Glow</button>
     <button class="button" onclick="reset_bookmarks(event)">Reset Bookmarks</button>
     <button class="button" onclick="reset_all(event)">Reset All!</button>
     <label for="dim-setting" class="setting-title none">Dim Less <input type="checkbox" id="dim-setting" checked="false"
@@ -54,10 +56,12 @@
       </div>
 
       <div class="flex-sub-container-horizontal">
-        <div onclick="search.movies()" id="movies-search"><i class="flaticon-movies"></i></div>
-        <div onclick="search.tv()" id="tv-search"><i class="flaticon-tv"></i></div>
-        <div onclick="search.games()" id="games-search"><i class="flaticon-games"></i></div>
-        <div onclick="search.ebooks()" id="ebooks-search"><i class="flaticon-ebook"></i></div>
+        <div onclick="search.movies()" id="movies-search" class="predefined-bookmark"><i class="flaticon-movies"></i>
+        </div>
+        <div onclick="search.tv()" id="tv-search" class="predefined-bookmark"><i class="flaticon-tv"></i></div>
+        <div onclick="search.games()" id="games-search" class="predefined-bookmark"><i class="flaticon-games"></i></div>
+        <div onclick="search.ebooks()" id="ebooks-search" class="predefined-bookmark"><i class="flaticon-ebook"></i>
+        </div>
         <div onclick="create_new_bookmark()" id="add_bookmark_button"><i class="fa fa-plus"></i></div>
         <div onclick="hide_wallpapers(event)" id="settings_button"><a href="#wallpapers"><i class="fa fa-gear"></i></a>
         </div>
