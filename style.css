@@ -55,7 +55,6 @@ body {
   background-color: rgb(40, 40, 40);
   font-family: "Ubuntu Mono", monospace;
   font-size: 14px;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -558,7 +557,6 @@ input[type="checkbox"] {
   .searchButton {
     background-color: darkslategray;
   }
-
   .
 } */
 
