@@ -393,7 +393,7 @@ function hide_loading() {
 }
 function display_loading(event) {
 	// element.stopPropagation();
-	event.preventDefault();
+	// event.preventDefault();
 	hide_loading();
 
 	var click = event.target;
@@ -596,7 +596,8 @@ function enter_handler(event) {
 }
 
 function toggle_labs(event) {
-	event.stopPropagation();
+	// event.stopPropagation();
+	console.log("called labs");
 	var checkbox_labs = document.getElementById("labs-setting");
 	var labs_div = document.getElementById("labs");
 
@@ -629,9 +630,11 @@ function wait(ms) {
 	}
 }
 
-function import_bookmarks(event) {
-	event.stopPropagation();
-	var file = event.target.files[0].text();
+function import_bookmarks(event, text = "") {
+	if (event) {
+		event.stopPropagation();
+		var file = event.target.files[0].text();
+	} else var file = text;
 
 	function result(file) {
 		var imported_bookmarks = JSON.parse(file);
@@ -723,6 +726,12 @@ function toggle_glow() {
 	}
 }
 
+function fetch_bookmarks(event) {
+	var source_link =
+		"https://raw.githubusercontent.com/lscambo13/my-home-page/main/custom_bookmarks_sample/home-page-bookmarks-2023-1-23.json";
+	fetch(source_link).then((res) => import_bookmarks(null, res.text()));
+}
+
 // Event Listeners ---
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -793,18 +802,21 @@ class search {
 	static default_domain = "https://www.google.com/search?q=";
 	static x1337x = "https://x1337x.ws/home/";
 
-	static default = function () {
+	static default() {
 		var input = utils.getSearchTerm().value;
 		if (input != "") {
-			input = input.split(" ").join("+");
-			var url = search.default_domain + input;
-			window.open(url);
+			if (!this.cli_check(input)) {
+				input = input.split(" ").join("+");
+				var url = search.default_domain + input;
+				window.open(url);
+			}
+			this.cli_parse(input);
 		} else {
 			alert("You need to enter a search query.");
 		}
-	};
+	}
 
-	static movies = function () {
+	static movies() {
 		var input = utils.getSearchTerm().value;
 		if (input != "") {
 			input = input.split(" ").join("%20");
@@ -813,9 +825,9 @@ class search {
 		} else {
 			alert("You need to enter a search query.");
 		}
-	};
+	}
 
-	static tv = function () {
+	static tv() {
 		var input = utils.getSearchTerm().value;
 		if (input != "") {
 			input = input.split(" ").join("%20");
@@ -824,9 +836,9 @@ class search {
 		} else {
 			alert("You need to enter a search query.");
 		}
-	};
+	}
 
-	static games = function () {
+	static games() {
 		var input = utils.getSearchTerm().value;
 		if (input != "") {
 			input = input.split(" ").join("%20");
@@ -835,7 +847,7 @@ class search {
 		} else {
 			alert("You need to enter a search query.");
 		}
-	};
+	}
 	static ebooks() {
 		var input = utils.getSearchTerm().value;
 		if (input != "") {
@@ -844,6 +856,42 @@ class search {
 			window.open(url);
 		} else {
 			alert("You need to enter a search query.");
+		}
+	}
+
+	static cli_check(input) {
+		//var input = utils.getSearchTerm().value;
+		if (input.startsWith("--")) {
+			return true;
+		}
+		return false;
+	}
+
+	static cli_parse(input) {
+		input = input.split("--").join("").toLowerCase();
+		//console.log(input);
+		switch (input) {
+			case "help":
+				alert(
+					"Documentation:\n\n--help : This page\n--fetch default : Import a predefined set of custom bookmarks.\n--reset bookmarks : Reset the bookmarks while keeping other settings intact.\n--reset all : Reset everything, including the bookmarks and wallpaper preferences.\n"
+				);
+				break;
+			case "reset bookmarks":
+				reset_bookmarks();
+				break;
+			case "reset all":
+				reset_all();
+				break;
+			case "fetch default":
+				fetch_bookmarks();
+				break;
+			case "labs":
+				toggle_labs(null);
+				break;
+			default:
+				alert(
+					"The command you have passed is invalid.\nType --help to read the documentation.\n"
+				);
 		}
 	}
 }
