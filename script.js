@@ -4,7 +4,7 @@ var selected_wallpaper = null;
 var color = null;
 
 const wallpapers_url = "./wallpapers/";
-// "https://github.com/lscambo13/my-home-page/raw/main/wallpapers/";
+// "https://github.com/lscambo13/casamia/raw/main/wallpapers/";
 
 // BOOKMARKs -- start
 
@@ -553,7 +553,7 @@ function toggle_glow() {
 
 function fetch_bookmarks(event) {
 	var source_link =
-		"https://raw.githubusercontent.com/lscambo13/my-home-page/main/custom_bookmarks_sample/home-page-bookmarks-2023-1-23.json";
+		"https://raw.githubusercontent.com/lscambo13/casamia/main/custom_bookmarks_sample/home-page-bookmarks-2023-1-23.json";
 	fetch(source_link).then((res) => import_bookmarks(null, res.text()));
 }
 
@@ -574,7 +574,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 	// Add wallpapers to HTML
 
 	var response = await fetch(
-		"https://raw.githubusercontent.com/lscambo13/my-home-page/main/wallpapers/wallpapers_list.json"
+		"https://raw.githubusercontent.com/lscambo13/casamia/main/wallpapers/wallpapers_list.json"
 	);
 	var text = await response.text();
 	wallpapers_list = JSON.parse(text);

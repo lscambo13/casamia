@@ -1,26 +1,23 @@
-# **A Custom Home for Your Favorite Browser**
+# **Casa Mia** : _A Custom Start Page For Your Favorite Browser_
 
-## [`Click here ./> `](https://lscambo13.github.io/my-home-page/)
+## [`Click here to visit ./> `](https://lscambo13.github.io/casamia/)
 
 <br>
 
 # **Features**
 
-- Search Google, but also.. <br>
-- Search Movies, Games, Books, and TV Shows directly <br>
-- Add custom bookmarks <br>
-- Choose from a range of wallpapers as background <br>
-- Blur effects <br>
-- Cool animations <br>
-- Optimised for Phones and PC both <br>
-  <br><br>
+-   Search Google, but also.. <br>
+-   Search Movies, Games, Books, and TV Shows directly <br>
+-   Add custom bookmarks <br>
+-   Choose from a range of wallpapers as background <br>
+-   Blur effects <br>
+-   Cool animations <br>
+-   Optimised for Phones and PC both <br>
+    <br>
 
-### **Save (https://lscambo13.github.io/my-home-page/) as bookmark now**
+### **Save (https://lscambo13.github.io/casamia/) as bookmark now**
 
 <br>
-
 ### _A Preview_
-
 <br>
-
-<img src="https://github.com/lscambo13/my-home-page/raw/main/screenshots/Screenshot%20(166).png" alt="Default Look" style="height: 373px; width:340px; border-radius:16px;"/> <img src="https://github.com/lscambo13/my-home-page/raw/main/screenshots/Screenshot%20(167).png" alt="Customised Look" style="height: 373px; width:340px; border-radius:16px;"/>
+<img src="https://github.com/lscambo13/casamia/raw/main/screenshots/casa-mia-banner-1.jpg" alt="Looks" style="border-radius:16px;"/> <img src="https://github.com/lscambo13/casamia/raw/main/screenshots/casa-mia-banner-2.jpg" alt="Customised Look" style="border-radius:16px;"/>
