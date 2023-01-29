@@ -108,7 +108,8 @@ input[type="checkbox"] {
 
 
 #wrap {
-  max-width: 1024px;
+  max-width: 1280px;
+  width: 100%;
   margin: auto;
   flex: 1;
   z-index: 2;
@@ -552,13 +553,6 @@ input[type="checkbox"] {
     transform: rotate(0deg);
   }
 }
-
-/* @media (prefers-color-scheme: dark) {
-  .searchButton {
-    background-color: darkslategray;
-  }
-  .
-} */
 
 @media only screen and (min-width: 370px) {
   body {
