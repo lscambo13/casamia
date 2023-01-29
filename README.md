@@ -20,6 +20,18 @@
 
 <br>
 
+---
+
+### **Author:** [lscambo13](https://github.com/lscambo13)
+
+### **Special thanks:** [msc24x](https://github.com/msc24x)
+
+<br>
+
+### **Please leave a ⭐ on your way out.**
+
+---
+
 ### _A Preview_
 
 <br>
