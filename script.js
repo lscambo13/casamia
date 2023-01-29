@@ -1,173 +1,7 @@
-let wallpapers_list = [
-	{
-		file: "car-wallpaper-20072612433540.jpg",
-		title: "Anime",
-		color: "pink",
-		theme: "light",
-	},
-	{
-		file: "neon-wallpaper-20070214060650.jpg",
-		title: "Neon",
-		color: "pink",
-		theme: "light",
-	},
-	{
-		file: "Wallpaper-4k-High-Resolution-Mac-3840x2160px-4k-Free-Dow1.jpg",
-		title: "Abstract",
-		color: "earth",
-		theme: "light",
-	},
-	{
-		file: "nature-wallpaper-21012223471720.jpg",
-		title: "Nature",
-		color: "red",
-		theme: "light",
-	},
-	{
-		file: "space-wallpaper-20082314113712.jpg",
-		title: "Space",
-		color: "earth",
-		theme: "light",
-	},
-	{
-		file: "car-wallpaper-2007261221435.jpg",
-		title: "Night",
-		color: "yellow",
-		theme: "light",
-	},
-	{
-		file: "black-wallpaper-20072315472168.jpg",
-		title: "Lucifer",
-		color: "earth",
-		theme: "light",
-	},
-	{
-		file: "black-wallpaper-20091514274141.jpg",
-		title: "Superheroes",
-		color: "yellow",
-		theme: "light",
-	},
-	{
-		file: "Wallpaper-4k-Dark-Blue-Lines-Grid-Lines-Backgrounds-P2.jpg",
-		title: "Grid",
-		color: "earth",
-		theme: "light",
-	},
-	{
-		file: "desert-wallpaper-3840x2160.jpg",
-		title: "Desert",
-		color: "earth",
-		theme: "light",
-	},
-	{
-		file: "cute_anime_girl_2-wallpaper-3840x2160.jpg",
-		title: "Anime 2",
-		color: "pink",
-		theme: "light",
-	},
-	{
-		file: "bicycle_aesthetic-wallpaper-3840x2160.jpg",
-		title: "Bicycle",
-		color: "light-pink",
-		theme: "light",
-	},
-	{
-		file: "pink_aesthetic-wallpaper-3840x2160.jpg",
-		title: "Pink",
-		color: "light-pink",
-		theme: "light",
-	},
-	{
-		file: "peaceful-wallpaper-3840x2160.jpg",
-		title: "Desert 2",
-		color: "red",
-		theme: "light",
-	},
-	{
-		file: "coast_aerial_view_beautiful_landscape-wallpaper-3840x2160.jpg",
-		title: "Beach",
-		color: "green",
-		theme: "light",
-	},
-	{
-		file: "batman_car_night-wallpaper-3840x2160.jpg",
-		title: "Batman",
-		color: "red",
-		theme: "light",
-	},
-	{
-		file: "1440p-Wallpaper-Free-Download.jpg",
-		title: "Neon 2",
-		color: "pink",
-		theme: "light",
-	},
-	{
-		file: "1440p-HD-Wallpaper-Free-download.png",
-		title: "Neon 3",
-		color: "pink",
-		theme: "light",
-	},
-	{
-		file: "arrival_at_saturn-wallpaper-7680x4320.jpg",
-		title: "Saturn",
-		color: "earth",
-		theme: "light",
-	},
-	{
-		file: "HP-Wallpaper.jpg",
-		title: "HP",
-		color: "pink",
-		theme: "light",
-	},
-	{
-		file: "pink_desert_blue_sky-wallpaper-2880x1620.jpg",
-		title: "Pink 2",
-		color: "light-pink",
-		theme: "light",
-	},
-	{
-		file: "pink_sea_aesthetic-wallpaper-2880x1620.jpg",
-		title: "Pink 3",
-		color: "light-pink",
-		theme: "light",
-	},
-	{
-		file: "bay_10-wallpaper-3840x2160.jpg",
-		title: "Beach 2",
-		color: "green",
-		theme: "light",
-	},
-	{
-		file: "pink_umbrellas-wallpaper-5120x2880.jpg",
-		title: "Umbrellas",
-		color: "pink",
-		theme: "light",
-	},
-	{
-		file: "peter_morales-wallpaper-3840x2160.jpg",
-		title: "Spiderman",
-		color: "red",
-		theme: "light",
-	},
-	{
-		file: "miles_morales_night_spark-wallpaper-3840x2160.jpg",
-		title: "Spiderman 2",
-		color: "yellow",
-		theme: "light",
-	},
-	{
-		file: "pastel_macarons_aesthetic-wallpaper-5120x2880.jpg",
-		title: "Macarons",
-		color: "light-pink",
-		theme: "light",
-	},
-	{
-		file: "billie_eilish-wallpaper-5120x2880.jpg",
-		title: "Billie Eilish",
-		color: "earth",
-		theme: "light",
-	},
-];
+// will be later resolved on dom content loaded
+var wallpapers_list = null;
+var selected_wallpaper = null;
+var color = null;
 
 const wallpapers_url = "./wallpapers/";
 // "https://github.com/lscambo13/my-home-page/raw/main/wallpapers/";
@@ -234,15 +68,6 @@ function remove_bookmark_from_localstorage(id) {
 }
 
 // BOOKMARKs -- end
-
-var selected_wallpaper = localStorage.getItem("wallpaper");
-if (selected_wallpaper == null) {
-	selected_wallpaper = wallpapers_list[4].file;
-	// var color = wallpapers_list[4].color;
-}
-var color = wallpapers_list.filter((item) => {
-	return item.file == selected_wallpaper;
-})[0].color;
 
 function set_wallpaper(fileName, color) {
 	selected_wallpaper = fileName;
@@ -734,9 +559,27 @@ function fetch_bookmarks(event) {
 
 // Event Listeners ---
 
-document.addEventListener("DOMContentLoaded", () => {
+function resolve_wallpapers() {
+	selected_wallpaper = localStorage.getItem("wallpaper");
+	if (selected_wallpaper == null) {
+		selected_wallpaper = wallpapers_list[4].file;
+		// var color = wallpapers_list[4].color;
+	}
+	color = wallpapers_list.filter((item) => {
+		return item.file == selected_wallpaper;
+	})[0].color;
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
 	// Add wallpapers to HTML
-	const n = wallpapers_list.length;
+
+	var response = await fetch(
+		"https://raw.githubusercontent.com/lscambo13/my-home-page/main/wallpapers/wallpapers_list.json"
+	);
+	var text = await response.text();
+	wallpapers_list = JSON.parse(text);
+	resolve_wallpapers();
+
 	var bar = document.getElementById("wallpapers");
 
 	for (let n of wallpapers_list) {
