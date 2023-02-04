@@ -652,8 +652,7 @@ class search {
 				input = input.split(" ").join("+");
 				var url = search.default_domain + input;
 				window.open(url);
-			}
-			this.cli_parse(input);
+			} else this.cli_parse(input);
 		} else {
 			alert("You need to enter a search query.");
 		}
