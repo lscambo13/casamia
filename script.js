@@ -598,11 +598,11 @@ function toggle_clock() {
 		let user = "Amritpal";
 		var greeting = (int) => {
 			if (int < 12) {
-				return `Good Morning! ${user}`;
+				return `Good Morning, ${user}`;
 			} else if (int >= 12 && int <= 18) {
-				return `Good Afternoon! ${user}`;
+				return `Good Afternoon, ${user}`;
 			} else if (int >= 18) {
-				return `Good Evening! ${user}`;
+				return `Good Evening, ${user}`;
 			}
 		};
 
