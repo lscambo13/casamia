@@ -571,8 +571,9 @@ function resolve_wallpapers() {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
-	// Add wallpapers to HTML
+	load_bookmarks();
 
+	// Add wallpapers to HTML
 	var response = await fetch(
 		"https://raw.githubusercontent.com/lscambo13/casamia/main/wallpapers/wallpapers_list.json"
 	);
@@ -606,7 +607,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 	load_settings();
 	set_wallpaper(selected_wallpaper, color);
 	highlight_set_wallpaper();
-	load_bookmarks();
 
 	// Make the DIV element draggable:
 	dragElement(document.getElementById("labs"));
