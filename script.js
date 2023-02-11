@@ -649,7 +649,8 @@ class search {
 		var input = utils.getSearchTerm().value;
 		if (input != "") {
 			if (!this.cli_check(input)) {
-				input = input.split(" ").join("+");
+				input = encodeURIComponent(input);
+				//input = input.split(" ").join("+");
 				var url = search.default_domain + input;
 				window.open(url);
 			} else this.cli_parse(input);
@@ -661,7 +662,8 @@ class search {
 	static movies() {
 		var input = utils.getSearchTerm().value;
 		if (input != "") {
-			input = input.split(" ").join("%20");
+			input = encodeURIComponent(input);
+			//input = input.split(" ").join("%20");
 			var url = search.ext_domain + input + "/Movies/time/desc/1/";
 			window.open(url);
 		} else {
@@ -672,7 +674,7 @@ class search {
 	static tv() {
 		var input = utils.getSearchTerm().value;
 		if (input != "") {
-			input = input.split(" ").join("%20");
+			input = encodeURIComponent(input);
 			var url = search.ext_domain + input + "/TV/size/desc/1/";
 			window.open(url);
 		} else {
@@ -683,7 +685,7 @@ class search {
 	static games() {
 		var input = utils.getSearchTerm().value;
 		if (input != "") {
-			input = input.split(" ").join("%20");
+			input = encodeURIComponent(input);
 			var url = search.ext_domain + input + "/Games/time/desc/1/";
 			window.open(url);
 		} else {
@@ -693,7 +695,7 @@ class search {
 	static ebooks() {
 		var input = utils.getSearchTerm().value;
 		if (input != "") {
-			input = input.split(" ").join("%20");
+			input = encodeURIComponent(input);
 			var url = search.ext_domain + input + "/Other/seeders/desc/1/";
 			window.open(url);
 		} else {
