@@ -631,6 +631,11 @@ window.addEventListener("wheel", function (e) {
 	}
 });
 
+window.addEventListener("blur", () => {
+	hide_loading();
+	// console.log("no focus");
+});
+
 // Classes ---
 
 class utils {
