@@ -125,13 +125,19 @@ input[type="checkbox"] {
 
 #heading {
   color: var(--primary-color);
+  font-family: "Ubuntu";
   /* background-image: var(--primary-gradient-default);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent; */
-  font-size: clamp(1em, 2.5em, 10em);
+  font-size: clamp(1em, 2em, 10em);
   cursor: default;
   text-align: center;
+}
+
+#subtitle {
+  font-family: "Ubuntu";
+  font-size: 0.75em;
 }
 
 .search {
@@ -161,6 +167,10 @@ input[type="checkbox"] {
   caret-color: var(--primary-color);
   background-color: var(--white-quarter-alpha);
   transition: 200ms;
+}
+
+.searchTerm::placeholder {
+  color: var(--white-quarter-alpha);
 }
 
 .searchTerm::-webkit-search-cancel-button {

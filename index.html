@@ -17,6 +17,9 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
     rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="./animations.css">
   <link rel="stylesheet" href="./icons.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -37,6 +40,7 @@
     </button>
     <button class="button" onkeypress="click_to_enter(event)" onclick="download_wallpaper()">Download Wallpaper</button>
     <button class="button" onkeypress="click_to_enter(event)" onclick="toggle_favicons(event)">Toggle Favicons</button>
+    <button class="button" onkeypress="click_to_enter(event)" onclick="toggle_clock(event)">Toggle Clock</button>
     <button class="button" onkeypress="click_to_enter(event)" onclick="toggle_glow(event)">Toggle Glow</button>
     <button class="button" onkeypress="click_to_enter(event)" onclick="fetch_bookmarks(event)">Fetch Bookmarks</button>
     <button class="button" onkeypress="click_to_enter(event)" onclick="reset_bookmarks(event)">Reset Bookmarks</button>
@@ -48,12 +52,13 @@
   <div id="wrap" class="startup_slide_down">
     <div class="flex-main-container-vertical">
       <div id="heading">
-        <h1>Search</h1>
+        <h1 id="main-heading">Search</h1>
+        <p id="subtitle" style="display:none;">Lorem ipsum dolor sit amet elit.</p>
       </div>
 
       <div class="search">
-        <input title="Search" type="search" class="searchTerm" onkeypress="enter_handler(event)" placeholder=""
-          name="search" autocomplete="on" tabindex="1" />
+        <input title="Search" type="search" class="searchTerm" onkeypress="enter_handler(event)"
+          placeholder="What's on your mind?" name="search" autocomplete="on" tabindex="1" />
         <button type="submit" class="searchButton" onkeypress="click_to_enter(event)" onclick="search.default()"
           title="Search Google" tabindex="1">
           <i class="fa fa-google"></i>

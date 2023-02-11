@@ -564,6 +564,63 @@ function fetch_bookmarks(event) {
 	fetch(source_link).then((res) => import_bookmarks(null, res.text()));
 }
 
+function toggle_clock() {
+	const main_heading = document.getElementById("main-heading");
+	const subtitle = document.getElementById("subtitle");
+
+	//console.log(`${hours}:${minutes}:${seconds} ${am_pm(hours)}`);
+	function add_zero(char) {
+		if (char.length == 1) char = "0" + char;
+		return char;
+	}
+
+	function clock() {
+		var date = new Date();
+		var hours = date.getHours();
+		var am_pm = (int) => {
+			if (int == 0) {
+				hours.toString();
+				hours = "12";
+				return "AM";
+			} else if (int > 0 && int < 12) {
+				hours = add_zero(hours.toString());
+				return "AM";
+			} else if (int == 12) {
+				hours = "12";
+				return "PM";
+			} else if (int > 12) {
+				hours = hours - 12;
+				hours.toString();
+				hours = add_zero(hours);
+				return "PM";
+			}
+		};
+		let user = "Amritpal";
+		var greeting = (int) => {
+			if (int < 12) {
+				return `Good Morning! ${user}`;
+			} else if (int >= 12 && int <= 18) {
+				return `Good Afternoon! ${user}`;
+			} else if (int >= 18) {
+				return `Good Evening! ${user}`;
+			}
+		};
+
+		var minutes = add_zero(date.getMinutes().toString());
+		var seconds = add_zero(date.getSeconds().toString());
+		greeting = greeting(hours);
+		am_pm = am_pm(hours);
+
+		main_heading.innerText = `${hours}:${minutes} ${am_pm}`;
+		subtitle.innerText = greeting;
+		subtitle.style.display = "block";
+
+		console.log(`${hours}:${minutes}:${seconds} ${am_pm}`);
+	}
+
+	setInterval(clock, 1000);
+}
+
 function click_to_enter(event) {
 	if (event.key === "Enter") event.target.click();
 }
