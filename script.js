@@ -36,9 +36,11 @@ function add_bookmark_to_html(link, name, id) {
 	var i = document.createElement("span");
 	var d = document.createElement("div");
 	new_bookmark.setAttribute("onclick", "display_loading(event)");
+	new_bookmark.setAttribute("onkeypress", "click_to_enter(event)");
 	new_bookmark.className = "custom_bookmark";
 	new_bookmark.setAttribute("href", link);
 	new_bookmark.setAttribute("id", id);
+	new_bookmark.setAttribute("tabindex", "1");
 	// new_bookmark.setAttribute("onmouseenter", "remove_bookmark(event)");
 	// new_bookmark.setAttribute("onmouseleave", "remove_timeout(event)");
 	i.textContent = name;
@@ -46,6 +48,9 @@ function add_bookmark_to_html(link, name, id) {
 	d.innerHTML = "&#215;";
 	d.classList.add("cross");
 	d.setAttribute("onclick", "remove_bookmark(event)");
+	d.setAttribute("onkeypress", "click_to_enter(event)");
+
+	d.setAttribute("tabindex", "5");
 	new_bookmark.appendChild(i);
 	new_bookmark.appendChild(d);
 	bookmark_container.appendChild(new_bookmark);
@@ -311,6 +316,8 @@ function remove_bookmark(event) {
 function change_wallpaper(event) {
 	event.stopPropagation();
 	let selection = event.target.title;
+	if (!selection) selection = event.target.childNodes[1].title;
+	//console.log("clicks " + selection + event.target.childNodes[1].title);
 	var wall = get_wallpaper_details(selection);
 	set_wallpaper(wall[0], wall[1]);
 	highlight_set_wallpaper();
@@ -557,6 +564,10 @@ function fetch_bookmarks(event) {
 	fetch(source_link).then((res) => import_bookmarks(null, res.text()));
 }
 
+function click_to_enter(event) {
+	if (event.key === "Enter") event.target.click();
+}
+
 // Event Listeners ---
 
 function resolve_wallpapers() {
@@ -590,6 +601,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 		var thumb = document.createElement("div");
 		thumb.className = "thumb-group";
 		thumb.setAttribute("onclick", "change_wallpaper(event)");
+		thumb.setAttribute("onkeypress", "click_to_enter(event)");
+
+		thumb.setAttribute("tabindex", "3");
 
 		var div = document.createElement("div");
 		div.innerHTML = n.title;

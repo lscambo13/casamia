@@ -256,8 +256,11 @@ input[type="checkbox"] {
 }
 
 .flex-sub-container-horizontal>*:hover,
+.flex-sub-container-horizontal>*:focus,
 #add_bookmark_button:hover,
-#settings_button:hover {
+#add_bookmark_button:focus,
+#settings_button:hover,
+#settings_button:focus {
   background-color: var(--highlight-color);
   transition: 500ms;
 }
@@ -314,7 +317,8 @@ input[type="checkbox"] {
   color: var(--dark);
 }
 
-.thumb-group:hover {
+.thumb-group:hover,
+.thumb-group:focus {
   box-shadow: 0 0 0.5em #fff;
   animation: animation_zoom 0.25s;
   animation-fill-mode: both;
@@ -322,7 +326,8 @@ input[type="checkbox"] {
   transition: 1000ms;
 }
 
-.animate:hover>.thumb-title {
+.animate:hover>.thumb-title,
+.animate:focus>.thumb-title {
   animation: animation_appear 0.25s;
   animation-fill-mode: both;
   animation-iteration-count: 1;
@@ -390,14 +395,16 @@ input[type="checkbox"] {
   cursor: pointer;
   caret-color: transparent;
   order: 1337;
+  border: 0.075em solid var(--primary-color);
 }
 
-#settings_button>a {
-  color: var(--primary-color);
-  font-size: clamp(0.5em, 2em, 4em);
+#settings_button * {
+  margin: 0;
+  padding: 0;
+  font-size: 2em;
 }
 
-#settings_button:not(:active)>a>i {
+#settings_button:not(:active)>i {
   transition: 750ms;
   rotate: 360deg;
 }
@@ -419,7 +426,6 @@ input[type="checkbox"] {
   background-color: var(--custom-bookmark);
   /* background-color: rgba(56, 121, 218, 0.4); */
   border: 0.075em solid var(--primary-color);
-
   text-decoration: none;
 }
 
@@ -511,7 +517,8 @@ input[type="checkbox"] {
   text-decoration: none;
 }
 
-.footer *:hover {
+.footer *:hover,
+.footer *:focus {
   color: rgba(255, 255, 255, 1);
 }
 
