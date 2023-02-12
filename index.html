@@ -58,7 +58,8 @@
 
       <div class="search">
         <input title="Search" type="search" class="searchTerm" onkeypress="enter_handler(event)"
-          placeholder="What's on your mind?" name="search" autocomplete="on" tabindex="1" />
+          placeholder="What's on your mind?" name="search" autocomplete="on" tabindex="1"
+          oninput="cli_indicator(event)" />
         <button type="submit" class="searchButton" onkeypress="click_to_enter(event)" onclick="search.default()"
           title="Search Google" tabindex="1">
           <i class="fa fa-google"></i>

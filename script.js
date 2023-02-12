@@ -626,6 +626,20 @@ function click_to_enter(event) {
 }
 
 // Event Listeners ---
+function cli_indicator(event) {
+	const search_button = document
+		.getElementsByClassName("searchButton")
+		.item(0).childNodes[1];
+
+	if (search.cli_check(event.target.value)) {
+		search_button.classList.remove("fa-google");
+		search_button.classList.add("fa-terminal");
+	} else {
+		search_button.classList.add("fa-google");
+		search_button.classList.remove("fa-terminal");
+	}
+	//console.log(event.target.value);
+}
 
 function resolve_wallpapers() {
 	selected_wallpaper = localStorage.getItem("wallpaper");
