@@ -3,25 +3,44 @@ import {
 	changeGlow,
 	toggleRemoveButtons,
 	downloadBookmarks,
-	customBookmarks,
+	WALLPAPERS_URL,
+	loadBookmarks,
+	resolveWallpapers,
+	loadSettings,
+	setWallpaper,
+	selectedWallpaper,
+	color,
+	highlightSetWallpaper,
+	dragElement,
+	getWallpaperDetails,
+	wait,
+	saveBookmarks,
 } from './script.js';
+import {
+	customBookmarks,
+	setCustomBookmarks,
+	wallpapersList,
+	setWallpapersList,
+} from './../js_modules/database.js';
+import {
+	Search,
+} from './../js_modules/search.js'
 
 const bottomFilmRollContainer = document.getElementById('wallpapers');
 const wrap = document.getElementById('wrap');
+
 
 window.hideWallpapers = (str, event) => {
 	if (event) {
 		event.stopPropagation();
 	}
 	hideLoading();
-
 	switch (str) {
 		case 'body': {
 			if (
 				bottomFilmRollContainer.classList.length == 2 &&
 				bottomFilmRollContainer.classList[1] == 'animation_slide_up'
 			) {
-				// window.open("#", "_self");
 				bottomFilmRollContainer.classList.remove('animation_slide_up');
 				bottomFilmRollContainer.classList.add('animation_slide_down');
 				wrap.classList.remove('animation2_slide_up');
@@ -29,6 +48,7 @@ window.hideWallpapers = (str, event) => {
 				toggleRemoveButtons('hide');
 				changeGlow(null, 0);
 			}
+			break;
 		};
 		case 'button': {
 			bottomFilmRollContainer.style.display = 'flex';
@@ -50,6 +70,7 @@ window.hideWallpapers = (str, event) => {
 				changeGlow(null, 0);
 				toggleRemoveButtons('hide');
 			}
+			break;
 		}
 	}
 };
@@ -66,10 +87,10 @@ window.exportBookmarks = (event) => {
 };
 
 window.downloadWallpaper = () => {
-	console.log(wallpapers_url + selected_wallpaper);
+	console.log(WALLPAPERS_URL + selectedWallpaper);
 	const element = document.createElement('a');
-	element.setAttribute('href', wallpapers_url + selected_wallpaper);
-	element.setAttribute('download', selected_wallpaper);
+	element.setAttribute('href', WALLPAPERS_URL + selectedWallpaper);
+	element.setAttribute('download', selectedWallpaper);
 	element.style.display = 'none';
 	document.body.appendChild(element);
 	element.click();
@@ -178,9 +199,7 @@ window.importBookmarks = (event, text = '') => {
 	if (event) {
 		event.stopPropagation();
 		file = event.target.files[0].text();
-	} else {
-		file = text;
-	};
+	} else file = text;
 
 	function result(file) {
 		const importedBookmarks = JSON.parse(file);
@@ -196,11 +215,12 @@ window.importBookmarks = (event, text = '') => {
 				i.id = Date.now();
 			}
 			ids.push(i.id);
-			save_bookmarks(i.link, i.name, i.id);
+			saveBookmarks(i.link, i.name, i.id);
 		}
 
 		window.location.reload();
-	};
+	}
+
 	file.then(result);
 };
 
@@ -269,9 +289,9 @@ window.createNewBookmark = () => {
 
 window.toggleBlur = (event) => {
 	// event.stopPropagation();
-	const checkbox_blur = document.getElementById('blur-setting');
+	const checkboxBlur = document.getElementById('blur-setting');
 	const overlay = document.getElementById('overlay');
-	if (checkbox_blur.checked == true) {
+	if (checkboxBlur.checked == true) {
 		overlay.style.backdropFilter = 'blur(1em)';
 		localStorage.setItem('blur_wallpaper', 'blur(1em)');
 	} else {
@@ -308,4 +328,90 @@ window.toggleLabs = (event) => {
 	}
 };
 
+window.changeWallpaper = (event) => {
+	event.stopPropagation();
+	let selection = event.target.title;
+	if (!selection) selection = event.target.childNodes[1].title;
+	// console.log("clicks " + selection + event.target.childNodes[1].title);
+	const wall = getWallpaperDetails(selection);
+	setWallpaper(wall[0], wall[1]);
+	highlightSetWallpaper();
+};
 
+class search extends Search {
+	static default = () => { console.log('classed') };
+}
+// ----------------------------------------------------------
+
+document.addEventListener('DOMContentLoaded', async () => {
+	// const wallpapersList = [];
+	console.log('DOM load');
+	loadBookmarks();
+	toggleClock();
+
+	// Add wallpapers to HTML
+	const response = await fetch(
+		'https://raw.githubusercontent.com/lscambo13/casamia/main/wallpapers/wallpapers_list.json',
+	);
+	const text = await response.text();
+	setWallpapersList(JSON.parse(text));
+
+	resolveWallpapers();
+
+	const bar = document.getElementById('wallpapers');
+
+	for (const n of wallpapersList) {
+		let input = n.file;
+		input = input.split('.').join('-thumb.');
+
+		const thumb = document.createElement('div');
+		thumb.className = 'thumb-group';
+		thumb.setAttribute('onclick', 'changeWallpaper(event)');
+		thumb.setAttribute('onkeypress', 'click_to_enter(event)');
+
+		thumb.setAttribute('tabindex', '3');
+
+		const div = document.createElement('div');
+		div.innerHTML = n.title;
+		div.className = 'thumb-title';
+		thumb.appendChild(div);
+
+		const img = document.createElement('img');
+		img.src = WALLPAPERS_URL + input;
+		img.className = 'thumbnail';
+		img.title = n.title;
+		thumb.appendChild(img);
+
+		bar.appendChild(thumb);
+	}
+	loadSettings();
+	setWallpaper(selectedWallpaper, color);
+	highlightSetWallpaper();
+
+	// Make the DIV element draggable:
+	dragElement(document.getElementById('labs'));
+});
+
+window.addEventListener('hashchange', () => {
+	const url = document.URL;
+
+	if (!url.includes('#wallpapers')) {
+		console.log('url found');
+		hide_wallpapers_alt();
+	}
+	console.log('go back');
+});
+
+window.addEventListener('wheel', (e) => {
+	const item = document.getElementById('wallpapers');
+	if (e.deltaY > 0) {
+		if (item.classList[1] == 'animation_slide_up') item.scrollLeft += 100;
+	} else {
+		if (item.classList[1] == 'animation_slide_up') item.scrollLeft -= 100;
+	}
+});
+
+window.addEventListener('blur', () => {
+	hideLoading();
+	// console.log("no focus");
+});

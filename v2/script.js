@@ -1,34 +1,34 @@
+/* eslint-disable max-len */
 // will be later resolved on dom content loaded
-let wallpapers_list = null;
-let selected_wallpaper = null;
-let color = null;
+import {
+	customBookmarks,
+	setCustomBookmarks,
+	wallpapersList,
+	setWallpapersList,
+} from './../js_modules/database.js';
+export let selectedWallpaper = null;
+export let color = null;
 
-const wallpapers_url = './wallpapers/';
+export const WALLPAPERS_URL = './../wallpapers/';
 // "https://github.com/lscambo13/casamia/raw/main/wallpapers/";
 
 // BOOKMARKs -- start
 
-export let customBookmarks = [
-	{
-		link: '',
-		name: '',
-		id: 0,
-	},
-];
 
-export function load_bookmarks() {
-	customBookmarks = JSON.parse(localStorage.getItem('saved_bookmarks'));
+export function loadBookmarks() {
+	setCustomBookmarks(JSON.parse(localStorage.getItem('saved_bookmarks')));
+
 	if (customBookmarks == null) {
-		customBookmarks = [];
+		setCustomBookmarks([]);
 		return;
 	}
 	for (const n of customBookmarks) {
-		add_bookmark_to_html(n.link, n.name, n.id);
+		addBookmarkToHTML(n.link, n.name, n.id);
 	}
 }
 
-export function add_bookmark_to_html(link, name, id) {
-	const bookmark_container = document.getElementsByClassName(
+export function addBookmarkToHTML(link, name, id) {
+	const bookmarkContainer = document.getElementsByClassName(
 		'flex-sub-container-horizontal',
 	)[0];
 
@@ -53,10 +53,10 @@ export function add_bookmark_to_html(link, name, id) {
 	d.setAttribute('tabindex', '5');
 	newBookmark.appendChild(i);
 	newBookmark.appendChild(d);
-	bookmark_container.appendChild(newBookmark);
+	bookmarkContainer.appendChild(newBookmark);
 }
 
-export function save_bookmarks(link, name, id) {
+export function saveBookmarks(link, name, id) {
 	customBookmarks.push({
 		link: link,
 		name: name,
@@ -65,7 +65,7 @@ export function save_bookmarks(link, name, id) {
 	localStorage.setItem('saved_bookmarks', JSON.stringify(customBookmarks));
 }
 
-export function remove_bookmark_from_localstorage(id) {
+export function removeBookmarkFromLocalStorage(id) {
 	customBookmarks = customBookmarks.filter((elem) => {
 		return id != elem.id;
 	});
@@ -74,27 +74,26 @@ export function remove_bookmark_from_localstorage(id) {
 
 // BOOKMARKs -- end
 
-export function set_wallpaper(fileName, color) {
-	selected_wallpaper = fileName;
-	const glow_color = color;
+export function setWallpaper(fileName, color) {
+	selectedWallpaper = fileName;
 	const overlay = document.getElementById('overlay');
 	console.log('test ' + overlay.style.backdropFilter);
 	overlay.style.backdropFilter = 'blur(1em)';
 	const temp = new Image();
-	temp.src = wallpapers_url + fileName;
+	temp.src = WALLPAPERS_URL + fileName;
 	temp.onload = (e) => {
-		apply_wallpaper(selected_wallpaper);
-		localStorage.setItem('wallpaper', selected_wallpaper);
+		applyWallpaper(selectedWallpaper);
+		localStorage.setItem('wallpaper', selectedWallpaper);
 		loadBlur();
 	};
 
-	changeGlow(glow_color);
-	const input_thumb = fileName.split('.').join('-thumb.');
-	apply_wallpaper(input_thumb);
+	changeGlow(color);
+	const inputThumb = fileName.split('.').join('-thumb.');
+	applyWallpaper(inputThumb);
 }
 
-export function apply_wallpaper(input) {
-	document.body.style.backgroundImage = 'url(' + wallpapers_url + input + ')';
+export function applyWallpaper(input) {
+	document.body.style.backgroundImage = 'url(' + WALLPAPERS_URL + input + ')';
 	document.body.style.backgroundRepeat = 'no-repeat';
 	document.body.style.backgroundSize = 'cover';
 	document.body.style.backgroundAttachment = 'fixed';
@@ -102,26 +101,26 @@ export function apply_wallpaper(input) {
 }
 
 export function changeGlow(color, opacity) {
-	const glow_overlay = document.getElementById('gradient_overlay');
-	const wallpapers_roll_overlay = document.getElementById('wallpapers');
-	const glow_setting = localStorage.getItem('glow');
+	const glowOverlay = document.getElementById('gradient_overlay');
+	const wallpapersRollOverlay = document.getElementById('wallpapers');
+	const glowSetting = localStorage.getItem('glow');
 	if (opacity != null) {
-		if (glow_setting != '1') glow_overlay.style.opacity = opacity;
+		if (glowSetting != '1') glowOverlay.style.opacity = opacity;
 	}
 	if (color != null) {
-		wallpapers_roll_overlay.style.background = `var(--${color}-gradient)`;
-		glow_overlay.style.background = `var(--${color}-gradient)`;
+		wallpapersRollOverlay.style.background = `var(--${color}-gradient)`;
+		glowOverlay.style.background = `var(--${color}-gradient)`;
 	}
 }
 
-export function highlight_set_wallpaper() {
-	const available_wallpapers = document.getElementsByClassName('thumb-group');
-	for (const n of available_wallpapers) {
+export function highlightSetWallpaper() {
+	const availableWallpapers = document.getElementsByClassName('thumb-group');
+	for (const n of availableWallpapers) {
 		const thumbnail = n.getElementsByClassName('thumbnail')[0];
 		const title = n.getElementsByClassName('thumb-title')[0];
 		n.classList.add('animate');
 
-		if (thumbnail.src.replace('-thumb', '').includes(selected_wallpaper)) {
+		if (thumbnail.src.replace('-thumb', '').includes(selectedWallpaper)) {
 			title.style.opacity = '1';
 			n.classList.remove('animate');
 		} else {
@@ -133,80 +132,80 @@ export function highlight_set_wallpaper() {
 
 export function loadLabs() {
 	// Labs
-	const checkbox_labs = document.getElementById('labs-setting');
-	const labs_div = document.getElementById('labs');
+	const checkboxLabs = document.getElementById('labs-setting');
+	const labsDiv = document.getElementById('labs');
 
 	const labs = localStorage.getItem('labs');
 	if (labs != null) {
-		labs_div.style.display = labs;
+		labsDiv.style.display = labs;
 		if (labs == 'block') {
-			checkbox_labs.checked = true;
+			checkboxLabs.checked = true;
 		} else {
-			checkbox_labs.checked = false;
+			checkboxLabs.checked = false;
 		}
 	} else {
-		checkbox_labs.checked = false;
+		checkboxLabs.checked = false;
 	}
 }
 
 export function loadLights() {
 	// Lights out
-	const checkbox_wall = document.getElementById('wallpaper-setting');
+	const checkboxWall = document.getElementById('wallpaper-setting');
 	const overlay = document.getElementById('overlay');
 
 	const wall = localStorage.getItem('disable_wallpaper');
 	if (wall != null) {
 		overlay.style.backgroundColor = wall;
 		if (wall != 'rgba(0, 0, 0, 0.375)') {
-			checkbox_wall.checked = true;
+			checkboxWall.checked = true;
 		} else {
-			checkbox_wall.checked = false;
+			checkboxWall.checked = false;
 		}
 	} else {
-		checkbox_wall.checked = false;
+		checkboxWall.checked = false;
 	}
 }
 
 export function loadBlur() {
 	// Blur
-	const checkbox_blur = document.getElementById('blur-setting');
+	const checkboxBlur = document.getElementById('blur-setting');
 	const overlay = document.getElementById('overlay');
 
 	const blur = localStorage.getItem('blur_wallpaper');
 	if (blur != null) {
 		overlay.style.backdropFilter = blur;
 		if (blur == 'blur(1em)') {
-			checkbox_blur.checked = true;
+			checkboxBlur.checked = true;
 		} else {
-			checkbox_blur.checked = false;
+			checkboxBlur.checked = false;
 		}
 	} else {
-		checkbox_blur.checked = false;
+		checkboxBlur.checked = false;
 		overlay.style.backdropFilter = 'blur(0em)';
 	}
 }
 
-export function load_settings() {
+export function loadSettings() {
 	loadBlur();
 	loadLights();
 	loadLabs();
 }
 
 export function toggleRemoveButtons(visible) {
-	const custom_bookmark = document.getElementsByClassName('custom_bookmark');
+	const customBookmark = document.getElementsByClassName('custom_bookmark');
 	const cross = document.getElementsByClassName('cross');
-	const n = custom_bookmark.length;
+	const n = customBookmark.length;
 	switch (visible) {
 		case 'show': {
 			for (let i = 0; i < n; i++) {
-				custom_bookmark[i].classList.add('removable');
+				customBookmark[i].classList.add('removable');
 				cross[i].style.display = 'block';
 			}
 			break;
 		}
 		case 'hide': {
 			for (let i = 0; i < n; i++) {
-				custom_bookmark[i].classList.remove('removable');
+				customBookmark[i].classList.remove('removable');
 				cross[i].style.display = 'none';
 			}
 			break;
@@ -214,20 +213,20 @@ export function toggleRemoveButtons(visible) {
 	}
 }
 
-export let previous_click = null;
+export let previousClick = null;
 export function hideLoading() {
-	if (previous_click) {
-		previous_click.classList.toggle('loader');
+	if (previousClick) {
+		previousClick.classList.toggle('loader');
 	}
-	previous_click = null;
+	previousClick = null;
 }
-export function display_loading(event) {
+export function displayLoading(event) {
 	// element.stopPropagation();
 	// event.preventDefault();
 	hideLoading();
 
 	const click = event.target;
-	previous_click = click;
+	previousClick = click;
 
 	click.classList.toggle('loader');
 }
@@ -259,52 +258,43 @@ export function downloadBookmarks(filename, text) {
 
 // User interactable click events ---
 
-
-
-export function remove_bookmark(event) {
+export function removeBookmark(event) {
 	event.preventDefault();
 	console.log('click ' + event.target.parentNode.id);
 	event.stopPropagation();
 	if (confirm('Remove this bookmark?')) {
-		remove_bookmark_from_localstorage(event.target.parentNode.id);
+		removeBookmarkFromLocalStorage(event.target.parentNode.id);
 		event.target.parentNode.style.display = 'none';
 		// event.target.style.display = "none";
 	}
 	return;
 }
 
-export function change_wallpaper(event) {
+export function changeWallpaper(event) {
 	event.stopPropagation();
 	let selection = event.target.title;
 	if (!selection) selection = event.target.childNodes[1].title;
 	// console.log("clicks " + selection + event.target.childNodes[1].title);
-	const wall = get_wallpaper_details(selection);
-	set_wallpaper(wall[0], wall[1]);
-	highlight_set_wallpaper();
+	const wall = getWallpaperDetails(selection);
+	setWallpapersetWallpaper(wall[0], wall[1]);
+	highlightSetWallpaper();
 }
 
-export function get_wallpaper_details(title) {
-	const wallpaper = wallpapers_list.filter((item) => {
+export function getWallpaperDetails(title) {
+	const wallpaper = wallpapersList.filter((item) => {
 		return item.title == title;
 	})[0].file;
-	const color = wallpapers_list.filter((item) => {
+	const color = wallpapersList.filter((item) => {
 		return item.title == title;
 	})[0].color;
 	return [wallpaper, color];
 }
 
-
-
-
-
-export function enter_handler(event) {
+export function enterHandler(event) {
 	if (event.key == 'Enter') {
 		search.default();
 	}
 }
-
-
-
 
 export function wait(ms) {
 	let now = Date.now();
@@ -314,227 +304,45 @@ export function wait(ms) {
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-export function click_to_enter(event) {
+export function clickToEnter(event) {
 	if (event.key === 'Enter') event.target.click();
 }
 
 // Event Listeners ---
-export function cli_indicator(event) {
-	const search_button = document
+export function cliIndicator(event) {
+	const searchButton = document
 		.getElementsByClassName('searchButton')
 		.item(0).childNodes[1];
 
 	if (search.cli_check(event.target.value)) {
-		search_button.classList.remove('fa-google');
-		search_button.classList.add('fa-terminal');
+		searchButton.classList.remove('fa-google');
+		searchButton.classList.add('fa-terminal');
 	} else {
-		search_button.classList.add('fa-google');
-		search_button.classList.remove('fa-terminal');
+		searchButton.classList.add('fa-google');
+		searchButton.classList.remove('fa-terminal');
 	}
 	// console.log(event.target.value);
 }
 
-export function resolve_wallpapers() {
-	selected_wallpaper = localStorage.getItem('wallpaper');
-	if (selected_wallpaper == null) {
-		selected_wallpaper = wallpapers_list[4].file;
+export function resolveWallpapers() {
+	selectedWallpaper = localStorage.getItem('wallpaper');
+	if (selectedWallpaper == null) {
+		selectedWallpaper = wallpapersList[4].file;
 		// var color = wallpapers_list[4].color;
+		console.log(wallpapersList);
 	}
-	color = wallpapers_list.filter((item) => {
-		return item.file == selected_wallpaper;
+
+	color = wallpapersList.filter((item) => {
+		return item.file == selectedWallpaper;
 	})[0].color;
 }
 
-document.addEventListener('DOMContentLoaded', async () => {
-	load_bookmarks();
-
-	// Add wallpapers to HTML
-	const response = await fetch(
-		'https://raw.githubusercontent.com/lscambo13/casamia/main/wallpapers/wallpapers_list.json',
-	);
-	const text = await response.text();
-	wallpapers_list = JSON.parse(text);
-	resolve_wallpapers();
-
-	const bar = document.getElementById('wallpapers');
-
-	for (const n of wallpapers_list) {
-		let input = n.file;
-		input = input.split('.').join('-thumb.');
-
-		const thumb = document.createElement('div');
-		thumb.className = 'thumb-group';
-		thumb.setAttribute('onclick', 'change_wallpaper(event)');
-		thumb.setAttribute('onkeypress', 'click_to_enter(event)');
-
-		thumb.setAttribute('tabindex', '3');
-
-		const div = document.createElement('div');
-		div.innerHTML = n.title;
-		div.className = 'thumb-title';
-		thumb.appendChild(div);
-
-		const img = document.createElement('img');
-		img.src = wallpapers_url + input;
-		img.className = 'thumbnail';
-		img.title = n.title;
-		thumb.appendChild(img);
-
-		bar.appendChild(thumb);
-	}
-	load_settings();
-	set_wallpaper(selected_wallpaper, color);
-	highlight_set_wallpaper();
-
-	// Make the DIV element draggable:
-	dragElement(document.getElementById('labs'));
-});
-
-window.addEventListener('hashchange', () => {
-	const url = document.URL;
-
-	if (!url.includes('#wallpapers')) {
-		console.log('url found');
-		hide_wallpapers_alt();
-	}
-	console.log('go back');
-});
-
-window.addEventListener('wheel', function (e) {
-	const item = document.getElementById('wallpapers');
-	if (e.deltaY > 0) {
-		if (item.classList[1] == 'animation_slide_up') item.scrollLeft += 100;
-	} else {
-		if (item.classList[1] == 'animation_slide_up') item.scrollLeft -= 100;
-	}
-});
-
-window.addEventListener('blur', () => {
-	hideLoading();
-	// console.log("no focus");
-});
 
 // Classes ---
 
-class utils {
-	static getSearchTerm() {
-		return document.getElementsByClassName('searchTerm')[0];
-	}
-}
 
-class search {
-	constructor() { }
-	static ext_domain = 'https://x1337x.ws/sort-category-search/';
-	static default_domain = 'https://www.google.com/search?q=';
-	static x1337x = 'https://x1337x.ws/home/';
 
-	static default() {
-		let input = utils.getSearchTerm().value;
-		if (input != '') {
-			if (!this.cli_check(input)) {
-				input = encodeURIComponent(input);
-				// input = input.split(" ").join("+");
-				const url = search.default_domain + input;
-				window.open(url);
-			} else this.cli_parse(input);
-		} else {
-			alert('You need to enter a search query.');
-		}
-	}
 
-	static movies() {
-		let input = utils.getSearchTerm().value;
-		if (input != '') {
-			input = encodeURIComponent(input);
-			// input = input.split(" ").join("%20");
-			const url = search.ext_domain + input + '/Movies/time/desc/1/';
-			window.open(url);
-		} else {
-			alert('You need to enter a search query.');
-		}
-	}
-
-	static tv() {
-		let input = utils.getSearchTerm().value;
-		if (input != '') {
-			input = encodeURIComponent(input);
-			const url = search.ext_domain + input + '/TV/size/desc/1/';
-			window.open(url);
-		} else {
-			alert('You need to enter a search query.');
-		}
-	}
-
-	static games() {
-		let input = utils.getSearchTerm().value;
-		if (input != '') {
-			input = encodeURIComponent(input);
-			const url = search.ext_domain + input + '/Games/time/desc/1/';
-			window.open(url);
-		} else {
-			alert('You need to enter a search query.');
-		}
-	}
-	static ebooks() {
-		let input = utils.getSearchTerm().value;
-		if (input != '') {
-			input = encodeURIComponent(input);
-			const url = search.ext_domain + input + '/Other/seeders/desc/1/';
-			window.open(url);
-		} else {
-			alert('You need to enter a search query.');
-		}
-	}
-
-	static cli_check(input) {
-		// var input = utils.getSearchTerm().value;
-		if (input.startsWith('--')) {
-			return true;
-		}
-		return false;
-	}
-
-	static cli_parse(input) {
-		input = input.split('--').join('').toLowerCase();
-		// console.log(input);
-		switch (input) {
-			case 'help':
-				alert(
-					'Documentation:\n\n--help : This page\n--fetch default : Import a predefined set of custom bookmarks.\n--reset bookmarks : Reset the bookmarks while keeping other settings intact.\n--reset all : Reset everything, including the bookmarks and wallpaper preferences.\n',
-				);
-				break;
-			case 'reset bookmarks':
-				reset_bookmarks();
-				break;
-			case 'reset all':
-				reset_all();
-				break;
-			case 'fetch default':
-				fetch_bookmarks();
-				break;
-			case 'labs':
-				toggle_labs(null);
-				break;
-			default:
-				alert(
-					'The command you have passed is invalid.\nType --help to read the documentation.\n',
-				);
-		}
-	}
-}
 
 // Objects ---
 
