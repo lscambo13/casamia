@@ -1,0 +1,596 @@
+:root {
+  --white: #fbfaf8ff;
+  --white-half-alpha: #fbfaf892;
+  --white-quarter-alpha: #fbfaf843;
+  --white-low-alpha: #fbfaf815;
+
+  --dark: #060604;
+  --dark-low-alpha: #0606042c;
+
+  --accent-color: #fec34c;
+  --highlight-color: #dfb669;
+
+  --predefined-bookmark: #6856347e;
+  --custom-bookmark: #0034597e;
+  --add-bookmark: #4d685a7e;
+  --settings: #4d685a7e;
+
+  --primary-color: #faf7f0ff;
+  --secondary-color: #e7decdff;
+
+  /* --primary-gradient-fallback: #ECE9E6;
+  --primary-gradient-webkit: -webkit-linear-gradient(to top, #FFFFFF, #ECE9E6);
+  --primary-gradient-default: linear-gradient(to top, #FFFFFF, #ECE9E6); */
+
+  --pink-gradient-webkit: -webkit-linear-gradient(to top, #BB377D, 50%, #fbd3e900);
+  --pink-gradient: linear-gradient(to top, #BB377D, 50%, #fbd3e900);
+
+  --light-pink-gradient-webkit: -webkit-linear-gradient(to top, #ec96c4, 50%, #fbd3e900);
+  --light-pink-gradient: linear-gradient(to top, #ec96c4, 50%, #fbd3e900);
+
+  --earth-gradient-webkit: -webkit-linear-gradient(to top, #bb6a37, 50%, #fbd3e900);
+  --earth-gradient: linear-gradient(to top, #bb6a37, 50%, #fbd3e900);
+
+  --green-gradient-webkit: -webkit-linear-gradient(to top, #79bb37, 50%, #fbd3e900);
+  --green-gradient: linear-gradient(to top, #79bb37, 50%, #fbd3e900);
+
+  --yellow-gradient-webkit: -webkit-linear-gradient(to top, #bb9c37, 50%, #fbd3e900);
+  --yellow-gradient: linear-gradient(to top, #bb9c37, 50%, #fbd3e900);
+
+  --red-gradient-webkit: -webkit-linear-gradient(to top, #e04040, 50%, #fbd3e900);
+  --red-gradient: linear-gradient(to top, #e04040, 50%, #fbd3e900);
+
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box !important;
+  caret-color: transparent;
+  /* outline: crimson solid 2px; */
+  /* background-color: rgba(220, 20, 60, 0.12); */
+}
+
+body {
+  background-color: rgb(40, 40, 40);
+  font-family: "Ubuntu Mono", monospace;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  min-height: 100dvh;
+  align-items: center;
+}
+
+input[type="checkbox"] {
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+}
+
+#overlay {
+  position: fixed;
+  /* Sit on top of the page content */
+  display: block;
+  /* Hidden by default */
+  width: 100%;
+  /* Full width (cover the whole page) */
+  height: 100%;
+  /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.375);
+  /* Black background with opacity */
+  z-index: 0;
+  /* Specify a stack order in case you're using a different order for other elements */
+  cursor: auto;
+  /* Add a pointer on hover */
+  transition: 300ms;
+}
+
+#gradient_overlay {
+  position: fixed;
+  display: block;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  /* background: var(--red-gradient-less); */
+  z-index: 0;
+  cursor: auto;
+  transition: 300ms;
+}
+
+
+#wrap {
+  max-width: 1280px;
+  width: 100%;
+  margin: auto;
+  flex: 1;
+  z-index: 2;
+}
+
+.flex-main-container-vertical {
+  margin: auto;
+}
+
+/* .flex-main-container-vertical > div {
+  z-index: 2;
+} */
+
+#heading {
+  color: var(--primary-color);
+  font-family: "Ubuntu";
+  /* background-image: var(--primary-gradient-default);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent; */
+  font-size: clamp(1em, 2em, 10em);
+  cursor: default;
+  text-align: center;
+}
+
+#subtitle {
+  font-family: "Ubuntu";
+  font-size: 0.75em;
+}
+
+.search {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  text-align: center;
+  cursor: default;
+}
+
+.searchTerm {
+  width: 66%;
+  min-height: 3em;
+  border: 0.2em solid var(--primary-color);
+  border-right: none;
+  padding: 0 2em 0 1em;
+  border-radius: 2.5em 0 0 2.5em;
+  outline: none;
+  font-size: 1em;
+  color: var(--secondary-color);
+  margin-inline-end: 0;
+  backdrop-filter: blur(1em);
+  -webkit-backdrop-filter: blur(1em);
+  caret-color: var(--primary-color);
+  background-color: var(--white-quarter-alpha);
+  transition: 200ms;
+}
+
+.searchTerm::placeholder {
+  color: var(--white-quarter-alpha);
+}
+
+.searchTerm::-webkit-search-cancel-button {
+  filter: grayscale() invert() brightness(200%);
+  margin-inline-start: 0.7em;
+  margin-inline-end: -1.25em;
+  transition: 200ms;
+}
+
+.searchTerm::-webkit-search-cancel-button:hover {
+  scale: 1.1;
+}
+
+.searchTerm:hover,
+.searchTerm:focus {
+  background-color: var(--dark-low-alpha);
+  color: var(--primary-color);
+}
+
+.searchButton {
+  width: clamp(3em, 20%, 4em);
+  min-height: 3em;
+  min-width: 3em;
+  margin-inline-start: 0;
+  border: 0em solid var(--primary-color);
+  background: var(--primary-color);
+  text-align: center;
+  border-radius: 0 2.5em 2.5em 0;
+  cursor: pointer;
+  color: var(--dark);
+  font-size: clamp(1em, 1em, 2em);
+}
+
+.searchButton>i {
+  background-size: 2;
+  padding: 0.1em;
+  background-color: transparent;
+  border-radius: 2em;
+}
+
+/* .searchButton:hover > i {
+  background-color: rgb(219, 210, 195);
+  color: #5f8775;
+  padding: 0.5em;
+  transition: all 200ms;
+} */
+
+.searchButton:active>i {
+  padding: 0.7em;
+  background-color: var(--secondary-color);
+  padding: 0.8em;
+  color: var(--dark);
+  transition: all 200ms;
+}
+
+.flex-sub-container-horizontal {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.5em;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1em;
+  transition: 200ms;
+  /* box-sizing: border-box; */
+}
+
+.flex-sub-container-horizontal>div {
+  color: var(--primary-color);
+  width: clamp(1em, 4em, 8em);
+  height: clamp(1em, 4em, 8em);
+  margin: 2%;
+  display: flex;
+  flex-direction: row;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  /* background-color: rgba(95, 158, 160, 0.4); */
+  cursor: pointer;
+  caret-color: transparent;
+  border: 0.075em solid var(--primary-color);
+  transition: 200ms;
+}
+
+.predefined-bookmark {
+  background-color: var(--predefined-bookmark);
+  -webkit-backdrop-filter: blur(1em);
+  backdrop-filter: blur(1em);
+}
+
+.flex-sub-container-horizontal>div>i {
+  font-size: clamp(0.5em, 2em, 4em);
+}
+
+.flex-sub-container-horizontal>*:hover,
+.flex-sub-container-horizontal>*:focus,
+#add_bookmark_button:hover,
+#add_bookmark_button:focus,
+#settings_button:hover,
+#settings_button:focus {
+  background-color: var(--highlight-color);
+  transition: 500ms;
+}
+
+.flex-wallpaper-horizontal {
+  max-height: 10em;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  width: 100%;
+  display: none;
+  flex-direction: row;
+  justify-content: start;
+  position: fixed;
+  bottom: 0;
+  padding: 0.75em;
+  /* background-color: rgba(127, 255, 212, 0.3); */
+
+  /* background: #FBD3E9; */
+  /* fallback for old browsers */
+  /* background: -webkit-linear-gradient(to right, #BB377D, 60%, #fbd3e900); */
+  /* Chrome 10-25, Safari 5.1-6 */
+  /* background: var(--pink-gradient-most); */
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  /* backdrop-filter: blur(1em);
+  -webkit-backdrop-filter: blur(1em); */
+  z-index: 2;
+}
+
+.thumb-group {
+  width: 8em;
+  height: 4.8em;
+  margin: 0.5em;
+  border-radius: 1em;
+  cursor: pointer;
+}
+
+.settings {
+  min-width: 9em;
+  min-height: 4.8em;
+  margin: 0.5em;
+  border-radius: 1em;
+  -webkit-backdrop-filter: blur(1em);
+  backdrop-filter: blur(1em);
+  background-color: var(--white-half-alpha);
+  /* background-color: rgba(250, 235, 215, 0.7); */
+  cursor: pointer;
+}
+
+.setting-option {
+  padding-block: 0.8em;
+  padding-inline: 1em;
+  cursor: pointer;
+  color: var(--dark);
+}
+
+.thumb-group:hover,
+.thumb-group:focus {
+  box-shadow: 0 0 0.5em #fff;
+  animation: animation_zoom 0.25s;
+  animation-fill-mode: both;
+  animation-iteration-count: 1;
+  transition: 1000ms;
+}
+
+.animate:hover>.thumb-title,
+.animate:focus>.thumb-title {
+  animation: animation_appear 0.25s;
+  animation-fill-mode: both;
+  animation-iteration-count: 1;
+}
+
+.thumbnail {
+  position: relative;
+  width: 7.05em;
+  height: 4.8em;
+  border: 0.1em solid var(--primary-color);
+  margin-left: -0.04em;
+  border-radius: 0.9em;
+}
+
+.thumb-title {
+  position: absolute;
+  border-radius: 0 0 0.75em 0.75em;
+  border: 0 solid var(--primary-color);
+  border-top: none;
+  width: 6.89em;
+  padding-top: 0.3em;
+  margin-top: 3.15em;
+  margin-left: 0.05em;
+  padding-left: 0.75em;
+  padding-right: 0.25em;
+  padding-bottom: 0.3em;
+  z-index: 2;
+  opacity: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--dark-text-color);
+  /* backdrop-filter: blur(1em);
+  -webkit-backdrop-filter: blur(1em); */
+  background-color: rgba(250, 235, 215, 0.8);
+  pointer-events: none;
+}
+
+#add_bookmark_button {
+  background-color: var(--add-bookmark);
+  -webkit-backdrop-filter: blur(1em);
+  backdrop-filter: blur(1em);
+  order: 1336;
+}
+
+#add_bookmark_button:not(:active)>i {
+  transition: 750ms;
+  rotate: 360deg;
+}
+
+#settings_button {
+  color: var(--primary-color);
+  width: clamp(1em, 4em, 8em);
+  height: clamp(1em, 4em, 8em);
+  margin: 2%;
+  display: flex;
+  flex-direction: row;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  -webkit-backdrop-filter: blur(1em);
+  backdrop-filter: blur(1em);
+  background-color: var(--settings);
+  cursor: pointer;
+  caret-color: transparent;
+  order: 1337;
+  border: 0.075em solid var(--primary-color);
+}
+
+#settings_button * {
+  margin: 0;
+  padding: 0;
+  font-size: 2em;
+}
+
+#settings_button:not(:active)>i {
+  transition: 750ms;
+  rotate: 360deg;
+}
+
+.custom_bookmark {
+  color: var(--primary-color);
+  width: clamp(1em, 4em, 8em);
+  height: clamp(1em, 4em, 8em);
+  margin: 2%;
+  display: flex;
+  flex-direction: row;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  -webkit-backdrop-filter: blur(1em);
+  backdrop-filter: blur(1em);
+  cursor: pointer;
+  caret-color: transparent;
+  background-color: var(--custom-bookmark);
+  /* background-color: rgba(56, 121, 218, 0.4); */
+  border: 0.075em solid var(--primary-color);
+  text-decoration: none;
+}
+
+.custom_bookmark>span {
+  font-weight: bolder;
+  font-size: 1.5em;
+  pointer-events: none;
+}
+
+.removable {
+  border: 0.1em solid tomato;
+  transition: 300ms;
+}
+
+.cross {
+  position: fixed;
+  margin-top: 2.4em;
+  margin-left: 2.8em;
+  transition: 150ms;
+  text-align: center;
+  line-height: 1.2em;
+  padding-inline-start: 0.02em;
+  /* padding: 0.5em; */
+  width: 1.25em;
+  height: 1.25em;
+  /* height: clamp(0.375em, 1.25em, 3em); */
+  background-color: tomato;
+  border-radius: 50%;
+  display: none;
+}
+
+.labs {
+  position: absolute;
+  padding-bottom: 0.5em;
+  padding-inline: 0.375em;
+  border-radius: 0.5em;
+  background-color: rgba(95, 158, 160, 0.4);
+  backdrop-filter: blur(0.3em);
+  -webkit-backdrop-filter: blur(0.3em);
+  display: none;
+  text-align: center;
+  z-index: 3;
+  border: 1px solid #d3d3d3;
+}
+
+#mydivheader {
+  padding: 0em;
+  cursor: move;
+  z-index: 4;
+  /* border-radius: 0.5em 0.5em 0 0; */
+  background-color: transparent;
+  color: #fff;
+}
+
+.button {
+  padding-inline: 1em;
+  padding-block: 0.5em;
+  font-size: 0.5em;
+  margin-top: 1em;
+}
+
+#import-bookmarks {
+  display: none;
+}
+
+.none {
+  display: none;
+}
+
+.footer {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+  gap: 0.25em;
+  padding: 0.5em;
+}
+
+.footer * {
+  display: flex;
+  color: rgba(255, 255, 255, 0.5);
+  gap: 1em;
+  font-size: 0.85em;
+  line-height: 1.5em;
+  list-style: none;
+  transition: 150ms;
+  text-decoration: none;
+}
+
+.footer *:hover,
+.footer *:focus {
+  color: rgba(255, 255, 255, 1);
+}
+
+.ext_favicon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.loader {
+  border: 0.2em solid var(--primary-color) !important;
+  /* Light grey */
+  border-top: 0.2em solid dodgerblue !important;
+  /* Blue */
+  border-radius: 50%;
+  animation: spin 1s normal infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader * {
+  animation: spin-rev 1s normal infinite;
+}
+
+@keyframes spin-rev {
+  0% {
+    transform: rotate(360deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@media only screen and (min-width: 370px) {
+  body {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  body {
+    font-size: 22px;
+  }
+
+  .footer {
+    flex-direction: row;
+    justify-content: space-between;
+    padding-inline: 2em;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  body {
+    font-size: 24px;
+  }
+}
