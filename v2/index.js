@@ -24,7 +24,7 @@ import {
 } from './../js_modules/database.js';
 import {
 	Search,
-} from './../js_modules/search.js'
+} from './../js_modules/search.js';
 
 const bottomFilmRollContainer = document.getElementById('wallpapers');
 const wrap = document.getElementById('wrap');
@@ -346,6 +346,7 @@ class search extends Search {
 document.addEventListener('DOMContentLoaded', async () => {
 	// const wallpapersList = [];
 	console.log('DOM load');
+
 	loadBookmarks();
 	toggleClock();
 
