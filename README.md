@@ -10,6 +10,9 @@
 -   Search Movies, Games, Books, and TV Shows directly <br>
 -   Add custom bookmarks <br>
 -   Choose from a range of wallpapers as background <br>
+-   Live clock <br>
+-   Unique clock styles <br>
+-   Personalised greetings <br>
 -   Blur effects <br>
 -   Cool animations <br>
 -   CLI inside the search box <br>
