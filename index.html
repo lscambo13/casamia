@@ -7,81 +7,88 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="light">
   <link rel="stylesheet" href="./style.css" />
-  <script src="script.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- <script src="./script.js" type="module"></script> -->
+  <script src="./index.js" type="module"></script>
+  <!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> -->
 
   <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin />
   <!-- <link rel="preconnect" href="https://render.githubusercontent.com" crossorigin />
   <link rel="preconnect" href="https://github.com" crossorigin /> -->
 
-  <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+  <link rel="preconnect" href="https://fonts.bunny.net">
+  <link
+    href="https://fonts.bunny.net/css?family=nanum-brush-script:400|nothing-you-could-do:400|ubuntu:300,300i,400,400i,500,500i,700,700i|ubuntu-condensed:400|ubuntu-mono:400,400i,700,700i|vujahday-script:400"
+    rel="stylesheet" />
+
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
     rel="stylesheet" />
   <link
     href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
-    rel="stylesheet">
+    rel="stylesheet"> -->
   <link rel="stylesheet" href="./animations.css">
   <link rel="stylesheet" href="./icons.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 
-<body onkeypress="click_to_enter(event)" onclick="hide_wallpapers_alt()">
+<body onclick="hideWallpapers('body', null)">
 
   <div id="overlay"></div>
   <div id="gradient_overlay"></div>
 
   <div class="labs" id="labs">
     <div id="mydivheader">...</div>
-    <button class="button" onkeypress="click_to_enter(event)" onclick="export_bookmarks(event)">Export
-      Bookmarks</button>
+    <button id="export-bookmarks-btn" class="button clickable">Export Bookmarks</button>
     <button class="button">
-      <label for="import-bookmarks">Import Bookmarks</label>
-      <input type="file" id="import-bookmarks" accept=".json" onchange="import_bookmarks(event)">
+      <label for="import-bookmarks-btn">Import Bookmarks</label>
+      <input type="file" id="import-bookmarks-btn" accept=".json"">
     </button>
-    <button class="button" onkeypress="click_to_enter(event)" onclick="download_wallpaper()">Download Wallpaper</button>
-    <button class="button" onkeypress="click_to_enter(event)" onclick="toggle_favicons(event)">Toggle Favicons</button>
-    <button class="button" onkeypress="click_to_enter(event)" onclick="toggle_clock(event)">Toggle Clock</button>
-    <button class="button" onkeypress="click_to_enter(event)" onclick="toggle_glow(event)">Toggle Glow</button>
-    <button class="button" onkeypress="click_to_enter(event)" onclick="fetch_bookmarks(event)">Fetch Bookmarks</button>
-    <button class="button" onkeypress="click_to_enter(event)" onclick="reset_bookmarks(event)">Reset Bookmarks</button>
-    <button class="button" onkeypress="click_to_enter(event)" onclick="reset_all(event)">Reset All!</button>
-    <label for="dim-setting" class="setting-title none">Dim Less <input type="checkbox" id="dim-setting" checked="false"
-        onkeypress="click_to_enter(event)" onclick="toggle_dim(event)"></label><br>
+    <button id='download-wallpaper-btn' class=" button clickable">Download Wallpaper</button>
+    <button id="toggle-favicons-btn" class="button clickable">Toggle Favicons</button>
+    <button id="toggle-clock-btn" class="button clickable">Toggle Clock</button>
+    <button id="toggle-glow-btn" class="button clickable">Toggle Glow</button>
+    <button id="update-username-btn" class="button clickable">Update Username</button>
+    <button id="fetch-bookmarks-btn" class="button clickable">Fetch Bookmarks</button>
+    <button id="reset-bookmarks-btn" class="button clickable">Reset Bookmarks</button>
+    <button id="reset-all-btn" class="button clickable">Reset All!</button><br>
   </div>
 
   <div id="wrap" class="startup_slide_down">
     <div class="flex-main-container-vertical">
       <div id="heading">
-        <h1 id="main-heading">Search</h1>
-        <p id="subtitle" style="display:none;">Lorem ipsum dolor sit amet elit.</p>
+        <i id="left-arrow" class="fa fa-caret-left arrows"></i>
+        <div>
+          <h1 id="main-heading" class="default-text-style">Search</h1>
+          <p id="subtitle" style="display:none;">Lorem ipsum dolor sit amet elit.</p>
+          <div></div>
+        </div>
+        <i id="right-arrow" class="fa fa-caret-right arrows"></i>
+
       </div>
 
       <div class="search">
-        <input title="Search" type="search" class="searchTerm" onkeypress="enter_handler(event)"
-          placeholder="What's on your mind?" name="search" autocomplete="on" tabindex="1"
-          oninput="cli_indicator(event)" />
-        <button type="submit" class="searchButton" onkeypress="click_to_enter(event)" onclick="search.default()"
-          title="Search Google" tabindex="1">
+        <input title="Search" type="search" class="searchTerm" id="searchTerm" placeholder="What's on your mind?"
+          name="search" autocomplete="on" tabindex="1" />
+        <button type="submit" class="searchButton" id="google-search" title="Search Google" tabindex="1">
           <i class="fa fa-google"></i>
         </button>
       </div>
 
       <div class="flex-sub-container-horizontal">
-        <div onkeypress="click_to_enter(event)" onclick="search.movies()" id="movies-search" class="predefined-bookmark"
-          onkeypress="click_to_enter(event)" tabindex="1"><i class="flaticon-movies"></i>
+        <!-- <div> -->
+        <div id="movies-search" class="predefined-bookmark clickable" tabindex="1"><i class="flaticon-movies"></i>
         </div>
-        <div onkeypress="click_to_enter(event)" onclick="search.tv()" id="tv-search" class="predefined-bookmark"
-          tabindex="1"><i class="flaticon-tv"></i>
+        <!-- <span class="bookmark-title">Movies</span> -->
+        <!-- </div> -->
+        <div id="tv-search" class="predefined-bookmark clickable" tabindex="1"><i class="flaticon-tv"></i>
         </div>
-        <div onkeypress="click_to_enter(event)" onclick="search.games()" id="games-search" class="predefined-bookmark"
-          tabindex="1"><i class="flaticon-games"></i></div>
-        <div onkeypress="click_to_enter(event)" onclick="search.ebooks()" id="ebooks-search" class="predefined-bookmark"
-          tabindex="1"><i class="flaticon-ebook"></i>
+        <div id="games-search" class="predefined-bookmark clickable" tabindex="1"><i class="flaticon-games"></i></div>
+        <div id="ebooks-search" class="predefined-bookmark clickable" tabindex="1"><i class="flaticon-ebook"></i>
         </div>
-        <div onkeypress="click_to_enter(event)" onclick="create_new_bookmark()" id="add_bookmark_button" tabindex="2"><i
+        <div onclick="createNewBookmark()" class="clickable" id="add_bookmark_button" tabindex="2"><i
             class="fa fa-plus"></i></div>
-
-        <a onkeypress="click_to_enter(event)" onclick="hide_wallpapers(event)" id="settings_button" href="#wallpapers"
+        <a onclick="hideWallpapers('button', event)" class="clickable" id="settings_button" href="#wallpapers"
           tabindex="2">
           <i class="fa fa-gear"></i></a>
         </a>
@@ -91,15 +98,14 @@
   </div>
 
   <div class="flex-wallpaper-horizontal" id="wallpapers">
-    <div class="settings" onkeypress="click_to_enter(event)" onclick="event.stopPropagation()">
+    <div class="settings" onclick="event.stopPropagation()">
       <div class="setting-option">
-        <label for="blur-setting" class="setting-title">Enable Blur <input type="checkbox" id="blur-setting"
-            checked="false" onkeypress="click_to_enter(event)" onclick="toggle_blur(event)" tabindex="3"></label><br>
-        <label for="wallpaper-setting" class="setting-title">Lights Out &nbsp<input type="checkbox"
-            id="wallpaper-setting" checked="false" onkeypress="click_to_enter(event)" onclick="toggle_wallpaper(event)"
-            tabindex="3"></label><br>
-        <label for="labs-setting" class="setting-title">Labs <input type="checkbox" id="labs-setting" checked="false"
-            onkeypress="click_to_enter(event)" onclick="toggle_labs(event)" tabindex="3"></label>
+        <label for="toggle-blur-cb" class="setting-title clickable">Enable Blur <input type="checkbox"
+            id="toggle-blur-cb" checked="false" tabindex="3"></label><br>
+        <label for="toggle-wallpaper-cb" class="setting-title clickable">Lights Out &nbsp<input type="checkbox"
+            id="toggle-wallpaper-cb" checked="false" tabindex="3"></label><br>
+        <label for="toggle-labs-cb" class="setting-title clickable">Labs <input type="checkbox" id="toggle-labs-cb"
+            checked="false" tabindex="3"></label>
       </div>
     </div>
   </div>
