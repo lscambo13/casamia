@@ -1,5 +1,4 @@
 
-export let customBookmarks = [];
 export let wallpapersList = [];
 
 export function setCustomBookmarks(text) {
