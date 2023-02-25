@@ -1,5 +1,4 @@
 import {
-
 	wallpapersList,
 	setWallpapersList,
 } from './js_modules/database.js';
@@ -15,7 +14,7 @@ import {
 } from './js_modules/utils.js';
 import {
 	WALLPAPERS_URL,
-} from '/js_modules/constants.js';
+} from './js_modules/constants.js';
 import { displayLoading, hideLoading } from './js_modules/loading_spinner.js';
 import { changeGlow } from './js_modules/colors.js';
 import {
