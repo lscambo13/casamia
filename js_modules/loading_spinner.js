@@ -8,7 +8,7 @@ export function hideLoading() {
 }
 export function displayLoading(event) {
     // console.log(event);
-    // event.stopPropagation();
+    event.stopPropagation();
     // event.preventDefault();
     hideLoading();
     const click = event.target;
