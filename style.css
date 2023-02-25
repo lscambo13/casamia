@@ -1,4 +1,5 @@
 :root {
+
   --white: #fbfaf8ff;
   --white-half-alpha: #fbfaf892;
   --white-quarter-alpha: #fbfaf843;
@@ -7,7 +8,8 @@
   --dark: #060604;
   --dark-low-alpha: #0606042c;
 
-  --accent-color: #fec34c;
+  /* --accent-color: #fec34c; */
+  --accent-color: #BB377D;
   --highlight-color: #dfb669;
 
   --predefined-bookmark: #6856347e;
@@ -24,21 +26,27 @@
 
   --pink-gradient-webkit: -webkit-linear-gradient(to top, #BB377D, 50%, #fbd3e900);
   --pink-gradient: linear-gradient(to top, #BB377D, 50%, #fbd3e900);
+  --pink-color: #BB377D;
 
   --light-pink-gradient-webkit: -webkit-linear-gradient(to top, #ec96c4, 50%, #fbd3e900);
   --light-pink-gradient: linear-gradient(to top, #ec96c4, 50%, #fbd3e900);
+  --light-pink-color: #ec96c4;
 
   --earth-gradient-webkit: -webkit-linear-gradient(to top, #bb6a37, 50%, #fbd3e900);
   --earth-gradient: linear-gradient(to top, #bb6a37, 50%, #fbd3e900);
+  --earth-color: #bb6a37;
 
   --green-gradient-webkit: -webkit-linear-gradient(to top, #79bb37, 50%, #fbd3e900);
   --green-gradient: linear-gradient(to top, #79bb37, 50%, #fbd3e900);
+  --green-color: #79bb37;
 
   --yellow-gradient-webkit: -webkit-linear-gradient(to top, #bb9c37, 50%, #fbd3e900);
   --yellow-gradient: linear-gradient(to top, #bb9c37, 50%, #fbd3e900);
+  --yellow-color: #bb9c37;
 
   --red-gradient-webkit: -webkit-linear-gradient(to top, #e04040, 50%, #fbd3e900);
   --red-gradient: linear-gradient(to top, #e04040, 50%, #fbd3e900);
+  --red-color: #e04040;
 
 }
 
@@ -47,6 +55,7 @@
   padding: 0;
   box-sizing: border-box !important;
   caret-color: transparent;
+  scroll-behavior: smooth;
   /* outline: crimson solid 2px; */
   /* background-color: rgba(220, 20, 60, 0.12); */
 }
@@ -59,7 +68,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   min-height: 100vh;
-  min-height: 100dvh;
+  min-height: 100svh;
   align-items: center;
 }
 
@@ -124,20 +133,78 @@ input[type="checkbox"] {
 } */
 
 #heading {
-  color: var(--primary-color);
-  font-family: "Ubuntu";
   /* background-image: var(--primary-gradient-default);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent; */
+
+  color: var(--primary-color);
+  width: auto;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   font-size: clamp(1em, 2em, 10em);
   cursor: default;
   text-align: center;
 }
 
+#main-heading {
+  transition: 500ms;
+}
+
+.default-text-style {
+  font-family: "Ubuntu";
+  color: var(--primary-color);
+  font-size: clamp(1em, 1.75em, 10em);
+  text-shadow:
+    0px 0px 0 var(--accent-color),
+    0px 0px 0px black !important;
+  rotate: 0deg;
+}
+
+.brush-text-style-1 {
+  font-family: 'Vujahday Script', handwriting;
+  font-size: clamp(1em, 1.75em, 10em);
+  color: whitesmoke;
+  text-shadow:
+    4px 4px 0 var(--accent-color),
+    6px 6px 0px black;
+  rotate: -6deg;
+}
+
+.brush-text-style-2 {
+  font-family: 'Nothing You Could Do', handwriting;
+  font-size: clamp(1em, 1.75em, 10em);
+  color: whitesmoke;
+  text-shadow:
+    4px 4px 0 var(--accent-color),
+    6px 6px 0px black;
+  rotate: -6deg;
+}
+
+.brush-text-style-3 {
+  font-family: 'Nanum Brush Script', handwriting;
+  font-size: clamp(1em, 1.75em, 10em);
+  color: whitesmoke;
+  text-shadow:
+    4px 4px 0 var(--accent-color),
+    6px 6px 0px black;
+  rotate: 0deg;
+}
+
+.arrows {
+  width: 1em;
+  height: 0em;
+  text-shadow: 1px 1px 0 black;
+  overflow: hidden;
+  transition: 500ms;
+}
+
 #subtitle {
   font-family: "Ubuntu";
-  font-size: 0.75em;
+  font-size: 0.65em;
 }
 
 .search {
@@ -497,7 +564,7 @@ input[type="checkbox"] {
   margin-top: 1em;
 }
 
-#import-bookmarks {
+#import-bookmarks-btn {
   display: none;
 }
 

@@ -122,3 +122,77 @@
     padding-top: 10vh;
   }
 }
+
+.animation_carousel_left_hide {
+  animation: animation_carousel_left_hide 175ms;
+  animation-fill-mode: both;
+  animation-iteration-count: 1;
+}
+
+.animation_carousel_right_hide {
+  animation: animation_carousel_right_hide 175ms;
+  animation-fill-mode: both;
+  animation-iteration-count: 1;
+}
+
+@keyframes animation_carousel_left_hide {
+  0% {
+    transform: translateX(0em);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(-0.5em);
+    opacity: 0;
+  }
+}
+
+@keyframes animation_carousel_right_hide {
+  0% {
+    transform: translateX(0em);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(0.5em);
+    opacity: 0;
+  }
+}
+
+
+
+.animation_carousel_left_appear {
+  animation: animation_carousel_left_appear 175ms;
+  animation-fill-mode: both;
+  animation-iteration-count: 1;
+}
+
+.animation_carousel_right_appear {
+  animation: animation_carousel_right_appear 175ms;
+  animation-fill-mode: both;
+  animation-iteration-count: 1;
+}
+
+@keyframes animation_carousel_left_appear {
+  0% {
+    transform: translateX(0.5em);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0em);
+    opacity: 1;
+  }
+}
+
+@keyframes animation_carousel_right_appear {
+  0% {
+    transform: translateX(-0.5em);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0em);
+    opacity: 1;
+  }
+}
