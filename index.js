@@ -202,8 +202,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 	// Add wallpapers to HTML
 	const response = await fetch(
-		'https://raw.githubusercontent.com/lscambo13/casamia/main/wallpapers/wallpapers_list.json',
+		'./wallpapers/wallpapers_list.json',
 	);
+
+	console.log('log+ ' + JSON.stringify(response.status));
 	const text = await response.text();
 	setWallpapersList(JSON.parse(text));
 
