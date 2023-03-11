@@ -1,7 +1,3 @@
-import {
-	wallpapersList,
-	setWallpapersList,
-} from './js_modules/database.js';
 import * as Search from './js_modules/search.js';
 import {
 	addEventListenerOnID,
@@ -12,9 +8,6 @@ import {
 	stylizeText,
 	toggleArrows,
 } from './js_modules/utils.js';
-import {
-	WALLPAPERS_URL,
-} from './js_modules/constants.js';
 import { displayLoading, hideLoading } from './js_modules/loading_spinner.js';
 import { changeGlow } from './js_modules/colors.js';
 import {
@@ -26,9 +19,9 @@ import {
 } from './js_modules/custom_bookmarks.js';
 import {
 	color,
+	fetchWallpapersList,
 	getWallpaperDetails,
 	highlightSetWallpaper,
-	resolveWallpapers,
 	selectedWallpaper,
 	setWallpaper,
 } from './js_modules/wallpapers.js';
@@ -199,44 +192,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 	toggleClock();
 	stylizeText('main-heading', 0);
 
+	await fetchWallpapersList();
 
-	// Add wallpapers to HTML
-	const response = await fetch(
-		'./wallpapers/wallpapers_list.json',
-	);
-
-	console.log('log+ ' + JSON.stringify(response.status));
-	const text = await response.text();
-	setWallpapersList(JSON.parse(text));
-
-	resolveWallpapers();
-
-	const bar = document.getElementById('wallpapers');
-
-	for (const n of wallpapersList) {
-		let input = n.file;
-		input = input.split('.').join('-thumb.');
-
-		const thumb = document.createElement('div');
-		thumb.className = 'thumb-group';
-		thumb.setAttribute('onclick', 'changeWallpaper(event)');
-		thumb.setAttribute('onkeypress', 'click_to_enter(event)');
-
-		thumb.setAttribute('tabindex', '3');
-
-		const div = document.createElement('div');
-		div.innerHTML = n.title;
-		div.className = 'thumb-title';
-		thumb.appendChild(div);
-
-		const img = document.createElement('img');
-		img.src = WALLPAPERS_URL + input;
-		img.className = 'thumbnail';
-		img.title = n.title;
-		thumb.appendChild(img);
-
-		bar.appendChild(thumb);
-	}
 	loadSettings();
 	setWallpaper(selectedWallpaper, color);
 	highlightSetWallpaper();
@@ -245,7 +202,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 	dragElement(document.getElementById('labs'));
 
 	askUserName();
-
 
 	addEventListenerOnClass('clickable', 'keypress', clickToEnter);
 	addEventListenerOnClass('custom_bookmark', 'click', displayLoading);

@@ -1,11 +1,33 @@
 import { changeGlow } from './colors.js';
 import { WALLPAPERS_URL } from './constants.js';
-import { wallpapersList } from './database.js';
 import { loadBlur } from './load_preferences.js';
 import { changeTextAccentColor } from './utils.js';
 
 export let selectedWallpaper = null;
 export let color = null;
+export let wallpapersList = [];
+
+export async function fetchWallpapersList() {
+    // Add wallpapers to HTML
+    let response = await fetch(
+        WALLPAPERS_URL + 'wallpapers_list.json',
+    );
+    for (let i = 0; i <= 3 && response.status != 200; i++) {
+        console.log(`CONNECTION ERROR: ${response.status}\nRetrying ${i}...`);
+        response = await fetch(
+            WALLPAPERS_URL + 'wallpapers_list.json',
+        );
+        if (i == 3) window.open('./pages/error', '_self');
+    };
+    // if (response.status == 200) {
+    //     console.log(`Connection established: ${response.status}`);
+    // }
+    const text = await response.text();
+
+    wallpapersList = JSON.parse(text);
+    resolveWallpapers();
+    populateWallpapersInDOM();
+}
 
 export function setWallpaper(fileName, color) {
     selectedWallpaper = fileName;
@@ -26,7 +48,7 @@ export function setWallpaper(fileName, color) {
     applyWallpaper(inputThumb);
 }
 
-export function applyWallpaper(input) {
+function applyWallpaper(input) {
     document.body.style.backgroundImage = 'url(' + WALLPAPERS_URL + input + ')';
     document.body.style.backgroundRepeat = 'no-repeat';
     document.body.style.backgroundSize = 'cover';
@@ -53,18 +75,6 @@ export function highlightSetWallpaper() {
     }
 }
 
-export function resolveWallpapers() {
-    selectedWallpaper = localStorage.getItem('wallpaper');
-    if (selectedWallpaper == null) {
-        selectedWallpaper = wallpapersList[4].file;
-        // var color = wallpapers_list[4].color;
-        console.log(wallpapersList);
-    }
-
-    color = wallpapersList.filter((item) => {
-        return item.file == selectedWallpaper;
-    })[0].color;
-}
 
 export function changeWallpaper(event) {
     event.stopPropagation();
@@ -86,3 +96,44 @@ export function getWallpaperDetails(title) {
     return [wallpaper, color];
 }
 
+function resolveWallpapers() {
+    selectedWallpaper = localStorage.getItem('wallpaper');
+    if (selectedWallpaper == null) {
+        selectedWallpaper = wallpapersList[4].file;
+        // var color = wallpapers_list[4].color;
+        console.log(wallpapersList);
+    }
+
+    color = wallpapersList.filter((item) => {
+        return item.file == selectedWallpaper;
+    })[0].color;
+}
+
+function populateWallpapersInDOM() {
+    const bar = document.getElementById('wallpapers');
+
+    for (const n of wallpapersList) {
+        let input = n.file;
+        input = input.split('.').join('-thumb.');
+
+        const thumb = document.createElement('div');
+        thumb.className = 'thumb-group';
+        thumb.setAttribute('onclick', 'changeWallpaper(event)');
+        thumb.setAttribute('onkeypress', 'click_to_enter(event)');
+
+        thumb.setAttribute('tabindex', '3');
+
+        const div = document.createElement('div');
+        div.innerHTML = n.title;
+        div.className = 'thumb-title';
+        thumb.appendChild(div);
+
+        const img = document.createElement('img');
+        img.src = WALLPAPERS_URL + input;
+        img.className = 'thumbnail';
+        img.title = n.title;
+        thumb.appendChild(img);
+
+        bar.appendChild(thumb);
+    }
+}
