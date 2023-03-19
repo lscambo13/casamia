@@ -5,8 +5,9 @@ import {
 	clickToEnter,
 	fetchBookmarks,
 	scrollHighlightedWallpaperIntoView,
-	stylizeText,
 	toggleArrows,
+	changeSlide,
+	addEventListenerOnTag,
 } from './js_modules/utils.js';
 import { displayLoading, hideLoading } from './js_modules/loading_spinner.js';
 import { changeGlow } from './js_modules/colors.js';
@@ -25,8 +26,10 @@ import {
 	selectedWallpaper,
 	setWallpaper,
 } from './js_modules/wallpapers.js';
-import { loadSettings } from './js_modules/load_preferences.js';
-import { dragElement } from './js_modules/utils/dragElement.js';
+import {
+	applyPreferences,
+	loadDropdownPositions,
+} from './js_modules/load_preferences.js';
 import {
 	downloadWallpaper,
 	exportBookmarks,
@@ -37,19 +40,18 @@ import {
 	toggleClock,
 	toggleFavicons,
 	toggleGlow,
-	toggleLabs,
 	toggleWallpaper,
 } from './js_modules/preferences.js';
 import { isUrlValid } from './js_modules/validators.js';
+import { askUserName, setDefaultPreferences } from './js_modules/onboarding.js';
 import {
-	animateCarouselDirection,
-} from './js_modules/utils/displayCarouselAnimation.js';
-import { askUserName } from './js_modules/onboarding.js';
-
+	closeAdvancedSettings,
+	openAdvancedSettings,
+} from './js_modules/modals/advanced_settings.js';
+import { saveDropdownPositions } from './js_modules/save_preferences.js';
 
 const bottomFilmRollContainer = document.getElementById('wallpapers');
 const wrap = document.getElementById('wrap');
-
 
 window.hideWallpapers = (str, event) => {
 	if (event) {
@@ -100,7 +102,6 @@ window.hideWallpapers = (str, event) => {
 	}
 };
 
-
 window.createNewBookmark = () => {
 	let link = prompt('Type link');
 	if (link == null) return;
@@ -128,7 +129,6 @@ window.createNewBookmark = () => {
 	saveBookmarks(link, name, id);
 };
 
-
 window.changeWallpaper = (event) => {
 	event.stopPropagation();
 	let selection = event.target.title;
@@ -152,60 +152,81 @@ addEventListenerOnID('reset-all-btn', 'click', resetAll);
 
 addEventListenerOnID('toggle-blur-cb', 'click', toggleBlur);
 addEventListenerOnID('toggle-wallpaper-cb', 'click', toggleWallpaper);
-addEventListenerOnID('toggle-labs-cb', 'click', toggleLabs);
-
-
-// addEventListenerOnID('', 'click',);
+addEventListenerOnClass('modal-close-btn', 'click', closeAdvancedSettings);
+addEventListenerOnID('toggle-labs-btn', 'click', openAdvancedSettings);
+addEventListenerOnID('terms-btn', 'click', openAdvancedSettings);
 
 addEventListenerOnID('google-search', 'click', Search.google);
 addEventListenerOnID('movies-search', 'click', Search.movies);
 addEventListenerOnID('tv-search', 'click', Search.tv);
 addEventListenerOnID('games-search', 'click', Search.games);
 addEventListenerOnID('ebooks-search', 'click', Search.ebooks);
-
 addEventListenerOnID('searchTerm', 'input', Search.switchToCLI);
 addEventListenerOnID('searchTerm', 'keypress', Search.enterToSearch);
-
 addEventListenerOnID('fetch-bookmarks-btn', 'click', fetchBookmarks);
 
 addEventListenerOnID('left-arrow', 'click', (event) => {
 	event.stopPropagation();
-	animateCarouselDirection(event, 'main-heading', 175, 'left');
+	changeSlide('widget-slide', 1);
 });
 
 addEventListenerOnID('right-arrow', 'click', (event) => {
 	event.stopPropagation();
-	animateCarouselDirection(event, 'main-heading', 175, 'right');
+	changeSlide('widget-slide', -1);
 });
 
 window.addEventListener('resize', () => {
 	toggleBlur();
 });
 
+addEventListenerOnID('wallpapers', 'wheel', (e) => {
+	// e.stopPropagation();
+	const item = document.getElementById('wallpapers');
+	if (e.deltaY > 0) {
+		if (item.classList[1] == 'animation_slide_up') item.scrollLeft += 500;
+	} else {
+		if (item.classList[1] == 'animation_slide_up') item.scrollLeft -= 500;
+	}
+	// console.log(item.scroll());
+});
+
+addEventListenerOnID('main-heading-slider', 'wheel', (e) => {
+	// e.stopPropagation();
+	const item = document.getElementById('wallpapers');
+	const homeWidget = document.getElementById('main-heading-slider');
+	if (e.deltaY > 0) {
+		if (item.classList[1] == 'animation_slide_up') homeWidget.scrollLeft += 700;
+	} else {
+		if (item.classList[1] == 'animation_slide_up') homeWidget.scrollLeft -= 700;
+	}
+	// console.log(homeWidget.scroll());
+});
 
 // ----------------------------------------------------------
 
 document.addEventListener('DOMContentLoaded', async () => {
-	// const wallpapersList = [];
-	console.log('DOM load');
+	setDefaultPreferences();
+	applyPreferences();
 	loadBookmarks();
-	toggleClock();
-	stylizeText('main-heading', 0);
+	// toggleClock();
+	// stylizeText('main-heading', 0);
 
 	await fetchWallpapersList();
 
-	loadSettings();
+	// loadSettings();
 	setWallpaper(selectedWallpaper, color);
 	highlightSetWallpaper();
 
-	// Make the DIV element draggable:
-	dragElement(document.getElementById('labs'));
+	// // Make the DIV element draggable:
+	// dragElement(document.getElementById('labs'));
 
-	askUserName();
+	loadDropdownPositions();
 
 	addEventListenerOnClass('clickable', 'keypress', clickToEnter);
 	addEventListenerOnClass('custom_bookmark', 'click', displayLoading);
 	addEventListenerOnClass('cross', 'click', removeBookmark);
+	// addEventListenerOnClass('custom-button', 'click', saveButtonValues);
+	addEventListenerOnTag('select', 'change', saveDropdownPositions);
 });
 
 window.addEventListener('hashchange', () => {
@@ -213,18 +234,9 @@ window.addEventListener('hashchange', () => {
 
 	if (!url.includes('#wallpapers')) {
 		console.log('url found');
-		hide_wallpapers_alt();
+		// hide_wallpapers_alt();
 	}
 	console.log('go back');
-});
-
-window.addEventListener('wheel', (e) => {
-	const item = document.getElementById('wallpapers');
-	if (e.deltaY > 0) {
-		if (item.classList[1] == 'animation_slide_up') item.scrollLeft += 100;
-	} else {
-		if (item.classList[1] == 'animation_slide_up') item.scrollLeft -= 100;
-	}
 });
 
 window.addEventListener('blur', () => {
