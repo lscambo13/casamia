@@ -19,6 +19,14 @@ export function addEventListenerOnClass(className, event, func) {
     };
 }
 
+export function addEventListenerOnTag(tagName, event, func) {
+    const tagList = document.getElementsByTagName(tagName);
+    // console.log('on class length ' + classList.length);
+    for (let i = 0; i < tagList.length; i++) {
+        tagList[i].addEventListener(event, func);
+    };
+}
+
 export function clickToEnter(event) {
     if (event.key === 'Enter') event.target.click();
 };
@@ -65,14 +73,13 @@ export function toggleArrows(str) {
     switch (str) {
         case 'show': {
             for (let i = 0; i < arrows.length; i++) {
-                arrows[i].style.height = '1em';
-                // arrows[i].style.display = 'block !important';
+                arrows[i].style.scale = '1';
             }
             break;
         }
         case 'hide': {
             for (let i = 0; i < arrows.length; i++) {
-                arrows[i].style.height = '0em';
+                arrows[i].style.scale = '0';
             }
             break;
         }
@@ -80,7 +87,27 @@ export function toggleArrows(str) {
 };
 
 export function changeTextAccentColor(color) {
-    const i = document.getElementById('main-heading');
-    i.style.textShadow =
-        `4px 4px 0 var(--${color}-color), 6px 6px 0px black`;
+    const i = document.getElementsByClassName('has-shadow');
+    for (let n = 0; n < i.length; n++) {
+        i[n].style.textShadow =
+            `4px 4px 0 var(--${color}-color), 6px 6px 0px black`;
+    }
+};
+
+let prevSlide = 0;
+export function changeSlide(element, int) {
+    const el = document.getElementsByClassName(element);
+    const totalSlides = el.length;
+    const currentSlide = prevSlide - int;
+    if (currentSlide < 0 || currentSlide >= totalSlides) {
+        // prevSlide = currentSlide;
+        return;
+    } else {
+        el[currentSlide].scrollIntoView();
+        prevSlide = currentSlide;
+    }
+};
+
+export function changeWidgetStyle() {
+
 };

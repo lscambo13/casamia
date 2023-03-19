@@ -1,6 +1,6 @@
 import { changeGlow } from './colors.js';
 import { WALLPAPERS_URL } from './constants.js';
-import { loadBlur } from './load_preferences.js';
+import { applyPreferences } from './load_preferences.js';
 import { changeTextAccentColor } from './utils.js';
 
 export let selectedWallpaper = null;
@@ -29,7 +29,7 @@ export async function fetchWallpapersList() {
     populateWallpapersInDOM();
 }
 
-export function setWallpaper(fileName, color) {
+export async function setWallpaper(fileName, color) {
     selectedWallpaper = fileName;
     const overlay = document.getElementById('overlay');
     console.log('test ' + overlay.style.backdropFilter);
@@ -39,7 +39,7 @@ export function setWallpaper(fileName, color) {
     temp.onload = (e) => {
         applyWallpaper(selectedWallpaper);
         localStorage.setItem('wallpaper', selectedWallpaper);
-        loadBlur();
+        applyPreferences();
     };
 
     changeGlow(color);

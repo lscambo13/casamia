@@ -56,7 +56,7 @@ export function toggleFavicons(event) {
 };
 
 export function toggleClock() {
-    const mainHeading = document.getElementById('main-heading');
+    const widgetSlides = document.getElementsByClassName('widget-slide');
     const subtitle = document.getElementById('subtitle');
 
     // console.log(`${hours}:${minutes}:${seconds} ${am_pm(hours)}`);
@@ -102,13 +102,10 @@ export function toggleClock() {
         greeting = greeting(hours);
         amPm = amPm(hours);
 
-        if (isClockStyleCapital()) {
-            mainHeading.innerText =
+        for (let i = 0; i < widgetSlides.length; i++) {
+            widgetSlides[i].innerText =
                 `${hours}:${minutes} ${amPm.toString()}`;
-        } else {
-            mainHeading.innerText =
-                `${hours}:${minutes} ${amPm.toString().toLowerCase()}`;
-        };
+        }
 
         subtitle.innerText = greeting;
         subtitle.style.display = 'block';

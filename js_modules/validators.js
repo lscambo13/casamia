@@ -8,7 +8,7 @@ export function isUrlValid(userInput) {
 }
 
 export function isClockStyleCapital() {
-    const clockClass = document.getElementById('main-heading');
+    const clockClass = document.getElementById('main-heading-slider');
     if (clockClass.classList.contains('default-text-style')) return true;
     else return false;
 }
