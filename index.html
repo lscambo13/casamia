@@ -39,32 +39,35 @@
 
   <div class="labs" id="labs">
     <div id="mydivheader">...</div>
-    <button id="export-bookmarks-btn" class="button clickable">Export Bookmarks</button>
-    <button class="button">
+    <!-- <button id="export-bookmarks-btn" class="button clickable">Export Bookmarks</button> -->
+    <!-- <button class="button">
       <label for="import-bookmarks-btn">Import Bookmarks</label>
       <input type="file" id="import-bookmarks-btn" accept=".json"">
-    </button>
-    <button id='download-wallpaper-btn' class=" button clickable">Download Wallpaper</button>
-    <button id="toggle-favicons-btn" class="button clickable">Toggle Favicons</button>
+    </button> -->
+    <!-- <button id='download-wallpaper-btn' class=" button clickable">Download Wallpaper</button> -->
+    <!-- <button id="toggle-favicons-btn" class="button clickable">Toggle Favicons</button> -->
     <button id="toggle-clock-btn" class="button clickable">Toggle Clock</button>
     <button id="toggle-glow-btn" class="button clickable">Toggle Glow</button>
-    <button id="update-username-btn" class="button clickable">Update Username</button>
-    <button id="fetch-bookmarks-btn" class="button clickable">Fetch Bookmarks</button>
-    <button id="reset-bookmarks-btn" class="button clickable">Reset Bookmarks</button>
-    <button id="reset-all-btn" class="button clickable">Reset All!</button><br>
+    <!-- <button id="update-username-btn" class="button clickable">Update Username</button> -->
+    <!-- <button id="fetch-bookmarks-btn" class="button clickable">Fetch Bookmarks</button> -->
+    <!-- <button id="reset-bookmarks-btn" class="button clickable">Reset Bookmarks</button> -->
+    <!-- <button id="reset-all-btn" class="button clickable">Reset All!</button><br> -->
   </div>
 
   <div id="wrap" class="startup_slide_down">
     <div class="flex-main-container-vertical">
-      <div id="heading">
+      <div id="home-widget-container">
         <i id="left-arrow" class="fa fa-caret-left arrows"></i>
-        <div>
-          <h1 id="main-heading" class="default-text-style">Search</h1>
+        <div class="home-widget">
+          <div id="main-heading-slider">
+            <h1 class="widget-slide default-text-style">Casa Mia</h1>
+            <h1 class="widget-slide brush-text-style-1 has-shadow">Casa Mia</h1>
+            <h1 class="widget-slide brush-text-style-2 has-shadow">Casa Mia</h1>
+            <h1 class="widget-slide brush-text-style-3 has-shadow">Casa Mia</h1>
+          </div>
           <p id="subtitle" style="display:none;">Lorem ipsum dolor sit amet elit.</p>
-          <div></div>
         </div>
         <i id="right-arrow" class="fa fa-caret-right arrows"></i>
-
       </div>
 
       <div class="search">
@@ -97,6 +100,163 @@
     </div>
   </div>
 
+  <div id="advanced-settings-modal-background-overlay"></div>
+  <div id="advanced-settings-modal">
+    <div class="modal-page-title">
+      <p class="">Advanced Settings</p>
+      <p class="modal-close-btn">&times;</p>
+    </div>
+
+    <div class="modal-group">
+      <p class="modal-title">Dispaly Info</p>
+      <div id="update-username-btn" class="modal-option custom-button">
+        <p>User name</p>
+        <p id="update-username-btn-preview" class="setting-preview">preview text</p>
+      </div>
+    </div>
+
+    <div class="modal-group">
+      <p class="modal-title">Interface</p>
+
+      <label for="bg-img-drop" class="modal-option custom-dropdown">Background image
+        <select class="setting-preview" name="bg-img-drop" id="bg-img-drop">
+          <option value="hidden">Hidden</option>
+          <option value="shown">Shown</option>
+        </select>
+      </label>
+      <label for="bg-blur-drop" class="modal-option custom-dropdown">Background blur
+        <select class="setting-preview" name="bg-blur-drop" id="bg-blur-drop">
+          <option value="on">On</option>
+          <option value="off">Off</option>
+        </select>
+      </label>
+      <label for="bg-glow-drop" class="modal-option custom-dropdown">Background glow
+        <select class="setting-preview" name="bg-glow-drop" id="bg-glow-drop">
+          <option value="auto">Auto</option>
+          <option value="on">Force On</option>
+          <option value="off">Force Off</option>
+        </select>
+      </label>
+      <label for="weather-display-drop" class="modal-option custom-dropdown">Display weather
+        <select class="setting-preview" name="weather-display-drop" id="weather-display-drop">
+          <option value="on">On</option>
+          <option value="off">Off</option>
+        </select>
+      </label>
+      <label for="footer-display-drop" class="modal-option custom-dropdown">Display footer
+        <select class="setting-preview" name="footer-display-drop" id="footer-display-drop">
+          <option value="on">On</option>
+          <option value="off">Off</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="modal-group">
+      <p class="modal-title">Home Widgets</p>
+      <label for="def-widget-drop" class="modal-option custom-dropdown">Default widget
+        <select class="setting-preview" name="def-widget-drop" id="def-widget-drop">
+          <option value="casamia">Casa Mia</option>
+          <option value="search">Search</option>
+          <option value="clock">Clock</option>
+          <option value="custom">Custom..</option>
+        </select>
+      </label>
+      <label for="widget-style-drop" class="modal-option custom-dropdown">Widget style
+        <select class="setting-preview" name="widget-style-drop" id="widget-style-drop">
+          <option value="minimal">Minimal</option>
+          <option value="handwritten">Handwritten</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="modal-group">
+      <p class="modal-title">Clock</p>
+      <label for="show-seconds-drop" class="modal-option custom-dropdown">Show seconds
+        <select class="setting-preview" name="show-seconds-drop" id="show-seconds-drop">
+          <option value="on">On</option>
+          <option value="off">Off</option>
+        </select>
+      </label>
+      <label for="clock-style-drop" class="modal-option custom-dropdown">Clock style
+        <select class="setting-preview" name="clock-style-drop" id="clock-style-drop">
+          <option value="24hrs">24 Hours</option>
+          <option value="12hrs">12 Hours</option>
+        </select>
+      </label>
+      <label for="am-pm-style-drop" class="modal-option custom-dropdown">AM/PM style
+        <select class="setting-preview" name="am-pm-style-drop" id="am-pm-style-drop">
+          <option value="uppercase">Uppercase</option>
+          <option value="lowercase">Lowercase</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="modal-group">
+      <p class="modal-title">Search</p>
+      <label for="def-search-engine-drop" class="modal-option custom-dropdown">Default search engine
+        <select class="setting-preview" name="def-search-engine-drop" id="def-search-engine-drop">
+          <option value="google">Google</option>
+          <option value="bing">Bing</option>
+          <option value="duckduckgo">DuckDuckGo</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="modal-group">
+      <p class="modal-title">Bookmarks</p>
+      <label for="show-titles-drop" class="modal-option custom-dropdown">Show titles
+        <select class="setting-preview" name="show-titles-drop" id="show-titles-drop">
+          <option value="on">On</option>
+          <option value="off">Off</option>
+        </select>
+      </label>
+      <div id="fetch-bookmarks-btn" class="modal-option">
+        <p>Download sample bookmarks</p>
+        <p class="setting-preview"></p>
+      </div>
+    </div>
+
+    <div class="modal-group">
+      <p class="modal-title">Backup & Restore</p>
+      <div id="export-bookmarks-btn" class="modal-option">
+        <p>Backup bookmarks</p>
+        <p class="setting-preview">Save to local storage</p>
+      </div>
+      <label for="import-bookmarks-btn" class="modal-option">Restore Backup
+        <input type="file" id="import-bookmarks-btn" accept=".json">
+        <p class="setting-preview">*.json</p>
+      </label>
+    </div>
+
+    <div class="modal-group">
+      <p class="modal-title">Labs</p>
+      <div id="download-wallpaper-btn" class="modal-option">
+        <p>Download background image</p>
+        <p id="download-wallpaper-btn-preview" class="setting-preview"></p>
+      </div>
+      <div id="toggle-favicons-btn" class="modal-option">
+        <p>Toggle favicons</p>
+        <p class="setting-preview"></p>
+      </div>
+    </div>
+
+    <div class=" modal-group">
+      <p class="modal-title">Factory Reset</p>
+      <div id="reset-bookmarks-btn" class="modal-option">
+        <p>Reset bookmarks</p>
+        <p class="setting-preview"></p>
+      </div>
+      <div id="reset-all-btn" class="modal-option">
+        <p>Reset everything</p>
+        <p class="setting-preview">Caution!</p>
+      </div>
+    </div>
+
+
+
+    <br>
+  </div>
+
   <div class="flex-wallpaper-horizontal" id="wallpapers">
     <div class="settings" onclick="event.stopPropagation()">
       <div class="setting-option">
@@ -104,8 +264,9 @@
             id="toggle-blur-cb" checked="false" tabindex="3"></label><br>
         <label for="toggle-wallpaper-cb" class="setting-title clickable">Lights Out &nbsp<input type="checkbox"
             id="toggle-wallpaper-cb" checked="false" tabindex="3"></label><br>
-        <label for="toggle-labs-cb" class="setting-title clickable">Labs <input type="checkbox" id="toggle-labs-cb"
-            checked="false" tabindex="3"></label>
+        <!-- <label for="toggle-labs-cb" class="setting-title clickable">Labs <input type="checkbox" id="toggle-labs-cb"
+            checked="false" tabindex="3"></label> -->
+        <button id="toggle-labs-btn" class="setting-title clickable button">Advanced Settings</button>
       </div>
     </div>
   </div>
@@ -114,7 +275,7 @@
     <ul>
       <li><a href="https://github.com/lscambo13/casamia" title="GitHub" tabindex="4">GitHub</a></li>
       <li><a href="https://t.me/lscambo13_projects" title="Telegram" tabindex="4">Telegram</a></li>
-      <li><a href="#" title="Terms" tabindex="4">Terms</a></li>
+      <li id="terms-btn"><a href="#" title="Terms" tabindex="4">Terms</a></li>
       <li><a href="https://github.com/lscambo13/casamia/blob/main/README.md" title="About" tabindex="4">About</a></li>
     </ul>
     <ul>
