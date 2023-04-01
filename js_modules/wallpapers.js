@@ -105,10 +105,13 @@ function resolveWallpapers() {
         console.log(wallpapersList);
     }
 
-    color = wallpapersList.filter((item) => {
-        return item.file == selectedWallpaper;
-    })[0].color;
-    if (!color) redoOnboarding();
+    try {
+        color = wallpapersList.filter((item) => {
+            return item.file == selectedWallpaper;
+        })[0].color;
+    } catch (err) {
+        redoOnboarding();
+    }
 }
 
 function populateWallpapersInDOM() {
