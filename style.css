@@ -1,53 +1,36 @@
 :root {
-
   --white: #fbfaf8ff;
   --white-half-alpha: #fbfaf892;
   --white-quarter-alpha: #fbfaf843;
   --white-low-alpha: #fbfaf815;
-
   --dark: #060604;
   --dark-low-alpha: #0606042c;
-
-  /* --accent-color: #fec34c; */
   --accent-color: #BB377D;
   --highlight-color: #dfb669;
-
   --predefined-bookmark: #6856347e;
   --custom-bookmark: #0034597e;
   --add-bookmark: #4d685a7e;
   --settings: #4d685a7e;
-
   --primary-color: #faf7f0ff;
   --secondary-color: #e7decdff;
-
-  /* --primary-gradient-fallback: #ECE9E6;
-  --primary-gradient-webkit: -webkit-linear-gradient(to top, #FFFFFF, #ECE9E6);
-  --primary-gradient-default: linear-gradient(to top, #FFFFFF, #ECE9E6); */
-
   --pink-gradient-webkit: -webkit-linear-gradient(to top, #BB377D, 50%, #fbd3e900);
   --pink-gradient: linear-gradient(to top, #BB377D, 50%, #fbd3e900);
   --pink-color: #BB377D;
-
   --light-pink-gradient-webkit: -webkit-linear-gradient(to top, #ec96c4, 50%, #fbd3e900);
   --light-pink-gradient: linear-gradient(to top, #ec96c4, 50%, #fbd3e900);
   --light-pink-color: #ec96c4;
-
   --earth-gradient-webkit: -webkit-linear-gradient(to top, #bb6a37, 50%, #fbd3e900);
   --earth-gradient: linear-gradient(to top, #bb6a37, 50%, #fbd3e900);
   --earth-color: #bb6a37;
-
   --green-gradient-webkit: -webkit-linear-gradient(to top, #79bb37, 50%, #fbd3e900);
   --green-gradient: linear-gradient(to top, #79bb37, 50%, #fbd3e900);
   --green-color: #79bb37;
-
   --yellow-gradient-webkit: -webkit-linear-gradient(to top, #bb9c37, 50%, #fbd3e900);
   --yellow-gradient: linear-gradient(to top, #bb9c37, 50%, #fbd3e900);
   --yellow-color: #bb9c37;
-
   --red-gradient-webkit: -webkit-linear-gradient(to top, #e04040, 50%, #fbd3e900);
   --red-gradient: linear-gradient(to top, #e04040, 50%, #fbd3e900);
-  --red-color: #e04040;
-
+  --red-color: #e04040
 }
 
 * {
@@ -55,13 +38,11 @@
   padding: 0;
   box-sizing: border-box !important;
   caret-color: transparent;
-  scroll-behavior: smooth;
-  /* outline: crimson solid 2px; */
-  /* background-color: rgba(220, 20, 60, 0.12); */
+  scroll-behavior: smooth
 }
 
 body {
-  background-color: rgb(40, 40, 40);
+  background-color: #282828;
   font-family: "Ubuntu Mono", monospace;
   font-size: 14px;
   display: flex;
@@ -69,35 +50,28 @@ body {
   justify-content: space-between;
   min-height: 100vh;
   min-height: 100svh;
-  align-items: center;
+  align-items: center
 }
 
-input[type="checkbox"] {
+input[type=checkbox] {
   width: 1em;
   height: 1em;
-  vertical-align: middle;
+  vertical-align: middle
 }
 
 #overlay {
   position: fixed;
-  /* Sit on top of the page content */
   display: block;
-  /* Hidden by default */
   width: 100%;
-  /* Full width (cover the whole page) */
   height: 100%;
-  /* Full height (cover the whole page) */
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.375);
-  /* Black background with opacity */
+  background-color: rgba(0, 0, 0, .375);
   z-index: 0;
-  /* Specify a stack order in case you're using a different order for other elements */
   cursor: auto;
-  /* Add a pointer on hover */
-  transition: 300ms;
+  transition: .3s
 }
 
 #gradient_overlay {
@@ -109,35 +83,24 @@ input[type="checkbox"] {
   right: 0;
   bottom: 0;
   opacity: 0;
-  /* background: var(--red-gradient-less); */
   z-index: 0;
   cursor: auto;
-  transition: 300ms;
+  transition: .3s
 }
-
 
 #wrap {
   max-width: 1280px;
   width: 100%;
   margin: auto;
   flex: 1;
-  z-index: 2;
+  z-index: 2
 }
 
 .flex-main-container-vertical {
-  margin: auto;
+  margin: auto
 }
 
-/* .flex-main-container-vertical > div {
-  z-index: 2;
-} */
-
 #home-widget-container {
-  /* background-image: var(--primary-gradient-default);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent; */
-
   color: var(--primary-color);
   width: 100%;
   top: 0;
@@ -147,21 +110,17 @@ input[type="checkbox"] {
   justify-content: space-between;
   font-size: clamp(1em, 2em, 10em);
   cursor: default;
-  text-align: center;
+  text-align: center
 }
-
-/* #home-widget-container * {
-  flex: 1;
-} */
 
 .home-widget {
   display: flex;
   flex-direction: column;
-  min-width: 90%;
+  min-width: 90%
 }
 
 #main-heading-slider {
-  transition: 500ms;
+  transition: .5s;
   max-width: 100%;
   display: flex;
   overflow-x: scroll;
@@ -169,82 +128,70 @@ input[type="checkbox"] {
   scroll-snap-type: x mandatory
 }
 
-
 #main-heading-slider * {
   min-width: 100%;
   flex: 1;
-  scroll-snap-align: center;
+  scroll-snap-align: center
 }
 
-/* width */
 #main-heading-slider::-webkit-scrollbar {
   height: 8px;
-  display: none;
+  display: none
 }
 
-/* Track */
 #main-heading-slider::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px grey;
-  border-radius: 10px;
+  border-radius: 10px
 }
 
-/* Handle */
 #main-heading-slider::-webkit-scrollbar-thumb {
   background: var(--accent-color);
-  border-radius: 10px;
+  border-radius: 10px
 }
 
 .default-text-style {
-  font-family: "Ubuntu";
+  font-family: Ubuntu;
   color: var(--primary-color);
   font-size: clamp(1em, 1.75em, 10em);
-  text-shadow:
-    0px 0px 0 var(--accent-color),
-    0px 0px 0px black !important;
-  rotate: 0deg;
+  text-shadow: 0 0 0 var(--accent-color), 0 0 0 #000 !important;
+  rotate: 0deg
 }
 
 .brush-text-style-1 {
   font-family: 'Vujahday Script', handwriting;
   font-size: clamp(1em, 2em, 10em);
-  color: whitesmoke;
-  text-shadow:
-    4px 4px 0 var(--accent-color),
-    6px 6px 0px black;
-  rotate: -6deg;
+  color: #f5f5f5;
+  text-shadow: 4px 4px 0 var(--accent-color), 6px 6px 0 #000;
+  rotate: -6deg
 }
 
 .brush-text-style-2 {
   font-family: 'Nothing You Could Do', handwriting;
   font-size: clamp(1em, 1.75em, 10em);
-  color: whitesmoke;
-  text-shadow:
-    4px 4px 0 var(--accent-color),
-    6px 6px 0px black;
-  rotate: -6deg;
+  color: #f5f5f5;
+  text-shadow: 4px 4px 0 var(--accent-color), 6px 6px 0 #000;
+  rotate: -6deg
 }
 
 .brush-text-style-3 {
   font-family: 'Nanum Brush Script', handwriting;
   font-size: clamp(1em, 2.375em, 10em);
-  color: whitesmoke;
-  text-shadow:
-    4px 4px 0 var(--accent-color),
-    6px 6px 0px black;
-  rotate: 0deg;
+  color: #f5f5f5;
+  text-shadow: 4px 4px 0 var(--accent-color), 6px 6px 0 #000;
+  rotate: 0deg
 }
 
 .arrows {
   max-width: 1.5em;
   max-height: 1.5em;
   scale: 0;
-  text-shadow: 1px 1px 0 black;
-  transition: 250ms;
+  text-shadow: 1px 1px 0 #000;
+  transition: 250ms
 }
 
 #subtitle {
-  font-family: "Ubuntu";
-  font-size: 0.65em;
+  font-family: Ubuntu;
+  font-size: .65em
 }
 
 .search {
@@ -255,17 +202,17 @@ input[type="checkbox"] {
   margin-top: 2em;
   margin-bottom: 2em;
   text-align: center;
-  cursor: default;
+  cursor: default
 }
 
 .searchTerm {
   width: 66%;
   min-height: 3em;
-  border: 0.2em solid var(--primary-color);
+  border: .2em solid var(--primary-color);
   border-right: none;
   padding: 0 2em 0 1em;
   border-radius: 2.5em 0 0 2.5em;
-  outline: none;
+  outline: 0;
   font-size: 1em;
   color: var(--secondary-color);
   margin-inline-end: 0;
@@ -273,28 +220,28 @@ input[type="checkbox"] {
   -webkit-backdrop-filter: blur(1em);
   caret-color: var(--primary-color);
   background-color: var(--white-quarter-alpha);
-  transition: 200ms;
+  transition: .2s
 }
 
 .searchTerm::placeholder {
-  color: var(--white-quarter-alpha);
+  color: var(--white-quarter-alpha)
 }
 
 .searchTerm::-webkit-search-cancel-button {
   filter: grayscale() invert() brightness(200%);
-  margin-inline-start: 0.7em;
+  margin-inline-start: .7em;
   margin-inline-end: -1.25em;
-  transition: 200ms;
+  transition: .2s
 }
 
 .searchTerm::-webkit-search-cancel-button:hover {
-  scale: 1.1;
+  scale: 1.1
 }
 
-.searchTerm:hover,
-.searchTerm:focus {
+.searchTerm:focus,
+.searchTerm:hover {
   background-color: var(--dark-low-alpha);
-  color: var(--primary-color);
+  color: var(--primary-color)
 }
 
 .searchButton {
@@ -302,46 +249,38 @@ input[type="checkbox"] {
   min-height: 3em;
   min-width: 3em;
   margin-inline-start: 0;
-  border: 0em solid var(--primary-color);
+  border: 0 solid var(--primary-color);
   background: var(--primary-color);
   text-align: center;
   border-radius: 0 2.5em 2.5em 0;
   cursor: pointer;
   color: var(--dark);
-  font-size: clamp(1em, 1em, 2em);
+  font-size: clamp(1em, 1em, 2em)
 }
 
 .searchButton>i {
   background-size: 2;
-  padding: 0.1em;
+  padding: .1em;
   background-color: transparent;
-  border-radius: 2em;
+  border-radius: 2em
 }
 
-/* .searchButton:hover > i {
-  background-color: rgb(219, 210, 195);
-  color: #5f8775;
-  padding: 0.5em;
-  transition: all 200ms;
-} */
-
 .searchButton:active>i {
-  padding: 0.7em;
+  padding: .7em;
   background-color: var(--secondary-color);
-  padding: 0.8em;
+  padding: .8em;
   color: var(--dark);
-  transition: all 200ms;
+  transition: all .2s
 }
 
 .flex-sub-container-horizontal {
   display: flex;
   flex-wrap: wrap;
-  padding: 0.5em;
+  padding: .5em;
   justify-content: center;
   align-items: center;
   margin-bottom: 1em;
-  transition: 200ms;
-  /* box-sizing: border-box; */
+  transition: .2s
 }
 
 .flex-sub-container-horizontal>div {
@@ -355,31 +294,30 @@ input[type="checkbox"] {
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  /* background-color: rgba(95, 158, 160, 0.4); */
   cursor: pointer;
   caret-color: transparent;
-  border: 0.075em solid var(--primary-color);
-  transition: 200ms;
+  border: .075em solid var(--primary-color);
+  transition: .2s
 }
 
 .predefined-bookmark {
   background-color: var(--predefined-bookmark);
   -webkit-backdrop-filter: blur(1em);
-  backdrop-filter: blur(1em);
+  backdrop-filter: blur(1em)
 }
 
 .flex-sub-container-horizontal>div>i {
-  font-size: clamp(0.5em, 2em, 4em);
+  font-size: clamp(.5em, 2em, 4em)
 }
 
-.flex-sub-container-horizontal>*:hover,
-.flex-sub-container-horizontal>*:focus,
-#add_bookmark_button:hover,
 #add_bookmark_button:focus,
+#add_bookmark_button:hover,
+#settings_button:focus,
 #settings_button:hover,
-#settings_button:focus {
+.flex-sub-container-horizontal>:focus,
+.flex-sub-container-horizontal>:hover {
   background-color: var(--highlight-color);
-  transition: 500ms;
+  transition: .5s
 }
 
 .flex-wallpaper-horizontal {
@@ -392,107 +330,93 @@ input[type="checkbox"] {
   justify-content: start;
   position: fixed;
   bottom: 0;
-  padding: 0.75em;
-  /* background-color: rgba(127, 255, 212, 0.3); */
-
-  /* background: #FBD3E9; */
-  /* fallback for old browsers */
-  /* background: -webkit-linear-gradient(to right, #BB377D, 60%, #fbd3e900); */
-  /* Chrome 10-25, Safari 5.1-6 */
-  /* background: var(--pink-gradient-most); */
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-  /* backdrop-filter: blur(1em);
-  -webkit-backdrop-filter: blur(1em); */
-  z-index: 2;
+  padding: .75em;
+  z-index: 2
 }
 
 .thumb-group {
   width: 8em;
   height: 4.8em;
-  margin: 0.5em;
+  margin: .5em;
   border-radius: 1em;
-  cursor: pointer;
+  cursor: pointer
 }
 
 .settings {
   min-width: 9em;
   min-height: 4.8em;
-  margin: 0.5em;
+  margin: .5em;
   border-radius: 1em;
   -webkit-backdrop-filter: blur(1em);
   backdrop-filter: blur(1em);
   background-color: var(--white-half-alpha);
-  /* background-color: rgba(250, 235, 215, 0.7); */
-  cursor: pointer;
+  cursor: pointer
 }
 
 .setting-option {
-  padding-block: 0.8em;
+  padding-block: .8em;
   padding-inline: 1em;
   cursor: pointer;
-  color: var(--dark);
+  color: var(--dark)
 }
 
-.thumb-group:hover,
-.thumb-group:focus {
-  box-shadow: 0 0 0.5em #fff;
-  animation: animation_zoom 0.25s;
+.thumb-group:focus,
+.thumb-group:hover {
+  box-shadow: 0 0 .5em #fff;
+  animation: animation_zoom .25s;
   animation-fill-mode: both;
   animation-iteration-count: 1;
-  transition: 1000ms;
+  transition: 1s
 }
 
-.animate:hover>.thumb-title,
-.animate:focus>.thumb-title {
-  animation: animation_appear 0.25s;
+.animate:focus>.thumb-title,
+.animate:hover>.thumb-title {
+  animation: animation_appear .25s;
   animation-fill-mode: both;
-  animation-iteration-count: 1;
+  animation-iteration-count: 1
 }
 
 .thumbnail {
   position: relative;
   width: 7.05em;
   height: 4.8em;
-  border: 0.1em solid var(--primary-color);
-  margin-left: -0.04em;
-  border-radius: 0.9em;
+  border: .1em solid var(--primary-color);
+  margin-left: -.04em;
+  border-radius: .9em
 }
 
 .thumb-title {
   position: absolute;
-  border-radius: 0 0 0.75em 0.75em;
+  border-radius: 0 0 .75em .75em;
   border: 0 solid var(--primary-color);
   border-top: none;
   width: 6.89em;
-  padding-top: 0.3em;
+  padding-top: .3em;
   margin-top: 3.15em;
-  margin-left: 0.05em;
-  padding-left: 0.75em;
-  padding-right: 0.25em;
-  padding-bottom: 0.3em;
+  margin-left: .05em;
+  padding-left: .75em;
+  padding-right: .25em;
+  padding-bottom: .3em;
   z-index: 2;
   opacity: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   color: var(--dark-text-color);
-  /* backdrop-filter: blur(1em);
-  -webkit-backdrop-filter: blur(1em); */
-  background-color: rgba(250, 235, 215, 0.8);
-  pointer-events: none;
+  background-color: rgba(250, 235, 215, .8);
+  pointer-events: none
 }
 
 #add_bookmark_button {
   background-color: var(--add-bookmark);
   -webkit-backdrop-filter: blur(1em);
   backdrop-filter: blur(1em);
-  order: 1336;
+  order: 1336
 }
 
 #add_bookmark_button:not(:active)>i {
   transition: 750ms;
-  rotate: 360deg;
+  rotate: 360deg
 }
 
 #settings_button {
@@ -512,18 +436,18 @@ input[type="checkbox"] {
   cursor: pointer;
   caret-color: transparent;
   order: 1337;
-  border: 0.075em solid var(--primary-color);
+  border: .075em solid var(--primary-color)
 }
 
 #settings_button * {
   margin: 0;
   padding: 0;
-  font-size: 2em;
+  font-size: 2em
 }
 
 #settings_button:not(:active)>i {
   transition: 750ms;
-  rotate: 360deg;
+  rotate: 360deg
 }
 
 .custom_bookmark {
@@ -541,20 +465,19 @@ input[type="checkbox"] {
   cursor: pointer;
   caret-color: transparent;
   background-color: var(--custom-bookmark);
-  /* background-color: rgba(56, 121, 218, 0.4); */
-  border: 0.075em solid var(--primary-color);
-  text-decoration: none;
+  border: .075em solid var(--primary-color);
+  text-decoration: none
 }
 
 .custom_bookmark>span {
   font-weight: bolder;
   font-size: 1.5em;
-  pointer-events: none;
+  pointer-events: none
 }
 
 .removable {
-  border: 0.1em solid tomato;
-  transition: 300ms;
+  border: .1em solid tomato;
+  transition: .3s
 }
 
 .cross {
@@ -564,48 +487,45 @@ input[type="checkbox"] {
   transition: 150ms;
   text-align: center;
   line-height: 1.2em;
-  padding-inline-start: 0.02em;
-  /* padding: 0.5em; */
+  padding-inline-start: .02em;
   width: 1.25em;
   height: 1.25em;
-  /* height: clamp(0.375em, 1.25em, 3em); */
   background-color: tomato;
   border-radius: 50%;
-  display: none;
+  display: none
 }
 
 .labs {
   position: absolute;
-  padding-bottom: 0.5em;
-  padding-inline: 0.375em;
-  border-radius: 0.5em;
-  background-color: rgba(95, 158, 160, 0.4);
-  backdrop-filter: blur(0.3em);
-  -webkit-backdrop-filter: blur(0.3em);
+  padding-bottom: .5em;
+  padding-inline: .375em;
+  border-radius: .5em;
+  background-color: rgba(95, 158, 160, .4);
+  backdrop-filter: blur(.3em);
+  -webkit-backdrop-filter: blur(.3em);
   display: none;
   text-align: center;
   z-index: 3;
-  border: 1px solid #d3d3d3;
+  border: 1px solid #d3d3d3
 }
 
 #mydivheader {
-  padding: 0em;
+  padding: 0;
   cursor: move;
   z-index: 4;
-  /* border-radius: 0.5em 0.5em 0 0; */
   background-color: transparent;
-  color: #fff;
+  color: #fff
 }
 
 .button {
   padding-inline: 1em;
-  padding-block: 0.5em;
-  font-size: 0.5em;
-  margin-top: 1em;
+  padding-block: .5em;
+  font-size: .5em;
+  margin-top: 1em
 }
 
 #import-bookmarks-btn {
-  display: none;
+  display: none
 }
 
 #advanced-settings-modal-background-overlay {
@@ -618,25 +538,25 @@ input[type="checkbox"] {
   -webkit-backdrop-filter: blur(1em);
   z-index: 2;
   animation-name: animatetop;
-  animation-duration: 0.25s;
-  display: none;
+  animation-duration: .25s;
+  display: none
 }
 
 #advanced-settings-modal {
-  background-color: rgba(56, 56, 56, 0.7);
+  background-color: rgba(56, 56, 56, .7);
   position: absolute;
   height: auto;
   width: 100vw;
   width: 100dvw;
   z-index: 2;
   color: var(--white);
-  font-family: "Ubuntu";
+  font-family: Ubuntu;
   backdrop-filter: blur(1em);
   -webkit-backdrop-filter: blur(1em);
   cursor: default;
   animation-name: animatetop;
-  animation-duration: 0.25s;
-  display: none;
+  animation-duration: .25s;
+  display: none
 }
 
 @keyframes animatetop {
@@ -652,69 +572,68 @@ input[type="checkbox"] {
 .modal-page-title {
   display: flex;
   gap: 1em;
-  margin: 0.5em;
-  padding: 0.5em;
+  margin: .5em;
+  padding: .5em;
   font-size: 1.4em;
   align-items: center;
   justify-content: space-between;
-  font-weight: bold;
+  font-weight: 700;
   background-color: var(--white-low-alpha);
-  border-radius: 0.5em;
+  border-radius: .5em
 }
 
 .modal-close-btn {
-  font-size: 1.4em;
+  font-size: 1.4em
 }
 
 .modal-group {
   display: flex;
   flex-direction: column;
-  margin: 0.75em;
-  padding: 0.5em;
+  margin: .75em;
+  padding: .5em;
   background-color: var(--white-low-alpha);
-  border-radius: 0.75em;
+  border-radius: .75em
 }
 
 .modal-title {
   display: flex;
   flex-direction: column;
   font-size: 1.15em;
-  font-weight: bold;
-  padding: 0.25em;
+  font-weight: 700;
+  padding: .25em
 }
 
 .modal-option {
   display: flex;
-  font-size: 0.9em;
-  padding: 0.25em;
+  font-size: .9em;
+  padding: .25em;
   font-weight: 400;
   justify-content: space-between;
   transition: 250ms;
-  border-radius: 0.375em;
-  padding-inline: 0.5em;
+  border-radius: .375em;
+  padding-inline: .5em
 }
 
 .modal-option:hover {
-  background-color: var(--white-quarter-alpha);
+  background-color: var(--white-quarter-alpha)
 }
 
 .setting-preview {
   background-color: #06060400;
-  border: 0px solid rgb(0, 0, 0);
+  border: 0 solid #000;
   border-radius: 6px;
   text-align: end;
-  font-size: 0.9em;
-  font-family: "Ubuntu";
+  font-size: .9em;
+  font-family: Ubuntu;
   color: var(--white-half-alpha);
   animation-name: animatetop;
-  animation-duration: 1000ms;
+  animation-duration: 1s
 }
 
 .setting-preview option {
   color: #060604;
   text-align: end;
-  background-color: var(--dark-low-alpha);
-
+  background-color: var(--dark-low-alpha)
 }
 
 .footer {
@@ -724,105 +643,103 @@ input[type="checkbox"] {
   flex-direction: column;
   align-items: center;
   z-index: 1;
-  gap: 0.25em;
-  padding: 0.5em;
+  gap: .25em;
+  padding: .5em
 }
 
 .footer * {
   display: flex;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, .5);
   gap: 1em;
-  font-size: 0.85em;
+  font-size: .85em;
   line-height: 1.5em;
   list-style: none;
   transition: 150ms;
-  text-decoration: none;
+  text-decoration: none
 }
 
-.footer *:hover,
-.footer *:focus {
-  color: rgba(255, 255, 255, 1);
+.footer :focus,
+.footer :hover {
+  color: rgba(255, 255, 255, 1)
 }
 
 .ext_favicon {
   width: 32px;
   height: 32px;
-  border-radius: 50%;
+  border-radius: 50%
 }
 
 .loader {
-  border: 0.2em solid var(--primary-color) !important;
-  /* Light grey */
-  border-top: 0.2em solid dodgerblue !important;
-  /* Blue */
+  border: .2em solid var(--primary-color) !important;
+  border-top: .2em solid #1e90ff !important;
   border-radius: 50%;
-  animation: spin 1s normal infinite;
+  animation: spin 1s normal infinite
 }
 
 @keyframes spin {
   0% {
-    transform: rotate(0deg);
+    transform: rotate(0)
   }
 
   100% {
-    transform: rotate(360deg);
+    transform: rotate(360deg)
   }
 }
 
 .loader * {
-  animation: spin-rev 1s normal infinite;
+  animation: spin-rev 1s normal infinite
 }
 
 .collapsed {
   height: 0;
   padding: 0;
   margin: 0;
-  overflow: hidden;
+  overflow: hidden
 }
 
 .hidden {
-  display: none;
+  display: none
 }
 
 @keyframes spin-rev {
   0% {
-    transform: rotate(360deg);
+    transform: rotate(360deg)
   }
 
   100% {
-    transform: rotate(0deg);
+    transform: rotate(0)
   }
 }
 
-@media only screen and (min-width: 370px) {
+@media only screen and (min-width:370px) {
   body {
-    font-size: 18px;
+    font-size: 18px
   }
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width:600px) {
   body {
-    font-size: 22px;
+    font-size: 22px
   }
 
   .footer {
     flex-direction: row;
     justify-content: space-between;
-    padding-inline: 2em;
+    padding-inline: 2em
   }
 }
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width:1024px) {
   body {
-    font-size: 24px;
+    font-size: 24px
   }
 
   #advanced-settings-modal {
-    background-color: rgba(56, 56, 56, 0.7);
+    background-color: rgba(56, 56, 56, .7);
     position: absolute;
     height: auto;
     width: 50vw;
     width: 50dvw;
-    top: 0;
+    top: 0
   }
 }
