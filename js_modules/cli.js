@@ -1,4 +1,4 @@
-import { resetAll, resetBookmarks, toggleLabs } from './preferences.js';
+import { resetAll, resetBookmarks } from './preferences.js';
 import { cliHelpText, cliUnexpectedCmdText } from './strings.js';
 import { fetchBookmarks } from './utils.js';
 
@@ -26,9 +26,9 @@ export function cliParse(input) {
         case 'fetch default':
             fetchBookmarks();
             break;
-        case 'labs':
-            toggleLabs(null);
-            break;
+        // case 'labs':
+        //     toggleLabs(null);
+        //     break;
         default:
             alert(cliUnexpectedCmdText);
     }

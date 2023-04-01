@@ -8,9 +8,8 @@ import {
     resetAllWarningText,
     resetBookmarksWarningText,
 } from './strings.js';
-import { toggleBackdropBlur } from './utils.js';
+import { addZero } from './utils/addZero.js';
 import { wait } from './utils/wait.js';
-import { isClockStyleCapital } from './validators.js';
 import { selectedWallpaper } from './wallpapers.js';
 
 export function exportBookmarks(event) {
@@ -55,66 +54,91 @@ export function toggleFavicons(event) {
     }
 };
 
-export function toggleClock() {
-    const widgetSlides = document.getElementsByClassName('widget-slide');
-    const subtitle = document.getElementById('subtitle');
-
-    // console.log(`${hours}:${minutes}:${seconds} ${am_pm(hours)}`);
-    function addZero(char) {
-        if (char.length == 1) char = '0' + char;
-        return char;
-    }
-
-    function refreshClock() {
-        const date = new Date();
-        let hours = date.getHours();
-        let amPm = (int) => {
-            if (int == 0) {
-                hours.toString();
-                hours = '12';
-                return 'AM';
-            } else if (int > 0 && int < 12) {
-                hours = addZero(hours.toString());
-                return 'AM';
-            } else if (int == 12) {
-                hours = '12';
-                return 'PM';
-            } else if (int > 12) {
-                hours = hours - 12;
-                hours.toString();
-                hours = addZero(hours);
-                return 'PM';
-            }
+let clockLoop = null;
+export function displayClock(value) {
+    const target = 'widget-slide';
+    switch (value) {
+        case 'off': {
+            clearInterval(clockLoop);
+            clockLoop = null;
+            break;
         };
-        const user = localStorage.getItem('userName');
-        let greeting = (int) => {
-            if (int < 12) {
-                return `Good Morning, ${user}`;
-            } else if (int >= 12 && int <= 18) {
-                return `Good Afternoon, ${user}`;
-            } else if (int >= 18) {
-                return `Good Evening, ${user}`;
-            }
+        case 'on': {
+            if (clockLoop) clearInterval(clockLoop);
+            clockLoop = setInterval(() => refreshClock(target), 1000);
+            break;
         };
-
-        const minutes = addZero(date.getMinutes().toString());
-        // const seconds = addZero(date.getSeconds().toString());
-        greeting = greeting(hours);
-        amPm = amPm(hours);
-
-        for (let i = 0; i < widgetSlides.length; i++) {
-            widgetSlides[i].innerText =
-                `${hours}:${minutes} ${amPm.toString()}`;
-        }
-
-        subtitle.innerText = greeting;
-        subtitle.style.display = 'block';
-
-        // console.log(`${hours}:${minutes}:${seconds} ${amPm}`);
     }
-
-    setInterval(refreshClock, 1000);
 };
+
+function refreshClock(targetClass) {
+    const target = document.getElementsByClassName(targetClass);
+    const date = new Date();
+    let hours = date.getHours();
+    let amPm = (int) => {
+        if (int == 0) {
+            hours.toString();
+            hours = '12';
+            return 'AM';
+        } else if (int > 0 && int < 12) {
+            hours = addZero(hours.toString());
+            return 'AM';
+        } else if (int == 12) {
+            hours = '12';
+            return 'PM';
+        } else if (int > 12) {
+            hours = hours - 12;
+            hours.toString();
+            hours = addZero(hours);
+            return 'PM';
+        }
+    };
+
+    const minutes = addZero(date.getMinutes().toString());
+    const seconds = addZero(date.getSeconds().toString());
+    amPm = amPm(hours);
+
+    for (let i = 0; i < target.length; i++) {
+        target[i].innerText =
+            `${hours}:${minutes} ${amPm.toString()}`;
+    }
+
+    // subtitle.style.display = 'block';
+    console.log(`${hours}:${minutes}:${seconds} ${amPm}`);
+}
+
+export function refreshGreeting() {
+    const subtitle = document.getElementById('subtitle');
+    const user = localStorage.getItem('userName');
+    const date = new Date();
+    const hours = date.getHours();
+    let greeting = (int) => {
+        if (int < 12) {
+            return `Good Morning, ${user}`;
+        } else if (int >= 12 && int <= 18) {
+            return `Good Afternoon, ${user}`;
+        } else if (int >= 18) {
+            return `Good Evening, ${user}`;
+        }
+    };
+    greeting = greeting(hours);
+    subtitle.innerText = greeting;
+}
+// let greetingLoop = null;
+// export function toggleGreeting() {
+//     switch (value) {
+//         case 'off': {
+//             subtitle.classList.toggle('collapsed');
+//             clearInterval(greetingLoop);
+//             break;
+//         };
+//         case 'on': {
+//             subtitle.classList.toggle('collapsed');
+//             greetingLoop = setInterval(refreshGreeting, 1000);
+//             break;
+//         };
+//     }
+// }
 
 export function toggleGlow() {
     const gradientOverlay = document.getElementById('gradient_overlay');
@@ -191,44 +215,44 @@ export function resetAll(event) {
 //     }
 // };
 
-export function toggleBlur() {
-    // event.stopPropagation();
-    const checkboxBlur = document.getElementById('toggle-blur-cb');
-    // const overlay = document.getElementById('overlay');
-    if (checkboxBlur.checked == true) {
-        toggleBackdropBlur('overlay', 1);
-        localStorage.setItem('blur_wallpaper', 'blur(1em)');
-    } else {
-        toggleBackdropBlur('overlay', 0);
-        localStorage.setItem('blur_wallpaper', 'blur(0em)');
-    }
-};
+// export function toggleBlur() {
+//     // event.stopPropagation();
+//     const checkboxBlur = document.getElementById('toggle-blur-cb');
+//     // const overlay = document.getElementById('overlay');
+//     if (checkboxBlur.checked == true) {
+//         toggleBackdropBlur('overlay', 1);
+//         localStorage.setItem('blur_wallpaper', 'blur(1em)');
+//     } else {
+//         toggleBackdropBlur('overlay', 0);
+//         localStorage.setItem('blur_wallpaper', 'blur(0em)');
+//     }
+// };
 
-export function toggleWallpaper(event) {
-    event.stopPropagation();
-    const checkboxWall = document.getElementById('toggle-wallpaper-cb');
-    const overlay = document.getElementById('overlay');
-    if (checkboxWall.checked == false) {
-        overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.375)';
-        localStorage.setItem('disable_wallpaper', 'rgba(0, 0, 0, 0.375)');
-    } else {
-        overlay.style.backgroundColor = 'rgb(0, 0, 0)';
-        localStorage.setItem('disable_wallpaper', 'rgb(0, 0, 0)');
-    }
-};
+// export function toggleWallpaper(event) {
+//     event.stopPropagation();
+//     const checkboxWall = document.getElementById('toggle-wallpaper-cb');
+//     const overlay = document.getElementById('overlay');
+//     if (checkboxWall.checked == false) {
+//         overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.375)';
+//         localStorage.setItem('disable_wallpaper', 'rgba(0, 0, 0, 0.375)');
+//     } else {
+//         overlay.style.backgroundColor = 'rgb(0, 0, 0)';
+//         localStorage.setItem('disable_wallpaper', 'rgb(0, 0, 0)');
+//     }
+// };
 
-export function toggleLabs(event) {
-    // event.stopPropagation();
-    console.log('called labs');
-    const checkboxLabs = document.getElementById('toggle-labs-cb');
-    const labsDiv = document.getElementById('labs');
+// export function toggleLabs(event) {
+//     // event.stopPropagation();
+//     console.log('called labs');
+//     const checkboxLabs = document.getElementById('toggle-labs-cb');
+//     const labsDiv = document.getElementById('labs');
 
-    if (checkboxLabs.checked == true) {
-        labsDiv.style.display = 'block';
-        localStorage.setItem('labs', 'block');
-    } else {
-        labsDiv.style.display = 'none';
-        localStorage.setItem('labs', 'none');
-    }
-};
+//     if (checkboxLabs.checked == true) {
+//         labsDiv.style.display = 'block';
+//         localStorage.setItem('labs', 'block');
+//     } else {
+//         labsDiv.style.display = 'none';
+//         localStorage.setItem('labs', 'none');
+//     }
+// };
 

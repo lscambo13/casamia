@@ -21,3 +21,15 @@ export const resetAllWarningText =
     `This will reset everything.
 There is no going back.\n
 Are you sure?`;
+
+export const askUserNameText =
+    `Welcome to Casa Mia
+What is your name?`;
+
+export const retryUserNameText =
+    `Please enter a valid name to proceed.
+Maximum length allowed is 14 characters.`;
+
+export const updateUserNameText =
+    `Update your name..
+Maximum length allowed is 14 characters.`;

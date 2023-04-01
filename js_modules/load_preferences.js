@@ -1,4 +1,5 @@
-import { toggleClock } from './preferences.js';
+import { displayClock, refreshGreeting } from './preferences.js';
+import { fixBackgroundBlurOnResize } from './utils.js';
 
 const PREF_MAP = {
     'bg-img-drop': backgroundImage,
@@ -8,6 +9,7 @@ const PREF_MAP = {
     'footer-display-drop': displayfooter,
     'def-widget-drop': defaultWidget,
     'widget-style-drop': widgetStyle,
+    'greeting-display-drop': displayGreeting,
     'show-seconds-drop': showSeconds,
     'clock-style-drop': clockStyle,
     'am-pm-style-drop': amPmStyle,
@@ -37,12 +39,11 @@ function backgroundBlur(value) {
     switch (value) {
         case 'off': {
             overlay.style.backdropFilter = 'blur(0em)';
-            console.log(value);
             break;
         };
         case 'on': {
             overlay.style.backdropFilter = 'blur(1em)';
-            console.log(value);
+            fixBackgroundBlurOnResize('overlay');
             break;
         };
     }
@@ -64,18 +65,21 @@ function defaultWidget(value) {
 
     switch (value) {
         case 'casamia': {
+            displayClock('off');
             apply('Casa Mia');
             break;
         };
         case 'search': {
+            displayClock('off');
             apply('Search');
             break;
         };
         case 'clock': {
-            toggleClock();
+            displayClock('on');
             break;
         };
-        case 'custom..': {
+        case 'custom': {
+            displayClock('off');
             apply('Custom');
             break;
         };
@@ -83,6 +87,23 @@ function defaultWidget(value) {
 };
 
 function widgetStyle() { };
+
+let greetingLoop = null;
+function displayGreeting(value) {
+    const subtitle = document.getElementById('subtitle');
+    switch (value) {
+        case 'off': {
+            subtitle.classList.add('collapsed');
+            clearInterval(greetingLoop);
+            break;
+        };
+        case 'on': {
+            subtitle.classList.remove('collapsed');
+            greetingLoop = setInterval(refreshGreeting, 1000);
+            break;
+        };
+    }
+};
 
 function showSeconds() { };
 
@@ -102,6 +123,9 @@ export function applyPreferences() {
     for (const i of preferencesArray) {
         PREF_MAP[i[0]](i[1]);
     }
+
+    // apply previews
+    updateUserNamePreview();
 }
 
 export function loadDropdownPositions() {
@@ -113,4 +137,8 @@ export function loadDropdownPositions() {
     }
 };
 
+export function updateUserNamePreview() {
+    document.getElementById('update-username-btn-preview').
+        textContent = localStorage.getItem('userName');
+}
 

@@ -1,11 +1,28 @@
 import { DEF_PREF, DEF_WALLPAPER } from './constants.js';
+import { updateUserNamePreview } from './load_preferences.js';
+import {
+    askUserNameText,
+    retryUserNameText,
+    updateUserNameText,
+} from './strings.js';
 
-export function askUserName(update) {
+export function askUserName() {
     let userName = localStorage.getItem('userName');
-    if (update == 1) userName = prompt('Welcome! What is your name?');
-    while (!userName || userName.startsWith(' ')) {
-        userName = prompt('Welcome! What is your name?');
+    if (userName) {
+        userName = prompt(updateUserNameText, userName);
+        if (userName && !userName.startsWith(' ') && userName.length < 15) {
+            localStorage.setItem('userName', userName);
+            updateUserNamePreview();
+        };
+        return;
+    };
+
+    // for onboarding
+    let msg = askUserNameText;
+    while (!userName || userName.startsWith(' ') || userName.length > 14) {
+        userName = prompt(msg);
         localStorage.setItem('userName', userName);
+        msg = retryUserNameText;
     };
 };
 
