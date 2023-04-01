@@ -8,7 +8,8 @@ export function getSearchTerm() {
 
 export function addEventListenerOnID(id, event, func) {
     if (event == null) return;
-    return document.getElementById(id).addEventListener(event, func);
+    return document.getElementById(id).
+        addEventListener(event, func, { passive: true });
 }
 
 export function addEventListenerOnClass(className, event, func) {
@@ -36,10 +37,10 @@ export function fetchBookmarks() {
         .then((res) => importBookmarks(null, res.text()));
 }
 
-export function toggleBackdropBlur(id, int) {
-    document.getElementById(id).style.backdropFilter = `blur(${int / 1.1}em)`;
+export function fixBackgroundBlurOnResize(id) {
+    document.getElementById(id).style.backdropFilter = `blur(0.9em)`;
     setTimeout(() => {
-        document.getElementById(id).style.backdropFilter = `blur(${int}em)`;
+        document.getElementById(id).style.backdropFilter = `blur(1em)`;
     }, 1);
 };
 

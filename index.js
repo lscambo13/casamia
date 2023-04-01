@@ -36,11 +36,7 @@ import {
 	importBookmarks,
 	resetAll,
 	resetBookmarks,
-	toggleBlur,
-	toggleClock,
 	toggleFavicons,
-	toggleGlow,
-	toggleWallpaper,
 } from './js_modules/preferences.js';
 import { isUrlValid } from './js_modules/validators.js';
 import { askUserName, setDefaultPreferences } from './js_modules/onboarding.js';
@@ -143,15 +139,15 @@ addEventListenerOnID('export-bookmarks-btn', 'click', exportBookmarks);
 addEventListenerOnID('import-bookmarks-btn', 'change', importBookmarks);
 addEventListenerOnID('download-wallpaper-btn', 'click', downloadWallpaper);
 addEventListenerOnID('toggle-favicons-btn', 'click', toggleFavicons);
-addEventListenerOnID('toggle-clock-btn', 'click', toggleClock);
-addEventListenerOnID('toggle-glow-btn', 'click', toggleGlow);
-addEventListenerOnID('update-username-btn', 'click', () => askUserName(1));
+// addEventListenerOnID('toggle-clock-btn', 'click', toggleClock);
+// addEventListenerOnID('toggle-glow-btn', 'click', toggleGlow);
+addEventListenerOnID('update-username-btn', 'click', askUserName);
 addEventListenerOnID('fetch-bookmarks-btn', 'click', fetchBookmarks);
 addEventListenerOnID('reset-bookmarks-btn', 'click', resetBookmarks);
 addEventListenerOnID('reset-all-btn', 'click', resetAll);
 
-addEventListenerOnID('toggle-blur-cb', 'click', toggleBlur);
-addEventListenerOnID('toggle-wallpaper-cb', 'click', toggleWallpaper);
+// addEventListenerOnID('toggle-blur-cb', 'click', toggleBlur);
+// addEventListenerOnID('toggle-wallpaper-cb', 'click', toggleWallpaper);
 addEventListenerOnClass('modal-close-btn', 'click', closeAdvancedSettings);
 addEventListenerOnID('toggle-labs-btn', 'click', openAdvancedSettings);
 addEventListenerOnID('terms-btn', 'click', openAdvancedSettings);
@@ -175,9 +171,7 @@ addEventListenerOnID('right-arrow', 'click', (event) => {
 	changeSlide('widget-slide', -1);
 });
 
-window.addEventListener('resize', () => {
-	toggleBlur();
-});
+window.addEventListener('resize', applyPreferences);
 
 addEventListenerOnID('wallpapers', 'wheel', (e) => {
 	// e.stopPropagation();
@@ -208,7 +202,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 	setDefaultPreferences();
 	applyPreferences();
 	loadBookmarks();
-	// toggleClock();
+	// toggleClock('widget-slide');
+	// toggleGreeting('on');
 	// stylizeText('main-heading', 0);
 
 	await fetchWallpapersList();
