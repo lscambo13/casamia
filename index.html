@@ -3,6 +3,7 @@
 
 <head>
   <title>Search · Casa Mia</title>
+  <link rel="icon" type="image/x-icon" href="./favicon.ico">
   <meta name="theme-color" content="black">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="light">
@@ -37,22 +38,22 @@
   <div id="overlay"></div>
   <div id="gradient_overlay"></div>
 
-  <div class="labs" id="labs">
-    <div id="mydivheader">...</div>
-    <!-- <button id="export-bookmarks-btn" class="button clickable">Export Bookmarks</button> -->
-    <!-- <button class="button">
+  <!-- <div class="labs" id="labs">
+    <div id="mydivheader">...</div> -->
+  <!-- <button id="export-bookmarks-btn" class="button clickable">Export Bookmarks</button> -->
+  <!-- <button class="button">
       <label for="import-bookmarks-btn">Import Bookmarks</label>
       <input type="file" id="import-bookmarks-btn" accept=".json"">
     </button> -->
-    <!-- <button id='download-wallpaper-btn' class=" button clickable">Download Wallpaper</button> -->
-    <!-- <button id="toggle-favicons-btn" class="button clickable">Toggle Favicons</button> -->
-    <button id="toggle-clock-btn" class="button clickable">Toggle Clock</button>
-    <button id="toggle-glow-btn" class="button clickable">Toggle Glow</button>
-    <!-- <button id="update-username-btn" class="button clickable">Update Username</button> -->
-    <!-- <button id="fetch-bookmarks-btn" class="button clickable">Fetch Bookmarks</button> -->
-    <!-- <button id="reset-bookmarks-btn" class="button clickable">Reset Bookmarks</button> -->
-    <!-- <button id="reset-all-btn" class="button clickable">Reset All!</button><br> -->
-  </div>
+  <!-- <button id='download-wallpaper-btn' class=" button clickable">Download Wallpaper</button> -->
+  <!-- <button id="toggle-favicons-btn" class="button clickable">Toggle Favicons</button> -->
+  <!-- <button id="toggle-clock-btn" class="button clickable">Toggle Clock</button>
+    <button id="toggle-glow-btn" class="button clickable">Toggle Glow</button> -->
+  <!-- <button id="update-username-btn" class="button clickable">Update Username</button> -->
+  <!-- <button id="fetch-bookmarks-btn" class="button clickable">Fetch Bookmarks</button> -->
+  <!-- <button id="reset-bookmarks-btn" class="button clickable">Reset Bookmarks</button> -->
+  <!-- <button id="reset-all-btn" class="button clickable">Reset All!</button><br> -->
+  <!-- </div> -->
 
   <div id="wrap" class="startup_slide_down">
     <div class="flex-main-container-vertical">
@@ -60,12 +61,12 @@
         <i id="left-arrow" class="fa fa-caret-left arrows"></i>
         <div class="home-widget">
           <div id="main-heading-slider">
-            <h1 class="widget-slide default-text-style">Casa Mia</h1>
-            <h1 class="widget-slide brush-text-style-1 has-shadow">Casa Mia</h1>
-            <h1 class="widget-slide brush-text-style-2 has-shadow">Casa Mia</h1>
-            <h1 class="widget-slide brush-text-style-3 has-shadow">Casa Mia</h1>
+            <h1 class="widget-slide default-text-style"></h1>
+            <h1 class="widget-slide brush-text-style-1 has-shadow"></h1>
+            <h1 class="widget-slide brush-text-style-2 has-shadow"></h1>
+            <h1 class="widget-slide brush-text-style-3 has-shadow"></h1>
           </div>
-          <p id="subtitle" style="display:none;">Lorem ipsum dolor sit amet elit.</p>
+          <p id="subtitle" class=""></p>
         </div>
         <i id="right-arrow" class="fa fa-caret-right arrows"></i>
       </div>
@@ -130,20 +131,20 @@
           <option value="off">Off</option>
         </select>
       </label>
-      <label for="bg-glow-drop" class="modal-option custom-dropdown">Background glow
+      <label for="bg-glow-drop" class="modal-option custom-dropdown hidden">Background glow
         <select class="setting-preview" name="bg-glow-drop" id="bg-glow-drop">
           <option value="auto">Auto</option>
           <option value="on">Force On</option>
           <option value="off">Force Off</option>
         </select>
       </label>
-      <label for="weather-display-drop" class="modal-option custom-dropdown">Display weather
+      <label for="weather-display-drop" class="modal-option custom-dropdown hidden">Display weather
         <select class="setting-preview" name="weather-display-drop" id="weather-display-drop">
           <option value="on">On</option>
           <option value="off">Off</option>
         </select>
       </label>
-      <label for="footer-display-drop" class="modal-option custom-dropdown">Display footer
+      <label for="footer-display-drop" class="modal-option custom-dropdown hidden">Display footer
         <select class="setting-preview" name="footer-display-drop" id="footer-display-drop">
           <option value="on">On</option>
           <option value="off">Off</option>
@@ -161,15 +162,21 @@
           <option value="custom">Custom..</option>
         </select>
       </label>
-      <label for="widget-style-drop" class="modal-option custom-dropdown">Widget style
+      <label for="widget-style-drop" class="modal-option custom-dropdown hidden">Widget style
         <select class="setting-preview" name="widget-style-drop" id="widget-style-drop">
           <option value="minimal">Minimal</option>
           <option value="handwritten">Handwritten</option>
         </select>
       </label>
+      <label for="greeting-display-drop" class="modal-option custom-dropdown">Display greeting
+        <select class="setting-preview" name="greeting-display-drop" id="greeting-display-drop">
+          <option value="on">on</option>
+          <option value="off">off</option>
+        </select>
+      </label>
     </div>
 
-    <div class="modal-group">
+    <div class="modal-group hidden">
       <p class="modal-title">Clock</p>
       <label for="show-seconds-drop" class="modal-option custom-dropdown">Show seconds
         <select class="setting-preview" name="show-seconds-drop" id="show-seconds-drop">
@@ -191,7 +198,7 @@
       </label>
     </div>
 
-    <div class="modal-group">
+    <div class="modal-group hidden">
       <p class="modal-title">Search</p>
       <label for="def-search-engine-drop" class="modal-option custom-dropdown">Default search engine
         <select class="setting-preview" name="def-search-engine-drop" id="def-search-engine-drop">
@@ -204,7 +211,7 @@
 
     <div class="modal-group">
       <p class="modal-title">Bookmarks</p>
-      <label for="show-titles-drop" class="modal-option custom-dropdown">Show titles
+      <label for="show-titles-drop" class="modal-option custom-dropdown hidden">Show titles
         <select class="setting-preview" name="show-titles-drop" id="show-titles-drop">
           <option value="on">On</option>
           <option value="off">Off</option>
@@ -251,8 +258,6 @@
         <p class="setting-preview">Caution!</p>
       </div>
     </div>
-
-
 
     <br>
   </div>
