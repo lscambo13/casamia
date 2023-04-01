@@ -2,6 +2,7 @@ import { changeGlow } from './colors.js';
 import { WALLPAPERS_URL } from './constants.js';
 import { applyPreferences } from './load_preferences.js';
 import { changeTextAccentColor } from './utils.js';
+import { redoOnboarding } from './utils/redoOnboarding.js';
 
 export let selectedWallpaper = null;
 export let color = null;
@@ -107,6 +108,7 @@ function resolveWallpapers() {
     color = wallpapersList.filter((item) => {
         return item.file == selectedWallpaper;
     })[0].color;
+    if (!color) redoOnboarding();
 }
 
 function populateWallpapersInDOM() {
