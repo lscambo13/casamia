@@ -236,10 +236,11 @@ window.addEventListener('hashchange', () => {
 	const url = document.URL;
 
 	if (!url.includes('#wallpapers')) {
-		console.log('url found');
-		// hide_wallpapers_alt();
+		// console.log('url found');
+		hideWallpapers('body');
+		closeAdvancedSettings();
 	}
-	console.log('go back');
+	// console.log('go back');
 });
 
 window.addEventListener('blur', () => {
