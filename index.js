@@ -28,6 +28,7 @@ import {
 } from './js_modules/wallpapers.js';
 import {
 	applyPreferences,
+	askCustomDomain,
 	askCustomText,
 	loadDropdownPositions,
 } from './js_modules/load_preferences.js';
@@ -148,6 +149,7 @@ addEventListenerOnID('toggle-favicons-btn', 'click', toggleFavicons);
 // addEventListenerOnID('toggle-glow-btn', 'click', toggleGlow);
 addEventListenerOnID('update-username-btn', 'click', askUserName);
 addEventListenerOnID('update-customtext-btn', 'click', askCustomText);
+addEventListenerOnID('update-customdomain-btn', 'click', askCustomDomain);
 addEventListenerOnID('fetch-bookmarks-btn', 'click', fetchBookmarks);
 addEventListenerOnID('reset-bookmarks-btn', 'click', resetBookmarks);
 addEventListenerOnID('reset-all-btn', 'click', resetAll);
@@ -158,7 +160,7 @@ addEventListenerOnClass('modal-close-btn', 'click', closeAdvancedSettings);
 addEventListenerOnID('toggle-labs-btn', 'click', openAdvancedSettings);
 addEventListenerOnID('terms-btn', 'click', openAdvancedSettings);
 
-addEventListenerOnID('google-search', 'click', Search.google);
+addEventListenerOnID('search-btn', 'click', Search.webSearch);
 addEventListenerOnID('movies-search', 'click', Search.movies);
 addEventListenerOnID('tv-search', 'click', Search.tv);
 addEventListenerOnID('games-search', 'click', Search.games);

@@ -37,8 +37,9 @@
       </div>
       <div class="search" id="searchbar"><input title="Search" type="search" class="searchTerm" id="searchTerm"
           placeholder="What's on your mind?" name="search" autocomplete="on" tabindex="1" /><button type="submit"
-          class="searchButton" id="google-search" title="Search Google" tabindex="1"><i
-            class="fa fa-google"></i></button></div>
+          class="searchButton" id="search-btn" title="Search the web" tabindex="1"><i id="search-btn-icon"
+            class=""></i></button>
+      </div>
       <div class="flex-sub-container-horizontal">
         <div id="movies-search" class="predefined-bookmark clickable" tabindex="1"><i class="flaticon-movies"></i></div>
         <div id="tv-search" class="predefined-bookmark clickable" tabindex="1"><i class="flaticon-tv"></i></div>
@@ -131,7 +132,12 @@
           <option value="google">Google</option>
           <option value="bing">Bing</option>
           <option value="duckduckgo">DuckDuckGo</option>
+          <option value="custom">Custom..</option>
         </select></label>
+      <div id="update-customdomain-btn" class="modal-option custom-button hidden">
+        <p>Custom domain</p>
+        <p id="update-customdomain-btn-preview" class="setting-preview">preview text</p>
+      </div>
       <label for="searchbar-position-drop" class="modal-option custom-dropdown">Searchbar position <select
           class="setting-preview" name="searchbar-position-drop" id="searchbar-position-drop">
           <option value="top">Default</option>

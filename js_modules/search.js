@@ -2,6 +2,7 @@ import {
     getSearchTerm,
 } from './utils.js';
 import {
+    BING_SEARCH_DOMAIN,
     EXT_SEARCH_DOMAIN,
     GOOGLE_SEARCH_DOMAIN,
     SEARCH_BUTTON_DOM,
@@ -10,14 +11,24 @@ import {
     cliCheck,
     cliParse,
 } from './cli.js';
+import { defaultSearchEngine } from './load_preferences.js';
 
-export function google() {
+function loadSearchDomain(input) {
+    let domain = localStorage.getItem('default-search-url');
+    if (domain == null) {
+        localStorage.setItem('default-search-url', GOOGLE_SEARCH_DOMAIN);
+        domain = localStorage.getItem('default-search-url');
+    }
+    return domain;
+}
+
+export function webSearch() {
     let input = getSearchTerm().value;
     if (input != '') {
         if (!cliCheck(input)) {
             input = encodeURIComponent(input);
             // input = input.split(" ").join("+");
-            const url = GOOGLE_SEARCH_DOMAIN + input;
+            const url = loadSearchDomain() + input;
             window.open(url);
         } else cliParse(input);
     } else {
@@ -70,17 +81,17 @@ export function ebooks() {
 };
 
 export function switchToCLI(event) {
+    const btnIcon = document.getElementById('search-btn-icon');
+    const currentIcon = localStorage.getItem('default-search-icon');
     if (cliCheck(event.target.value)) {
-        SEARCH_BUTTON_DOM.classList.remove('fa-google');
-        SEARCH_BUTTON_DOM.classList.add('fa-terminal');
+        btnIcon.className = 'fa fa-terminal';
     } else {
-        SEARCH_BUTTON_DOM.classList.add('fa-google');
-        SEARCH_BUTTON_DOM.classList.remove('fa-terminal');
+        btnIcon.className = currentIcon;
     }
 };
 
 export function enterToSearch(event) {
     if (event.key == 'Enter') {
-        google();
+        webSearch();
     }
 };

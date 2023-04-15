@@ -1,4 +1,4 @@
-import { DEF_CUSTOM_TEXT } from './constants.js';
+import { BING_SEARCH_DOMAIN, DEF_CUSTOM_TEXT, DUCKDUCKGO_SEARCH_DOMAIN, GOOGLE_SEARCH_DOMAIN } from './constants.js';
 import { displayClock, refreshGreeting } from './preferences.js';
 import { fixBackgroundBlurOnResize } from './utils.js';
 
@@ -141,6 +141,16 @@ export function askCustomText() {
     return customText;
 }
 
+export function askCustomDomain() {
+    const savedDomain = localStorage.getItem('customDomain');
+    const customDomain = prompt('Enter custom domain...', savedDomain);
+    if (customDomain == null) return;
+    localStorage.setItem('customDomain', customDomain);
+    applyDomain(customDomain);
+    updateCustomDomainPreview();
+    return customDomain;
+}
+
 function widgetStyle() { };
 
 let greetingLoop = null;
@@ -166,7 +176,70 @@ function clockStyle() { };
 
 function amPmStyle() { };
 
-function defaultSearchEngine() { };
+function applyDomain(domain) {
+    localStorage.setItem('default-search-url', domain);
+}
+
+export function defaultSearchEngine(value) {
+    function loadCustomDomain() {
+        let customDomain = localStorage.getItem('customDomain');
+        if (customDomain == null) {
+            localStorage.setItem('customDomain', GOOGLE_SEARCH_DOMAIN);
+            customDomain = localStorage.getItem('customDomain');
+            customDomain = askCustomDomain();
+        }
+        applyDomain(customDomain);
+        // return customText;
+    }
+
+    function applyIcon(value) {
+        document.getElementById('search-btn-icon').className = value;
+        localStorage.setItem('default-search-icon', value);
+    }
+
+    function toggleCustomDomainButton(value) {
+        switch (value) {
+            case 'show': {
+                document.getElementById('update-customdomain-btn')
+                    .classList.remove('hidden');
+                break;
+            };
+            case 'hide': {
+                document.getElementById('update-customdomain-btn')
+                    .classList.add('hidden');
+                break;
+            };
+        }
+    }
+
+    switch (value) {
+        case 'google': {
+            toggleCustomDomainButton('hide');
+            applyDomain(GOOGLE_SEARCH_DOMAIN);
+            applyIcon('fa fa-google');
+            break;
+        };
+        case 'bing': {
+            toggleCustomDomainButton('hide');
+            applyDomain(BING_SEARCH_DOMAIN);
+            applyIcon('fa fa-search');
+            break;
+        };
+        case 'duckduckgo': {
+            toggleCustomDomainButton('hide');
+            applyDomain(DUCKDUCKGO_SEARCH_DOMAIN);
+            applyIcon('fa fa-search');
+            break;
+        };
+        case 'custom': {
+            toggleCustomDomainButton('show');
+            loadCustomDomain();
+            // applyDomain(GOOGLE_SEARCH_DOMAIN);
+            applyIcon('fa fa-search');
+            break;
+        };
+    }
+};
 
 function defaultSearchbarPosition(value) {
     const searchbar = document.getElementById('searchbar');
@@ -198,6 +271,7 @@ export function applyPreferences() {
     // apply previews
     updateUserNamePreview();
     updateCustomTextPreview();
+    updateCustomDomainPreview();
 }
 
 export function loadDropdownPositions() {
@@ -217,6 +291,11 @@ export function updateUserNamePreview() {
 export function updateCustomTextPreview() {
     document.getElementById('update-customtext-btn-preview').
         textContent = localStorage.getItem('customWidgetText');
+}
+
+export function updateCustomDomainPreview() {
+    document.getElementById('update-customdomain-btn-preview').
+        textContent = localStorage.getItem('customDomain');
 }
 
 
