@@ -52,7 +52,20 @@ function backgroundGlow() { };
 
 function displayWeather() { };
 
-function displayfooter() { };
+function displayfooter(value) {
+    const footer = document.getElementById('footer');
+
+    switch (value) {
+        case 'off': {
+            footer.classList.add('hidden');
+            break;
+        };
+        case 'on': {
+            footer.classList.remove('hidden');
+            break;
+        };
+    }
+};
 
 function defaultWidget(value) {
     const widgetSlides = document.getElementsByClassName('widget-slide');
