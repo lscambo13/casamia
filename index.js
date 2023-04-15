@@ -31,6 +31,7 @@ import {
 	askCustomDomain,
 	askCustomText,
 	loadDropdownPositions,
+	scrollToBottom,
 } from './js_modules/load_preferences.js';
 import {
 	downloadWallpaper,
@@ -224,6 +225,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 	// dragElement(document.getElementById('labs'));
 
 	loadDropdownPositions();
+	scrollToBottom();
 
 	addEventListenerOnClass('clickable', 'keypress', clickToEnter);
 	addEventListenerOnClass('custom_bookmark', 'click', displayLoading);

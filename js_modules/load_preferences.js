@@ -256,11 +256,16 @@ function defaultSearchbarPosition(value) {
         };
         case 'bottom': {
             searchbar.style.order = '5';
-            window.scrollTo(0, document.body.scrollHeight);
             break;
         };
     }
 };
+
+export function scrollToBottom() {
+    if (document.getElementById('searchbar').style.order == '5') {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+}
 
 function showTitles() { };
 
