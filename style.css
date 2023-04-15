@@ -392,8 +392,9 @@ input[type=checkbox] {
   z-index: 2;
   opacity: 0;
   font-family: "Ubuntu";
+  padding-top: 0.075em;
   font-size: 0.875em;
-  padding-inline-start: 0.5em;
+  padding-inline-start: 0.75em;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

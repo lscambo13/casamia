@@ -48,6 +48,7 @@ import { saveDropdownPositions } from './js_modules/save_preferences.js';
 
 const bottomFilmRollContainer = document.getElementById('wallpapers');
 const wrap = document.getElementById('wrap');
+const advancedSettingsButton = document.getElementById('toggle-labs-btn');
 
 window.hideWallpapers = (str, event) => {
 	if (event) {
@@ -61,6 +62,7 @@ window.hideWallpapers = (str, event) => {
 				bottomFilmRollContainer.classList[1] == 'animation_slide_up'
 			) {
 				bottomFilmRollContainer.classList.remove('animation_slide_up');
+				advancedSettingsButton.classList.remove('animation_slide_right');
 				bottomFilmRollContainer.classList.add('animation_slide_down');
 				wrap.classList.remove('animation2_slide_up');
 				wrap.classList.add('animation2_slide_down');
@@ -80,12 +82,14 @@ window.hideWallpapers = (str, event) => {
 				bottomFilmRollContainer.classList.add('animation_slide_up');
 				wrap.classList.remove('animation2_slide_down', 'startup_slide_down');
 				wrap.classList.add('animation2_slide_up');
+				advancedSettingsButton.classList.add('animation_slide_right');
 				changeGlow(null, 1);
 				toggleRemoveButtons('show');
 				toggleArrows('show');
 				scrollHighlightedWallpaperIntoView();
 			} else {
 				bottomFilmRollContainer.classList.remove('animation_slide_up');
+				advancedSettingsButton.classList.remove('animation_slide_right');
 				bottomFilmRollContainer.classList.add('animation_slide_down');
 				wrap.classList.remove('animation2_slide_up');
 				wrap.classList.add('animation2_slide_down');
