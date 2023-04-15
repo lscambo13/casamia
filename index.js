@@ -28,6 +28,7 @@ import {
 } from './js_modules/wallpapers.js';
 import {
 	applyPreferences,
+	askCustomText,
 	loadDropdownPositions,
 } from './js_modules/load_preferences.js';
 import {
@@ -146,6 +147,7 @@ addEventListenerOnID('toggle-favicons-btn', 'click', toggleFavicons);
 // addEventListenerOnID('toggle-clock-btn', 'click', toggleClock);
 // addEventListenerOnID('toggle-glow-btn', 'click', toggleGlow);
 addEventListenerOnID('update-username-btn', 'click', askUserName);
+addEventListenerOnID('update-customtext-btn', 'click', askCustomText);
 addEventListenerOnID('fetch-bookmarks-btn', 'click', fetchBookmarks);
 addEventListenerOnID('reset-bookmarks-btn', 'click', resetBookmarks);
 addEventListenerOnID('reset-all-btn', 'click', resetAll);

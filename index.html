@@ -35,7 +35,7 @@
           <p id="subtitle" class="">Please wait</p>
         </div><i id="right-arrow" class="fa fa-caret-right arrows"></i>
       </div>
-      <div class="search"><input title="Search" type="search" class="searchTerm" id="searchTerm"
+      <div class="search" id="searchbar"><input title="Search" type="search" class="searchTerm" id="searchTerm"
           placeholder="What's on your mind?" name="search" autocomplete="on" tabindex="1" /><button type="submit"
           class="searchButton" id="google-search" title="Search Google" tabindex="1"><i
             class="fa fa-google"></i></button></div>
@@ -94,7 +94,13 @@
           <option value="search">Search</option>
           <option value="clock">Clock</option>
           <option value="custom">Custom..</option>
-        </select></label><label for="widget-style-drop" class="modal-option custom-dropdown hidden">Widget style <select
+        </select></label>
+      <div id="update-customtext-btn" class="modal-option custom-button hidden">
+        <p>Custom widget text</p>
+        <p id="update-customtext-btn-preview" class="setting-preview">preview text</p>
+      </div>
+
+      <label for="widget-style-drop" class="modal-option custom-dropdown hidden">Widget style <select
           class="setting-preview" name="widget-style-drop" id="widget-style-drop">
           <option value="minimal">Minimal</option>
           <option value="handwritten">Handwritten</option>
@@ -126,6 +132,11 @@
           <option value="bing">Bing</option>
           <option value="duckduckgo">DuckDuckGo</option>
         </select></label>
+      <label for="searchbar-position-drop" class="modal-option custom-dropdown">Searchbar position <select
+          class="setting-preview" name="searchbar-position-drop" id="searchbar-position-drop">
+          <option value="top">Default</option>
+          <option value="bottom">Bottom</option>
+        </select></label>
     </div>
     <div class="modal-group">
       <p class="modal-title">Bookmarks</p><label for="show-titles-drop" class="modal-option custom-dropdown hidden">Show
@@ -135,7 +146,7 @@
         </select></label>
       <div id="fetch-bookmarks-btn" class="modal-option">
         <p>Download sample bookmarks</p>
-        <p class="setting-preview"></p>
+        <!-- <p class="setting-preview"></p> -->
       </div>
     </div>
     <div class="modal-group">
@@ -152,7 +163,7 @@
       <p class="modal-title">Labs</p>
       <div id="download-wallpaper-btn" class="modal-option">
         <p>Download background image</p>
-        <p id="download-wallpaper-btn-preview" class="setting-preview"></p>
+        <!-- <p id="download-wallpaper-btn-preview" class="setting-preview"></p> -->
       </div>
       <div id="toggle-favicons-btn" class="modal-option">
         <p>Toggle favicons</p>

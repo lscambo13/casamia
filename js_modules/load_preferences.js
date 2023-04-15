@@ -1,3 +1,4 @@
+import { DEF_CUSTOM_TEXT } from './constants.js';
 import { displayClock, refreshGreeting } from './preferences.js';
 import { fixBackgroundBlurOnResize } from './utils.js';
 
@@ -14,6 +15,7 @@ const PREF_MAP = {
     'clock-style-drop': clockStyle,
     'am-pm-style-drop': amPmStyle,
     'def-search-engine-drop': defaultSearchEngine,
+    'searchbar-position-drop': defaultSearchbarPosition,
     'show-titles-drop': showTitles,
 };
 
@@ -67,37 +69,77 @@ function displayfooter(value) {
     }
 };
 
-function defaultWidget(value) {
-    const widgetSlides = document.getElementsByClassName('widget-slide');
+const widgetSlides = document.getElementsByClassName('widget-slide');
 
-    function apply(input) {
-        for (const i of widgetSlides) {
-            i.textContent = input;
+function applyText(input) {
+    for (const i of widgetSlides) {
+        i.textContent = input;
+    }
+};
+
+function defaultWidget(value) {
+    function loadCustomText() {
+        let customText = localStorage.getItem('customWidgetText');
+        if (customText == null) {
+            localStorage.setItem('customWidgetText', DEF_CUSTOM_TEXT);
+            customText = localStorage.getItem('customWidgetText');
+            customText = askCustomText();
+        }
+        applyText(customText);
+        // return customText;
+    }
+
+    function toggleCustomTextButton(value) {
+        switch (value) {
+            case 'show': {
+                document.getElementById('update-customtext-btn')
+                    .classList.remove('hidden');
+                break;
+            };
+            case 'hide': {
+                document.getElementById('update-customtext-btn')
+                    .classList.add('hidden');
+                break;
+            };
         }
     }
 
     switch (value) {
         case 'casamia': {
+            toggleCustomTextButton('hide');
             displayClock('off');
-            apply('Casa Mia');
+            applyText('Casa Mia');
             break;
         };
         case 'search': {
+            toggleCustomTextButton('hide');
             displayClock('off');
-            apply('Search');
+            applyText('Search');
             break;
         };
         case 'clock': {
+            toggleCustomTextButton('hide');
             displayClock('on');
             break;
         };
         case 'custom': {
             displayClock('off');
-            apply('Custom');
+            toggleCustomTextButton('show');
+            loadCustomText();
             break;
         };
     }
 };
+
+export function askCustomText() {
+    const savedText = localStorage.getItem('customWidgetText');
+    const customText = prompt('Enter custom text...', savedText);
+    if (customText == null) return;
+    localStorage.setItem('customWidgetText', customText);
+    applyText(customText);
+    updateCustomTextPreview();
+    return customText;
+}
 
 function widgetStyle() { };
 
@@ -126,6 +168,22 @@ function amPmStyle() { };
 
 function defaultSearchEngine() { };
 
+function defaultSearchbarPosition(value) {
+    const searchbar = document.getElementById('searchbar');
+
+    switch (value) {
+        case 'top': {
+            searchbar.style.order = 'initial';
+            break;
+        };
+        case 'bottom': {
+            searchbar.style.order = '5';
+            window.scrollTo(0, document.body.scrollHeight);
+            break;
+        };
+    }
+};
+
 function showTitles() { };
 
 export function applyPreferences() {
@@ -139,6 +197,7 @@ export function applyPreferences() {
 
     // apply previews
     updateUserNamePreview();
+    updateCustomTextPreview();
 }
 
 export function loadDropdownPositions() {
@@ -154,4 +213,10 @@ export function updateUserNamePreview() {
     document.getElementById('update-username-btn-preview').
         textContent = localStorage.getItem('userName');
 }
+
+export function updateCustomTextPreview() {
+    document.getElementById('update-customtext-btn-preview').
+        textContent = localStorage.getItem('customWidgetText');
+}
+
 

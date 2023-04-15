@@ -97,7 +97,9 @@ input[type=checkbox] {
 }
 
 .flex-main-container-vertical {
-  margin: auto
+  margin: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 #home-widget-container {
