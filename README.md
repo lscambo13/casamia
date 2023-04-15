@@ -1,4 +1,4 @@
-# **Casa Mia** : _A Custom Start Page For Your Favorite Browser_
+# **Casa Mia** : _A Highy Customizable Start Page For Your Favorite Browser_
 
 ## [`Click here to visit ./> `](https://lscambo13.github.io/casamia/)
 
@@ -6,17 +6,21 @@
 
 # **Features**
 
--   Search Google, but also.. <br>
+-   Almost everything can be toggled on or off <br>
+-   Search Google, Bing, DuckDuckGo, but also.. <br>
+-   Allows using a custom search engine <br>
 -   Search Movies, Games, Books, and TV Shows directly <br>
--   Add custom bookmarks <br>
+-   Add and remove custom bookmarks <br>
+-   Move search bar to top or bottom <br>
 -   Choose from a range of wallpapers as background <br>
+-   Download the wallpaper if you like <br>
 -   Live clock <br>
--   Unique clock styles <br>
+-   Custom text on home screen <br>
+-   Multiple clock and text styles <br>
 -   Personalised greetings <br>
--   Blur effects <br>
--   Cool animations <br>
--   CLI inside the search box <br>
--   Optimised for Phones and PC both <br>
+-   Tasteful mix of blur effects and  animations <br>
+-   CLI/Terminal-style experience inside the search box <br>
+-   Optimised for phones and desktops <br>
     <br>
 
 ### **Save (https://lscambo13.github.io/casamia/) as bookmark now**
