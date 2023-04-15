@@ -633,6 +633,7 @@ input[type=checkbox] {
 .setting-preview {
   background-color: #06060400;
   border: 0 solid #000;
+  width: 8em;
   border-radius: 6px;
   text-align: end;
   font-size: .9em;
