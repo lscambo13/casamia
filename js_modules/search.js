@@ -2,16 +2,13 @@ import {
     getSearchTerm,
 } from './utils.js';
 import {
-    BING_SEARCH_DOMAIN,
     EXT_SEARCH_DOMAIN,
     GOOGLE_SEARCH_DOMAIN,
-    SEARCH_BUTTON_DOM,
 } from './constants.js';
 import {
     cliCheck,
     cliParse,
 } from './cli.js';
-import { defaultSearchEngine } from './load_preferences.js';
 
 function loadSearchDomain(input) {
     let domain = localStorage.getItem('default-search-url');

@@ -2,6 +2,13 @@ import { BOOKMARKS_SAMPLE_URL } from './constants.js';
 import { importBookmarks } from './preferences.js';
 import { headingStyles } from './styles.js';
 
+
+// export function getAdvancedSetting(key) {
+//     let settings = localStorage.getItem('advDropdownValues');
+//     settings = JSON.parse(settings);
+//     return settings[key];
+// }
+
 export function getSearchTerm() {
     return document.getElementsByClassName('searchTerm')[0];
 }

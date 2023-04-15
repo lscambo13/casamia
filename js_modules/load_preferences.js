@@ -1,4 +1,9 @@
-import { BING_SEARCH_DOMAIN, DEF_CUSTOM_TEXT, DUCKDUCKGO_SEARCH_DOMAIN, GOOGLE_SEARCH_DOMAIN } from './constants.js';
+import {
+    BING_SEARCH_DOMAIN,
+    DEF_CUSTOM_TEXT,
+    DUCKDUCKGO_SEARCH_DOMAIN,
+    GOOGLE_SEARCH_DOMAIN,
+} from './constants.js';
 import { displayClock, refreshGreeting } from './preferences.js';
 import { fixBackgroundBlurOnResize } from './utils.js';
 
