@@ -282,7 +282,7 @@ input[type=checkbox] {
   justify-content: center;
   align-items: center;
   margin-bottom: 1em;
-  transition: .2s
+  /* transition: .2s */
 }
 
 .flex-sub-container-horizontal>div {
@@ -299,7 +299,7 @@ input[type=checkbox] {
   cursor: pointer;
   caret-color: transparent;
   border: .075em solid var(--primary-color);
-  transition: .2s
+  /* transition: .2s */
 }
 
 .predefined-bookmark {
