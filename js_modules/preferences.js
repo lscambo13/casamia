@@ -104,7 +104,7 @@ function refreshClock(targetClass) {
     }
 
     // subtitle.style.display = 'block';
-    console.log(`${hours}:${minutes}:${seconds} ${amPm}`);
+    // console.log(`${hours}:${minutes}:${seconds} ${amPm}`);
 }
 
 export function refreshGreeting() {
@@ -201,6 +201,14 @@ export function resetAll(event) {
         window.location.reload();
     }
 };
+
+export function parseURL(url) {
+    fetch(`http://localhost:8080/?url=${url}`).then((results) => {
+        return results.json();
+    }).then((res) => {
+        console.log(res.url);
+    });
+}
 
 // export function toggleDim(event) {
 //     event.stopPropagation();
