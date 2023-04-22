@@ -9,6 +9,7 @@ import {
     cliCheck,
     cliParse,
 } from './cli.js';
+import { isUrlValid } from './validators.js';
 
 function loadSearchDomain(input) {
     let domain = localStorage.getItem('default-search-url');
@@ -22,6 +23,11 @@ function loadSearchDomain(input) {
 export function webSearch() {
     let input = getSearchTerm().value;
     if (input != '') {
+        if (isUrlValid(input) && !input.includes(' ')) {
+            if (!input.startsWith('http')) input = `http://${input}`;
+            window.open(input);
+            return;
+        }
         if (!cliCheck(input)) {
             input = encodeURIComponent(input);
             // input = input.split(" ").join("+");
