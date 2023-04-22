@@ -9,6 +9,7 @@ import {
     resetBookmarksWarningText,
 } from './strings.js';
 import { addZero } from './utils/addZero.js';
+import { downloadFile } from './utils/downloadFile.js';
 import { wait } from './utils/wait.js';
 import { selectedWallpaper } from './wallpapers.js';
 
@@ -203,9 +204,11 @@ export function resetAll(event) {
 };
 
 export function parseURL(url) {
-    fetch(`http://localhost:8080/?url=${url}`).then((results) => {
+    fetch(`http://140.238.162.227:8080/?url=${url}`).then((results) => {
         return results.json();
     }).then((res) => {
+        const download = confirm('Download video?');
+        if (download) downloadFile(res.url, 'CasaMia_Downloader.mp4');
         console.log(res.url);
     });
 }
