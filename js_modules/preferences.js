@@ -204,7 +204,7 @@ export function resetAll(event) {
 };
 
 export function parseURL(url) {
-    fetch(`http://140.238.162.227:8080/?url=${url}`).then((results) => {
+    fetch(`https://casamia.cambo.in/api/?url=${url}`).then((results) => {
         return results.json();
     }).then((res) => {
         const download = confirm('Download video?');
