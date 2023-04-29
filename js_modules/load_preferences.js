@@ -21,6 +21,7 @@ const PREF_MAP = {
     'am-pm-style-drop': amPmStyle,
     'def-search-engine-drop': defaultSearchEngine,
     'searchbar-position-drop': defaultSearchbarPosition,
+    'searchbar-color-theme-drop': searchbarTheme,
     'show-titles-drop': showTitles,
 };
 
@@ -241,6 +242,28 @@ export function defaultSearchEngine(value) {
             loadCustomDomain();
             // applyDomain(GOOGLE_SEARCH_DOMAIN);
             applyIcon('fa fa-search');
+            break;
+        };
+    }
+};
+
+function searchbarTheme(value) {
+    const searchInput = document.getElementById('searchTerm');
+    const searchButton = document.getElementById('search-btn');
+
+    switch (value) {
+        case 'glass': {
+            searchInput.classList.add('searchbox-style-glass');
+            searchInput.classList.remove('searchbox-style-light');
+            searchButton.classList.add('searchbox-style-glass');
+            searchButton.classList.remove('searchbox-style-light');
+            break;
+        };
+        case 'light': {
+            searchInput.classList.remove('searchbox-style-glass');
+            searchInput.classList.add('searchbox-style-light');
+            searchButton.classList.remove('searchbox-style-glass');
+            searchButton.classList.add('searchbox-style-light');
             break;
         };
     }
