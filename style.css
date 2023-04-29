@@ -30,7 +30,7 @@
   --yellow-color: #bb9c37;
   --red-gradient-webkit: -webkit-linear-gradient(to top, #e04040, 50%, #fbd3e900);
   --red-gradient: linear-gradient(to top, #e04040, 50%, #fbd3e900);
-  --red-color: #e04040
+  --red-color: #e04040;
 }
 
 * {
@@ -210,24 +210,20 @@ input[type=checkbox] {
 .searchTerm {
   width: 66%;
   min-height: 3em;
-  border: .2em solid var(--primary-color);
-  border-right: none;
+  border-right: 0 solid black !important;
   padding: 0 2em 0 1em;
   border-radius: 2.5em 0 0 2.5em;
-  outline: 0;
   font-size: 1em;
-  color: var(--secondary-color);
+  outline: 0;
+  /* color: var(--secondary-color); */
   margin-inline-end: 0;
-  backdrop-filter: blur(1em);
-  -webkit-backdrop-filter: blur(1em);
   caret-color: var(--primary-color);
-  background-color: var(--white-quarter-alpha);
-  transition: .2s
+  /* transition: .2s */
 }
 
-.searchTerm::placeholder {
+/* .searchTerm::placeholder {
   color: var(--white-quarter-alpha)
-}
+} */
 
 .searchTerm::-webkit-search-cancel-button {
   filter: grayscale() invert() brightness(200%);
@@ -240,23 +236,22 @@ input[type=checkbox] {
   scale: 1.1
 }
 
-.searchTerm:focus,
+/* .searchTerm:focus,
 .searchTerm:hover {
   background-color: var(--dark-low-alpha);
   color: var(--primary-color)
-}
+} */
 
 .searchButton {
   width: clamp(3em, 20%, 4em);
   min-height: 3em;
   min-width: 3em;
   margin-inline-start: 0;
-  border: 0 solid var(--primary-color);
-  background: var(--primary-color);
+  border-left: 0 solid black !important;
   text-align: center;
   border-radius: 0 2.5em 2.5em 0;
   cursor: pointer;
-  color: var(--dark);
+  /* color: var(--primary-color); */
   font-size: clamp(1em, 1em, 2em)
 }
 
@@ -273,6 +268,55 @@ input[type=checkbox] {
   padding: .8em;
   color: var(--dark);
   transition: all .2s
+}
+
+.searchbox-style-light {
+  border: .150em solid var(--primary-color);
+  color: var(--dark-low-alpha);
+  background: var(--primary-color);
+  transition: 200ms;
+  caret-color: #060604;
+}
+
+.searchbox-style-light:focus+.searchButton,
+.searchbox-style-light:focus,
+.searchbox-style-light:hover,
+.searchbox-style-light:hover+.searchButton {
+  background-color: var(--primary-color);
+  color: var(--dark);
+}
+
+.searchbox-style-light::-webkit-search-cancel-button {
+  filter: grayscale() invert() brightness(50%);
+}
+
+.searchbox-style-light::placeholder {
+  color: var(--dark-low-alpha)
+}
+
+.searchbox-style-glass {
+  border: .10em solid var(--primary-color);
+  backdrop-filter: blur(.5em);
+  -webkit-backdrop-filter: blur(.5em);
+  color: var(--white-half-alpha);
+  background: var(--white-quarter-alpha);
+  transition: 200ms;
+
+}
+
+.searchbox-style-glass:focus+.searchButton,
+.searchbox-style-glass:focus {
+  background-color: var(--dark-low-alpha);
+  color: var(--primary-color)
+}
+
+.searchbox-style-glass:hover+.searchButton,
+.searchbox-style-glass:hover {
+  color: var(--primary-color);
+}
+
+.searchbox-style-glass::placeholder {
+  color: var(--white-quarter-alpha)
 }
 
 .flex-sub-container-horizontal {
