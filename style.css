@@ -133,7 +133,8 @@ input[type=checkbox] {
 #main-heading-slider * {
   min-width: 100%;
   flex: 1;
-  scroll-snap-align: center
+  scroll-snap-align: center;
+  scroll-snap-end: always
 }
 
 #main-heading-slider::-webkit-scrollbar {
