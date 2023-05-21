@@ -24,7 +24,7 @@ export const DEF_PREF =
     'am-pm-style-drop': 'uppercase',
     'def-search-engine-drop': 'google',
     'searchbar-position-drop': 'top',
-    'searchbar-color-theme-drop': 'searchbox-style-glass',
+    'searchbar-color-theme-drop': 'glass',
     'show-titles-drop': 'off',
 };
 
