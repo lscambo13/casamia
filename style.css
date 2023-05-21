@@ -201,10 +201,11 @@ input[type=checkbox] {
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   margin-top: 2em;
   margin-bottom: 2em;
   text-align: center;
-  cursor: default
+  cursor: default;
 }
 
 .searchTerm {
@@ -319,6 +320,70 @@ input[type=checkbox] {
   color: var(--white-quarter-alpha)
 }
 
+.autocomplete {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: 300ms;
+}
+
+.suggestions-box {
+  display: flex;
+  width: calc(66% + 4em);
+  height: 10em;
+  overflow: hidden;
+  gap: 2em;
+  display: none;
+  border-radius: 0 0 2.5em 2.5em;
+  background-color: var(--primary-color);
+  transition: 200ms;
+}
+
+/* .searchTerm:focus,
+.searchTerm:focus+.suggestions-box {
+  border-radius: 2.5em 0 0 0;
+  display: block;
+}
+
+.searchTerm:focus+.searchButton {
+  border-radius: 0 2.5em 0 0;
+} */
+
+.autocomplete-items {
+  max-width: 300px;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+  transition: 300ms;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+
+.autocomplete-items div:hover {
+  /*when hovering an item:*/
+  background-color: #e9e9e9;
+}
+
+.autocomplete-active {
+  /*when navigating through the items using the arrow keys:*/
+  background-color: DodgerBlue !important;
+  color: #ffffff;
+}
+
 .flex-sub-container-horizontal {
   display: flex;
   flex-wrap: wrap;
@@ -418,7 +483,7 @@ input[type=checkbox] {
   animation: animation_zoom .25s;
   animation-fill-mode: both;
   animation-iteration-count: 1;
-  transition: 1s
+  transition: 1s;
 }
 
 .thumb-title {
