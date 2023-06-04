@@ -2,8 +2,8 @@ export const EXT_SEARCH_DOMAIN = 'https://x1337x.ws/sort-category-search/';
 export const GOOGLE_SEARCH_DOMAIN = 'https://www.google.com/search?q=';
 export const BING_SEARCH_DOMAIN = 'https://www.bing.com/search?q=';
 export const DUCKDUCKGO_SEARCH_DOMAIN = 'https://duckduckgo.com/?q=';
-export const SEARCH_BUTTON_DOM =
-    document.getElementsByClassName('searchButton').item(0).childNodes[1];
+// export const SEARCH_BUTTON_DOM =
+//     document.getElementsByClassName('searchButton').item(0).childNodes[1];
 export const BOOKMARKS_SAMPLE_URL =
     'https://raw.githubusercontent.com/lscambo13/casamia/main/custom_bookmarks_sample/home-page-bookmarks-2023-1-23.json';
 export const WALLPAPERS_URL = './wallpapers/';
