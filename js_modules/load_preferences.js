@@ -30,12 +30,12 @@ function backgroundImage(value) {
     switch (value) {
         case 'hidden': {
             overlay.style.backgroundColor = 'rgba(0, 0, 0, 1)';
-            console.log(value);
+            // console.log(value);
             break;
         };
         case 'shown': {
             overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.375)';
-            console.log(value);
+            // console.log(value);
             break;
         };
     }

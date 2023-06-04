@@ -33,7 +33,7 @@ export async function fetchWallpapersList() {
 export async function setWallpaper(fileName, color) {
     selectedWallpaper = fileName;
     const overlay = document.getElementById('overlay');
-    console.log('test ' + overlay.style.backdropFilter);
+    // console.log('test ' + overlay.style.backdropFilter);
     overlay.style.backdropFilter = 'blur(1em)';
     const temp = new Image();
     temp.src = WALLPAPERS_URL + fileName;

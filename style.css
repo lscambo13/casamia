@@ -202,7 +202,7 @@ input[type=checkbox] {
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  /* flex-direction: column; */
   margin-top: 2em;
   margin-bottom: 2em;
   text-align: center;

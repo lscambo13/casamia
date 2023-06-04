@@ -48,7 +48,6 @@ import {
 	openAdvancedSettings,
 } from './js_modules/modals/advanced_settings.js';
 import { saveDropdownPositions } from './js_modules/save_preferences.js';
-import { autocomplete, countries } from './js_modules/autocomplete.js';
 
 const bottomFilmRollContainer = document.getElementById('wallpapers');
 const wrap = document.getElementById('wrap');
