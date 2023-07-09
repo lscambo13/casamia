@@ -48,6 +48,7 @@ import {
 	openAdvancedSettings,
 } from './js_modules/modals/advanced_settings.js';
 import { saveDropdownPositions } from './js_modules/save_preferences.js';
+import { scrollPosition } from './js_modules/utils/scrollPosition.js';
 
 const bottomFilmRollContainer = document.getElementById('wallpapers');
 const wrap = document.getElementById('wrap');
@@ -208,9 +209,12 @@ addEventListenerOnID('main-heading-slider', 'wheel', (e) => {
 // Start ----------------------------------------------------------
 
 document.addEventListener('DOMContentLoaded', async () => {
+	const btnInstall = document.getElementById('btn-install');
+
 	setDefaultPreferences();
 	applyPreferences();
 	loadBookmarks();
+	let deferredPrompt;
 	// toggleClock('widget-slide');
 	// toggleGreeting('on');
 	// stylizeText('main-heading', 0);
@@ -226,6 +230,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 	loadDropdownPositions();
 	scrollToBottom();
+	scrollPosition();
 
 	addEventListenerOnClass('clickable', 'keypress', clickToEnter);
 	addEventListenerOnClass('custom_bookmark', 'click', displayLoading);
@@ -233,7 +238,24 @@ document.addEventListener('DOMContentLoaded', async () => {
 	// addEventListenerOnClass('custom-button', 'click', saveButtonValues);
 	addEventListenerOnTag('select', 'change', saveDropdownPositions);
 
-	// autocomplete(document.getElementById('searchTerm'), countries);
+	// autocomplete(document.getElementById('searchTerm'), countries)
+
+	addEventListenerOnID('btn-install', 'click', (e) => {
+		deferredPrompt.prompt();
+		deferredPrompt.userChoice.then((choiceResult) => {
+			if (choiceResult.outcome === 'accepted') {
+				console.log('user accepted prompt');
+			}
+			deferredPrompt = null;
+		});
+	});
+
+	window.addEventListener('beforeinstallprompt', (event) => {
+		event.preventDefault();
+		deferredPrompt = event;
+		btnInstall.style.display = 'block';
+	});
+
 });
 
 // ---------------------------------------------------------- End
@@ -252,4 +274,8 @@ window.addEventListener('hashchange', () => {
 window.addEventListener('blur', () => {
 	hideLoading();
 	// console.log("no focus");
+});
+
+window.addEventListener('appinstalled', (event) => {
+	console.log('installed');
 });

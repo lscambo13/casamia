@@ -1,0 +1,23 @@
+{
+    "name": "Casa Mia",
+    "short_name": "Casa Mia",
+    "icons": [
+        {
+            "src": "./icons/maskable_icon_x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "./icons/maskable_icon_x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+        }
+    ],
+    "theme_color": "#f5f5f5",
+    "background_color": "#f5f5f5",
+    "display": "standalone",
+    "start_url": "index.html",
+    "prefer_related_applications": true
+}

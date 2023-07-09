@@ -11,7 +11,14 @@
 
     gtag('config', 'G-R1Y9J6ZFHP');
   </script>
-
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js');
+      });
+    }
+  </script>
+  <link rel="manifest" href="manifest.json">
   <title>Search · Casa Mia</title>
   <link rel="icon" type="image/x-icon" href="./favicon.ico">
   <meta name="theme-color" content="black">
@@ -184,6 +191,10 @@
       <p class="modal-title">Labs</p>
       <div id="download-wallpaper-btn" class="modal-option">
         <p>Download background image</p>
+        <!-- <p id="download-wallpaper-btn-preview" class="setting-preview"></p> -->
+      </div>
+      <div id="btn-install" class="modal-option">
+        <p>Install</p>
         <!-- <p id="download-wallpaper-btn-preview" class="setting-preview"></p> -->
       </div>
       <div id="toggle-favicons-btn" class="modal-option">
