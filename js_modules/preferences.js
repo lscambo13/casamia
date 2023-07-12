@@ -4,6 +4,7 @@ import {
     downloadBookmarks,
     saveBookmarks,
 } from './custom_bookmarks.js';
+import { updateAmPmStyle } from './load_preferences.js';
 import {
     resetAllWarningText,
     resetBookmarksWarningText,
@@ -101,7 +102,7 @@ function refreshClock(targetClass) {
 
     for (let i = 0; i < target.length; i++) {
         target[i].innerText =
-            `${hours}:${minutes} ${amPm.toString()}`;
+            `${hours}:${minutes} ${updateAmPmStyle(amPm.toString())}`;
     }
 
     // subtitle.style.display = 'block';

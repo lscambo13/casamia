@@ -331,4 +331,15 @@ export function updateCustomDomainPreview() {
         textContent = localStorage.getItem('customDomain');
 }
 
+export function loadSelectedWidgetstyle() {
+    document.getElementById(localStorage.getItem('selected-widget-style'))
+        .scrollIntoView();
+}
 
+export function updateAmPmStyle(amPm) {
+    const style = localStorage.getItem('selected-widget-style');
+    if (style == 'widget-2' || style == 'widget-3') {
+        return amPm.toLowerCase();
+    }
+    return amPm;
+}
