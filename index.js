@@ -31,6 +31,7 @@ import {
 	askCustomDomain,
 	askCustomText,
 	loadDropdownPositions,
+	loadSelectedWidgetstyle,
 	scrollToBottom,
 } from './js_modules/load_preferences.js';
 import {
@@ -48,7 +49,8 @@ import {
 	openAdvancedSettings,
 } from './js_modules/modals/advanced_settings.js';
 import { saveDropdownPositions } from './js_modules/save_preferences.js';
-import { scrollPosition } from './js_modules/utils/scrollPosition.js';
+// eslint-disable-next-line max-len
+import { intersectionObserver } from './js_modules/utils/intersectionObserver.js';
 
 const bottomFilmRollContainer = document.getElementById('wallpapers');
 const wrap = document.getElementById('wrap');
@@ -230,7 +232,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 	loadDropdownPositions();
 	scrollToBottom();
-	scrollPosition();
 
 	addEventListenerOnClass('clickable', 'keypress', clickToEnter);
 	addEventListenerOnClass('custom_bookmark', 'click', displayLoading);
@@ -255,7 +256,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 		deferredPrompt = event;
 		btnInstall.style.display = 'block';
 	});
-
+	intersectionObserver('main-heading-slider', 'widget-slide');
+	loadSelectedWidgetstyle();
 });
 
 // ---------------------------------------------------------- End

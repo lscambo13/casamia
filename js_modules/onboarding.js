@@ -31,6 +31,7 @@ export function setDefaultPreferences() {
     askUserName();
     localStorage.setItem('advDropdownValues', JSON.stringify(DEF_PREF));
     localStorage.setItem('wallpaper', DEF_WALLPAPER);
+    localStorage.setItem('selected-widget-style', 'widget-1');
     localStorage.setItem('onBoarding', '1');
 }
 
