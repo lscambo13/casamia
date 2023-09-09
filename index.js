@@ -67,6 +67,8 @@ window.hideWallpapers = (str, event) => {
 				bottomFilmRollContainer.classList.length == 2 &&
 				bottomFilmRollContainer.classList[1] == 'animation_slide_up'
 			) {
+				document.title = document.title
+					.replace('Backgrounds', 'Search');
 				bottomFilmRollContainer.classList.remove('animation_slide_up');
 				advancedSettingsButton.classList.remove('animation_slide_right');
 				bottomFilmRollContainer.classList.add('animation_slide_down');
@@ -84,6 +86,8 @@ window.hideWallpapers = (str, event) => {
 				bottomFilmRollContainer.classList.length < 2 ||
 				bottomFilmRollContainer.classList[1] == 'animation_slide_down'
 			) {
+				document.title = document.title
+					.replace('Search', 'Backgrounds');
 				bottomFilmRollContainer.classList.remove('animation_slide_down');
 				bottomFilmRollContainer.classList.add('animation_slide_up');
 				wrap.classList.remove('animation2_slide_down', 'startup_slide_down');
@@ -94,6 +98,8 @@ window.hideWallpapers = (str, event) => {
 				toggleArrows('show');
 				scrollHighlightedWallpaperIntoView();
 			} else {
+				document.title = document.title
+					.replace('Backgrounds', 'Search');
 				bottomFilmRollContainer.classList.remove('animation_slide_up');
 				advancedSettingsButton.classList.remove('animation_slide_right');
 				bottomFilmRollContainer.classList.add('animation_slide_down');
@@ -262,16 +268,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 // ---------------------------------------------------------- End
 
-window.addEventListener('hashchange', () => {
-	const url = document.URL;
+// window.addEventListener('hashchange', () => {
+//     const url = document.URL;
 
-	if (!url.includes('#wallpapers')) {
-		// console.log('url found');
-		hideWallpapers('body');
-		closeAdvancedSettings();
-	}
-	// console.log('go back');
-});
+//     if (!url.includes('#wallpapers')) {
+//         // console.log('url found');
+//         hideWallpapers('body');
+//         closeAdvancedSettings();
+//     }
+//     console.log('go back');
+// });
 
 window.addEventListener('blur', () => {
 	hideLoading();
