@@ -720,7 +720,8 @@ input[type=checkbox] {
 	margin: .75em;
 	padding: .5em;
 	background-color: var(--white-low-alpha);
-	border-radius: .75em
+	border-radius: .75em;
+	/* transition: 300ms; */
 }
 
 .modal-title {
@@ -807,6 +808,18 @@ input[type=checkbox] {
 	border-top: .2em solid #1e90ff !important;
 	border-radius: 50%;
 	animation: spin 1s normal infinite
+}
+
+.nested-close {
+	opacity: 0;
+	height: 0em !important;
+}
+
+#deep-search-nested {
+	overflow: hidden;
+	height: auto;
+	height: 6.1em;
+	transition: 600ms;
 }
 
 @keyframes spin {

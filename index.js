@@ -40,6 +40,7 @@ import {
 	importBookmarks,
 	resetAll,
 	resetBookmarks,
+	showNestedOptions,
 	toggleFavicons,
 } from './js_modules/preferences.js';
 import { isUrlValid } from './js_modules/validators.js';
@@ -159,6 +160,9 @@ addEventListenerOnID('toggle-favicons-btn', 'click', toggleFavicons);
 // addEventListenerOnID('toggle-glow-btn', 'click', toggleGlow);
 addEventListenerOnID('update-username-btn', 'click', askUserName);
 addEventListenerOnID('update-customtext-btn', 'click', askCustomText);
+addEventListenerOnID('deep-search-btn', 'click', (event) => {
+	showNestedOptions('deep-search-nested');
+});
 addEventListenerOnID('update-customdomain-btn', 'click', askCustomDomain);
 addEventListenerOnID('fetch-bookmarks-btn', 'click', fetchBookmarks);
 addEventListenerOnID('reset-bookmarks-btn', 'click', resetBookmarks);
