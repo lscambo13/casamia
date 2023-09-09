@@ -30,6 +30,7 @@ export const DEF_PREF =
 	'tv-search-display-drop': 'shown',
 	'games-search-display-drop': 'shown',
 	'ebooks-search-display-drop': 'shown',
+	'add-bookmark-display-drop': 'shown',
 };
 
 // 'https://github.com/lscambo13/casamia/raw/main/wallpapers/'
