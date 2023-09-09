@@ -2,235 +2,248 @@
 <html lang="en-us">
 
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R1Y9J6ZFHP"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R1Y9J6ZFHP"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-    gtag('config', 'G-R1Y9J6ZFHP');
-  </script>
-  <!-- <script>
+        gtag('config', 'G-R1Y9J6ZFHP');
+    </script>
+    <!-- <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('/casamia/sw.js');
       });
     }
   </script> -->
-  <link rel="manifest" href="manifest.json">
-  <title>Search · Casa Mia</title>
-  <link rel="icon" type="image/x-icon" href="./favicon.ico">
-  <meta name="theme-color" content="black">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="color-scheme" content="light only">
-  <link rel="stylesheet" href="./style.css" />
-  <script src="./index.js" type="module"></script>
-  <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin />
-  <link rel="preconnect" href="https://fonts.bunny.net">
-  <link
-    href="https://fonts.bunny.net/css?family=nanum-brush-script:400|nothing-you-could-do:400|ubuntu:300,300i,400,400i,500,500i,700,700i|ubuntu-condensed:400|ubuntu-mono:400,400i,700,700i|vujahday-script:400"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="./animations.css">
-  <link rel="stylesheet" href="./icons.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="manifest" href="manifest.json">
+    <title>Search • Casa Mia</title>
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <meta name="theme-color" content="black">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light only">
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./index.js" type="module"></script>
+    <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link
+        href="https://fonts.bunny.net/css?family=nanum-brush-script:400|nothing-you-could-do:400|ubuntu:300,300i,400,400i,500,500i,700,700i|ubuntu-condensed:400|ubuntu-mono:400,400i,700,700i|vujahday-script:400"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="./animations.css">
+    <link rel="stylesheet" href="./icons.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body onclick="hideWallpapers('body', null)">
-  <div id="overlay"></div>
-  <div id="gradient_overlay"></div>
-  <div id="wrap" class="startup_slide_down">
-    <div class="flex-main-container-vertical">
-      <div id="home-widget-container"><i id="left-arrow" class="fa fa-caret-left arrows"></i>
-        <div class="home-widget">
-          <div id="main-heading-slider">
-            <h1 id="widget-1" class="widget-slide default-text-style">Welcome</h1>
-            <h1 id="widget-2" class="widget-slide brush-text-style-1 has-shadow">Welcome</h1>
-            <h1 id="widget-3" class="widget-slide brush-text-style-2 has-shadow">Welcome</h1>
-            <h1 id="widget-4" class="widget-slide brush-text-style-3 has-shadow">Welcome</h1>
-          </div>
-          <p id="subtitle" class="">Please wait</p>
-        </div><i id="right-arrow" class="fa fa-caret-right arrows"></i>
-      </div>
-      <div class="search " id="searchbar"><input title="Search" type="search" class="searchTerm searchbox-style-glass"
-          id="searchTerm" placeholder="What's on your mind?" name="search" autocomplete="on" tabindex="1" /><button
-          type="submit" class="searchButton searchbox-style-glass" id="search-btn" title="Search the web"
-          tabindex="1"><i id="search-btn-icon" class=""></i></button>
-      </div>
-      <div class="flex-sub-container-horizontal">
-        <div id="movies-search" class="predefined-bookmark clickable" tabindex="1"><i class="flaticon-movies"></i></div>
-        <div id="tv-search" class="predefined-bookmark clickable" tabindex="1"><i class="flaticon-tv"></i></div>
-        <div id="games-search" class="predefined-bookmark clickable" tabindex="1"><i class="flaticon-games"></i></div>
-        <div id="ebooks-search" class="predefined-bookmark clickable" tabindex="1"><i class="flaticon-ebook"></i></div>
-        <div onclick="createNewBookmark()" class="clickable" id="add_bookmark_button" tabindex="2"><i
-            class="fa fa-plus"></i></div><a onclick="hideWallpapers('button', event)" class="clickable"
-          id="settings_button" href="#wallpapers" tabindex="2"><i class="fa fa-gear"></i></a></a>
-      </div>
+    <div id="overlay"></div>
+    <div id="gradient_overlay"></div>
+    <div id="wrap" class="startup_slide_down">
+        <div class="flex-main-container-vertical">
+            <div id="home-widget-container"><i id="left-arrow" class="fa fa-caret-left arrows"></i>
+                <div class="home-widget">
+                    <div id="main-heading-slider">
+                        <h1 id="widget-1" class="widget-slide default-text-style">Welcome</h1>
+                        <h1 id="widget-2" class="widget-slide brush-text-style-1 has-shadow">Welcome</h1>
+                        <h1 id="widget-3" class="widget-slide brush-text-style-2 has-shadow">Welcome</h1>
+                        <h1 id="widget-4" class="widget-slide brush-text-style-3 has-shadow">Welcome</h1>
+                    </div>
+                    <p id="subtitle" class="">Please wait</p>
+                </div><i id="right-arrow" class="fa fa-caret-right arrows"></i>
+            </div>
+            <div class="search " id="searchbar"><input title="Search" type="search"
+                    class="searchTerm searchbox-style-glass" id="searchTerm" placeholder="What's on your mind?"
+                    name="search" autocomplete="on" tabindex="1" /><button type="submit"
+                    class="searchButton searchbox-style-glass" id="search-btn" title="Search the web" tabindex="1"><i
+                        id="search-btn-icon" class=""></i></button>
+            </div>
+            <div class="flex-sub-container-horizontal">
+                <div id="movies-search" class="predefined-bookmark clickable" tabindex="1"><i
+                        class="flaticon-movies"></i></div>
+                <div id="tv-search" class="predefined-bookmark clickable" tabindex="1"><i class="flaticon-tv"></i></div>
+                <div id="games-search" class="predefined-bookmark clickable" tabindex="1"><i class="flaticon-games"></i>
+                </div>
+                <div id="ebooks-search" class="predefined-bookmark clickable" tabindex="1"><i
+                        class="flaticon-ebook"></i></div>
+                <div onclick="createNewBookmark()" class="clickable" id="add_bookmark_button" tabindex="2"><i
+                        class="fa fa-plus"></i></div><a onclick="hideWallpapers('button', event)" class="clickable"
+                    id="settings_button" href="#wallpapers" tabindex="2"><i class="fa fa-gear"></i></a></a>
+            </div>
+        </div>
     </div>
-  </div>
-  <div id="advanced-settings-modal-background-overlay"></div>
-  <div id="advanced-settings-modal">
-    <div class="modal-page-title">
-      <p class="">Advanced Settings</p>
-      <p class="modal-close-btn">&times;</p>
-    </div>
-    <div class="modal-group">
-      <p class="modal-title">Display Info</p>
-      <div id="update-username-btn" class="modal-option custom-button">
-        <p>User name</p>
-        <p id="update-username-btn-preview" class="setting-preview">preview text</p>
-      </div>
-    </div>
-    <div class="modal-group">
-      <p class="modal-title">Interface</p><label for="bg-img-drop" class="modal-option custom-dropdown">Background image
-        <select class="setting-preview" name="bg-img-drop" id="bg-img-drop">
-          <option value="hidden">Hidden</option>
-          <option value="shown">Shown</option>
-        </select></label><label for="bg-blur-drop" class="modal-option custom-dropdown">Background blur <select
-          class="setting-preview" name="bg-blur-drop" id="bg-blur-drop">
-          <option value="on">On</option>
-          <option value="off">Off</option>
-        </select></label><label for="bg-glow-drop" class="modal-option custom-dropdown hidden">Background glow <select
-          class="setting-preview" name="bg-glow-drop" id="bg-glow-drop">
-          <option value="auto">Auto</option>
-          <option value="on">Force On</option>
-          <option value="off">Force Off</option>
-        </select></label><label for="weather-display-drop" class="modal-option custom-dropdown hidden">Display weather
-        <select class="setting-preview" name="weather-display-drop" id="weather-display-drop">
-          <option value="on">On</option>
-          <option value="off">Off</option>
-        </select></label><label for="footer-display-drop" class="modal-option custom-dropdown">Display footer
-        <select class="setting-preview" name="footer-display-drop" id="footer-display-drop">
-          <option value="on">On</option>
-          <option value="off">Off</option>
-        </select></label>
-    </div>
-    <div class="modal-group">
-      <p class="modal-title">Home Widgets</p><label for="def-widget-drop" class="modal-option custom-dropdown">Default
-        widget <select class="setting-preview" name="def-widget-drop" id="def-widget-drop">
-          <option value="casamia">Casa Mia</option>
-          <option value="search">Search</option>
-          <option value="clock">Clock</option>
-          <option value="custom">Custom..</option>
-        </select></label>
-      <div id="update-customtext-btn" class="modal-option custom-button hidden">
-        <p>Custom widget text</p>
-        <p id="update-customtext-btn-preview" class="setting-preview">preview text</p>
-      </div>
+    <div id="advanced-settings-modal-background-overlay"></div>
+    <div id="advanced-settings-modal">
+        <div class="modal-page-title">
+            <p class="">Advanced Settings</p>
+            <p class="modal-close-btn">&times;</p>
+        </div>
+        <div class="modal-group">
+            <p class="modal-title">Display Info</p>
+            <div id="update-username-btn" class="modal-option custom-button">
+                <p>User name</p>
+                <p id="update-username-btn-preview" class="setting-preview">preview text</p>
+            </div>
+        </div>
+        <div class="modal-group">
+            <p class="modal-title">Interface</p><label for="bg-img-drop" class="modal-option custom-dropdown">Background
+                image
+                <select class="setting-preview" name="bg-img-drop" id="bg-img-drop">
+                    <option value="hidden">Hidden</option>
+                    <option value="shown">Shown</option>
+                </select></label><label for="bg-blur-drop" class="modal-option custom-dropdown">Background blur <select
+                    class="setting-preview" name="bg-blur-drop" id="bg-blur-drop">
+                    <option value="on">On</option>
+                    <option value="off">Off</option>
+                </select></label><label for="bg-glow-drop" class="modal-option custom-dropdown hidden">Background glow
+                <select class="setting-preview" name="bg-glow-drop" id="bg-glow-drop">
+                    <option value="auto">Auto</option>
+                    <option value="on">Force On</option>
+                    <option value="off">Force Off</option>
+                </select></label><label for="weather-display-drop" class="modal-option custom-dropdown hidden">Display
+                weather
+                <select class="setting-preview" name="weather-display-drop" id="weather-display-drop">
+                    <option value="on">On</option>
+                    <option value="off">Off</option>
+                </select></label><label for="footer-display-drop" class="modal-option custom-dropdown">Display footer
+                <select class="setting-preview" name="footer-display-drop" id="footer-display-drop">
+                    <option value="on">On</option>
+                    <option value="off">Off</option>
+                </select></label>
+        </div>
+        <div class="modal-group">
+            <p class="modal-title">Home Widgets</p><label for="def-widget-drop"
+                class="modal-option custom-dropdown">Default
+                widget <select class="setting-preview" name="def-widget-drop" id="def-widget-drop">
+                    <option value="casamia">Casa Mia</option>
+                    <option value="search">Search</option>
+                    <option value="clock">Clock</option>
+                    <option value="custom">Custom..</option>
+                </select></label>
+            <div id="update-customtext-btn" class="modal-option custom-button hidden">
+                <p>Custom widget text</p>
+                <p id="update-customtext-btn-preview" class="setting-preview">preview text</p>
+            </div>
 
-      <label for="widget-style-drop" class="modal-option custom-dropdown hidden">Widget style <select
-          class="setting-preview" name="widget-style-drop" id="widget-style-drop">
-          <option value="minimal">Minimal</option>
-          <option value="handwritten">Handwritten</option>
-        </select></label><label for="greeting-display-drop" class="modal-option custom-dropdown">Display greeting
-        <select class="setting-preview" name="greeting-display-drop" id="greeting-display-drop">
-          <option value="on">On</option>
-          <option value="off">Off</option>
-        </select></label>
+            <label for="widget-style-drop" class="modal-option custom-dropdown hidden">Widget style <select
+                    class="setting-preview" name="widget-style-drop" id="widget-style-drop">
+                    <option value="minimal">Minimal</option>
+                    <option value="handwritten">Handwritten</option>
+                </select></label><label for="greeting-display-drop" class="modal-option custom-dropdown">Display
+                greeting
+                <select class="setting-preview" name="greeting-display-drop" id="greeting-display-drop">
+                    <option value="on">On</option>
+                    <option value="off">Off</option>
+                </select></label>
+        </div>
+        <div class="modal-group hidden">
+            <p class="modal-title">Clock</p><label for="show-seconds-drop" class="modal-option custom-dropdown">Show
+                seconds
+                <select class="setting-preview" name="show-seconds-drop" id="show-seconds-drop">
+                    <option value="on">On</option>
+                    <option value="off">Off</option>
+                </select></label><label for="clock-style-drop" class="modal-option custom-dropdown">Clock style <select
+                    class="setting-preview" name="clock-style-drop" id="clock-style-drop">
+                    <option value="24hrs">24 Hours</option>
+                    <option value="12hrs">12 Hours</option>
+                </select></label><label for="am-pm-style-drop" class="modal-option custom-dropdown">AM/PM style <select
+                    class="setting-preview" name="am-pm-style-drop" id="am-pm-style-drop">
+                    <option value="uppercase">Uppercase</option>
+                    <option value="lowercase">Lowercase</option>
+                </select></label>
+        </div>
+        <div class="modal-group">
+            <p class="modal-title">Search</p><label for="def-search-engine-drop"
+                class="modal-option custom-dropdown">Default
+                search engine <select class="setting-preview" name="def-search-engine-drop" id="def-search-engine-drop">
+                    <option value="google">Google</option>
+                    <option value="bing">Bing</option>
+                    <option value="duckduckgo">DuckDuckGo</option>
+                    <option value="custom">Custom..</option>
+                </select></label>
+            <div id="update-customdomain-btn" class="modal-option custom-button hidden">
+                <p>Custom domain</p>
+                <p id="update-customdomain-btn-preview" class="setting-preview">preview text</p>
+            </div>
+            <label for="searchbar-position-drop" class="modal-option custom-dropdown">Searchbar position <select
+                    class="setting-preview" name="searchbar-position-drop" id="searchbar-position-drop">
+                    <option value="top">Default</option>
+                    <option value="bottom">Bottom</option>
+                </select></label>
+            <label for="searchbar-color-theme-drop" class="modal-option custom-dropdown">Searchbar theme <select
+                    class="setting-preview" name="searchbar-color-theme-drop" id="searchbar-color-theme-drop">
+                    <option value="glass">Glass</option>
+                    <option value="light">Light</option>
+                </select></label>
+        </div>
+        <div class="modal-group">
+            <p class="modal-title">Bookmarks</p><label for="show-titles-drop"
+                class="modal-option custom-dropdown hidden">Show
+                titles <select class="setting-preview" name="show-titles-drop" id="show-titles-drop">
+                    <option value="on">On</option>
+                    <option value="off">Off</option>
+                </select></label>
+            <div id="fetch-bookmarks-btn" class="modal-option">
+                <p>Download sample bookmarks</p>
+                <!-- <p class="setting-preview"></p> -->
+            </div>
+        </div>
+        <div class="modal-group">
+            <p class="modal-title">Backup & Restore</p>
+            <div id="export-bookmarks-btn" class="modal-option">
+                <p>Backup bookmarks</p>
+                <p class="setting-preview">Save to local storage</p>
+            </div><label for="import-bookmarks-btn" class="modal-option">Restore Backup <input type="file"
+                    id="import-bookmarks-btn" accept=".json">
+                <p class="setting-preview">*.json</p>
+            </label>
+        </div>
+        <div class="modal-group">
+            <p class="modal-title">Labs</p>
+            <div id="download-wallpaper-btn" class="modal-option">
+                <p>Download background image</p>
+                <!-- <p id="download-wallpaper-btn-preview" class="setting-preview"></p> -->
+            </div>
+            <div id="btn-install" class="modal-option">
+                <p>Install</p>
+                <!-- <p id="download-wallpaper-btn-preview" class="setting-preview"></p> -->
+            </div>
+            <div id="toggle-favicons-btn" class="modal-option">
+                <p>Toggle favicons</p>
+                <p class="setting-preview"></p>
+            </div>
+        </div>
+        <div class=" modal-group">
+            <p class="modal-title">Factory Reset</p>
+            <div id="reset-bookmarks-btn" class="modal-option">
+                <p>Reset bookmarks</p>
+                <p class="setting-preview"></p>
+            </div>
+            <div id="reset-all-btn" class="modal-option">
+                <p>Reset everything</p>
+                <p class="setting-preview">Caution!</p>
+            </div>
+        </div><br>
     </div>
-    <div class="modal-group hidden">
-      <p class="modal-title">Clock</p><label for="show-seconds-drop" class="modal-option custom-dropdown">Show seconds
-        <select class="setting-preview" name="show-seconds-drop" id="show-seconds-drop">
-          <option value="on">On</option>
-          <option value="off">Off</option>
-        </select></label><label for="clock-style-drop" class="modal-option custom-dropdown">Clock style <select
-          class="setting-preview" name="clock-style-drop" id="clock-style-drop">
-          <option value="24hrs">24 Hours</option>
-          <option value="12hrs">12 Hours</option>
-        </select></label><label for="am-pm-style-drop" class="modal-option custom-dropdown">AM/PM style <select
-          class="setting-preview" name="am-pm-style-drop" id="am-pm-style-drop">
-          <option value="uppercase">Uppercase</option>
-          <option value="lowercase">Lowercase</option>
-        </select></label>
+    <div class="flex-wallpaper-horizontal" id="wallpapers">
+        <div id="toggle-labs-btn" class="advanced-settings-button clickable button">
+            <i class="fa fa-cogs"></i>
+        </div>
     </div>
-    <div class="modal-group">
-      <p class="modal-title">Search</p><label for="def-search-engine-drop" class="modal-option custom-dropdown">Default
-        search engine <select class="setting-preview" name="def-search-engine-drop" id="def-search-engine-drop">
-          <option value="google">Google</option>
-          <option value="bing">Bing</option>
-          <option value="duckduckgo">DuckDuckGo</option>
-          <option value="custom">Custom..</option>
-        </select></label>
-      <div id="update-customdomain-btn" class="modal-option custom-button hidden">
-        <p>Custom domain</p>
-        <p id="update-customdomain-btn-preview" class="setting-preview">preview text</p>
-      </div>
-      <label for="searchbar-position-drop" class="modal-option custom-dropdown">Searchbar position <select
-          class="setting-preview" name="searchbar-position-drop" id="searchbar-position-drop">
-          <option value="top">Default</option>
-          <option value="bottom">Bottom</option>
-        </select></label>
-      <label for="searchbar-color-theme-drop" class="modal-option custom-dropdown">Searchbar theme <select
-          class="setting-preview" name="searchbar-color-theme-drop" id="searchbar-color-theme-drop">
-          <option value="glass">Glass</option>
-          <option value="light">Light</option>
-        </select></label>
     </div>
-    <div class="modal-group">
-      <p class="modal-title">Bookmarks</p><label for="show-titles-drop" class="modal-option custom-dropdown hidden">Show
-        titles <select class="setting-preview" name="show-titles-drop" id="show-titles-drop">
-          <option value="on">On</option>
-          <option value="off">Off</option>
-        </select></label>
-      <div id="fetch-bookmarks-btn" class="modal-option">
-        <p>Download sample bookmarks</p>
-        <!-- <p class="setting-preview"></p> -->
-      </div>
-    </div>
-    <div class="modal-group">
-      <p class="modal-title">Backup & Restore</p>
-      <div id="export-bookmarks-btn" class="modal-option">
-        <p>Backup bookmarks</p>
-        <p class="setting-preview">Save to local storage</p>
-      </div><label for="import-bookmarks-btn" class="modal-option">Restore Backup <input type="file"
-          id="import-bookmarks-btn" accept=".json">
-        <p class="setting-preview">*.json</p>
-      </label>
-    </div>
-    <div class="modal-group">
-      <p class="modal-title">Labs</p>
-      <div id="download-wallpaper-btn" class="modal-option">
-        <p>Download background image</p>
-        <!-- <p id="download-wallpaper-btn-preview" class="setting-preview"></p> -->
-      </div>
-      <div id="btn-install" class="modal-option">
-        <p>Install</p>
-        <!-- <p id="download-wallpaper-btn-preview" class="setting-preview"></p> -->
-      </div>
-      <div id="toggle-favicons-btn" class="modal-option">
-        <p>Toggle favicons</p>
-        <p class="setting-preview"></p>
-      </div>
-    </div>
-    <div class=" modal-group">
-      <p class="modal-title">Factory Reset</p>
-      <div id="reset-bookmarks-btn" class="modal-option">
-        <p>Reset bookmarks</p>
-        <p class="setting-preview"></p>
-      </div>
-      <div id="reset-all-btn" class="modal-option">
-        <p>Reset everything</p>
-        <p class="setting-preview">Caution!</p>
-      </div>
-    </div><br>
-  </div>
-  <div class="flex-wallpaper-horizontal" id="wallpapers">
-    <div id="toggle-labs-btn" class="advanced-settings-button clickable button">
-      <i class="fa fa-cogs"></i>
-    </div>
-  </div>
-  </div>
-  <footer class="footer hidden" id="footer">
-    <ul>
-      <li><a href="https://github.com/lscambo13/casamia" title="GitHub" tabindex="4">GitHub</a></li>
-      <li><a href="https://t.me/lscambo13_projects" title="Telegram" tabindex="4">Telegram</a></li>
-      <li id="terms-btn"><a href="#" title="Terms" tabindex="4">Terms</a></li>
-      <li><a href="https://github.com/lscambo13/casamia/blob/main/README.md" title="About" tabindex="4">About</a></li>
-    </ul>
-    <ul>
-      <li><a href="https://github.com/lscambo13" title="© 2023 lscambo13" tabindex="4">&copy; 2023 lscambo13</a></li>
-    </ul>
-  </footer>
+    <footer class="footer hidden" id="footer">
+        <ul>
+            <li><a href="https://github.com/lscambo13/casamia" title="GitHub" tabindex="4">GitHub</a></li>
+            <li><a href="https://t.me/lscambo13_projects" title="Telegram" tabindex="4">Telegram</a></li>
+            <li id="terms-btn"><a href="#" title="Terms" tabindex="4">Terms</a></li>
+            <li><a href="https://github.com/lscambo13/casamia/blob/main/README.md" title="About" tabindex="4">About</a>
+            </li>
+        </ul>
+        <ul>
+            <li><a href="https://github.com/lscambo13" title="&copy; 2023 lscambo13" tabindex="4">
+                    &copy; 2023 lscambo13</a></li>
+        </ul>
+    </footer>
 </body>
 
 </html>
