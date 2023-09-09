@@ -658,8 +658,8 @@ input[type=checkbox] {
 	width: 100vw;
 	height: 100vh;
 	background-color: #45454576;
-	backdrop-filter: blur(1.5em);
-	-webkit-backdrop-filter: blur(1.5em);
+	backdrop-filter: blur(3em);
+	-webkit-backdrop-filter: blur(3em);
 	z-index: 2;
 	animation-name: animatetop;
 	animation-duration: .25s;
@@ -706,8 +706,8 @@ input[type=checkbox] {
 	align-items: center;
 	justify-content: space-between;
 	font-weight: 700;
-	backdrop-filter: blur(3em);
-	-webkit-backdrop-filter: blur(3em);
+	/* backdrop-filter: blur(2em);
+	-webkit-backdrop-filter: blur(2em); */
 	background-color: var(--dark-low-alpha);
 	border-radius: .5em
 }
@@ -722,8 +722,8 @@ input[type=checkbox] {
 	margin: .75em;
 	padding: .5em;
 	background-color: var(--dark-low-alpha);
-	backdrop-filter: blur(3em);
-	-webkit-backdrop-filter: blur(3em);
+	/* backdrop-filter: blur(2em);
+	-webkit-backdrop-filter: blur(2em); */
 	border-radius: .75em;
 	/* transition: 300ms; */
 }
