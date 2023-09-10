@@ -739,7 +739,7 @@ input[type=checkbox] {
 .modal-option {
 	display: flex;
 	font-size: .9em;
-	padding: .25em;
+	padding: .5em;
 	font-weight: 400;
 	justify-content: space-between;
 	transition: 250ms;
@@ -839,14 +839,14 @@ input[type=checkbox] {
 .nested-one-element {
 	overflow: hidden;
 	height: auto;
-	height: 1.65em;
+	height: 2.15em;
 	transition: 600ms;
 }
 
 #deep-search-nested {
 	overflow: hidden;
 	height: auto;
-	height: 6.1em;
+	height: 8.1em;
 	transition: 600ms;
 }
 
