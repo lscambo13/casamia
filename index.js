@@ -30,6 +30,7 @@ import {
 	applyPreferences,
 	askCustomDomain,
 	askCustomText,
+	focusSearchBar,
 	loadDropdownPositions,
 	loadSelectedWidgetstyle,
 	scrollToBottom,
@@ -272,6 +273,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 	intersectionObserver('main-heading-slider', 'widget-slide');
 	loadSelectedWidgetstyle();
 	scrollToBottom();
+	focusSearchBar('auto');
 	getLastUpdated('version-preview');
 });
 

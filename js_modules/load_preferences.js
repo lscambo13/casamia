@@ -82,18 +82,27 @@ function displayFooter(value) {
 	}
 };
 
-function focusSearchBar(value) {
+export function focusSearchBar(value) {
 	const searchbar = document.getElementById('searchTerm');
 
 	switch (value) {
 		case 'off': {
 			// searchbar.focus();
+			sessionStorage.setItem('focus', 'off');
 			break;
 		};
 		case 'on': {
-			searchbar.focus();
+			sessionStorage.setItem('focus', 'on');
 			break;
 		};
+		case 'auto': {
+			if (sessionStorage.getItem('focus') == 'on'); {
+				searchbar.focus();
+				searchbar.click();
+			}
+			// console.log(sessionStorage.getItem('focus'));
+			break;
+		}
 	}
 };
 
