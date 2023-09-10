@@ -163,6 +163,9 @@ addEventListenerOnID('update-username-btn', 'click', askUserName);
 addEventListenerOnID('update-customtext-btn', 'click', askCustomText);
 addEventListenerOnID('deep-search-btn', 'click', (event) => {
 	showNestedOptions('deep-search-nested');
+	const arrow = document.getElementById('deep-search-btn');
+	arrow.childNodes[3].classList.toggle('fa-angle-down');
+	arrow.childNodes[3].classList.toggle('fa-angle-up');
 });
 addEventListenerOnID('update-customdomain-btn', 'click', askCustomDomain);
 addEventListenerOnID('fetch-bookmarks-btn', 'click', fetchBookmarks);
