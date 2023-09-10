@@ -832,7 +832,15 @@ input[type=checkbox] {
 
 .nested-close {
 	opacity: 0;
+	padding-block: 0;
 	height: 0em !important;
+}
+
+.nested-one-element {
+	overflow: hidden;
+	height: auto;
+	height: 1.65em;
+	transition: 600ms;
 }
 
 #deep-search-nested {

@@ -10,19 +10,19 @@ import { fixBackgroundBlurOnResize } from './utils.js';
 const PREF_MAP = {
 	'bg-img-drop': backgroundImage,
 	'bg-blur-drop': backgroundBlur,
-	'bg-glow-drop': backgroundGlow,
-	'weather-display-drop': displayWeather,
+	// 'bg-glow-drop': backgroundGlow,
+	// 'weather-display-drop': displayWeather,
 	'footer-display-drop': displayfooter,
 	'def-widget-drop': defaultWidget,
-	'widget-style-drop': widgetStyle,
+	// 'widget-style-drop': widgetStyle,
 	'greeting-display-drop': displayGreeting,
-	'show-seconds-drop': showSeconds,
-	'clock-style-drop': clockStyle,
-	'am-pm-style-drop': amPmStyle,
+	// 'show-seconds-drop': showSeconds,
+	// 'clock-style-drop': clockStyle,
+	// 'am-pm-style-drop': amPmStyle,
 	'def-search-engine-drop': defaultSearchEngine,
 	'searchbar-position-drop': defaultSearchbarPosition,
 	'searchbar-color-theme-drop': searchbarTheme,
-	'show-titles-drop': showTitles,
+	// 'show-titles-drop': showTitles,
 	'movies-search-display-drop': moviesSearch,
 	'tv-search-display-drop': tvSearch,
 	'games-search-display-drop': gamesSearch,
@@ -61,9 +61,9 @@ function backgroundBlur(value) {
 		};
 	}
 };
-function backgroundGlow() { };
+// function backgroundGlow() { };
 
-function displayWeather() { };
+// function displayWeather() { };
 
 function displayfooter(value) {
 	const footer = document.getElementById('footer');
@@ -104,12 +104,12 @@ function defaultWidget(value) {
 		switch (value) {
 			case 'show': {
 				document.getElementById('update-customtext-btn')
-					.classList.remove('hidden');
+					.classList.remove('nested-close');
 				break;
 			};
 			case 'hide': {
 				document.getElementById('update-customtext-btn')
-					.classList.add('hidden');
+					.classList.add('nested-close');
 				break;
 			};
 		}
@@ -162,7 +162,7 @@ export function askCustomDomain() {
 	return customDomain;
 }
 
-function widgetStyle() { };
+// function widgetStyle() { };
 
 let greetingLoop = null;
 function displayGreeting(value) {
@@ -181,11 +181,11 @@ function displayGreeting(value) {
 	}
 };
 
-function showSeconds() { };
+// function showSeconds() { };
 
-function clockStyle() { };
+// function clockStyle() { };
 
-function amPmStyle() { };
+// function amPmStyle() { };
 
 function applyDomain(domain) {
 	localStorage.setItem('default-search-url', domain);
@@ -212,12 +212,12 @@ export function defaultSearchEngine(value) {
 		switch (value) {
 			case 'show': {
 				document.getElementById('update-customdomain-btn')
-					.classList.remove('hidden');
+					.classList.remove('nested-close');
 				break;
 			};
 			case 'hide': {
 				document.getElementById('update-customdomain-btn')
-					.classList.add('hidden');
+					.classList.add('nested-close');
 				break;
 			};
 		}
@@ -295,7 +295,7 @@ export function scrollToBottom() {
 	}
 }
 
-function showTitles() { };
+// function showTitles() { };
 
 export function applyPreferences() {
 	const preferencesObj =
@@ -303,7 +303,8 @@ export function applyPreferences() {
 
 	const preferencesArray = Object.entries(preferencesObj);
 	for (const i of preferencesArray) {
-		PREF_MAP[i[0]](i[1]);
+		const func = PREF_MAP[i[0]];
+		if (func) func(i[1]);
 	}
 
 	// apply previews
@@ -317,7 +318,10 @@ export function loadDropdownPositions() {
 		Object.entries(JSON.parse(localStorage.getItem('advDropdownValues')));
 	// if (!loadButtonPreviews) return;
 	for (const i of loadedFromStorage) {
-		document.getElementById(i[0]).value = i[1];
+		const elem = document.getElementById(i[0]);
+		if (elem) {
+			elem.value = i[1];
+		}
 	}
 };
 
