@@ -12,16 +12,18 @@ const PREF_MAP = {
 	'bg-blur-drop': backgroundBlur,
 	// 'bg-glow-drop': backgroundGlow,
 	// 'weather-display-drop': displayWeather,
-	'footer-display-drop': displayfooter,
+	'footer-display-drop': displayFooter,
 	'def-widget-drop': defaultWidget,
 	// 'widget-style-drop': widgetStyle,
 	'greeting-display-drop': displayGreeting,
+	'def-widget-display-drop': displayWidget,
 	// 'show-seconds-drop': showSeconds,
 	// 'clock-style-drop': clockStyle,
 	// 'am-pm-style-drop': amPmStyle,
 	'def-search-engine-drop': defaultSearchEngine,
 	'searchbar-position-drop': defaultSearchbarPosition,
 	'searchbar-color-theme-drop': searchbarTheme,
+	'focus-search-drop': focusSearchBar,
 	// 'show-titles-drop': showTitles,
 	'movies-search-display-drop': moviesSearch,
 	'tv-search-display-drop': tvSearch,
@@ -65,7 +67,7 @@ function backgroundBlur(value) {
 
 // function displayWeather() { };
 
-function displayfooter(value) {
+function displayFooter(value) {
 	const footer = document.getElementById('footer');
 
 	switch (value) {
@@ -75,6 +77,36 @@ function displayfooter(value) {
 		};
 		case 'on': {
 			footer.classList.remove('hidden');
+			break;
+		};
+	}
+};
+
+function focusSearchBar(value) {
+	const searchbar = document.getElementById('searchTerm');
+
+	switch (value) {
+		case 'off': {
+			// searchbar.focus();
+			break;
+		};
+		case 'on': {
+			searchbar.focus();
+			break;
+		};
+	}
+};
+
+function displayWidget(value) {
+	const widget = document.getElementById('main-heading-slider');
+
+	switch (value) {
+		case 'off': {
+			widget.classList.add('hidden');
+			break;
+		};
+		case 'on': {
+			widget.classList.remove('hidden');
 			break;
 		};
 	}
@@ -279,18 +311,18 @@ function defaultSearchbarPosition(value) {
 
 	switch (value) {
 		case 'top': {
-			searchbar.style.order = 'initial';
+			searchbar.style.order = '0';
 			break;
 		};
 		case 'bottom': {
-			searchbar.style.order = '5';
+			searchbar.style.order = '1';
 			break;
 		};
 	}
 };
 
 export function scrollToBottom() {
-	if (document.getElementById('searchbar').style.order == '5') {
+	if (document.getElementById('searchbar').style.order == '1') {
 		window.scrollTo(0, document.body.scrollHeight);
 	}
 }
