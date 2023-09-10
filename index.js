@@ -245,7 +245,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 	// dragElement(document.getElementById('labs'));
 
 	loadDropdownPositions();
-	scrollToBottom();
 
 	addEventListenerOnClass('clickable', 'keypress', clickToEnter);
 	addEventListenerOnClass('custom_bookmark', 'click', displayLoading);
@@ -272,6 +271,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 	});
 	intersectionObserver('main-heading-slider', 'widget-slide');
 	loadSelectedWidgetstyle();
+	scrollToBottom();
 	getLastUpdated('version-preview');
 });
 
