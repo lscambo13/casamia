@@ -279,16 +279,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 // ---------------------------------------------------------- End
 
-// window.addEventListener('hashchange', () => {
-//     const url = document.URL;
+window.addEventListener('hashchange', () => {
+	const url = document.URL;
 
-//     if (!url.includes('#wallpapers')) {
-//         // console.log('url found');
-//         hideWallpapers('body');
-//         closeAdvancedSettings();
-//     }
-//     console.log('go back');
-// });
+	if (!url.includes('#wallpapers')) {
+		// console.log('url found');
+		hideWallpapers('body');
+		closeAdvancedSettings();
+	}
+	// console.log('go back');
+});
 
 window.addEventListener('blur', () => {
 	hideLoading();

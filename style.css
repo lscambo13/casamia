@@ -661,9 +661,8 @@ input[type=checkbox] {
 	backdrop-filter: blur(3em);
 	-webkit-backdrop-filter: blur(3em);
 	z-index: 2;
-	animation-name: animatetop;
-	animation-duration: .25s;
-	display: none
+	display: none;
+	/* transition: 300ms; */
 }
 
 #advanced-settings-modal {
@@ -678,19 +677,8 @@ input[type=checkbox] {
 	/* backdrop-filter: blur(1em);
 	-webkit-backdrop-filter: blur(1em); */
 	cursor: default;
-	animation-name: animatetop;
-	animation-duration: .25s;
-	display: none
-}
-
-@keyframes animatetop {
-	from {
-		opacity: 0
-	}
-
-	to {
-		opacity: 1
-	}
+	display: none;
+	/* transition: 300ms; */
 }
 
 #btn-install {
