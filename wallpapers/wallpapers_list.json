@@ -1,1 +1,170 @@
-[{"file":"car-wallpaper-20072612433540.webp","title":"Anime","color":"pink","theme":"light"},{"file":"neon-wallpaper-20070214060650.webp","title":"Neon","color":"pink","theme":"light"},{"file":"Wallpaper-4k-High-Resolution-Mac-3840x2160px-4k-Free-Dow1.webp","title":"Abstract","color":"earth","theme":"light"},{"file":"nature-wallpaper-21012223471720.webp","title":"Nature","color":"red","theme":"light"},{"file":"space-wallpaper-20082314113712.webp","title":"Space","color":"earth","theme":"light"},{"file":"car-wallpaper-2007261221435.webp","title":"Night","color":"yellow","theme":"light"},{"file":"black-wallpaper-20072315472168.webp","title":"Lucifer","color":"earth","theme":"light"},{"file":"black-wallpaper-20091514274141.webp","title":"Superheroes","color":"yellow","theme":"light"},{"file":"Wallpaper-4k-Dark-Blue-Lines-Grid-Lines-Backgrounds-P2.webp","title":"Grid","color":"earth","theme":"light"},{"file":"desert-wallpaper-3840x2160.webp","title":"Desert","color":"earth","theme":"light"},{"file":"cute_anime_girl_2-wallpaper-3840x2160.webp","title":"Anime 2","color":"pink","theme":"light"},{"file":"bicycle_aesthetic-wallpaper-3840x2160.webp","title":"Bicycle","color":"light-pink","theme":"light"},{"file":"pink_aesthetic-wallpaper-3840x2160.webp","title":"Pink","color":"light-pink","theme":"light"},{"file":"peaceful-wallpaper-3840x2160.webp","title":"Desert 2","color":"red","theme":"light"},{"file":"coast_aerial_view_beautiful_landscape-wallpaper-3840x2160.webp","title":"Beach","color":"green","theme":"light"},{"file":"batman_car_night-wallpaper-3840x2160.webp","title":"Batman","color":"red","theme":"light"},{"file":"1440p-Wallpaper-Free-Download.webp","title":"Neon 2","color":"pink","theme":"light"},{"file":"1440p-HD-Wallpaper-Free-download.webp","title":"Neon 3","color":"pink","theme":"light"},{"file":"arrival_at_saturn-wallpaper-7680x4320.webp","title":"Saturn","color":"earth","theme":"light"},{"file":"HP-Wallpaper.webp","title":"HP","color":"pink","theme":"light"},{"file":"pink_desert_blue_sky-wallpaper-2880x1620.webp","title":"Pink 2","color":"light-pink","theme":"light"},{"file":"pink_sea_aesthetic-wallpaper-2880x1620.webp","title":"Pink 3","color":"light-pink","theme":"light"},{"file":"bay_10-wallpaper-3840x2160.webp","title":"Beach 2","color":"green","theme":"light"},{"file":"pink_umbrellas-wallpaper-5120x2880.webp","title":"Umbrellas","color":"pink","theme":"light"},{"file":"peter_morales-wallpaper-3840x2160.webp","title":"Spiderman","color":"red","theme":"light"},{"file":"miles_morales_night_spark-wallpaper-3840x2160.webp","title":"Spiderman 2","color":"yellow","theme":"light"},{"file":"pastel_macarons_aesthetic-wallpaper-5120x2880.webp","title":"Macarons","color":"light-pink","theme":"light"},{"file":"billie_eilish-wallpaper-5120x2880.webp","title":"Billie Eilish","color":"earth","theme":"light"}]
+[
+	{
+		"file": "car-wallpaper-20072612433540.webp",
+		"title": "Anime",
+		"color": "pink",
+		"theme": "light"
+	},
+	{
+		"file": "neon-wallpaper-20070214060650.webp",
+		"title": "Neon",
+		"color": "pink",
+		"theme": "light"
+	},
+	{
+		"file": "Wallpaper-4k-High-Resolution-Mac-3840x2160px-4k-Free-Dow1.webp",
+		"title": "Abstract",
+		"color": "earth",
+		"theme": "light"
+	},
+	{
+		"file": "nature-wallpaper-21012223471720.webp",
+		"title": "Nature",
+		"color": "red",
+		"theme": "light"
+	},
+	{
+		"file": "space-wallpaper-20082314113712.webp",
+		"title": "Space",
+		"color": "earth",
+		"theme": "light"
+	},
+	{
+		"file": "car-wallpaper-2007261221435.webp",
+		"title": "Night",
+		"color": "yellow",
+		"theme": "light"
+	},
+	{
+		"file": "black-wallpaper-20072315472168.webp",
+		"title": "Lucifer",
+		"color": "earth",
+		"theme": "light"
+	},
+	{
+		"file": "black-wallpaper-20091514274141.webp",
+		"title": "Superheroes",
+		"color": "yellow",
+		"theme": "light"
+	},
+	{
+		"file": "Wallpaper-4k-Dark-Blue-Lines-Grid-Lines-Backgrounds-P2.webp",
+		"title": "Grid",
+		"color": "earth",
+		"theme": "light"
+	},
+	{
+		"file": "desert-wallpaper-3840x2160.webp",
+		"title": "Desert",
+		"color": "earth",
+		"theme": "light"
+	},
+	{
+		"file": "cute_anime_girl_2-wallpaper-3840x2160.webp",
+		"title": "Anime 2",
+		"color": "pink",
+		"theme": "light"
+	},
+	{
+		"file": "bicycle_aesthetic-wallpaper-3840x2160.webp",
+		"title": "Bicycle",
+		"color": "light-pink",
+		"theme": "light"
+	},
+	{
+		"file": "pink_aesthetic-wallpaper-3840x2160.webp",
+		"title": "Pink",
+		"color": "light-pink",
+		"theme": "light"
+	},
+	{
+		"file": "peaceful-wallpaper-3840x2160.webp",
+		"title": "Desert 2",
+		"color": "red",
+		"theme": "light"
+	},
+	{
+		"file": "coast_aerial_view_beautiful_landscape-wallpaper-3840x2160.webp",
+		"title": "Beach",
+		"color": "green",
+		"theme": "light"
+	},
+	{
+		"file": "batman_car_night-wallpaper-3840x2160.webp",
+		"title": "Batman",
+		"color": "red",
+		"theme": "light"
+	},
+	{
+		"file": "1440p-Wallpaper-Free-Download.webp",
+		"title": "Neon 2",
+		"color": "pink",
+		"theme": "light"
+	},
+	{
+		"file": "1440p-HD-Wallpaper-Free-download.webp",
+		"title": "Neon 3",
+		"color": "pink",
+		"theme": "light"
+	},
+	{
+		"file": "arrival_at_saturn-wallpaper-7680x4320.webp",
+		"title": "Saturn",
+		"color": "earth",
+		"theme": "light"
+	},
+	{
+		"file": "HP-Wallpaper.webp",
+		"title": "HP",
+		"color": "pink",
+		"theme": "light"
+	},
+	{
+		"file": "pink_desert_blue_sky-wallpaper-2880x1620.webp",
+		"title": "Pink 2",
+		"color": "light-pink",
+		"theme": "light"
+	},
+	{
+		"file": "pink_sea_aesthetic-wallpaper-2880x1620.webp",
+		"title": "Pink 3",
+		"color": "light-pink",
+		"theme": "light"
+	},
+	{
+		"file": "bay_10-wallpaper-3840x2160.webp",
+		"title": "Beach 2",
+		"color": "green",
+		"theme": "light"
+	},
+	{
+		"file": "pink_umbrellas-wallpaper-5120x2880.webp",
+		"title": "Umbrellas",
+		"color": "pink",
+		"theme": "light"
+	},
+	{
+		"file": "peter_morales-wallpaper-3840x2160.webp",
+		"title": "Spiderman",
+		"color": "red",
+		"theme": "light"
+	},
+	{
+		"file": "miles_morales_night_spark-wallpaper-3840x2160.webp",
+		"title": "Spiderman 2",
+		"color": "yellow",
+		"theme": "light"
+	},
+	{
+		"file": "pastel_macarons_aesthetic-wallpaper-5120x2880.webp",
+		"title": "Macarons",
+		"color": "light-pink",
+		"theme": "light"
+	},
+	{
+		"file": "billie_eilish-wallpaper-5120x2880.webp",
+		"title": "Billie Eilish",
+		"color": "earth",
+		"theme": "light"
+	}
+]
