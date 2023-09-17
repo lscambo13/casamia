@@ -7,7 +7,8 @@ export const DUCKDUCKGO_SEARCH_DOMAIN = 'https://duckduckgo.com/?q=';
 export const BOOKMARKS_SAMPLE_URL =
 	'https://raw.githubusercontent.com/lscambo13/casamia/main/custom_bookmarks_sample/home-page-bookmarks-2023-1-23.json';
 export const WALLPAPERS_URL = './wallpapers/';
-export const DEF_WALLPAPER = 'space-wallpaper-20082314113712.webp';
+export const DOWNLOAD_WALLPAPERS_URL = './wallpapers/backups/';
+export const DEF_WALLPAPER = '085.webp';
 export const DEF_CUSTOM_TEXT = 'Custom Text';
 export const DEF_PREF =
 {

@@ -1,4 +1,4 @@
-import { WALLPAPERS_URL } from './constants.js';
+import { DOWNLOAD_WALLPAPERS_URL } from './constants.js';
 import {
 	customBookmarks,
 	downloadBookmarks,
@@ -10,6 +10,7 @@ import {
 	resetBookmarksWarningText,
 } from './strings.js';
 import { addZero } from './utils/addZero.js';
+import { changeExtension } from './utils/changeExtension.js';
 import { downloadFile } from './utils/downloadFile.js';
 import { wait } from './utils/wait.js';
 import { selectedWallpaper } from './wallpapers.js';
@@ -26,10 +27,12 @@ export function exportBookmarks(event) {
 };
 
 export function downloadWallpaper() {
-	console.log(WALLPAPERS_URL + selectedWallpaper);
+	// console.log(DOWNLOAD_WALLPAPERS_URL + selectedWallpaper);
 	const element = document.createElement('a');
-	element.setAttribute('href', WALLPAPERS_URL + selectedWallpaper);
-	element.setAttribute('download', selectedWallpaper);
+	const hiResWall = changeExtension(selectedWallpaper, 'png');
+	element
+		.setAttribute('href', DOWNLOAD_WALLPAPERS_URL + hiResWall);
+	element.setAttribute('download', hiResWall);
 	element.style.display = 'none';
 	document.body.appendChild(element);
 	element.click();
