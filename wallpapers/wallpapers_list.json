@@ -1,650 +1,1916 @@
 [
 	{
-		"file": "car-wallpaper-20072612433540.webp",
-		"title": "Anime",
-		"color": "pink",
-		"theme": "light"
-	},
-	{
-		"file": "neon-wallpaper-20070214060650.webp",
-		"title": "Neon",
-		"color": "pink",
-		"theme": "light"
-	},
-	{
-		"file": "Wallpaper-4k-High-Resolution-Mac-3840x2160px-4k-Free-Dow1.webp",
-		"title": "Abstract",
-		"color": "earth",
-		"theme": "light"
-	},
-	{
-		"file": "nature-wallpaper-21012223471720.webp",
-		"title": "Nature",
-		"color": "red",
-		"theme": "light"
-	},
-	{
-		"file": "space-wallpaper-20082314113712.webp",
-		"title": "Space",
-		"color": "earth",
-		"theme": "light"
-	},
-	{
-		"file": "car-wallpaper-2007261221435.webp",
-		"title": "Night",
-		"color": "yellow",
-		"theme": "light"
-	},
-	{
-		"file": "black-wallpaper-20072315472168.webp",
-		"title": "Lucifer",
-		"color": "earth",
-		"theme": "light"
-	},
-	{
-		"file": "black-wallpaper-20091514274141.webp",
-		"title": "Superheroes",
-		"color": "yellow",
-		"theme": "light"
-	},
-	{
-		"file": "Wallpaper-4k-Dark-Blue-Lines-Grid-Lines-Backgrounds-P2.webp",
-		"title": "Grid",
-		"color": "earth",
-		"theme": "light"
-	},
-	{
-		"file": "desert-wallpaper-3840x2160.webp",
-		"title": "Desert",
-		"color": "earth",
-		"theme": "light"
-	},
-	{
-		"file": "cute_anime_girl_2-wallpaper-3840x2160.webp",
-		"title": "Anime 2",
-		"color": "pink",
-		"theme": "light"
-	},
-	{
-		"file": "bicycle_aesthetic-wallpaper-3840x2160.webp",
-		"title": "Bicycle",
-		"color": "light-pink",
-		"theme": "light"
-	},
-	{
-		"file": "pink_aesthetic-wallpaper-3840x2160.webp",
-		"title": "Pink",
-		"color": "light-pink",
-		"theme": "light"
-	},
-	{
-		"file": "peaceful-wallpaper-3840x2160.webp",
-		"title": "Desert 2",
-		"color": "red",
-		"theme": "light"
-	},
-	{
-		"file": "coast_aerial_view_beautiful_landscape-wallpaper-3840x2160.webp",
-		"title": "Beach",
-		"color": "green",
-		"theme": "light"
-	},
-	{
-		"file": "batman_car_night-wallpaper-3840x2160.webp",
-		"title": "Batman",
-		"color": "red",
-		"theme": "light"
-	},
-	{
-		"file": "1440p-Wallpaper-Free-Download.webp",
-		"title": "Neon 2",
-		"color": "pink",
-		"theme": "light"
-	},
-	{
-		"file": "1440p-HD-Wallpaper-Free-download.webp",
-		"title": "Neon 3",
-		"color": "pink",
-		"theme": "light"
-	},
-	{
-		"file": "arrival_at_saturn-wallpaper-7680x4320.webp",
-		"title": "Saturn",
-		"color": "earth",
-		"theme": "light"
-	},
-	{
-		"file": "HP-Wallpaper.webp",
-		"title": "HP",
-		"color": "pink",
-		"theme": "light"
-	},
-	{
-		"file": "pink_desert_blue_sky-wallpaper-2880x1620.webp",
-		"title": "Pink 2",
-		"color": "light-pink",
-		"theme": "light"
-	},
-	{
-		"file": "pink_sea_aesthetic-wallpaper-2880x1620.webp",
-		"title": "Pink 3",
-		"color": "light-pink",
-		"theme": "light"
-	},
-	{
-		"file": "bay_10-wallpaper-3840x2160.webp",
-		"title": "Beach 2",
-		"color": "green",
-		"theme": "light"
-	},
-	{
-		"file": "pink_umbrellas-wallpaper-5120x2880.webp",
-		"title": "Umbrellas",
-		"color": "pink",
-		"theme": "light"
-	},
-	{
-		"file": "peter_morales-wallpaper-3840x2160.webp",
-		"title": "Spiderman",
-		"color": "red",
-		"theme": "light"
-	},
-	{
-		"file": "miles_morales_night_spark-wallpaper-3840x2160.webp",
-		"title": "Spiderman 2",
-		"color": "yellow",
-		"theme": "light"
-	},
-	{
-		"file": "pastel_macarons_aesthetic-wallpaper-5120x2880.webp",
-		"title": "Macarons",
-		"color": "light-pink",
-		"theme": "light"
-	},
-	{
-		"file": "billie_eilish-wallpaper-5120x2880.webp",
-		"title": "Billie Eilish",
-		"color": "earth",
-		"theme": "light"
-	},
-	{
-		"file": "1694878925801.webp",
+		"file": "001.webp",
 		"title": "Wallpaper 1",
-		"color": "earth",
+		"color": [
+			[
+				20,
+				20,
+				20
+			],
+			[
+				162,
+				162,
+				162
+			],
+			[
+				132,
+				140,
+				138
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925805.webp",
+		"file": "002.webp",
 		"title": "Wallpaper 2",
-		"color": "earth",
+		"color": [
+			[
+				60,
+				53,
+				44
+			],
+			[
+				163,
+				143,
+				115
+			],
+			[
+				146,
+				159,
+				140
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925806.webp",
+		"file": "003.webp",
 		"title": "Wallpaper 3",
-		"color": "earth",
+		"color": [
+			[
+				67,
+				102,
+				73
+			],
+			[
+				197,
+				181,
+				142
+			],
+			[
+				146,
+				185,
+				182
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925808.webp",
+		"file": "004.webp",
 		"title": "Wallpaper 4",
-		"color": "earth",
+		"color": [
+			[
+				23,
+				27,
+				27
+			],
+			[
+				184,
+				197,
+				189
+			],
+			[
+				74,
+				164,
+				164
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925809.webp",
+		"file": "005.webp",
 		"title": "Wallpaper 5",
-		"color": "earth",
+		"color": [
+			[
+				94,
+				86,
+				57
+			],
+			[
+				220,
+				173,
+				135
+			],
+			[
+				175,
+				182,
+				158
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925813.webp",
+		"file": "006.webp",
 		"title": "Wallpaper 6",
-		"color": "earth",
+		"color": [
+			[
+				66,
+				75,
+				128
+			],
+			[
+				203,
+				98,
+				139
+			],
+			[
+				39,
+				208,
+				184
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925815.webp",
+		"file": "007.webp",
 		"title": "Wallpaper 7",
-		"color": "earth",
+		"color": [
+			[
+				9,
+				4,
+				12
+			],
+			[
+				171,
+				4,
+				59
+			],
+			[
+				35,
+				4,
+				175
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925816.webp",
+		"file": "008.webp",
 		"title": "Wallpaper 8",
-		"color": "earth",
+		"color": [
+			[
+				210,
+				198,
+				196
+			],
+			[
+				82,
+				97,
+				75
+			],
+			[
+				163,
+				76,
+				60
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925819.webp",
+		"file": "009.webp",
 		"title": "Wallpaper 9",
-		"color": "earth",
+		"color": [
+			[
+				72,
+				63,
+				60
+			],
+			[
+				213,
+				202,
+				205
+			],
+			[
+				154,
+				156,
+				159
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925822.webp",
+		"file": "010.webp",
 		"title": "Wallpaper 10",
-		"color": "earth",
+		"color": [
+			[
+				11,
+				11,
+				15
+			],
+			[
+				164,
+				177,
+				202
+			],
+			[
+				111,
+				142,
+				171
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925827.webp",
+		"file": "011.webp",
 		"title": "Wallpaper 11",
-		"color": "earth",
+		"color": [
+			[
+				23,
+				64,
+				105
+			],
+			[
+				177,
+				187,
+				207
+			],
+			[
+				120,
+				165,
+				207
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925829.webp",
+		"file": "012.webp",
 		"title": "Wallpaper 12",
-		"color": "earth",
+		"color": [
+			[
+				63,
+				152,
+				203
+			],
+			[
+				50,
+				35,
+				16
+			],
+			[
+				224,
+				210,
+				182
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925830.webp",
+		"file": "013.webp",
 		"title": "Wallpaper 13",
-		"color": "earth",
+		"color": [
+			[
+				182,
+				193,
+				183
+			],
+			[
+				54,
+				53,
+				49
+			],
+			[
+				85,
+				81,
+				79
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925832.webp",
+		"file": "014.webp",
 		"title": "Wallpaper 14",
-		"color": "earth",
+		"color": [
+			[
+				30,
+				30,
+				47
+			],
+			[
+				161,
+				161,
+				167
+			],
+			[
+				140,
+				132,
+				140
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925833.webp",
+		"file": "015.webp",
 		"title": "Wallpaper 15",
-		"color": "earth",
+		"color": [
+			[
+				149,
+				88,
+				70
+			],
+			[
+				242,
+				187,
+				148
+			],
+			[
+				214,
+				172,
+				164
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925835.webp",
+		"file": "016.webp",
 		"title": "Wallpaper 16",
-		"color": "earth",
+		"color": [
+			[
+				114,
+				80,
+				170
+			],
+			[
+				232,
+				103,
+				205
+			],
+			[
+				116,
+				209,
+				231
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925837.webp",
+		"file": "017.webp",
 		"title": "Wallpaper 17",
-		"color": "earth",
+		"color": [
+			[
+				175,
+				109,
+				146
+			],
+			[
+				184,
+				199,
+				216
+			],
+			[
+				58,
+				43,
+				56
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925838.webp",
+		"file": "018.webp",
 		"title": "Wallpaper 18",
-		"color": "earth",
+		"color": [
+			[
+				47,
+				47,
+				56
+			],
+			[
+				196,
+				128,
+				104
+			],
+			[
+				140,
+				161,
+				174
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925840.webp",
+		"file": "019.webp",
 		"title": "Wallpaper 19",
-		"color": "earth",
+		"color": [
+			[
+				44,
+				17,
+				73
+			],
+			[
+				68,
+				118,
+				203
+			],
+			[
+				163,
+				52,
+				64
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925841.webp",
+		"file": "020.webp",
 		"title": "Wallpaper 20",
-		"color": "earth",
+		"color": [
+			[
+				5,
+				16,
+				19
+			],
+			[
+				7,
+				170,
+				176
+			],
+			[
+				11,
+				106,
+				139
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925843.webp",
+		"file": "021.webp",
 		"title": "Wallpaper 21",
-		"color": "earth",
+		"color": [
+			[
+				43,
+				32,
+				60
+			],
+			[
+				176,
+				65,
+				124
+			],
+			[
+				35,
+				181,
+				197
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925845.webp",
+		"file": "022.webp",
 		"title": "Wallpaper 22",
-		"color": "earth",
+		"color": [
+			[
+				192,
+				69,
+				15
+			],
+			[
+				56,
+				13,
+				5
+			],
+			[
+				247,
+				227,
+				209
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925846.webp",
+		"file": "023.webp",
 		"title": "Wallpaper 23",
-		"color": "earth",
+		"color": [
+			[
+				56,
+				79,
+				112
+			],
+			[
+				201,
+				89,
+				105
+			],
+			[
+				144,
+				174,
+				192
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925847.webp",
+		"file": "024.webp",
 		"title": "Wallpaper 24",
-		"color": "earth",
+		"color": [
+			[
+				32,
+				73,
+				123
+			],
+			[
+				230,
+				196,
+				122
+			],
+			[
+				110,
+				171,
+				228
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925849.webp",
+		"file": "025.webp",
 		"title": "Wallpaper 25",
-		"color": "earth",
+		"color": [
+			[
+				205,
+				172,
+				153
+			],
+			[
+				180,
+				58,
+				25
+			],
+			[
+				213,
+				86,
+				44
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925850.webp",
+		"file": "026.webp",
 		"title": "Wallpaper 26",
-		"color": "earth",
+		"color": [
+			[
+				218,
+				187,
+				163
+			],
+			[
+				146,
+				77,
+				43
+			],
+			[
+				175,
+				102,
+				61
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925852.webp",
+		"file": "027.webp",
 		"title": "Wallpaper 27",
-		"color": "earth",
+		"color": [
+			[
+				7,
+				6,
+				9
+			],
+			[
+				216,
+				68,
+				72
+			],
+			[
+				21,
+				174,
+				226
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925857.webp",
+		"file": "028.webp",
 		"title": "Wallpaper 28",
-		"color": "earth",
+		"color": [
+			[
+				217,
+				80,
+				172
+			],
+			[
+				70,
+				16,
+				52
+			],
+			[
+				247,
+				213,
+				236
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925874.webp",
+		"file": "029.webp",
 		"title": "Wallpaper 29",
-		"color": "earth",
+		"color": [
+			[
+				8,
+				55,
+				81
+			],
+			[
+				48,
+				153,
+				183
+			],
+			[
+				28,
+				116,
+				140
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925876.webp",
+		"file": "030.webp",
 		"title": "Wallpaper 30",
-		"color": "earth",
+		"color": [
+			[
+				190,
+				207,
+				224
+			],
+			[
+				30,
+				173,
+				233
+			],
+			[
+				110,
+				199,
+				238
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925878.webp",
+		"file": "031.webp",
 		"title": "Wallpaper 31",
-		"color": "earth",
+		"color": [
+			[
+				229,
+				223,
+				220
+			],
+			[
+				4,
+				72,
+				121
+			],
+			[
+				127,
+				118,
+				143
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925879.webp",
+		"file": "032.webp",
 		"title": "Wallpaper 32",
-		"color": "earth",
+		"color": [
+			[
+				206,
+				200,
+				199
+			],
+			[
+				64,
+				75,
+				74
+			],
+			[
+				108,
+				91,
+				63
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925880.webp",
+		"file": "033.webp",
 		"title": "Wallpaper 33",
-		"color": "earth",
+		"color": [
+			[
+				20,
+				32,
+				89
+			],
+			[
+				182,
+				80,
+				62
+			],
+			[
+				24,
+				76,
+				166
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925881.webp",
+		"file": "034.webp",
 		"title": "Wallpaper 34",
-		"color": "earth",
+		"color": [
+			[
+				206,
+				160,
+				116
+			],
+			[
+				74,
+				148,
+				158
+			],
+			[
+				136,
+				65,
+				17
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925883.webp",
+		"file": "035.webp",
 		"title": "Wallpaper 35",
-		"color": "earth",
+		"color": [
+			[
+				67,
+				79,
+				188
+			],
+			[
+				205,
+				95,
+				56
+			],
+			[
+				189,
+				133,
+				175
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925887.webp",
+		"file": "036.webp",
 		"title": "Wallpaper 36",
-		"color": "earth",
+		"color": [
+			[
+				24,
+				35,
+				67
+			],
+			[
+				40,
+				134,
+				191
+			],
+			[
+				50,
+				116,
+				155
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925890.webp",
+		"file": "037.webp",
 		"title": "Wallpaper 37",
-		"color": "earth",
+		"color": [
+			[
+				9,
+				16,
+				23
+			],
+			[
+				129,
+				181,
+				217
+			],
+			[
+				47,
+				107,
+				154
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925892.webp",
+		"file": "038.webp",
 		"title": "Wallpaper 38",
-		"color": "earth",
+		"color": [
+			[
+				238,
+				175,
+				174
+			],
+			[
+				220,
+				121,
+				118
+			],
+			[
+				223,
+				132,
+				124
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925896.webp",
+		"file": "039.webp",
 		"title": "Wallpaper 39",
-		"color": "earth",
+		"color": [
+			[
+				78,
+				87,
+				194
+			],
+			[
+				188,
+				119,
+				123
+			],
+			[
+				134,
+				58,
+				83
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925954.webp",
+		"file": "040.webp",
 		"title": "Wallpaper 40",
-		"color": "earth",
+		"color": [
+			[
+				160,
+				160,
+				169
+			],
+			[
+				59,
+				59,
+				67
+			],
+			[
+				75,
+				75,
+				85
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925959.webp",
+		"file": "041.webp",
 		"title": "Wallpaper 41",
-		"color": "earth",
+		"color": [
+			[
+				160,
+				178,
+				251
+			],
+			[
+				4,
+				37,
+				244
+			],
+			[
+				45,
+				110,
+				251
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925963.webp",
+		"file": "042.webp",
 		"title": "Wallpaper 42",
-		"color": "earth",
+		"color": [
+			[
+				172,
+				88,
+				39
+			],
+			[
+				50,
+				30,
+				24
+			],
+			[
+				241,
+				197,
+				141
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925967.webp",
+		"file": "043.webp",
 		"title": "Wallpaper 43",
-		"color": "earth",
+		"color": [
+			[
+				12,
+				9,
+				19
+			],
+			[
+				196,
+				114,
+				116
+			],
+			[
+				23,
+				165,
+				167
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878925971.webp",
+		"file": "044.webp",
 		"title": "Wallpaper 44",
-		"color": "earth",
+		"color": [
+			[
+				31,
+				32,
+				29
+			],
+			[
+				182,
+				172,
+				159
+			],
+			[
+				117,
+				136,
+				135
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878926071.webp",
+		"file": "045.webp",
 		"title": "Wallpaper 45",
-		"color": "earth",
+		"color": [
+			[
+				91,
+				112,
+				130
+			],
+			[
+				214,
+				113,
+				129
+			],
+			[
+				104,
+				52,
+				34
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878926148.webp",
+		"file": "046.webp",
 		"title": "Wallpaper 46",
-		"color": "earth",
+		"color": [
+			[
+				7,
+				52,
+				69
+			],
+			[
+				7,
+				156,
+				187
+			],
+			[
+				148,
+				156,
+				156
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878926222.webp",
+		"file": "047.webp",
 		"title": "Wallpaper 47",
-		"color": "earth",
+		"color": [
+			[
+				174,
+				154,
+				179
+			],
+			[
+				51,
+				47,
+				106
+			],
+			[
+				73,
+				62,
+				125
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878926291.webp",
+		"file": "048.webp",
 		"title": "Wallpaper 48",
-		"color": "earth",
+		"color": [
+			[
+				7,
+				10,
+				12
+			],
+			[
+				216,
+				208,
+				185
+			],
+			[
+				71,
+				161,
+				175
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878926324.webp",
+		"file": "049.webp",
 		"title": "Wallpaper 49",
-		"color": "earth",
+		"color": [
+			[
+				131,
+				161,
+				188
+			],
+			[
+				213,
+				224,
+				232
+			],
+			[
+				22,
+				41,
+				87
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878926358.webp",
+		"file": "050.webp",
 		"title": "Wallpaper 50",
-		"color": "earth",
+		"color": [
+			[
+				168,
+				166,
+				174
+			],
+			[
+				17,
+				29,
+				38
+			],
+			[
+				102,
+				70,
+				74
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878926411.webp",
+		"file": "051.webp",
 		"title": "Wallpaper 51",
-		"color": "earth",
+		"color": [
+			[
+				61,
+				22,
+				54
+			],
+			[
+				211,
+				53,
+				79
+			],
+			[
+				150,
+				125,
+				158
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878926441.webp",
+		"file": "052.webp",
 		"title": "Wallpaper 52",
-		"color": "earth",
+		"color": [
+			[
+				166,
+				179,
+				193
+			],
+			[
+				36,
+				131,
+				207
+			],
+			[
+				84,
+				106,
+				131
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878926465.webp",
+		"file": "053.webp",
 		"title": "Wallpaper 53",
-		"color": "earth",
+		"color": [
+			[
+				206,
+				164,
+				67
+			],
+			[
+				196,
+				187,
+				191
+			],
+			[
+				72,
+				63,
+				58
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878926481.webp",
+		"file": "054.webp",
 		"title": "Wallpaper 54",
-		"color": "earth",
+		"color": [
+			[
+				197,
+				195,
+				218
+			],
+			[
+				197,
+				72,
+				112
+			],
+			[
+				45,
+				46,
+				56
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878926520.webp",
+		"file": "055.webp",
 		"title": "Wallpaper 55",
-		"color": "earth",
+		"color": [
+			[
+				88,
+				131,
+				185
+			],
+			[
+				182,
+				183,
+				189
+			],
+			[
+				167,
+				197,
+				228
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878926614.webp",
+		"file": "056.webp",
 		"title": "Wallpaper 56",
-		"color": "earth",
+		"color": [
+			[
+				138,
+				166,
+				136
+			],
+			[
+				51,
+				75,
+				48
+			],
+			[
+				77,
+				103,
+				67
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878926639.webp",
+		"file": "057.webp",
 		"title": "Wallpaper 57",
-		"color": "earth",
+		"color": [
+			[
+				8,
+				7,
+				10
+			],
+			[
+				204,
+				132,
+				111
+			],
+			[
+				72,
+				31,
+				167
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878926643.webp",
+		"file": "058.webp",
 		"title": "Wallpaper 58",
-		"color": "earth",
+		"color": [
+			[
+				9,
+				6,
+				10
+			],
+			[
+				10,
+				99,
+				144
+			],
+			[
+				187,
+				104,
+				90
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878926648.webp",
+		"file": "059.webp",
 		"title": "Wallpaper 59",
-		"color": "earth",
+		"color": [
+			[
+				116,
+				107,
+				212
+			],
+			[
+				200,
+				199,
+				207
+			],
+			[
+				191,
+				184,
+				217
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878926652.webp",
+		"file": "060.webp",
 		"title": "Wallpaper 60",
-		"color": "earth",
+		"color": [
+			[
+				52,
+				135,
+				196
+			],
+			[
+				177,
+				184,
+				198
+			],
+			[
+				139,
+				196,
+				223
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878926657.webp",
+		"file": "061.webp",
 		"title": "Wallpaper 61",
-		"color": "earth",
+		"color": [
+			[
+				16,
+				24,
+				25
+			],
+			[
+				179,
+				175,
+				122
+			],
+			[
+				111,
+				143,
+				94
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878926660.webp",
+		"file": "062.webp",
 		"title": "Wallpaper 62",
-		"color": "earth",
+		"color": [
+			[
+				4,
+				7,
+				16
+			],
+			[
+				17,
+				93,
+				159
+			],
+			[
+				28,
+				92,
+				108
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878926666.webp",
+		"file": "063.webp",
 		"title": "Wallpaper 63",
-		"color": "earth",
+		"color": [
+			[
+				201,
+				233,
+				249
+			],
+			[
+				55,
+				124,
+				163
+			],
+			[
+				191,
+				91,
+				80
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878926670.webp",
+		"file": "064.webp",
 		"title": "Wallpaper 64",
-		"color": "earth",
+		"color": [
+			[
+				230,
+				181,
+				192
+			],
+			[
+				12,
+				14,
+				25
+			],
+			[
+				118,
+				84,
+				104
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878926674.webp",
+		"file": "065.webp",
 		"title": "Wallpaper 65",
-		"color": "earth",
+		"color": [
+			[
+				221,
+				216,
+				205
+			],
+			[
+				53,
+				44,
+				58
+			],
+			[
+				169,
+				80,
+				48
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878926677.webp",
+		"file": "066.webp",
 		"title": "Wallpaper 66",
-		"color": "earth",
+		"color": [
+			[
+				202,
+				196,
+				228
+			],
+			[
+				57,
+				39,
+				75
+			],
+			[
+				132,
+				63,
+				92
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878926681.webp",
+		"file": "067.webp",
 		"title": "Wallpaper 67",
-		"color": "earth",
+		"color": [
+			[
+				89,
+				101,
+				197
+			],
+			[
+				181,
+				183,
+				198
+			],
+			[
+				155,
+				172,
+				223
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878926683.webp",
+		"file": "068.webp",
 		"title": "Wallpaper 68",
-		"color": "earth",
+		"color": [
+			[
+				224,
+				226,
+				217
+			],
+			[
+				58,
+				97,
+				62
+			],
+			[
+				136,
+				159,
+				100
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878926688.webp",
+		"file": "069.webp",
 		"title": "Wallpaper 69",
-		"color": "earth",
+		"color": [
+			[
+				206,
+				214,
+				245
+			],
+			[
+				57,
+				60,
+				100
+			],
+			[
+				163,
+				77,
+				140
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878926692.webp",
+		"file": "070.webp",
 		"title": "Wallpaper 70",
-		"color": "earth",
+		"color": [
+			[
+				239,
+				219,
+				224
+			],
+			[
+				188,
+				215,
+				224
+			],
+			[
+				249,
+				178,
+				189
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878926696.webp",
+		"file": "071.webp",
 		"title": "Wallpaper 71",
-		"color": "earth",
+		"color": [
+			[
+				36,
+				34,
+				37
+			],
+			[
+				126,
+				149,
+				157
+			],
+			[
+				171,
+				168,
+				172
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878926700.webp",
+		"file": "072.webp",
 		"title": "Wallpaper 72",
-		"color": "earth",
+		"color": [
+			[
+				39,
+				45,
+				43
+			],
+			[
+				97,
+				184,
+				152
+			],
+			[
+				200,
+				185,
+				134
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878926704.webp",
+		"file": "073.webp",
 		"title": "Wallpaper 73",
-		"color": "earth",
+		"color": [
+			[
+				171,
+				193,
+				251
+			],
+			[
+				72,
+				63,
+				183
+			],
+			[
+				104,
+				121,
+				235
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878926708.webp",
+		"file": "074.webp",
 		"title": "Wallpaper 74",
-		"color": "earth",
+		"color": [
+			[
+				7,
+				5,
+				5
+			],
+			[
+				194,
+				53,
+				18
+			],
+			[
+				105,
+				144,
+				187
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878926712.webp",
+		"file": "075.webp",
 		"title": "Wallpaper 75",
-		"color": "earth",
+		"color": [
+			[
+				202,
+				147,
+				188
+			],
+			[
+				146,
+				6,
+				52
+			],
+			[
+				116,
+				11,
+				109
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878926716.webp",
+		"file": "076.webp",
 		"title": "Wallpaper 76",
-		"color": "earth",
+		"color": [
+			[
+				234,
+				178,
+				185
+			],
+			[
+				157,
+				77,
+				113
+			],
+			[
+				109,
+				130,
+				170
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878926719.webp",
+		"file": "077.webp",
 		"title": "Wallpaper 77",
-		"color": "earth",
+		"color": [
+			[
+				26,
+				26,
+				23
+			],
+			[
+				200,
+				133,
+				93
+			],
+			[
+				114,
+				187,
+				167
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878926723.webp",
+		"file": "078.webp",
 		"title": "Wallpaper 78",
-		"color": "earth",
+		"color": [
+			[
+				55,
+				25,
+				80
+			],
+			[
+				235,
+				118,
+				161
+			],
+			[
+				31,
+				104,
+				231
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878926727.webp",
+		"file": "079.webp",
 		"title": "Wallpaper 79",
-		"color": "earth",
+		"color": [
+			[
+				5,
+				5,
+				5
+			],
+			[
+				193,
+				125,
+				116
+			],
+			[
+				121,
+				135,
+				159
+			]
+		],
 		"theme": "light"
 	},
 	{
-		"file": "1694878926731.webp",
+		"file": "080.webp",
 		"title": "Wallpaper 80",
-		"color": "earth",
+		"color": [
+			[
+				233,
+				233,
+				233
+			],
+			[
+				63,
+				82,
+				44
+			],
+			[
+				117,
+				107,
+				102
+			]
+		],
+		"theme": "light"
+	},
+	{
+		"file": "081.webp",
+		"title": "Wallpaper 81",
+		"color": [
+			[
+				169,
+				174,
+				235
+			],
+			[
+				81,
+				150,
+				182
+			],
+			[
+				108,
+				88,
+				164
+			]
+		],
+		"theme": "light"
+	},
+	{
+		"file": "082.webp",
+		"title": "Wallpaper 82",
+		"color": [
+			[
+				4,
+				5,
+				8
+			],
+			[
+				43,
+				79,
+				138
+			],
+			[
+				36,
+				68,
+				100
+			]
+		],
+		"theme": "light"
+	},
+	{
+		"file": "083.webp",
+		"title": "Wallpaper 83",
+		"color": [
+			[
+				24,
+				5,
+				91
+			],
+			[
+				4,
+				4,
+				24
+			],
+			[
+				75,
+				24,
+				181
+			]
+		],
+		"theme": "light"
+	},
+	{
+		"file": "084.webp",
+		"title": "Wallpaper 84",
+		"color": [
+			[
+				144,
+				148,
+				216
+			],
+			[
+				36,
+				26,
+				42
+			],
+			[
+				84,
+				61,
+				89
+			]
+		],
+		"theme": "light"
+	},
+	{
+		"file": "085.webp",
+		"title": "Wallpaper 85",
+		"color": [
+			[
+				9,
+				9,
+				8
+			],
+			[
+				154,
+				148,
+				131
+			],
+			[
+				124,
+				124,
+				107
+			]
+		],
+		"theme": "light"
+	},
+	{
+		"file": "086.webp",
+		"title": "Wallpaper 86",
+		"color": [
+			[
+				251,
+				210,
+				226
+			],
+			[
+				248,
+				28,
+				134
+			],
+			[
+				251,
+				201,
+				26
+			]
+		],
+		"theme": "light"
+	},
+	{
+		"file": "087.webp",
+		"title": "Wallpaper 87",
+		"color": [
+			[
+				14,
+				14,
+				14
+			],
+			[
+				206,
+				92,
+				31
+			],
+			[
+				19,
+				209,
+				46
+			]
+		],
 		"theme": "light"
 	}
 ]
