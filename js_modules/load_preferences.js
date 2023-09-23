@@ -317,14 +317,17 @@ function searchbarTheme(value) {
 
 function defaultSearchbarPosition(value) {
 	const searchbar = document.getElementById('searchbar');
+	const wrap = document.getElementById('wrap');
 
 	switch (value) {
 		case 'top': {
 			searchbar.style.order = '0';
+			wrap.style.flex = '1';
 			break;
 		};
 		case 'bottom': {
 			searchbar.style.order = '1';
+			wrap.style.flex = '0';
 			break;
 		};
 	}
