@@ -54,6 +54,7 @@ import { saveDropdownPositions } from './js_modules/save_preferences.js';
 // eslint-disable-next-line max-len
 import { intersectionObserver } from './js_modules/utils/intersectionObserver.js';
 import { getLastUpdated } from './js_modules/utils/getLastUpdated.js';
+import { displayFlex } from './js_modules/utils/displayStyles.js';
 
 const bottomFilmRollContainer = document.getElementById('wallpapers');
 const wrap = document.getElementById('wrap');
@@ -232,6 +233,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 	applyPreferences();
 	loadBookmarks();
 	let deferredPrompt;
+
+	displayFlex('bookmarks');
 	// toggleClock('widget-slide');
 	// toggleGreeting('on');
 	// stylizeText('main-heading', 0);
