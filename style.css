@@ -14,7 +14,7 @@
 	--settings: #4d685a7e;
 	--primary-color: #faf7f0ff;
 	--secondary-color: #e7decdff;
-	--pink-gradient-webkit: -webkit-linear-gradient(to top, #BB377D, 50%, #fbd3e900);
+	/* --pink-gradient-webkit: -webkit-linear-gradient(to top, #BB377D, 50%, #fbd3e900);
 	--pink-gradient: linear-gradient(to top, #BB377D, 50%, #fbd3e900);
 	--pink-color: #BB377D;
 	--light-pink-gradient-webkit: -webkit-linear-gradient(to top, #ec96c4, 50%, #fbd3e900);
@@ -31,7 +31,7 @@
 	--yellow-color: #bb9c37;
 	--red-gradient-webkit: -webkit-linear-gradient(to top, #e04040, 50%, #fbd3e900);
 	--red-gradient: linear-gradient(to top, #e04040, 50%, #fbd3e900);
-	--red-color: #e04040;
+	--red-color: #e04040; */
 }
 
 ::selection {

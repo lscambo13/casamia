@@ -16,5 +16,11 @@
 		"editor.defaultFormatter": "vscode.json-language-features"
 	},
 	"editor.insertSpaces": false,
-	"editor.smoothScrolling": true
+	"editor.smoothScrolling": true,
+	"cSpell.words": [
+		"animatetop",
+		"mydivheader",
+		"Nanum",
+		"Vujahday"
+	]
 }
