@@ -1,12 +1,12 @@
-# **Casa Mia** : _A Highy Customizable Start Page For Your Favorite Browser_
+# **🏡 Casa Mia** 
+_➖ A Highy Customizable Start Page For Your Favorite Browser_
 
-## [`Click here to visit ./> `](https://lscambo13.github.io/casamia/)
-## [`Mirror ./> `](https://casamia.cambo.in/)
-
+<!-- ## [`Click here to visit ./> `](https://lscambo13.github.io/casamia/) -->
+## [`👉 🔗 casamia.cambo.in .../>`](https://casamia.cambo.in/)
 
 <br>
 
-# **Features**
+## **😎 Features**
 
 -   Almost everything can be toggled on or off <br>
 -   Search Google, Bing, DuckDuckGo, but also.. <br>
@@ -25,15 +25,17 @@
 -   Optimised for both phones and desktops <br>
     <br>
 
-### **Save (https://lscambo13.github.io/casamia/) as bookmark now**
+### **🔖 Save (https://casamia.cambo.in/) as bookmark now**
+### [`🪞 mirror ./>`](https://lscambo13.github.io/casamia/)
+
 
 <br>
 
 ---
 
-### **Author:** [lscambo13](https://github.com/lscambo13)
+### **✍️ Author:** [lscambo13](https://github.com/lscambo13)
 
-### **Special thanks:** [msc24x](https://github.com/msc24x)
+### **🙏 Special thanks:** [msc24x](https://github.com/msc24x)
 
 <br>
 
