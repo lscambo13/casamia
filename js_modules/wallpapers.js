@@ -1,7 +1,7 @@
-import { changeGlow } from './colors.js';
+import { changeGlow, changeSelectionColor } from './colors.js';
 import { WALLPAPERS_URL } from './constants.js';
 import { applyPreferences } from './load_preferences.js';
-import { changeTextAccentColor } from './utils.js';
+import { changeTextAccentColor } from './colors.js';
 import { redoOnboarding } from './utils/redoOnboarding.js';
 
 export let selectedWallpaper = null;
@@ -45,6 +45,7 @@ export async function setWallpaper(fileName, color) {
 
 	changeGlow(color);
 	changeTextAccentColor(color);
+	changeSelectionColor(color);
 	const inputThumb = fileName.split('.').join('-thumb.');
 	applyWallpaper(inputThumb);
 }

@@ -1,4 +1,5 @@
 :root {
+	--selection-color: null;
 	--white: #fbfaf8ff;
 	--white-half-alpha: #fbfaf892;
 	--white-quarter-alpha: #fbfaf843;
@@ -31,6 +32,17 @@
 	--red-gradient-webkit: -webkit-linear-gradient(to top, #e04040, 50%, #fbd3e900);
 	--red-gradient: linear-gradient(to top, #e04040, 50%, #fbd3e900);
 	--red-color: #e04040;
+}
+
+::selection {
+	background: var(--selection-color);
+}
+
+.disable-select {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 * {

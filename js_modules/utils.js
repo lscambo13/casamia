@@ -94,14 +94,6 @@ export function toggleArrows(str) {
 	}
 };
 
-export function changeTextAccentColor(color) {
-	const i = document.getElementsByClassName('has-shadow');
-	for (let n = 0; n < i.length; n++) {
-		i[n].style.textShadow =
-			`4px 4px 0 rgba(${color},.85), 6px 6px 0px black`;
-	}
-};
-
 let prevSlide = 0;
 export function changeSlide(element, int) {
 	const el = document.getElementsByClassName(element);
