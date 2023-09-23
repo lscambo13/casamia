@@ -1,6 +1,8 @@
 # **Casa Mia** : _A Highy Customizable Start Page For Your Favorite Browser_
 
 ## [`Click here to visit ./> `](https://lscambo13.github.io/casamia/)
+## [`Mirror ./> `](https://casamia.cambo.in/)
+
 
 <br>
 
@@ -11,16 +13,16 @@
 -   Allows using a custom search engine <br>
 -   Search Movies, Games, Books, and TV Shows directly <br>
 -   Add and remove custom bookmarks <br>
--   Move search bar to top or bottom <br>
+-   One-handed mode for reachability<br>
 -   Choose from a range of wallpapers as background <br>
 -   Download the wallpaper if you like <br>
 -   Live clock <br>
 -   Custom text on home screen <br>
 -   Multiple clock and text styles <br>
 -   Personalised greetings <br>
--   Tasteful mix of blur effects and  animations <br>
+-   Tasteful mix of blur effects and animations <br>
 -   CLI/Terminal-style experience inside the search box <br>
--   Optimised for phones and desktops <br>
+-   Optimised for both phones and desktops <br>
     <br>
 
 ### **Save (https://lscambo13.github.io/casamia/) as bookmark now**
