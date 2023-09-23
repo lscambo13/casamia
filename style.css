@@ -875,13 +875,13 @@ input[type=checkbox] {
 
 @media only screen and (min-width:370px) {
 	body {
-		font-size: 18px
+		font-size: 16px
 	}
 }
 
 @media only screen and (min-width:600px) {
 	body {
-		font-size: 22px
+		font-size: 18px
 	}
 
 	.footer {
@@ -893,7 +893,7 @@ input[type=checkbox] {
 
 @media only screen and (min-width:1024px) {
 	body {
-		font-size: 24px
+		font-size: 20px
 	}
 
 	#advanced-settings-modal {
