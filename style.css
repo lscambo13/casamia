@@ -173,14 +173,14 @@ input[type=checkbox] {
 .default-text-style {
 	font-family: Ubuntu;
 	color: var(--primary-color);
-	font-size: clamp(1em, 1.75em, 10em);
+	font-size: clamp(1em, 2em, 10em);
 	text-shadow: 0 0 0 var(--accent-color), 0 0 0 #000 !important;
 	rotate: 0deg
 }
 
 .brush-text-style-1 {
 	font-family: 'Vujahday Script', handwriting;
-	font-size: clamp(1em, 2em, 10em);
+	font-size: clamp(1em, 2.25em, 10em);
 	color: #f5f5f5;
 	text-shadow: 4px 4px 0 var(--accent-color), 6px 6px 0 #000;
 	rotate: -6deg
@@ -196,7 +196,7 @@ input[type=checkbox] {
 
 .brush-text-style-3 {
 	font-family: 'Nanum Brush Script', handwriting;
-	font-size: clamp(1em, 2.375em, 10em);
+	font-size: clamp(1em, 3em, 10em);
 	color: #f5f5f5;
 	text-shadow: 4px 4px 0 var(--accent-color), 6px 6px 0 #000;
 	rotate: 0deg
