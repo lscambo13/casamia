@@ -301,3 +301,8 @@ window.addEventListener('blur', () => {
 window.addEventListener('appinstalled', (event) => {
 	console.log('installed');
 });
+
+onload = (event) => {
+	document.getElementById('main-heading-slider')
+		.classList.remove('nowrap');
+};
