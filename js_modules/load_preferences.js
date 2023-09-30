@@ -387,6 +387,7 @@ export function updateCustomDomainPreview() {
 export function loadSelectedWidgetstyle() {
 	document.getElementById(localStorage.getItem('selected-widget-style'))
 		.scrollIntoView();
+	console.log('loading widget style');
 }
 
 export function updateAmPmStyle(amPm) {
