@@ -68,9 +68,6 @@ export function removeBookmarkFromLocalStorage(id) {
 }
 
 export function toggleRemoveButtons(visible) {
-    //const customBookmark = document.getElementsByClassName('custom_bookmark');
-    //const cross = document.getElementsByClassName('cross');
-    //const n = customBookmark.length;
     switch (visible) {
         case 'show': {
             removableBorder('.1em solid tomato');

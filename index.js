@@ -85,7 +85,7 @@ window.hideWallpapers = (str, event) => {
 				toggleRemoveButtons('hide');
 				toggleArrows('hide');
 				changeGlow(null, 0);
-				setTimeout(() => blurLevel(1), 350);
+				setTimeout(() => blurLevel(1), 400);
 			}
 			break;
 		};
@@ -119,7 +119,7 @@ window.hideWallpapers = (str, event) => {
 				clearTimeout(timeout);
 				toggleRemoveButtons('hide');
 				toggleArrows('hide');
-				setTimeout(() => blurLevel(1), 350);
+				setTimeout(() => blurLevel(1), 400);
 			}
 			break;
 		}
