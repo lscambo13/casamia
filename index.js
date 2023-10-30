@@ -243,6 +243,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 	let deferredPrompt;
 
 	displayFlex('bookmarks');
+	loadSelectedWidgetstyle();
 	// toggleClock('widget-slide');
 	// toggleGreeting('on');
 	// stylizeText('main-heading', 0);
@@ -282,7 +283,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 		btnInstall.style.display = 'block';
 	});
 	intersectionObserver('main-heading-slider', 'widget-slide');
-	loadSelectedWidgetstyle();
 	scrollToBottom();
 	focusSearchBar('auto');
 	getLastUpdated('version-preview');
@@ -309,3 +309,8 @@ window.addEventListener('blur', () => {
 window.addEventListener('appinstalled', (event) => {
 	console.log('installed');
 });
+
+onload = (event) => {
+	document.getElementById('main-heading-slider')
+		.classList.remove('nowrap');
+};

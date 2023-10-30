@@ -387,11 +387,12 @@ export function updateCustomDomainPreview() {
 export function loadSelectedWidgetstyle() {
 	document.getElementById(localStorage.getItem('selected-widget-style'))
 		.scrollIntoView();
+	console.log('loading widget style');
 }
 
 export function updateAmPmStyle(amPm) {
 	const style = localStorage.getItem('selected-widget-style');
-	if (style == 'widget-2' || style == 'widget-3') {
+	if (style == 'widget-2' || style == 'widget-7') {
 		return amPm.toLowerCase();
 	}
 	return amPm;
