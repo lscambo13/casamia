@@ -1,5 +1,8 @@
 // import { customBookmarks, setCustomBookmarks } from './database.js';
 
+import { removableBorder } from "./utils/toggleBorder.js";
+import { crossDisplay } from "./utils/toggleDisplay.js";
+
 export let customBookmarks =
     JSON.parse(localStorage.getItem('saved_bookmarks'));
 
@@ -65,22 +68,18 @@ export function removeBookmarkFromLocalStorage(id) {
 }
 
 export function toggleRemoveButtons(visible) {
-    const customBookmark = document.getElementsByClassName('custom_bookmark');
-    const cross = document.getElementsByClassName('cross');
-    const n = customBookmark.length;
+    //const customBookmark = document.getElementsByClassName('custom_bookmark');
+    //const cross = document.getElementsByClassName('cross');
+    //const n = customBookmark.length;
     switch (visible) {
         case 'show': {
-            for (let i = 0; i < n; i++) {
-                customBookmark[i].classList.add('removable');
-                cross[i].style.display = 'block';
-            }
+            removableBorder('.1em solid tomato');
+            crossDisplay(`block`);
             break;
         }
         case 'hide': {
-            for (let i = 0; i < n; i++) {
-                customBookmark[i].classList.remove('removable');
-                cross[i].style.display = 'none';
-            }
+            removableBorder('.075em solid var(--primary-color)');
+            crossDisplay(`none`);
             break;
         }
     }

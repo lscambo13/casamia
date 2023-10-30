@@ -14,6 +14,10 @@
 	--settings: #4d685a7e;
 	--primary-color: #faf7f0ff;
 	--secondary-color: #e7decdff;
+	--blur-one-em: blur(1em);
+	--blur-half-em: blur(0.5em);
+	--cross-display: none;
+	--removable-border: .075em solid var(--primary-color);
 	/* --pink-gradient-webkit: -webkit-linear-gradient(to top, #BB377D, 50%, #fbd3e900);
 	--pink-gradient: linear-gradient(to top, #BB377D, 50%, #fbd3e900);
 	--pink-color: #BB377D;
@@ -315,8 +319,8 @@ input[type=checkbox] {
 
 .searchbox-style-glass {
 	border: .10em solid var(--primary-color);
-	backdrop-filter: blur(.5em);
-	-webkit-backdrop-filter: blur(.5em);
+	backdrop-filter: var(--blur-half-em);
+	-webkit-backdrop-filter: var(--blur-half-em);
 	color: var(--white-half-alpha);
 	background: var(--white-quarter-alpha);
 	transition: 200ms;
@@ -431,8 +435,8 @@ input[type=checkbox] {
 
 .predefined-bookmark {
 	background-color: var(--predefined-bookmark);
-	-webkit-backdrop-filter: blur(1em);
-	backdrop-filter: blur(1em)
+	-webkit-backdrop-filter: var(--blur-one-em);
+	backdrop-filter: var(--blur-one-em)
 }
 
 .flex-sub-container-horizontal>div>i {
@@ -481,12 +485,13 @@ input[type=checkbox] {
 	align-items: center;
 	justify-content: center;
 	border-radius: 0 1.5em 1.5em 0;
-	backdrop-filter: blur(2em);
-	-webkit-backdrop-filter: blur(2em);
-	background-color: rgba(255, 255, 255, 0.85);
+	/* backdrop-filter: blur(2em);
+	-webkit-backdrop-filter: blur(2em); */
+	background-color: rgba(255, 255, 255, 1);
 	cursor: pointer;
 	z-index: 3;
 	scale: 1.125;
+	transform: translateX(-10em);
 }
 
 .advanced-settings-button>i {
@@ -550,8 +555,8 @@ input[type=checkbox] {
 
 #add_bookmark_button {
 	background-color: var(--add-bookmark);
-	-webkit-backdrop-filter: blur(1em);
-	backdrop-filter: blur(1em);
+	-webkit-backdrop-filter: var(--blur-one-em);
+	backdrop-filter: var(--blur-one-em);
 	order: 1336
 }
 
@@ -571,8 +576,8 @@ input[type=checkbox] {
 	justify-content: center;
 	align-items: center;
 	text-decoration: none;
-	-webkit-backdrop-filter: blur(1em);
-	backdrop-filter: blur(1em);
+	-webkit-backdrop-filter: var(--blur-one-em);
+	backdrop-filter: var(--blur-one-em);
 	background-color: var(--settings);
 	cursor: pointer;
 	caret-color: transparent;
@@ -601,24 +606,20 @@ input[type=checkbox] {
 	border-radius: 50%;
 	justify-content: center;
 	align-items: center;
-	-webkit-backdrop-filter: blur(1em);
-	backdrop-filter: blur(1em);
+	-webkit-backdrop-filter: var(--blur-one-em);
+	backdrop-filter: var(--blur-one-em);
 	cursor: pointer;
 	caret-color: transparent;
 	background-color: var(--custom-bookmark);
-	border: .075em solid var(--primary-color);
-	text-decoration: none
+	border: var(--removable-border);
+	text-decoration: none;
+
 }
 
 .custom_bookmark>span {
 	font-weight: bolder;
 	font-size: 1.5em;
 	pointer-events: none
-}
-
-.removable {
-	border: .1em solid tomato;
-	transition: .3s
 }
 
 .cross {
@@ -633,7 +634,7 @@ input[type=checkbox] {
 	height: 1.25em;
 	background-color: tomato;
 	border-radius: 50%;
-	display: none
+	display: var(--cross-display);
 }
 
 .labs {
@@ -691,8 +692,8 @@ input[type=checkbox] {
 	z-index: 2;
 	color: var(--white);
 	font-family: Ubuntu;
-	/* backdrop-filter: blur(1em);
-	-webkit-backdrop-filter: blur(1em); */
+	/* backdrop-filter: var( --blur-one-em);
+	-webkit-backdrop-filter: var( --blur-one-em); */
 	cursor: default;
 	display: none;
 	/* transition: 300ms; */

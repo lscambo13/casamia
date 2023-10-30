@@ -55,11 +55,13 @@ import { saveDropdownPositions } from './js_modules/save_preferences.js';
 import { intersectionObserver } from './js_modules/utils/intersectionObserver.js';
 import { getLastUpdated } from './js_modules/utils/getLastUpdated.js';
 import { displayFlex } from './js_modules/utils/displayStyles.js';
+import { blurLevel } from './js_modules/utils/blurLevel.js';
 
 const bottomFilmRollContainer = document.getElementById('wallpapers');
 const wrap = document.getElementById('wrap');
 const advancedSettingsButton = document.getElementById('toggle-labs-btn');
 
+let timeout;
 window.hideWallpapers = (str, event) => {
 	if (event) {
 		event.stopPropagation();
@@ -74,13 +76,16 @@ window.hideWallpapers = (str, event) => {
 				document.title = document.title
 					.replace('Backgrounds', 'Search');
 				bottomFilmRollContainer.classList.remove('animation_slide_up');
-				advancedSettingsButton.classList.remove('animation_slide_right');
+				setTimeout(() => advancedSettingsButton.classList.remove('animation_slide_right'), 350);
 				bottomFilmRollContainer.classList.add('animation_slide_down');
 				wrap.classList.remove('animation2_slide_up');
 				wrap.classList.add('animation2_slide_down');
+				clearTimeout(timeout);
+
 				toggleRemoveButtons('hide');
 				toggleArrows('hide');
 				changeGlow(null, 0);
+				setTimeout(() => blurLevel(1), 350);
 			}
 			break;
 		};
@@ -90,28 +95,31 @@ window.hideWallpapers = (str, event) => {
 				bottomFilmRollContainer.classList.length < 2 ||
 				bottomFilmRollContainer.classList[1] == 'animation_slide_down'
 			) {
+				blurLevel(0);
 				document.title = document.title
 					.replace('Search', 'Backgrounds');
 				bottomFilmRollContainer.classList.remove('animation_slide_down');
 				bottomFilmRollContainer.classList.add('animation_slide_up');
 				wrap.classList.remove('animation2_slide_down', 'startup_slide_down');
 				wrap.classList.add('animation2_slide_up');
-				advancedSettingsButton.classList.add('animation_slide_right');
+				setTimeout(() => advancedSettingsButton.classList.add('animation_slide_right'), 350);
 				changeGlow(null, 1);
-				toggleRemoveButtons('show');
+				timeout = setTimeout(() => toggleRemoveButtons('show'), 450);
 				toggleArrows('show');
 				scrollHighlightedWallpaperIntoView();
 			} else {
 				document.title = document.title
 					.replace('Backgrounds', 'Search');
 				bottomFilmRollContainer.classList.remove('animation_slide_up');
-				advancedSettingsButton.classList.remove('animation_slide_right');
+				setTimeout(() => advancedSettingsButton.classList.remove('animation_slide_right'), 350);
 				bottomFilmRollContainer.classList.add('animation_slide_down');
 				wrap.classList.remove('animation2_slide_up');
 				wrap.classList.add('animation2_slide_down');
 				changeGlow(null, 0);
+				clearTimeout(timeout);
 				toggleRemoveButtons('hide');
 				toggleArrows('hide');
+				setTimeout(() => blurLevel(1), 350);
 			}
 			break;
 		}
