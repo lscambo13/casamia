@@ -135,6 +135,7 @@ input[type=checkbox] {
 	cursor: default;
 	text-align: center;
 	margin-bottom: 1em;
+	padding-inline: 0em
 }
 
 .home-widget {
@@ -936,6 +937,10 @@ input[type=checkbox] {
 @media only screen and (min-width:600px) {
 	body {
 		font-size: 18px
+	}
+
+	#home-widget-container {
+		padding-inline: 2em
 	}
 
 	.footer {
