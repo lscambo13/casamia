@@ -208,15 +208,15 @@ export function askCustomDomain() {
 let greetingLoop = null;
 function displayGreeting(value) {
 	const subtitle = document.getElementById('subtitle');
+	clearInterval(greetingLoop);
 	switch (value) {
 		case 'off': {
 			subtitle.classList.add('collapsed');
-			clearInterval(greetingLoop);
 			break;
 		};
 		case 'on': {
 			subtitle.classList.remove('collapsed');
-			greetingLoop = setInterval(refreshGreeting, 1000);
+			greetingLoop = setInterval(refreshGreeting, 10000);
 			break;
 		};
 	}
