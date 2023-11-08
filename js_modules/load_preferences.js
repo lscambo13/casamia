@@ -216,7 +216,8 @@ function displayGreeting(value) {
 		};
 		case 'on': {
 			subtitle.classList.remove('collapsed');
-			greetingLoop = setInterval(refreshGreeting, 10000);
+			refreshGreeting()
+			greetingLoop = setInterval(refreshGreeting, 20000);
 			break;
 		};
 	}
