@@ -209,28 +209,28 @@ addEventListenerOnID('right-arrow', 'click', (event) => {
 
 window.addEventListener('resize', applyPreferences);
 
-addEventListenerOnID('wallpapers', 'wheel', (e) => {
-	// e.stopPropagation();
-	const item = document.getElementById('wallpapers');
-	if (e.deltaY > 0) {
-		if (item.classList[1] == 'animation_slide_up') item.scrollLeft += 500;
-	} else {
-		if (item.classList[1] == 'animation_slide_up') item.scrollLeft -= 500;
-	}
-	// console.log(item.scroll());
-});
+// addEventListenerOnID('wallpapers', 'wheel', (e) => {
+// 	// e.stopPropagation();
+// 	const item = document.getElementById('wallpapers');
+// 	if (e.deltaY > 0) {
+// 		if (item.classList[1] == 'animation_slide_up') item.scrollLeft += 500;
+// 	} else {
+// 		if (item.classList[1] == 'animation_slide_up') item.scrollLeft -= 500;
+// 	}
+// 	// console.log(item.scroll());
+// });
 
-addEventListenerOnID('main-heading-slider', 'wheel', (e) => {
-	// e.stopPropagation();
-	const item = document.getElementById('wallpapers');
-	const homeWidget = document.getElementById('main-heading-slider');
-	if (e.deltaY > 0) {
-		if (item.classList[1] == 'animation_slide_up') homeWidget.scrollLeft += 700;
-	} else {
-		if (item.classList[1] == 'animation_slide_up') homeWidget.scrollLeft -= 700;
-	}
-	// console.log(homeWidget.scroll());
-});
+// addEventListenerOnID('main-heading-slider', 'wheel', (e) => {
+// 	// e.stopPropagation();
+// 	const item = document.getElementById('wallpapers');
+// 	const homeWidget = document.getElementById('main-heading-slider');
+// 	if (e.deltaY > 0) {
+// 		if (item.classList[1] == 'animation_slide_up') homeWidget.scrollLeft += 700;
+// 	} else {
+// 		if (item.classList[1] == 'animation_slide_up') homeWidget.scrollLeft -= 700;
+// 	}
+// 	// console.log(homeWidget.scroll());
+// });
 
 // Start ----------------------------------------------------------
 
