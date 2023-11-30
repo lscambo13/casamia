@@ -30,4 +30,7 @@
 		"javascriptreact",
 		"typescriptreact"
 	],
+	"[jsonc]": {
+		"editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+	},
 }
