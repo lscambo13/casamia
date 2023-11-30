@@ -25,14 +25,14 @@ export function webSearch() {
     if (input != '') {
         if (isUrlValid(input) && !input.includes(' ')) {
             if (!input.startsWith('http')) input = `http://${input}`;
-            window.open(input);
+            window.open(input, '_self');
             return;
         }
         if (!cliCheck(input)) {
             input = encodeURIComponent(input);
             // input = input.split(" ").join("+");
             const url = loadSearchDomain() + input;
-            window.open(url);
+            window.open(url, '_self');
         } else cliParse(input);
     } else {
         alert('You need to enter a search query.');
