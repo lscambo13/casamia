@@ -1,12 +1,16 @@
 // eslint-disable-next-line block-spacing
 {/* eslint-disable max-len */ }
 
-export const cliHelpText =
-    `Documentation:\n
-    --help: This page
-    --fetch default : Import a predefined set of custom bookmarks.
-    --reset bookmarks: Deletes only the saved bookmarks.
-    --reset all: Reset everything, including the bookmarks and wallpaper preferences.`;
+// export const cliHelpText =
+//     `Documentation:\n
+//     To Batch search a list of search terms separated by comma:
+//     --g <searchTerm1, searchTerm2, ...> : Google search
+//     --b <searchTerm1, searchTerm2, ...> : Bing search
+//     --d <searchTerm1, searchTerm2, ...> : DuckDuckGo search\n
+//     --fetch <default> : Import a predefined set of custom bookmarks.
+//     --reset <bookmarks>: Deletes only the saved bookmarks.
+//     --reset <all>: Reset everything, including the bookmarks and wallpaper preferences.\n
+//     --help: This page`;
 
 export const cliUnexpectedCmdText =
     `The command you have passed is invalid.\n

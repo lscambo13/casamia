@@ -11,7 +11,6 @@ import {
 } from './strings.js';
 import { addZero } from './utils/addZero.js';
 import { changeExtension } from './utils/changeExtension.js';
-import { downloadFile } from './utils/downloadFile.js';
 import { wait } from './utils/wait.js';
 import { selectedWallpaper } from './wallpapers.js';
 
@@ -206,16 +205,6 @@ export function resetAll(event) {
 		window.location.reload();
 	}
 };
-
-export function parseURL(url) {
-	fetch(`https://casamia.cambo.in/api/?url=${url}`).then((results) => {
-		return results.json();
-	}).then((res) => {
-		const download = confirm('Download video?');
-		if (download) downloadFile(res.url, 'CasaMia_Downloader.mp4');
-		console.log(res.url);
-	});
-}
 
 export function showNestedOptions(id) {
 	const element = document.getElementById(id);
