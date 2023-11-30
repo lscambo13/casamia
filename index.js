@@ -76,7 +76,8 @@ window.hideWallpapers = (str, event) => {
 				document.title = document.title
 					.replace('Backgrounds', 'Search');
 				bottomFilmRollContainer.classList.remove('animation_slide_up');
-				setTimeout(() => advancedSettingsButton.classList.remove('animation_slide_right'), 350);
+				setTimeout(() => advancedSettingsButton.classList
+					.remove('animation_slide_right'), 350);
 				bottomFilmRollContainer.classList.add('animation_slide_down');
 				wrap.classList.remove('animation2_slide_up');
 				wrap.classList.add('animation2_slide_down');
@@ -102,7 +103,8 @@ window.hideWallpapers = (str, event) => {
 				bottomFilmRollContainer.classList.add('animation_slide_up');
 				wrap.classList.remove('animation2_slide_down', 'startup_slide_down');
 				wrap.classList.add('animation2_slide_up');
-				setTimeout(() => advancedSettingsButton.classList.add('animation_slide_right'), 350);
+				setTimeout(() => advancedSettingsButton.classList
+					.add('animation_slide_right'), 350);
 				changeGlow(null, 1);
 				timeout = setTimeout(() => toggleRemoveButtons('show'), 450);
 				toggleArrows('show');
@@ -111,7 +113,8 @@ window.hideWallpapers = (str, event) => {
 				document.title = document.title
 					.replace('Backgrounds', 'Search');
 				bottomFilmRollContainer.classList.remove('animation_slide_up');
-				setTimeout(() => advancedSettingsButton.classList.remove('animation_slide_right'), 350);
+				setTimeout(() => advancedSettingsButton.classList
+					.remove('animation_slide_right'), 350);
 				bottomFilmRollContainer.classList.add('animation_slide_down');
 				wrap.classList.remove('animation2_slide_up');
 				wrap.classList.add('animation2_slide_down');
@@ -186,7 +189,6 @@ addEventListenerOnID('reset-all-btn', 'click', resetAll);
 // addEventListenerOnID('toggle-wallpaper-cb', 'click', toggleWallpaper);
 addEventListenerOnClass('modal-close-btn', 'click', closeAdvancedSettings);
 addEventListenerOnID('toggle-labs-btn', 'click', openAdvancedSettings);
-addEventListenerOnID('terms-btn', 'click', openAdvancedSettings);
 
 addEventListenerOnID('search-btn', 'click', Search.webSearch);
 addEventListenerOnID('movies-search', 'click', Search.movies);
@@ -264,8 +266,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 	addEventListenerOnClass('cross', 'click', removeBookmark);
 	// addEventListenerOnClass('custom-button', 'click', saveButtonValues);
 	addEventListenerOnTag('select', 'change', saveDropdownPositions);
-
-	// autocomplete(document.getElementById('searchTerm'), countries)
 
 	addEventListenerOnID('btn-install', 'click', (e) => {
 		deferredPrompt.prompt();

@@ -1,29 +1,52 @@
 * {
-    padding: 0;
-    margin: 0;
+    /* padding: 0;
+    margin: 0; */
     box-sizing: border-box;
-    background-color: rgb(40, 40, 40);
+    /* background-color: rgb(40, 40, 40); */
     color: aliceblue;
     /* outline: red solid 1px; */
+
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    font-size: 0.75em;
+    /* margin: 5em; */
+    text-align: start;
+    background-color: rgba(240, 248, 255, 0.025);
+    border-radius: 1em;
+    box-shadow: 0px 0px 10px #0000002b;
+    line-height: 2em;
+    font-weight: lighter;
 }
 
 body {
     display: flex;
+    min-height: 96vh;
+    min-height: 96svh;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 100vh;
-    min-height: 100svh;
+    background-color: rgb(45, 45, 45);
     align-items: center;
 }
 
 .main-content {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
-    max-height: 30em;
+    /* min-height: 90svh; */
     flex-grow: 1;
     display: flex;
+    font-weight: lighter;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
+    /* padding-block: 4em; */
+}
+
+#backButton {
+    /* margin-bottom: 10em; */
 }
 
 h1 {
@@ -32,6 +55,15 @@ h1 {
 
 h2 {
     font-size: 1.175em;
+}
+
+span {
+    /* margin-inline-start: 1em; */
+    background-color: rgb(37, 37, 37);
+    /* margin-block: 1em; */
+    padding-block: 0.125em;
+    padding-inline: 0.4em;
+    font-family: monospace;
 }
 
 .notice {
@@ -46,12 +78,80 @@ img {
     height: auto;
 }
 
+.footer {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+    gap: .25em;
+    padding: .5em
+}
+
+.footer * {
+    display: flex;
+    color: rgba(255, 255, 255, .5);
+    gap: 1em;
+    font-size: .85em;
+    line-height: 1.5em;
+    list-style: none;
+    transition: 150ms;
+    text-decoration: none
+}
+
+.footer :focus,
+.footer :hover {
+    color: rgba(255, 255, 255, 1)
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+@media only screen and (min-width:370px) {
+    body {
+        font-size: 17px
+    }
+
+    p {
+        padding: 1em;
+    }
+}
+
 @media only screen and (max-width: 470px) {
     .notice {
         flex-direction: column;
     }
 
-    .main-content {
-        justify-content: space-evenly;
+    p {
+        padding: 1em;
+    }
+}
+
+@media only screen and (min-width:600px) {
+    body {
+        font-size: 18px
+    }
+
+    p {
+        padding: 1.5em;
+    }
+
+    .footer {
+        flex-direction: row;
+        justify-content: space-between;
+        padding-inline: 2em
+    }
+}
+
+@media only screen and (min-width:1024px) {
+    body {
+        font-size: 20px
+    }
+
+    p {
+        padding: 4em;
     }
 }
