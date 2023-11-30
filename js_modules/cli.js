@@ -29,10 +29,12 @@ function searchViaCli(url, searchTerm) {
     let searchQuery = searchTerm.substr(4);
     searchQuery = searchQuery.split(',');
     searchQuery.forEach((value) => {
-        value = encodeURIComponent(value);
-        const o = window.open(encodeURI(`${url}${value}`), '_blank');
-        if (o == null) alert(`Allow pop-ups for this feature to work properly`);
-        return;
+        // value = encodeURIComponent(value);
+        const o = window.open(`${url}${value}`, '_blank');
+        if (o == null) {
+            alert(`Allow pop-ups for this feature to work properly`);
+            return;
+        };
     });
 }
 
