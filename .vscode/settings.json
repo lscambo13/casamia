@@ -22,5 +22,12 @@
 		"mydivheader",
 		"Nanum",
 		"Vujahday"
-	]
+	],
+	"liveServer.settings.port": 5558,
+	"javascript.suggest.completeFunctionCalls": true,
+	"html-css-class-completion.JavaScriptLanguages": [
+		"javascript",
+		"javascriptreact",
+		"typescriptreact"
+	],
 }
