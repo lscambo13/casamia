@@ -133,30 +133,43 @@ window.hideWallpapers = (str, event) => {
 };
 
 window.createNewBookmark = () => {
-	let link = prompt('Type link');
-	if (link == null) return;
-	while (!isUrlValid(link)) {
-		alert('Please type a website link');
-		link = prompt('Type link');
-	}
+	let clipboardText = 'https://www.'
+	navigator.clipboard.readText().then((res) => {
+		if (isUrlValid(res)) clipboardText = res
+		getDetailsForNewBookmark()
+	}).catch(err => {
+		console.log(err)
+		getDetailsForNewBookmark()
+	});
 
-	let name = prompt('Type name');
-	if (name == null) return;
-	if (name == '') {
-		name = link.replace('www.', '');
-		if (name.includes('//')) {
-			name = name.split('//')[1];
+	const getDetailsForNewBookmark = () => {
+		let link = prompt('Please type or paste a website address', clipboardText);
+		if (link == null) return;
+		while (!isUrlValid(link)) {
+			alert('The entered address does not seem to be valid');
+			link = prompt('Please type or paste a website address', clipboardText);
 		}
-	}
-	name = name.substring(0, 3).toUpperCase();
+		let name = prompt('Type the bookmark name\n(Maximum four letters are allowed)');
+		if (name == null) return;
+		while (name == '') {
+			alert('The entered name does not seem to be valid');
+			name = prompt('Please type the bookmark name\n(Maximum four letters are allowed)');
+		}
+		// if (name == '') {
+		// 	name = link.replace('www.', '');
+		// 	if (name.includes('//')) {
+		// 		name = name.split('//')[1];
+		// 	}
+		// }
+		name = name.substring(0, 4);
+		if (!link.includes('http')) {
+			link = 'https://' + link;
+		}
+		const id = Date.now();
 
-	if (!link.includes('http')) {
-		link = 'https://' + link;
+		addBookmarkToHTML(link, name, id);
+		saveBookmarks(link, name, id);
 	}
-	const id = Date.now();
-
-	addBookmarkToHTML(link, name, id);
-	saveBookmarks(link, name, id);
 };
 
 window.changeWallpaper = (event) => {
