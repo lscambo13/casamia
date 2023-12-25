@@ -23,7 +23,7 @@ function letItSnow() {
 	canvas.height = H;
 
 	//snowflake particles
-	var mp = 20; //max particles
+	var mp = 50; //max particles
 	var particles = [];
 	for (var i = 0; i < mp; i++) {
 		particles.push({
@@ -35,7 +35,7 @@ function letItSnow() {
 	}
 
 	//Lets draw the flakes
-	ctx.fillStyle = "rgba(255, 255, 255, 1)";
+	ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
 	function draw() {
 		// let tStart = Date.now()
 		ctx.clearRect(0, 0, W, H);
@@ -65,7 +65,7 @@ function letItSnow() {
 			//We will add 1 to the cos function to prevent negative values which will lead flakes to move upwards
 			//Every particle has its own density which can be used to make the downward movement different for each flake
 			//Lets make it more random by adding in the radius
-			p.y += Math.cos(p.d) + 1 + p.r / 2;
+			p.y += Math.cos(p.d) + 1 + p.r / 8;
 			// p.y += Math.cos(angle + p.d) + 1 + p.r / 2;
 			// p.x += Math.sin(angle) * 2;
 
