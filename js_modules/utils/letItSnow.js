@@ -65,7 +65,7 @@ function letItSnow() {
 			//We will add 1 to the cos function to prevent negative values which will lead flakes to move upwards
 			//Every particle has its own density which can be used to make the downward movement different for each flake
 			//Lets make it more random by adding in the radius
-			p.y += Math.cos(p.d) + 1 + p.r / 8;
+			p.y += Math.cos(p.d) + 1 + p.r / 10;
 			// p.y += Math.cos(angle + p.d) + 1 + p.r / 2;
 			// p.x += Math.sin(angle) * 2;
 
