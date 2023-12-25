@@ -55,7 +55,7 @@ export function scrollHighlightedWallpaperIntoView() {
 	const wallpaper = document.getElementsByClassName('highlighted')[0];
 	setTimeout(() => {
 		if (wallpaper) wallpaper.scrollIntoView({ inline: 'center' });
-	}, 50);
+	}, 10);
 };
 
 export async function stylizeText(id, int = 0) {

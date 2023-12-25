@@ -15,6 +15,7 @@
 	--primary-color: #faf7f0ff;
 	--secondary-color: #e7decdff;
 	--blur-one-em: blur(1em);
+	--blur-one-px: blur(1px);
 	--blur-half-em: blur(0.5em);
 	--cross-display: none;
 	--removable-border: .075em solid var(--primary-color);
@@ -40,6 +41,17 @@
 
 ::selection {
 	background: var(--selection-color);
+}
+
+#canvasFar {
+	position: fixed;
+	display: none;
+	z-index: 0;
+	/* background: rgba(255, 255, 255, 0.25); */
+	background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(235, 235, 255, 0) 60%);
+	/* filter: var(--blur-one-px); */
+	backdrop-filter: var(--blur-one-px);
+	-webkit-backdrop-filter: var(--blur-one-px);
 }
 
 .disable-select {
@@ -710,6 +722,7 @@ body::-webkit-scrollbar {
 	font-family: Ubuntu;
 	/* backdrop-filter: var( --blur-one-em);
 	-webkit-backdrop-filter: var( --blur-one-em); */
+	z-index: 3;
 	cursor: default;
 	display: none;
 	/* transition: 300ms; */
@@ -739,6 +752,7 @@ body::-webkit-scrollbar {
 }
 
 .modal-group {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	margin: .75em;

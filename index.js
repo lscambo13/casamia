@@ -56,10 +56,12 @@ import { intersectionObserver } from './js_modules/utils/intersectionObserver.js
 import { getLastUpdated } from './js_modules/utils/getLastUpdated.js';
 import { displayFlex } from './js_modules/utils/displayStyles.js';
 import { blurLevel } from './js_modules/utils/blurLevel.js';
+import { isItChristmas } from './js_modules/utils/letItSnow.js';
 
 const bottomFilmRollContainer = document.getElementById('wallpapers');
 const wrap = document.getElementById('wrap');
 const advancedSettingsButton = document.getElementById('toggle-labs-btn');
+
 
 let timeout;
 window.hideWallpapers = (str, event) => {
@@ -97,18 +99,19 @@ window.hideWallpapers = (str, event) => {
 				bottomFilmRollContainer.classList[1] == 'animation_slide_down'
 			) {
 				blurLevel(0);
-				document.title = document.title
-					.replace('Search', 'Backgrounds');
 				bottomFilmRollContainer.classList.remove('animation_slide_down');
 				bottomFilmRollContainer.classList.add('animation_slide_up');
 				wrap.classList.remove('animation2_slide_down', 'startup_slide_down');
 				wrap.classList.add('animation2_slide_up');
-				setTimeout(() => advancedSettingsButton.classList
-					.add('animation_slide_right'), 350);
+				setTimeout(() => {
+					advancedSettingsButton.classList.add('animation_slide_right')
+					scrollHighlightedWallpaperIntoView();
+				}, 350);
 				changeGlow(null, 1);
 				timeout = setTimeout(() => toggleRemoveButtons('show'), 450);
 				toggleArrows('show');
-				scrollHighlightedWallpaperIntoView();
+				document.title = document.title
+					.replace('Search', 'Backgrounds');
 			} else {
 				document.title = document.title
 					.replace('Backgrounds', 'Search');
@@ -209,7 +212,10 @@ addEventListenerOnID('right-arrow', 'click', (event) => {
 	changeSlide('widget-slide', -1);
 });
 
-window.addEventListener('resize', applyPreferences);
+window.addEventListener('resize', () => {
+	applyPreferences();
+	isItChristmas()
+});
 
 // addEventListenerOnID('wallpapers', 'wheel', (e) => {
 // 	// e.stopPropagation();
@@ -286,6 +292,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 	scrollToBottom();
 	focusSearchBar('auto');
 	getLastUpdated('version-preview');
+	isItChristmas();
 });
 
 // ---------------------------------------------------------- End
