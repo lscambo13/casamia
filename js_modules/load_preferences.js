@@ -417,7 +417,7 @@ export function loadSelectedWidgetstyle() {
 
 export function updateAmPmStyle(amPm) {
 	const style = localStorage.getItem('selected-widget-style');
-	if (style == 'widget-2' || style == 'widget-7') {
+	if (style == 'widget-2' || style == 'widget-7' || style == 'widget-5') {
 		return amPm.toLowerCase();
 	}
 	return amPm;
