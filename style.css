@@ -46,6 +46,7 @@
 #canvasFar {
 	position: fixed;
 	display: none;
+	top: 0;
 	z-index: 0;
 	/* background: rgba(255, 255, 255, 0.25); */
 	background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(235, 235, 255, 0) 60%);
