@@ -919,6 +919,77 @@ body::-webkit-scrollbar {
 	display: none !important
 }
 
+.modalContainer {
+	color: white;
+	font-family: 'Ubuntu';
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #06060425;
+	z-index: 5;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.modal {
+	min-width: 10em;
+	width: 90%;
+	max-width: 30em;
+	display: flex;
+	flex-direction: column;
+	backdrop-filter: blur(3em);
+	-webkit-backdrop-filter: blur(3em);
+	padding: 1em;
+	border-radius: 1em;
+	box-shadow: rgba(0, 0, 0, 0.541) 0 0 1em 0;
+}
+
+.modalTitle {
+	padding-bottom: 1em;
+}
+
+.modalButtonsBar {
+	vertical-align: middle;
+	display: inline-flex;
+	align-items: center;
+	gap: 1em;
+	justify-content: center;
+}
+
+.label {
+	/* padding-top: 1em; */
+	padding-bottom: 0.25em;
+	/* color: white; */
+}
+
+.inputField {
+	width: 100%;
+	border-radius: 1em;
+	border: 0 solid black;
+	background-color: #ffffffe8;
+	padding: 0.5em;
+	margin-bottom: 1em;
+}
+
+.inputField:focus {
+	background-color: #ffffffea;
+}
+
+button {
+	width: 5em;
+	height: 2em;
+	border-radius: 1em;
+	background-color: #e9e9e9;
+	border: 1px solid rgba(206, 206, 206, 0.5);
+}
+
+.mainButton {
+	background-color: #8cffc9;
+	border: 1px solid rgba(206, 206, 206, 0.5);
+}
+
 @keyframes spin-rev {
 	0% {
 		transform: rotate(360deg)
