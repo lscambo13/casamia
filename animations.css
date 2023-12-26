@@ -115,12 +115,14 @@
 }
 
 .startup_slide_down {
-    animation: startup_slide_down .5s;
+    padding-top: 10vh;
+    /* opacity: 0; */
+    /* animation: startup_slide_down .5s;
     animation-fill-mode: both;
-    animation-iteration-count: 1
+    animation-iteration-count: 1 */
 }
 
-@keyframes startup_slide_down {
+/* @keyframes startup_slide_down {
     0% {
         padding-top: 0
     }
@@ -128,7 +130,7 @@
     100% {
         padding-top: 10vh
     }
-}
+} */
 
 .animation_carousel_left_hide {
     animation: animation_carousel_left_hide 175ms;

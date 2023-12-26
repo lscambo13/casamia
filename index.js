@@ -257,33 +257,22 @@ window.addEventListener('resize', () => {
 
 document.addEventListener('DOMContentLoaded', async () => {
 	const btnInstall = document.getElementById('btn-install');
+	let deferredPrompt;
 
 	setDefaultPreferences();
 	applyPreferences();
 	loadBookmarks();
-	let deferredPrompt;
-
-	displayFlex('bookmarks');
-	loadSelectedWidgetstyle();
-	// toggleClock('widget-slide');
-	// toggleGreeting('on');
-	// stylizeText('main-heading', 0);
+	loadDropdownPositions();
+	wrap.style.opacity = 1
 
 	await fetchWallpapersList();
-
-	// loadSettings();
 	setWallpaper(selectedWallpaper, color);
 	highlightSetWallpaper();
 
-	// // Make the DIV element draggable:
-	// dragElement(document.getElementById('labs'));
-
-	loadDropdownPositions();
 
 	addEventListenerOnClass('clickable', 'keypress', clickToEnter);
 	addEventListenerOnClass('custom_bookmark', 'click', displayLoading);
 	addEventListenerOnClass('cross', 'click', removeBookmark);
-	// addEventListenerOnClass('custom-button', 'click', saveButtonValues);
 	addEventListenerOnTag('select', 'change', saveDropdownPositions);
 
 	addEventListenerOnID('btn-install', 'click', (e) => {
@@ -301,11 +290,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 		deferredPrompt = event;
 		btnInstall.style.display = 'block';
 	});
-	intersectionObserver('main-heading-slider', 'widget-slide');
 	scrollToBottom();
 	focusSearchBar('auto');
 	getLastUpdated('version-preview');
 	isItChristmas();
+	loadSelectedWidgetstyle();
 });
 
 // ---------------------------------------------------------- End

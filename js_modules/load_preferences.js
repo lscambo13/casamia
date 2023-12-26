@@ -6,6 +6,7 @@ import {
 } from './constants.js';
 import { displayClock, refreshGreeting } from './preferences.js';
 import { fixBackgroundBlurOnResize } from './utils.js';
+import { intersectionObserver } from './utils/intersectionObserver.js';
 
 const PREF_MAP = {
 	'bg-img-drop': backgroundImage,
@@ -109,16 +110,33 @@ export function focusSearchBar(value) {
 function displayWidget(value) {
 	const widget = document.getElementById('main-heading-slider');
 
+	function toggleDefaultWidgetButton(value) {
+		switch (value) {
+			case 'show': {
+				document.getElementById('def-widget-drop-container')
+					.classList.remove('nested-close');
+				break;
+			};
+			case 'hide': {
+				document.getElementById('def-widget-drop-container')
+					.classList.add('nested-close');
+				break;
+			};
+		}
+	}
 	switch (value) {
 		case 'off': {
 			widget.classList.add('hidden');
+			toggleDefaultWidgetButton('hide')
 			break;
 		};
 		case 'on': {
 			widget.classList.remove('hidden');
+			toggleDefaultWidgetButton('show')
 			break;
 		};
 	}
+
 };
 
 const widgetSlides = document.getElementsByClassName('widget-slide');
@@ -323,12 +341,14 @@ function defaultSearchbarPosition(value) {
 	switch (value) {
 		case 'top': {
 			searchbar.style.order = '0';
-			wrap.style.flex = '1';
+			document.body.style.justifyContent = 'space-between'
+			// wrap.style.flex = '1';
 			break;
 		};
 		case 'bottom': {
 			searchbar.style.order = '1';
-			wrap.style.flex = '0';
+			document.body.style.justifyContent = 'flex-end'
+			// wrap.style.flex = '0';
 			break;
 		};
 	}
@@ -388,7 +408,11 @@ export function updateCustomDomainPreview() {
 export function loadSelectedWidgetstyle() {
 	document.getElementById(localStorage.getItem('selected-widget-style'))
 		.scrollIntoView();
-	console.log('loading widget style');
+
+	setTimeout(() => {
+		intersectionObserver('main-heading-slider', 'widget-slide');
+	}, 500)
+	// console.log('loading widget style');
 }
 
 export function updateAmPmStyle(amPm) {
