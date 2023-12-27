@@ -21,7 +21,8 @@
 		"animatetop",
 		"mydivheader",
 		"Nanum",
-		"Vujahday"
+		"Vujahday",
+		"Widgetstyle"
 	],
 	"liveServer.settings.port": 5558,
 	"javascript.suggest.completeFunctionCalls": true,

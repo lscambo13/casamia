@@ -32,7 +32,7 @@ import {
 	askCustomText,
 	focusSearchBar,
 	loadDropdownPositions,
-	loadSelectedWidgetstyle,
+	loadSelectedWidgetStyle,
 	scrollToBottom,
 } from './js_modules/load_preferences.js';
 import {
@@ -52,9 +52,7 @@ import {
 } from './js_modules/modals/advanced_settings.js';
 import { saveDropdownPositions } from './js_modules/save_preferences.js';
 // eslint-disable-next-line max-len
-import { intersectionObserver } from './js_modules/utils/intersectionObserver.js';
 import { getLastUpdated } from './js_modules/utils/getLastUpdated.js';
-import { displayFlex } from './js_modules/utils/displayStyles.js';
 import { blurLevel } from './js_modules/utils/blurLevel.js';
 import { isItChristmas } from './js_modules/utils/letItSnow.js';
 
@@ -104,7 +102,7 @@ window.hideWallpapers = (str, event) => {
 				wrap.classList.remove('animation2_slide_down', 'startup_slide_down');
 				wrap.classList.add('animation2_slide_up');
 				setTimeout(() => {
-					advancedSettingsButton.classList.add('animation_slide_right')
+					advancedSettingsButton.classList.add('animation_slide_right');
 					scrollHighlightedWallpaperIntoView();
 				}, 350);
 				changeGlow(null, 1);
@@ -133,13 +131,14 @@ window.hideWallpapers = (str, event) => {
 };
 
 window.createNewBookmark = () => {
-	let clipboardText = 'https://www.'
+	let clipboardText = 'https://www.';
+
 	navigator.clipboard.readText().then((res) => {
-		if (isUrlValid(res)) clipboardText = res
-		getDetailsForNewBookmark()
-	}).catch(err => {
-		console.log(err)
-		getDetailsForNewBookmark()
+		if (isUrlValid(res)) clipboardText = res;
+		getDetailsForNewBookmark();
+	}).catch((err) => {
+		console.log(err);
+		getDetailsForNewBookmark();
 	});
 
 	const getDetailsForNewBookmark = () => {
@@ -149,18 +148,18 @@ window.createNewBookmark = () => {
 			alert('The entered address does not seem to be valid');
 			link = prompt('Please type or paste a website address', clipboardText);
 		}
-		let name = prompt('Type the bookmark name\n(Maximum four letters are allowed)');
+		let name = prompt(`
+		Type the bookmark name
+		(Maximum four letters are allowed)
+		`);
 		if (name == null) return;
 		while (name == '') {
 			alert('The entered name does not seem to be valid');
-			name = prompt('Please type the bookmark name\n(Maximum four letters are allowed)');
+			name = prompt(`
+			Please type the bookmark name
+			(Maximum four letters are allowed)
+			`);
 		}
-		// if (name == '') {
-		// 	name = link.replace('www.', '');
-		// 	if (name.includes('//')) {
-		// 		name = name.split('//')[1];
-		// 	}
-		// }
 		name = name.substring(0, 4);
 		if (!link.includes('http')) {
 			link = 'https://' + link;
@@ -169,7 +168,7 @@ window.createNewBookmark = () => {
 
 		addBookmarkToHTML(link, name, id);
 		saveBookmarks(link, name, id);
-	}
+	};
 };
 
 window.changeWallpaper = (event) => {
@@ -227,31 +226,8 @@ addEventListenerOnID('right-arrow', 'click', (event) => {
 
 window.addEventListener('resize', () => {
 	applyPreferences();
-	isItChristmas()
+	isItChristmas();
 });
-
-// addEventListenerOnID('wallpapers', 'wheel', (e) => {
-// 	// e.stopPropagation();
-// 	const item = document.getElementById('wallpapers');
-// 	if (e.deltaY > 0) {
-// 		if (item.classList[1] == 'animation_slide_up') item.scrollLeft += 500;
-// 	} else {
-// 		if (item.classList[1] == 'animation_slide_up') item.scrollLeft -= 500;
-// 	}
-// 	// console.log(item.scroll());
-// });
-
-// addEventListenerOnID('main-heading-slider', 'wheel', (e) => {
-// 	// e.stopPropagation();
-// 	const item = document.getElementById('wallpapers');
-// 	const homeWidget = document.getElementById('main-heading-slider');
-// 	if (e.deltaY > 0) {
-// 		if (item.classList[1] == 'animation_slide_up') homeWidget.scrollLeft += 700;
-// 	} else {
-// 		if (item.classList[1] == 'animation_slide_up') homeWidget.scrollLeft -= 700;
-// 	}
-// 	// console.log(homeWidget.scroll());
-// });
 
 // Start ----------------------------------------------------------
 
@@ -263,7 +239,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 	applyPreferences();
 	loadBookmarks();
 	loadDropdownPositions();
-	wrap.style.opacity = 1
+	wrap.style.opacity = 1;
 
 	await fetchWallpapersList();
 	setWallpaper(selectedWallpaper, color);
@@ -294,7 +270,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 	focusSearchBar('auto');
 	getLastUpdated('version-preview');
 	isItChristmas();
-	loadSelectedWidgetstyle();
+	loadSelectedWidgetStyle();
 });
 
 // ---------------------------------------------------------- End

@@ -127,16 +127,15 @@ function displayWidget(value) {
 	switch (value) {
 		case 'off': {
 			widget.classList.add('hidden');
-			toggleDefaultWidgetButton('hide')
+			toggleDefaultWidgetButton('hide');
 			break;
 		};
 		case 'on': {
 			widget.classList.remove('hidden');
-			toggleDefaultWidgetButton('show')
+			toggleDefaultWidgetButton('show');
 			break;
 		};
 	}
-
 };
 
 const widgetSlides = document.getElementsByClassName('widget-slide');
@@ -234,7 +233,7 @@ function displayGreeting(value) {
 		};
 		case 'on': {
 			subtitle.classList.remove('collapsed');
-			refreshGreeting()
+			refreshGreeting();
 			greetingLoop = setInterval(refreshGreeting, 20000);
 			break;
 		};
@@ -336,19 +335,16 @@ function searchbarTheme(value) {
 
 function defaultSearchbarPosition(value) {
 	const searchbar = document.getElementById('searchbar');
-	const wrap = document.getElementById('wrap');
 
 	switch (value) {
 		case 'top': {
 			searchbar.style.order = '0';
-			document.body.style.justifyContent = 'space-between'
-			// wrap.style.flex = '1';
+			document.body.style.justifyContent = 'space-between';
 			break;
 		};
 		case 'bottom': {
 			searchbar.style.order = '1';
-			document.body.style.justifyContent = 'flex-end'
-			// wrap.style.flex = '0';
+			document.body.style.justifyContent = 'flex-end';
 			break;
 		};
 	}
@@ -405,14 +401,13 @@ export function updateCustomDomainPreview() {
 		textContent = localStorage.getItem('customDomain');
 }
 
-export function loadSelectedWidgetstyle() {
+export function loadSelectedWidgetStyle() {
 	document.getElementById(localStorage.getItem('selected-widget-style'))
 		.scrollIntoView();
 
 	setTimeout(() => {
 		intersectionObserver('main-heading-slider', 'widget-slide');
-	}, 500)
-	// console.log('loading widget style');
+	}, 500);
 }
 
 export function updateAmPmStyle(amPm) {
