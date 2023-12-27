@@ -75,7 +75,7 @@ export function toggleRemoveButtons(visible) {
             break;
         }
         case 'hide': {
-            removableBorder('.075em solid var(--primary-color)');
+            removableBorder('1px solid #ffffff38');
             crossDisplay(`none`);
             break;
         }

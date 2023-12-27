@@ -18,20 +18,19 @@
       });
     }
   </script> -->
-	<link rel="manifest" href="manifest.json?v=1703602562274">
+	<link rel="manifest" href="manifest.json?v=1703602562275">
 	<title>Search &bull; Casa Mia</title>
-	<link rel="icon" type="image/x-icon" href="./favicon.ico?v=1703602562274">
+	<link rel="icon" type="image/x-icon" href="./favicon.ico?v=1703602562275">
 	<meta name="theme-color" content="black">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="color-scheme" content="light only">
-	<link rel="stylesheet" href="./style.css?v=1703602562274" />
-	<script src="./index.js?v=1703602562274" type="module"></script>
+	<link rel="stylesheet" href="./style.css?v=1703602562275" />
+	<script src="./index.js?v=1703602562275" type="module"></script>
 	<link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin />
 	<link rel="preconnect" href="https://fonts.bunny.net">
-	<link
-		href="https://fonts.bunny.net/css?family=nanum-brush-script:400|advent-pro:400|ubuntu:300,300i,400,400i,500,500i,700,700i|ubuntu-condensed:400|ubuntu-mono:400,400i,700,700i|vujahday-script:400|are-you-serious:400|alkatra:400|montez:400"
-		rel="stylesheet" />
-	<link rel="stylesheet" href="./animations.css?v=1703602562274">
+	<link href="https://fonts.bunny.net/css?family=nanum-brush-script:400|advent-pro:400|ubuntu:300,300i,400,400i,500,500i,700,700i|ubuntu-condensed:400|ubuntu-mono:400,400i,700,700i|vujahday-script:400|are-you-serious:400|alkatra:400|montez:400"
+		  rel="stylesheet" />
+	<link rel="stylesheet" href="./animations.css?v=1703602562275">
 	<link rel="stylesheet" href="./icons.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -63,23 +62,35 @@
 					<p id="subtitle" class="disable-select">Please wait</p>
 				</div><i id="right-arrow" class="fa fa-caret-right arrows"></i>
 			</div>
-			<div class="search" id="searchbar"><input title="Search" type="search"
-					class="searchTerm searchbox-style-glass" id="searchTerm" placeholder="What's on your mind?"
-					name="casamia-search" autocomplete="on" tabindex="1" /><button type="submit"
-					class="searchButton searchbox-style-glass" id="search-btn" title="Search the web" tabindex="1"><i
-						id="search-btn-icon" class=""></i></button>
+			<div class="search" id="searchbar">
+				<div id="searchContainer" class="searchContainer">
+					<input title="Search" type="search" class="searchTerm" id="searchTerm"
+						   placeholder="What's on your mind?" name="casamia-search" autocomplete="on" tabindex="1">
+					<button type="submit" class="searchButton" id="search-btn" title="Search the web" tabindex="1">
+						<i id="search-btn-icon" class="fa fa-google"></i>
+					</button>
+				</div>
 			</div>
 			<div id="bookmarks" class="flex-sub-container-horizontal disable-select">
-				<div id="movies-search" class="predefined-bookmark clickable" tabindex="1"><i
-						class="flaticon-movies"></i></div>
-				<div id="tv-search" class="predefined-bookmark clickable" tabindex="1"><i class="flaticon-tv"></i></div>
-				<div id="games-search" class="predefined-bookmark clickable" tabindex="1"><i class="flaticon-games"></i>
+				<div id="movies-search" class="predefined-bookmark clickable" tabindex="1">
+					<i class="flaticon-movies"></i>
 				</div>
-				<div id="ebooks-search" class="predefined-bookmark clickable" tabindex="1"><i
-						class="flaticon-ebook"></i></div>
-				<div onclick="createNewBookmark()" class="clickable" id="add_bookmark_button" tabindex="2"><i
-						class="fa fa-plus"></i></div><a href="#wallpapers" onclick="hideWallpapers('button', event)"
-					class="clickable" id="settings_button" tabindex="2"><i class="fa fa-gear"></i></a></a>
+				<div id="tv-search" class="predefined-bookmark clickable" tabindex="1">
+					<i class="flaticon-tv"></i>
+				</div>
+				<div id="games-search" class="predefined-bookmark clickable" tabindex="1">
+					<i class="flaticon-games"></i>
+				</div>
+				<div id="ebooks-search" class="predefined-bookmark clickable" tabindex="1">
+					<i class="flaticon-ebook"></i>
+				</div>
+				<div onclick="createNewBookmark()" class="clickable" id="add_bookmark_button" tabindex="2">
+					<i class="fa fa-plus"></i>
+				</div>
+				<a href="#wallpapers" onclick="hideWallpapers('button', event)" class="clickable" id="settings_button"
+				   tabindex="2">
+					<i class="fa fa-gear"></i>
+				</a>
 			</div>
 		</div>
 	</div>
@@ -97,16 +108,19 @@
 			</div>
 		</div>
 		<div class="modal-group">
-			<p class="modal-title">Interface</p><label for="bg-img-drop" class="modal-option custom-dropdown">Background
-				image
+			<p class="modal-title">Interface</p>
+			<label for="bg-img-drop" class="modal-option custom-dropdown">Background image
 				<select class="setting-preview" name="bg-img-drop" id="bg-img-drop">
 					<option value="shown">Shown</option>
 					<option value="hidden">Hidden</option>
-				</select></label><label for="bg-blur-drop" class="modal-option custom-dropdown">Background blur <select
-					class="setting-preview" name="bg-blur-drop" id="bg-blur-drop">
+				</select>
+			</label>
+			<label for="bg-blur-drop" class="modal-option custom-dropdown">Background blur
+				<select class="setting-preview" name="bg-blur-drop" id="bg-blur-drop">
 					<option value="on">On</option>
 					<option value="off">Off</option>
-				</select></label>
+				</select>
+			</label>
 			<!-- <label for="bg-glow-drop" class="modal-option custom-dropdown hidden">Background glow
 				<select class="setting-preview" name="bg-glow-drop" id="bg-glow-drop">
 					<option value="auto">Auto</option>
@@ -125,7 +139,7 @@
 					<option value="off">Off</option>
 				</select></label>
 			<label for="searchbar-position-drop" class="modal-option custom-dropdown">One-handed mode <select
-					class="setting-preview" name="searchbar-position-drop" id="searchbar-position-drop">
+						class="setting-preview" name="searchbar-position-drop" id="searchbar-position-drop">
 					<option value="top">Off</option>
 					<option value="bottom">On</option>
 				</select></label>
@@ -136,7 +150,8 @@
 				<select class="setting-preview" name="def-widget-display-drop" id="def-widget-display-drop">
 					<option value="on">On</option>
 					<option value="off">Off</option>
-				</select></label>
+				</select>
+			</label>
 			<label id="def-widget-drop-container" for="def-widget-drop" class="modal-option custom-dropdown">Widget
 				style
 				<select class="setting-preview" name="def-widget-drop" id="def-widget-drop">
@@ -144,7 +159,8 @@
 					<option value="search">Search</option>
 					<option value="clock">Clock</option>
 					<option value="custom">Custom..</option>
-				</select></label>
+				</select>
+			</label>
 			<div id="update-customtext-btn" class="modal-option custom-button nested-one-element nested-close">
 				<p>Custom widget text</p>
 				<p id="update-customtext-btn-preview" class="setting-preview">preview text</p>
@@ -159,7 +175,8 @@
 				<select class="setting-preview" name="greeting-display-drop" id="greeting-display-drop">
 					<option value="on">On</option>
 					<option value="off">Off</option>
-				</select></label>
+				</select>
+			</label>
 		</div>
 		<!-- <div class="modal-group hidden">
 			<p class="modal-title">Clock</p><label for="show-seconds-drop" class="modal-option custom-dropdown">Show
@@ -179,13 +196,14 @@
 		</div> -->
 		<div class="modal-group">
 			<p class="modal-title">Search</p><label for="def-search-engine-drop"
-				class="modal-option custom-dropdown">Default
+				   class="modal-option custom-dropdown">Default
 				search engine <select class="setting-preview" name="def-search-engine-drop" id="def-search-engine-drop">
 					<option value="google">Google</option>
 					<option value="bing">Bing</option>
 					<option value="duckduckgo">DuckDuckGo</option>
 					<option value="custom">Custom..</option>
-				</select></label>
+				</select>
+			</label>
 			<div id="update-customdomain-btn" class="modal-option custom-button nested-one-element nested-close">
 				<p>Custom domain</p>
 				<p id="update-customdomain-btn-preview" class="setting-preview">preview text</p>
@@ -194,12 +212,15 @@
 				<select class="setting-preview" name="focus-search-drop" id="focus-search-drop">
 					<option value="on">On</option>
 					<option value="off" selected="true">Off</option>
-				</select></label>
+				</select>
+			</label>
 			<label for="searchbar-color-theme-drop" class="modal-option custom-dropdown">Searchbar theme <select
-					class="setting-preview" name="searchbar-color-theme-drop" id="searchbar-color-theme-drop">
+						class="setting-preview" name="searchbar-color-theme-drop" id="searchbar-color-theme-drop">
 					<option value="glass">Glass</option>
 					<option value="light">Light</option>
-				</select></label>
+					<option value="dark">Dark</option>
+				</select>
+			</label>
 			<div id="deep-search-btn" class="modal-option">
 				<p>Deep search options</p>
 				<p class="setting-preview fa fa-angle-down" aria-hidden="true">&ThinSpace;</p>
@@ -209,22 +230,26 @@
 					<select class="setting-preview" name="movies-search-display-drop" id="movies-search-display-drop">
 						<option value="shown">Shown</option>
 						<option value="hidden">Hidden</option>
-					</select></label>
+					</select>
+				</label>
 				<label for="tv-search-display-drop" class="modal-option custom-dropdown">TV button
 					<select class="setting-preview" name="tv-search-display-drop" id="tv-search-display-drop">
 						<option value="shown">Shown</option>
 						<option value="hidden">Hidden</option>
-					</select></label>
+					</select>
+				</label>
 				<label for="games-search-display-drop" class="modal-option custom-dropdown">Games button
 					<select class="setting-preview" name="games-search-display-drop" id="games-search-display-drop">
 						<option value="shown">Shown</option>
 						<option value="hidden">Hidden</option>
-					</select></label>
+					</select>
+				</label>
 				<label for="ebooks-search-display-drop" class="modal-option custom-dropdown">Ebooks button
 					<select class="setting-preview" name="ebooks-search-display-drop" id="ebooks-search-display-drop">
 						<option value="shown">Shown</option>
 						<option value="hidden">Hidden</option>
-					</select></label>
+					</select>
+				</label>
 			</div>
 
 		</div>
@@ -240,7 +265,8 @@
 				<select class="setting-preview" name="add-bookmark-display-drop" id="add-bookmark-display-drop">
 					<option value="shown">Shown</option>
 					<option value="hidden">Hidden</option>
-				</select></label>
+				</select>
+			</label>
 			<div id="fetch-bookmarks-btn" class="modal-option">
 				<p>Download sample bookmarks</p>
 				<!-- <p class="setting-preview"> </p> -->
@@ -252,7 +278,7 @@
 				<p>Backup bookmarks</p>
 				<p class="setting-preview">Save to local storage</p>
 			</div><label for="import-bookmarks-btn" class="modal-option">Restore Backup <input type="file"
-					id="import-bookmarks-btn" accept=".json">
+					   id="import-bookmarks-btn" accept=".json">
 				<p class="setting-preview">*.json</p>
 			</label>
 		</div>
@@ -297,7 +323,7 @@
 			<li><a href="https://t.me/lscambo13_projects" title="Telegram" tabindex="4">Telegram</a></li>
 			<!-- <li id="terms-btn"><a href="#" title="Terms" tabindex="4">Terms</a></li> -->
 			<li><a href="https://github.com/lscambo13/casamia/blob/main/README.md" title="Features"
-					tabindex="4">Features</a>
+				   tabindex="4">Features</a>
 			</li>
 			<li id="help-btn"><a href="/pages/help/index.html" title="Features" tabindex="4">Help</a></li>
 		</ul>
