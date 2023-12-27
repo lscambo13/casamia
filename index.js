@@ -55,6 +55,10 @@ import { saveDropdownPositions } from './js_modules/save_preferences.js';
 import { getLastUpdated } from './js_modules/utils/getLastUpdated.js';
 import { blurLevel } from './js_modules/utils/blurLevel.js';
 import { isItChristmas } from './js_modules/utils/letItSnow.js';
+import {
+	getDialogElementByID,
+	showInputDialog,
+} from './js_modules/utils/dialog.js';
 
 const bottomFilmRollContainer = document.getElementById('wallpapers');
 const wrap = document.getElementById('wrap');
@@ -131,44 +135,61 @@ window.hideWallpapers = (str, event) => {
 };
 
 window.createNewBookmark = () => {
-	let clipboardText = 'https://www.';
+	const dialogTitle = 'Add new bookmark';
+	const dialogDescription = `
+	You may only use upto four letters as the bookmark name.`;
+	const bookmarkLabel = 'Bookmark name';
+	const bookmarkAddress = 'Link to website';
 
-	navigator.clipboard.readText().then((res) => {
-		if (isUrlValid(res)) clipboardText = res;
-		getDetailsForNewBookmark();
-	}).catch((err) => {
-		console.log(err);
-		getDetailsForNewBookmark();
-	});
+	const enableSubmitButton = () => {
+		const modalSubmitButton = document.getElementById('modalSubmitButton');
+		const inputFields = document.getElementsByClassName('inputField');
+		for (const e of inputFields) {
+			if (e.value.length) modalSubmitButton.disabled = false;
+			else {
+				modalSubmitButton.disabled = true;
+				return;
+			}
+		}
+		if (isUrlValid(inputFields[1].value)) {
+			modalSubmitButton.disabled = false;
+		} else modalSubmitButton.disabled = true;
+	};
 
 	const getDetailsForNewBookmark = () => {
-		let link = prompt('Please type or paste a website address', clipboardText);
-		if (link == null) return;
-		while (!isUrlValid(link)) {
-			alert('The entered address does not seem to be valid');
-			link = prompt('Please type or paste a website address', clipboardText);
-		}
-		let name = prompt(`
-		Type the bookmark name
-		(Maximum four letters are allowed)
-		`);
-		if (name == null) return;
-		while (name == '') {
-			alert('The entered name does not seem to be valid');
-			name = prompt(`
-			Please type the bookmark name
-			(Maximum four letters are allowed)
-			`);
-		}
-		name = name.substring(0, 4);
-		if (!link.includes('http')) {
-			link = 'https://' + link;
-		}
-		const id = Date.now();
+		showInputDialog(
+			dialogTitle,
+			dialogDescription,
+			[bookmarkLabel, bookmarkAddress],
+			'Save',
+			undefined,
+			null,
+			enableSubmitButton,
+		).then((res) => {
+			const id = Date.now();
+			const name = res.inputValues[0];
+			let link = res.inputValues[1];
+			if (!link.startsWith('http')) link = `https://${link}`;
+			// console.log(res.inputValues);
+			addBookmarkToHTML(link, name, id);
+			saveBookmarks(link, name, id);
+		}).catch((e) => console.log(e));
 
-		addBookmarkToHTML(link, name, id);
-		saveBookmarks(link, name, id);
+		const label = getDialogElementByID(bookmarkLabel);
+		label.setAttribute('maxlength', 4);
+		label.setAttribute('placeholder', 'eg. YT');
+
+		const address = getDialogElementByID(bookmarkAddress);
+		address.setAttribute('placeholder', 'eg. youtube.com');
+		address.value = 'https://www.';
+
+		navigator.clipboard.readText().then((res) => {
+			if (isUrlValid(res)) address.value = res;
+		}).catch((err) => {
+			console.log(err);
+		});
 	};
+	getDetailsForNewBookmark();
 };
 
 window.changeWallpaper = (event) => {
