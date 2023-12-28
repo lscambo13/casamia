@@ -181,7 +181,7 @@ window.createNewBookmark = () => {
 
 		const address = getDialogElementByID(bookmarkAddress);
 		address.setAttribute('placeholder', 'eg. youtube.com');
-		address.value = 'https://www.';
+		address.value = 'https://';
 
 		navigator.clipboard.readText().then((res) => {
 			if (isUrlValid(res)) address.value = res;
