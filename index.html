@@ -18,19 +18,19 @@
       });
     }
   </script> -->
-	<link rel="manifest" href="manifest.json?v=1703602562276">
+	<link rel="manifest" href="manifest.json?v=1703602562277">
 	<title>Search &bull; Casa Mia</title>
-	<link rel="icon" type="image/x-icon" href="./favicon.ico?v=1703602562276">
+	<link rel="icon" type="image/x-icon" href="./favicon.ico?v=1703602562277">
 	<meta name="theme-color" content="black">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="color-scheme" content="light only">
-	<link rel="stylesheet" href="./style.css?v=1703602562276" />
-	<script src="./index.js?v=1703602562276" type="module"></script>
+	<link rel="stylesheet" href="./style.css?v=1703602562277" />
+	<script src="./index.js?v=1703602562277" type="module"></script>
 	<link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin />
 	<link rel="preconnect" href="https://fonts.bunny.net">
 	<link href="https://fonts.bunny.net/css?family=nanum-brush-script:400|advent-pro:400|ubuntu:300,300i,400,400i,500,500i,700,700i|ubuntu-condensed:400|ubuntu-mono:400,400i,700,700i|vujahday-script:400|are-you-serious:400|alkatra:400|montez:400"
 		  rel="stylesheet" />
-	<link rel="stylesheet" href="./animations.css?v=1703602562276">
+	<link rel="stylesheet" href="./animations.css?v=1703602562277">
 	<link rel="stylesheet" href="./icons.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -97,8 +97,8 @@
 	<div id="advanced-settings-modal-background-overlay"></div>
 	<div id="advanced-settings-modal">
 		<div class="modal-page-title">
+			<p class="modal-close-btn fa fa-angle-left"></p>
 			<p class="">Advanced Settings</p>
-			<p class="modal-close-btn">&times;</p>
 		</div>
 		<div class="modal-group">
 			<p class="modal-title">Display Info</p>
@@ -111,14 +111,14 @@
 			<p class="modal-title">Interface</p>
 			<label for="bg-img-drop" class="modal-option custom-dropdown">Background image
 				<select class="setting-preview" name="bg-img-drop" id="bg-img-drop">
-					<option value="shown">Shown</option>
-					<option value="hidden">Hidden</option>
+					<option value="shown">Enabled</option>
+					<option value="hidden">Disabled</option>
 				</select>
 			</label>
 			<label for="bg-blur-drop" class="modal-option custom-dropdown">Background blur
 				<select class="setting-preview" name="bg-blur-drop" id="bg-blur-drop">
-					<option value="on">On</option>
-					<option value="off">Off</option>
+					<option value="on">Enabled</option>
+					<option value="off">Disabled</option>
 				</select>
 			</label>
 			<!-- <label for="bg-glow-drop" class="modal-option custom-dropdown hidden">Background glow
@@ -133,26 +133,27 @@
 					<option value="on">On</option>
 					<option value="off">Off</option>
 				</select></label> -->
-			<label for="footer-display-drop" class="modal-option custom-dropdown">Display footer
+			<label for="footer-display-drop" class="modal-option custom-dropdown">Footer
 				<select class="setting-preview" name="footer-display-drop" id="footer-display-drop">
-					<option value="on">On</option>
-					<option value="off">Off</option>
+					<option value="on">Enabled</option>
+					<option value="off">Disabled</option>
 				</select></label>
 			<label for="searchbar-position-drop" class="modal-option custom-dropdown">One-handed mode <select
 						class="setting-preview" name="searchbar-position-drop" id="searchbar-position-drop">
-					<option value="top">Off</option>
-					<option value="bottom">On</option>
+					<option value="top">Disabled</option>
+					<option value="bottom">Enabled</option>
 				</select></label>
 		</div>
 		<div class="modal-group">
 			<p class="modal-title">Home Widgets</p>
-			<label for="def-widget-display-drop" class="modal-option custom-dropdown">Display main widget
+			<label for="def-widget-display-drop" class="modal-option custom-dropdown">Main widget
 				<select class="setting-preview" name="def-widget-display-drop" id="def-widget-display-drop">
-					<option value="on">On</option>
-					<option value="off">Off</option>
+					<option value="on">Enabled</option>
+					<option value="off">Disabled</option>
 				</select>
 			</label>
-			<label id="def-widget-drop-container" for="def-widget-drop" class="modal-option custom-dropdown">Widget
+			<label id="def-widget-drop-container" for="def-widget-drop"
+				   class="modal-option custom-dropdown nested-one-element">Main widget
 				style
 				<select class="setting-preview" name="def-widget-drop" id="def-widget-drop">
 					<option value="casamia">Casa Mia</option>
@@ -170,11 +171,10 @@
 					<option value="minimal">Minimal</option>
 					<option value="handwritten">Handwritten</option>
 				</select></label> -->
-			<label for="greeting-display-drop" class="modal-option custom-dropdown">Display
-				greeting
+			<label for="greeting-display-drop" class="modal-option custom-dropdown">Time-based greeting
 				<select class="setting-preview" name="greeting-display-drop" id="greeting-display-drop">
-					<option value="on">On</option>
-					<option value="off">Off</option>
+					<option value="on">Enabled</option>
+					<option value="off">Disabled</option>
 				</select>
 			</label>
 		</div>
@@ -208,13 +208,13 @@
 				<p>Custom domain</p>
 				<p id="update-customdomain-btn-preview" class="setting-preview">preview text</p>
 			</div>
-			<label for="focus-search-drop" class="modal-option custom-dropdown">Autofocus searchbar
+			<label for="focus-search-drop" class="modal-option custom-dropdown">Autofocus search
 				<select class="setting-preview" name="focus-search-drop" id="focus-search-drop">
-					<option value="on">On</option>
-					<option value="off" selected="true">Off</option>
+					<option value="on">Enabled</option>
+					<option value="off" selected="true">Disabled</option>
 				</select>
 			</label>
-			<label for="searchbar-color-theme-drop" class="modal-option custom-dropdown">Searchbar theme <select
+			<label for="searchbar-color-theme-drop" class="modal-option custom-dropdown">Search bar theme <select
 						class="setting-preview" name="searchbar-color-theme-drop" id="searchbar-color-theme-drop">
 					<option value="glass">Glass</option>
 					<option value="light">Light</option>
@@ -228,26 +228,26 @@
 			<div id="deep-search-nested" class="nested-close">
 				<label for="movies-search-display-drop" class="modal-option custom-dropdown">Movies button
 					<select class="setting-preview" name="movies-search-display-drop" id="movies-search-display-drop">
-						<option value="shown">Shown</option>
-						<option value="hidden">Hidden</option>
+						<option value="shown">Enabled</option>
+						<option value="hidden">Disabled</option>
 					</select>
 				</label>
 				<label for="tv-search-display-drop" class="modal-option custom-dropdown">TV button
 					<select class="setting-preview" name="tv-search-display-drop" id="tv-search-display-drop">
-						<option value="shown">Shown</option>
-						<option value="hidden">Hidden</option>
+						<option value="shown">Enabled</option>
+						<option value="hidden">Disabled</option>
 					</select>
 				</label>
 				<label for="games-search-display-drop" class="modal-option custom-dropdown">Games button
 					<select class="setting-preview" name="games-search-display-drop" id="games-search-display-drop">
-						<option value="shown">Shown</option>
-						<option value="hidden">Hidden</option>
+						<option value="shown">Enabled</option>
+						<option value="hidden">Disabled</option>
 					</select>
 				</label>
 				<label for="ebooks-search-display-drop" class="modal-option custom-dropdown">Ebooks button
 					<select class="setting-preview" name="ebooks-search-display-drop" id="ebooks-search-display-drop">
-						<option value="shown">Shown</option>
-						<option value="hidden">Hidden</option>
+						<option value="shown">Enabled</option>
+						<option value="hidden">Disabled</option>
 					</select>
 				</label>
 			</div>
@@ -261,10 +261,10 @@
 					<option value="on">On</option>
 					<option value="off">Off</option>
 				</select></label> -->
-			<label for="add-bookmark-display-drop" class="modal-option custom-dropdown">Add bookmark button
+			<label for="add-bookmark-display-drop" class="modal-option custom-dropdown">Add Bookmark button
 				<select class="setting-preview" name="add-bookmark-display-drop" id="add-bookmark-display-drop">
-					<option value="shown">Shown</option>
-					<option value="hidden">Hidden</option>
+					<option value="shown">Enabled</option>
+					<option value="hidden">Disabled</option>
 				</select>
 			</label>
 			<div id="fetch-bookmarks-btn" class="modal-option">
@@ -285,7 +285,7 @@
 		<div class="modal-group">
 			<p class="modal-title">Labs</p>
 			<div id="download-wallpaper-btn" class="modal-option">
-				<p>Download background (HD)</p>
+				<p>Download background image</p>
 				<!-- <p id="download-wallpaper-btn-preview" class="setting-preview"></p> -->
 			</div>
 			<div id="btn-install" class="modal-option">
