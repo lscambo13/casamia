@@ -177,10 +177,10 @@ window.createNewBookmark = () => {
 
 		const label = getDialogElementByID(bookmarkLabel);
 		label.setAttribute('maxlength', 4);
-		label.setAttribute('placeholder', 'eg. YT');
+		label.setAttribute('placeholder', 'e.g. YT');
 
 		const address = getDialogElementByID(bookmarkAddress);
-		address.setAttribute('placeholder', 'eg. youtube.com');
+		address.setAttribute('placeholder', 'e.g. youtube.com');
 		address.value = 'https://';
 
 		navigator.clipboard.readText().then((res) => {
