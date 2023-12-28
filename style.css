@@ -73,7 +73,7 @@
 body {
 	background-color: #282828;
 	font-family: "Ubuntu Mono", monospace;
-	font-size: 14px;
+	font-size: 12px;
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
@@ -336,7 +336,7 @@ body::-webkit-scrollbar {
 	width: 100%;
 	border-radius: 3em;
 	overflow: hidden;
-	margin-inline: 1em;
+	margin-inline: 1.5em;
 	min-width: 4em;
 	max-width: 44em;
 	justify-content: center;
@@ -670,6 +670,10 @@ input::-webkit-search-cancel-button:hover {
 	align-items: center;
 	justify-content: center;
 	border-radius: 0 1.5em 1.5em 0;
+	padding-inline: 1em;
+	padding-block: .5em;
+	font-size: .5em;
+	margin-top: 1em;
 	/* backdrop-filter: blur(2em);
 	-webkit-backdrop-filter: blur(2em); */
 	background-color: rgba(255, 255, 255, 1);
@@ -844,12 +848,6 @@ input::-webkit-search-cancel-button:hover {
 	color: #fff
 }
 
-.button {
-	padding-inline: 1em;
-	padding-block: .5em;
-	font-size: .5em;
-	margin-top: 1em
-}
 
 #import-bookmarks-btn {
 	display: none
@@ -1151,7 +1149,7 @@ input::-webkit-search-cancel-button:hover {
 
 .button {
 	width: 7em;
-	/* height: 3em; */
+	height: 2.5em;
 	font-size: 0.7em;
 	border-radius: 6px;
 	background-color: #ececec;
@@ -1185,13 +1183,13 @@ input::-webkit-search-cancel-button:hover {
 
 @media only screen and (min-width:370px) {
 	body {
-		font-size: 17px
+		font-size: 14px
 	}
 }
 
 @media only screen and (min-width:600px) {
 	body {
-		font-size: 18px
+		font-size: 16px
 	}
 
 	#home-widget-container {
@@ -1207,7 +1205,7 @@ input::-webkit-search-cancel-button:hover {
 
 @media only screen and (min-width:1024px) {
 	body {
-		font-size: 20px
+		font-size: 18px
 	}
 
 	#advanced-settings-modal {
