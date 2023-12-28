@@ -74,8 +74,8 @@ export const showInputDialog = (
 		const inputFields = document.getElementsByClassName('inputField');
 		let tickBoxField = document.getElementById('tickBoxField');
 		if (tickBoxField) tickBoxField = tickBoxField.ariaChecked;
-
 		inputFields[0].focus();
+		modalContainer.style.paddingBlockStart = '4em';
 
 		const rejectModal = () => {
 			modalCancelButton.removeEventListener('click', rejectModal);

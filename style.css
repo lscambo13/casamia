@@ -1119,8 +1119,10 @@ input::-webkit-search-cancel-button:hover {
 	-webkit-backdrop-filter: blur(2px);
 	z-index: 5;
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 	justify-content: center;
+	padding-block-start: 0em;
+	transition: 600ms;
 }
 
 .modal {
@@ -1142,7 +1144,7 @@ input::-webkit-search-cancel-button:hover {
 
 .modalDescription {
 	padding-bottom: 2em;
-	font-size: 0.8em;
+	font-size: 0.9em;
 	font-weight: 100;
 }
 
