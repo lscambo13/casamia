@@ -392,6 +392,11 @@ function defaultSearchbarPosition(value) {
 			document.body.style.justifyContent = 'flex-end';
 			break;
 		};
+		case 'middle': {
+			searchbar.style.order = '1';
+			document.body.style.justifyContent = 'center';
+			break;
+		};
 	}
 };
 
