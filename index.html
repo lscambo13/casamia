@@ -18,19 +18,19 @@
       });
     }
   </script> -->
-	<link rel="manifest" href="manifest.json?v=1703602562277">
+	<link rel="manifest" href="manifest.json?v=1703602562278">
 	<title>Search &bull; Casa Mia</title>
-	<link rel="icon" type="image/x-icon" href="./favicon.ico?v=1703602562277">
+	<link rel="icon" type="image/x-icon" href="./favicon.ico?v=1703602562278">
 	<meta name="theme-color" content="black">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="color-scheme" content="light only">
-	<link rel="stylesheet" href="./style.css?v=1703602562277" />
-	<script src="./index.js?v=1703602562277" type="module"></script>
+	<link rel="stylesheet" href="./style.css?v=1703602562278" />
+	<script src="./index.js?v=1703602562278" type="module"></script>
 	<link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin />
 	<link rel="preconnect" href="https://fonts.bunny.net">
 	<link href="https://fonts.bunny.net/css?family=nanum-brush-script:400|advent-pro:400|ubuntu:300,300i,400,400i,500,500i,700,700i|ubuntu-condensed:400|ubuntu-mono:400,400i,700,700i|vujahday-script:400|are-you-serious:400|alkatra:400|montez:400"
 		  rel="stylesheet" />
-	<link rel="stylesheet" href="./animations.css?v=1703602562277">
+	<link rel="stylesheet" href="./animations.css?v=1703602562278">
 	<link rel="stylesheet" href="./icons.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -48,7 +48,7 @@
 	</div>
 	<div id="wrap" class="startup_slide_down">
 		<div class="flex-main-container-vertical">
-			<div id="home-widget-container"><i id="left-arrow" class="fa fa-caret-left arrows"></i>
+			<div id="home-widget-container"><i id="left-arrow" class="arrows fa fa-caret-left"></i>
 				<div class="home-widget">
 					<div id="main-heading-slider" class="nowrap">
 						<h1 id="widget-1" class="widget-slide default-text-style">Welcome</h1>
@@ -60,7 +60,7 @@
 						<h1 id="widget-2" class="widget-slide brush-text-style-1 has-shadow">Welcome</h1>
 					</div>
 					<p id="subtitle" class="disable-select">Please wait</p>
-				</div><i id="right-arrow" class="fa fa-caret-right arrows"></i>
+				</div><i id="right-arrow" class="arrows fa fa-caret-right"></i>
 			</div>
 			<div class="search" id="searchbar">
 				<div id="searchContainer" class="searchContainer">
@@ -152,19 +152,21 @@
 					<option value="off">Disabled</option>
 				</select>
 			</label>
-			<label id="def-widget-drop-container" for="def-widget-drop"
-				   class="modal-option custom-dropdown nested-one-element">Main widget
-				style
-				<select class="setting-preview" name="def-widget-drop" id="def-widget-drop">
-					<option value="casamia">Casa Mia</option>
-					<option value="search">Search</option>
-					<option value="clock">Clock</option>
-					<option value="custom">Custom..</option>
-				</select>
-			</label>
-			<div id="update-customtext-btn" class="modal-option custom-button nested-one-element nested-close">
-				<p>Custom widget text</p>
-				<p id="update-customtext-btn-preview" class="setting-preview">preview text</p>
+			<div id="main-widget-children-container" class="nested-one-element">
+				<label id="def-widget-drop-container" for="def-widget-drop"
+					   class="modal-option custom-dropdown nested-one-element">Main widget
+					style
+					<select class="setting-preview" name="def-widget-drop" id="def-widget-drop">
+						<option value="casamia">Casa Mia</option>
+						<option value="search">Search</option>
+						<option value="clock">Clock</option>
+						<option value="custom">Custom..</option>
+					</select>
+				</label>
+				<div id="update-customtext-btn" class="modal-option custom-button nested-one-element nested-close">
+					<p>Custom widget text</p>
+					<p id="update-customtext-btn-preview" class="setting-preview">preview text</p>
+				</div>
 			</div>
 			<!-- <label for="widget-style-drop" class="modal-option custom-dropdown hidden">Widget style <select
 					class="setting-preview" name="widget-style-drop" id="widget-style-drop">
@@ -195,32 +197,42 @@
 				</select></label>
 		</div> -->
 		<div class="modal-group">
-			<p class="modal-title">Search</p><label for="def-search-engine-drop"
-				   class="modal-option custom-dropdown">Default
-				search engine <select class="setting-preview" name="def-search-engine-drop" id="def-search-engine-drop">
-					<option value="google">Google</option>
-					<option value="bing">Bing</option>
-					<option value="duckduckgo">DuckDuckGo</option>
-					<option value="custom">Custom..</option>
+			<p class="modal-title">Search</p>
+			<label for="search-display-drop" class="modal-option custom-dropdown">Search bar
+				<select class="setting-preview" name="search-display-drop" id="search-display-drop">
+					<option value="on" selected="true">Enabled</option>
+					<option value="off">Disabled</option>
 				</select>
 			</label>
-			<div id="update-customdomain-btn" class="modal-option custom-button nested-one-element nested-close">
-				<p>Custom domain</p>
-				<p id="update-customdomain-btn-preview" class="setting-preview">preview text</p>
+			<div id="search-display-children-container" class="nested-one-element">
+				<label id="def-search-engine-drop-container" for="def-search-engine-drop"
+					   class="modal-option custom-dropdown nested-one-element">
+					Default search engine
+					<select class="setting-preview" name="def-search-engine-drop" id="def-search-engine-drop">
+						<option value="google">Google</option>
+						<option value="bing">Bing</option>
+						<option value="duckduckgo">DuckDuckGo</option>
+						<option value="custom">Custom..</option>
+					</select>
+				</label>
+				<div id="update-customdomain-btn" class="modal-option custom-button nested-one-element nested-close">
+					<p>Custom domain</p>
+					<p id="update-customdomain-btn-preview" class="setting-preview">preview text</p>
+				</div>
+				<label for="focus-search-drop" class="modal-option custom-dropdown">Autofocus search bar
+					<select class="setting-preview" name="focus-search-drop" id="focus-search-drop">
+						<option value="on">Enabled</option>
+						<option value="off" selected="true">Disabled</option>
+					</select>
+				</label>
+				<label for="searchbar-color-theme-drop" class="modal-option custom-dropdown">Search bar theme <select
+							class="setting-preview" name="searchbar-color-theme-drop" id="searchbar-color-theme-drop">
+						<option value="glass">Glass</option>
+						<option value="light">Light</option>
+						<option value="dark">Dark</option>
+					</select>
+				</label>
 			</div>
-			<label for="focus-search-drop" class="modal-option custom-dropdown">Autofocus search
-				<select class="setting-preview" name="focus-search-drop" id="focus-search-drop">
-					<option value="on">Enabled</option>
-					<option value="off" selected="true">Disabled</option>
-				</select>
-			</label>
-			<label for="searchbar-color-theme-drop" class="modal-option custom-dropdown">Search bar theme <select
-						class="setting-preview" name="searchbar-color-theme-drop" id="searchbar-color-theme-drop">
-					<option value="glass">Glass</option>
-					<option value="light">Light</option>
-					<option value="dark">Dark</option>
-				</select>
-			</label>
 			<div id="deep-search-btn" class="modal-option">
 				<p>Deep search options</p>
 				<p class="setting-preview fa fa-angle-down" aria-hidden="true">&ThinSpace;</p>

@@ -190,8 +190,8 @@ body::-webkit-scrollbar {
 	top: 0;
 	left: 0;
 	display: flex;
-	align-items: center;
-	justify-content: space-between;
+	align-items: flex-end;
+	justify-content: center;
 	font-size: clamp(1em, 2em, 10em);
 	cursor: default;
 	text-align: center;
@@ -202,7 +202,7 @@ body::-webkit-scrollbar {
 .home-widget {
 	display: flex;
 	flex-direction: column;
-	min-width: 90%
+	max-width: 90%
 }
 
 #main-heading-slider {
@@ -306,11 +306,27 @@ body::-webkit-scrollbar {
 }
 
 .arrows {
-	max-width: 1.5em;
-	max-height: 1.5em;
-	scale: 0;
-	text-shadow: 1px 1px 0 #000;
+	/* display: none !important; */
+	/* max-width: 1.5em; */
+	/* max-height: 1.5em; */
+	/* transform: scale(2); */
+	height: 0em;
+	opacity: 0.85;
+	overflow: hidden;
+	font-size: 2em;
+	z-index: 5;
+	/* background-color: #1e90ff; */
+	text-shadow: 0 2px 0 #000;
 	transition: 250ms
+}
+
+.arrows:hover {
+	opacity: 1;
+}
+
+.arrows:active {
+	opacity: 0.5;
+	text-shadow: 0 0px 0 #000;
 }
 
 #subtitle {
@@ -1054,16 +1070,16 @@ input::-webkit-search-cancel-button:hover {
 
 .nested-one-element {
 	overflow: hidden;
-	height: auto;
-	height: 2.15em;
-	transition: 600ms;
+	/* height: auto; */
+	height: 100%;
+	transition: 200ms;
 }
 
 #deep-search-nested {
 	overflow: hidden;
 	height: auto;
 	height: 8.1em;
-	transition: 600ms;
+	transition: 200ms;
 }
 
 @keyframes spin {

@@ -237,12 +237,12 @@ addEventListenerOnID('fetch-bookmarks-btn', 'click', fetchBookmarks);
 
 addEventListenerOnID('left-arrow', 'click', (event) => {
 	event.stopPropagation();
-	changeSlide('widget-slide', 1);
+	changeSlide('widget-slide', -1);
 });
 
 addEventListenerOnID('right-arrow', 'click', (event) => {
 	event.stopPropagation();
-	changeSlide('widget-slide', -1);
+	changeSlide('widget-slide', 1);
 });
 
 window.addEventListener('resize', () => {

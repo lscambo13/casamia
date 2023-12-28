@@ -81,13 +81,13 @@ export function toggleArrows(str) {
 	switch (str) {
 		case 'show': {
 			for (let i = 0; i < arrows.length; i++) {
-				arrows[i].style.scale = '1';
+				arrows[i].style.height = '2em';
 			}
 			break;
 		}
 		case 'hide': {
 			for (let i = 0; i < arrows.length; i++) {
-				arrows[i].style.scale = '0';
+				arrows[i].style.height = '0em';
 			}
 			break;
 		}
@@ -96,16 +96,38 @@ export function toggleArrows(str) {
 
 let prevSlide = 0;
 export function changeSlide(element, int) {
+	const w = document.getElementById('main-heading-slider')
+	let width = w.scrollWidth
 	const el = document.getElementsByClassName(element);
-	const totalSlides = el.length;
-	const currentSlide = prevSlide - int;
-	if (currentSlide < 0 || currentSlide >= totalSlides) {
-		// prevSlide = currentSlide;
-		return;
-	} else {
-		el[currentSlide].scrollIntoView();
-		prevSlide = currentSlide;
+	let currentPos = w.scrollLeft;
+	let newPos;
+	const step = w.scrollWidth / el.length;
+	// console.log(width, w.clientWidth)
+	if (int == 1) {
+		newPos = currentPos + step;
+		if (newPos > width) {
+			newPos = width;
+		};
+		console.log(newPos);
+		w.scrollLeft = newPos;
+	} else if (int == -1) {
+		newPos = currentPos - step;
+		if (newPos < 0) {
+			newPos = 0;
+		};
+		console.log(newPos);
+		w.scrollLeft = newPos
 	}
+	// const totalSlides = el.length;
+	// const currentSlide = prevSlide - int;
+	// if (currentSlide < 0 || currentSlide >= totalSlides) {
+	// 	// prevSlide = currentSlide;
+	// 	return;
+	// } else {
+	// 	el[currentSlide].scrollIntoView();
+	// 	prevSlide = currentSlide;
+	// }
+	// console.log(currentSlide)
 };
 
 export function changeWidgetStyle() {

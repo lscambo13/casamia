@@ -28,6 +28,7 @@ export const DEF_PREF =
 	'searchbar-position-drop': 'top',
 	'searchbar-color-theme-drop': 'glass',
 	'focus-search-drop': 'off',
+	'search-display-drop': 'on',
 	// 'show-titles-drop': 'off',
 	'movies-search-display-drop': 'shown',
 	'tv-search-display-drop': 'shown',

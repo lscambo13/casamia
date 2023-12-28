@@ -25,6 +25,7 @@ const PREF_MAP = {
 	'searchbar-position-drop': defaultSearchbarPosition,
 	'searchbar-color-theme-drop': searchbarTheme,
 	'focus-search-drop': focusSearchBar,
+	'search-display-drop': displaySearch,
 	// 'show-titles-drop': showTitles,
 	'movies-search-display-drop': moviesSearch,
 	'tv-search-display-drop': tvSearch,
@@ -109,16 +110,18 @@ export function focusSearchBar(value) {
 
 function displayWidget(value) {
 	const widget = document.getElementById('main-heading-slider');
+	const lArrow = document.getElementById('left-arrow');
+	const rArrow = document.getElementById('right-arrow');
 
 	function toggleDefaultWidgetButton(value) {
 		switch (value) {
 			case 'show': {
-				document.getElementById('def-widget-drop-container')
+				document.getElementById('main-widget-children-container')
 					.classList.remove('nested-close');
 				break;
 			};
 			case 'hide': {
-				document.getElementById('def-widget-drop-container')
+				document.getElementById('main-widget-children-container')
 					.classList.add('nested-close');
 				break;
 			};
@@ -127,12 +130,51 @@ function displayWidget(value) {
 	switch (value) {
 		case 'off': {
 			widget.classList.add('hidden');
+			lArrow.classList.add('hidden');
+			rArrow.classList.add('hidden');
 			toggleDefaultWidgetButton('hide');
 			break;
 		};
 		case 'on': {
 			widget.classList.remove('hidden');
+			lArrow.classList.remove('hidden');
+			rArrow.classList.remove('hidden');
 			toggleDefaultWidgetButton('show');
+			break;
+		};
+	}
+};
+
+function displaySearch(value) {
+	const search = document.getElementById('searchbar');
+	const searchChildren = document
+		.getElementById('search-display-children-container');
+	const searchEngineDrop = document
+		.getElementById('def-search-engine-drop-container');
+
+	function toggleSearchEngineButton(value) {
+		switch (value) {
+			case 'show': {
+				searchChildren.classList.remove('nested-close');
+				searchEngineDrop.classList.remove('nested-close');
+				break;
+			};
+			case 'hide': {
+				searchChildren.classList.add('nested-close');
+				searchEngineDrop.classList.add('nested-close');
+				break;
+			};
+		}
+	}
+	switch (value) {
+		case 'off': {
+			search.classList.add('hidden');
+			toggleSearchEngineButton('hide');
+			break;
+		};
+		case 'on': {
+			search.classList.remove('hidden');
+			toggleSearchEngineButton('show');
 			break;
 		};
 	}
