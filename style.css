@@ -166,7 +166,7 @@ body {
 	/* flex: 1; */
 	z-index: 2;
 	display: block;
-	transition: 200ms;
+	transition: 125ms;
 }
 
 body::-webkit-scrollbar {
@@ -336,7 +336,7 @@ body::-webkit-scrollbar {
 	width: 100%;
 	border-radius: 3em;
 	overflow: hidden;
-	margin-inline: 1.5em;
+	margin-inline: 1.85em;
 	min-width: 4em;
 	max-width: 44em;
 	justify-content: center;
@@ -410,7 +410,7 @@ input::-webkit-search-cancel-button:hover {
 	background-color: transparent;
 	border-radius: 2em;
 	opacity: 0.5;
-	transition: 200ms;
+	transition: 125ms;
 }
 
 .searchButton:active>i {
@@ -425,7 +425,7 @@ input::-webkit-search-cancel-button:hover {
 	border: .150em solid var(--primary-color);
 	color: var(--dark-low-alpha);
 	background: var(--primary-color);
-	transition: 200ms;
+	transition: 125ms;
 	caret-color: #060604;
 } */
 
@@ -448,7 +448,7 @@ input::-webkit-search-cancel-button:hover {
 	-webkit-backdrop-filter: var(--blur-one-em);
 	/* color: var(--primary-color); */
 	background: var(--white-quarter-alpha);
-	transition: 200ms;
+	transition: 125ms;
 }
 
 .searchbox-style-glass>:nth-child(1)::placeholder {
@@ -457,7 +457,7 @@ input::-webkit-search-cancel-button:hover {
 
 .searchbox-style-glass>:nth-child(1) {
 	color: #ffffff92;
-	transition: 200ms;
+	transition: 125ms;
 }
 
 .searchbox-style-glass>:nth-child(2)>i {
@@ -496,7 +496,7 @@ input::-webkit-search-cancel-button:hover {
 	/* -webkit-backdrop-filter: var(--blur-one-em); */
 	/* color: var(--primary-color); */
 	background: white;
-	transition: 200ms;
+	transition: 125ms;
 }
 
 .searchbox-style-light>:nth-child(1)::placeholder {
@@ -505,7 +505,7 @@ input::-webkit-search-cancel-button:hover {
 
 .searchbox-style-light>:nth-child(1) {
 	color: #00000092;
-	transition: 200ms;
+	transition: 125ms;
 }
 
 .searchbox-style-light>:nth-child(2)>i {
@@ -545,7 +545,7 @@ input::-webkit-search-cancel-button:hover {
 	/* -webkit-backdrop-filter: var(--blur-one-em); */
 	/* color: var(--primary-color); */
 	background: rgb(0, 0, 0);
-	transition: 200ms;
+	transition: 125ms;
 }
 
 .searchbox-style-dark>:nth-child(1)::placeholder {
@@ -554,7 +554,7 @@ input::-webkit-search-cancel-button:hover {
 
 .searchbox-style-dark>:nth-child(1) {
 	color: #ffffff92;
-	transition: 200ms;
+	transition: 125ms;
 }
 
 .searchbox-style-dark>:nth-child(2)>i {
@@ -683,10 +683,20 @@ input::-webkit-search-cancel-button:hover {
 	transform: translateX(-10em);
 }
 
+.advanced-settings-button:hover>i {
+	transform: scale(1.125);
+}
+
+.advanced-settings-button:active>i {
+	transform: scale(1);
+	opacity: 0.5;
+}
+
 .advanced-settings-button>i {
 	font-size: 4em;
 	color: #060604;
 	opacity: 0.8;
+	transition: 125ms;
 }
 
 .thumb-group:focus,
@@ -889,12 +899,13 @@ input::-webkit-search-cancel-button:hover {
 
 .modal-page-title {
 	display: flex;
-	gap: 1em;
+	gap: 0.5em;
 	margin: .5em;
-	padding: .5em;
+	padding-inline: .5em;
+	padding-block: .75em;
 	font-size: 1.4em;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: flex-start;
 	font-weight: 700;
 	/* backdrop-filter: blur(2em);
 	-webkit-backdrop-filter: blur(2em); */
@@ -903,7 +914,20 @@ input::-webkit-search-cancel-button:hover {
 }
 
 .modal-close-btn {
-	font-size: 1.4em
+	font-size: 1.4em;
+	border-radius: 50%;
+	padding-inline: 0.35em;
+	transition: 125ms;
+}
+
+.modal-close-btn:hover {
+	background-color: #ffffff45;
+	transform: scale(1.25);
+}
+
+.modal-close-btn:active {
+	opacity: 0.5;
+	transform: scale(1);
 }
 
 .modal-group {
@@ -922,18 +946,18 @@ input::-webkit-search-cancel-button:hover {
 .modal-title {
 	display: flex;
 	flex-direction: column;
-	font-size: 1.15em;
+	font-size: 1.25em;
 	font-weight: 700;
-	padding: .25em
+	padding: .5em
 }
 
 .modal-option {
 	display: flex;
-	font-size: .9em;
-	padding: .5em;
+	font-size: 1em;
+	padding-block: .5em;
 	font-weight: 400;
 	justify-content: space-between;
-	transition: 250ms;
+	transition: 125ms;
 	border-radius: .375em;
 	padding-inline: .5em
 }
@@ -957,7 +981,8 @@ input::-webkit-search-cancel-button:hover {
 	font-family: Ubuntu;
 	color: var(--white-half-alpha);
 	animation-name: animatetop;
-	animation-duration: 1s
+	animation-duration: 1s;
+	outline: 0;
 }
 
 .version-preview {
@@ -1015,8 +1040,8 @@ input::-webkit-search-cancel-button:hover {
 }
 
 .loader {
-	border: 2px solid var(--primary-color) !important;
-	border-top: 2px solid #1e90ff !important;
+	border: 4px solid var(--primary-color) !important;
+	border-top: 4px solid #1e90ff !important;
 	border-radius: 50%;
 	animation: spin 1s normal infinite
 }
@@ -1088,7 +1113,7 @@ input::-webkit-search-cancel-button:hover {
 	max-width: 30em;
 	display: flex;
 	flex-direction: column;
-	background: #262626;
+	background: #2b2b2b;
 	padding: 1em;
 	border-radius: 1em;
 	border: 1px solid #ffffff24;
@@ -1125,7 +1150,7 @@ input::-webkit-search-cancel-button:hover {
 .inputField {
 	width: 100%;
 	border-radius: 6px;
-	border: 1px solid #ffffff4d;
+	border: 2px solid #ffffff4d;
 	background-color: #ffffffba;
 	padding: 0.5em;
 	margin-bottom: 1em;
@@ -1144,7 +1169,7 @@ input::-webkit-search-cancel-button:hover {
 
 .inputField:focus {
 	background-color: #ffffffea;
-	border: 1px solid var(--selection-color);
+	border: 2px solid var(--selection-color);
 }
 
 .button {
