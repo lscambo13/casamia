@@ -947,8 +947,9 @@ input::-webkit-search-cancel-button:hover {
 
 .modal-close-btn {
 	font-size: 1.4em;
-	border-radius: 50%;
-	padding-inline: 0.35em;
+	border-radius: 8px;
+	padding-inline-start: 0.25em;
+	padding-inline-end: 0.3em;
 	transition: 125ms;
 }
 
