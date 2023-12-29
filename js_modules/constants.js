@@ -25,7 +25,7 @@ export const DEF_PREF =
 	// 'clock-style-drop': '12hrs',
 	// 'am-pm-style-drop': 'uppercase',
 	'def-search-engine-drop': 'google',
-	'searchbar-position-drop': 'top',
+	'searchbar-position-drop': 'middle',
 	'searchbar-color-theme-drop': 'glass',
 	'focus-search-drop': 'off',
 	'search-display-drop': 'on',

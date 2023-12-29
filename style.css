@@ -79,6 +79,7 @@ body {
 	min-height: 100vh;
 	min-height: 100svh;
 	align-items: center;
+	justify-content: space-between;
 }
 
 .justifySpaceBetween {
@@ -162,7 +163,7 @@ body {
 	max-width: 1280px;
 	width: 100%;
 	opacity: 0;
-	/* margin: auto; */
+	/* margin: auto auto auto auto; */
 	/* flex: 1; */
 	z-index: 2;
 	display: block;

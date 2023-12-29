@@ -380,21 +380,22 @@ function searchbarTheme(value) {
 
 function defaultSearchbarPosition(value) {
 	const searchbar = document.getElementById('searchbar');
+	const wrap = document.getElementById('wrap');
 
 	switch (value) {
 		case 'top': {
 			searchbar.style.order = '0';
-			document.body.style.justifyContent = 'space-between';
+			wrap.style.margin = '0 auto auto auto';
 			break;
 		};
 		case 'bottom': {
 			searchbar.style.order = '1';
-			document.body.style.justifyContent = 'flex-end';
+			wrap.style.margin = 'auto auto 0 auto';
 			break;
 		};
 		case 'middle': {
-			searchbar.style.order = '1';
-			document.body.style.justifyContent = 'center';
+			searchbar.style.order = '0';
+			wrap.style.margin = 'auto auto auto auto';
 			break;
 		};
 	}
