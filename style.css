@@ -1002,7 +1002,7 @@ input::-webkit-search-cancel-button:hover {
 	white-space: nowrap;
 	text-align: end;
 	font-size: .9em;
-	font-family: Ubuntu;
+	font-family: 'Ubuntu';
 	color: var(--white-half-alpha);
 	animation-name: animatetop;
 	animation-duration: 1s;

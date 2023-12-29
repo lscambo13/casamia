@@ -1,7 +1,7 @@
 // import { customBookmarks, setCustomBookmarks } from './database.js';
 
-import { removableBorder } from "./utils/toggleBorder.js";
-import { crossDisplay } from "./utils/toggleDisplay.js";
+import { removableBorder } from './utils/toggleBorder.js';
+import { crossDisplay } from './utils/toggleDisplay.js';
 
 export let customBookmarks =
     JSON.parse(localStorage.getItem('saved_bookmarks'));

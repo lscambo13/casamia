@@ -35,5 +35,4 @@ export const retryUserNameText =
 Maximum length allowed is 14 characters.`;
 
 export const updateUserNameText =
-    `Update your name..
-Maximum length allowed is 14 characters.`;
+    `Maximum length allowed is 14 characters.`;

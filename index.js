@@ -19,11 +19,9 @@ import {
 	toggleRemoveButtons,
 } from './js_modules/custom_bookmarks.js';
 import {
-	color,
 	fetchWallpapersList,
 	getWallpaperDetails,
 	highlightSetWallpaper,
-	selectedWallpaper,
 	setWallpaper,
 } from './js_modules/wallpapers.js';
 import {
@@ -45,7 +43,7 @@ import {
 	toggleFavicons,
 } from './js_modules/preferences.js';
 import { isUrlValid } from './js_modules/validators.js';
-import { askUserName, setDefaultPreferences } from './js_modules/onboarding.js';
+import { askUserName, preOnboarding } from './js_modules/onboarding.js';
 import {
 	closeAdvancedSettings,
 	openAdvancedSettings,
@@ -156,40 +154,38 @@ window.createNewBookmark = () => {
 		} else modalSubmitButton.disabled = true;
 	};
 
-	const getDetailsForNewBookmark = () => {
-		showInputDialog(
-			dialogTitle,
-			dialogDescription,
-			[bookmarkLabel, bookmarkAddress],
-			'Save',
-			undefined,
-			null,
-			enableSubmitButton,
-		).then((res) => {
-			const id = Date.now();
-			const name = res.inputValues[0];
-			let link = res.inputValues[1];
-			if (!link.startsWith('http')) link = `https://${link}`;
-			// console.log(res.inputValues);
-			addBookmarkToHTML(link, name, id);
-			saveBookmarks(link, name, id);
-		}).catch((e) => console.log(e));
+	showInputDialog(
+		dialogTitle,
+		dialogDescription,
+		[bookmarkLabel, bookmarkAddress],
+		'Save',
+		undefined,
+		null,
+		enableSubmitButton,
+		() => {
+			const label = getDialogElementByID(bookmarkLabel);
+			label.setAttribute('maxlength', 4);
+			label.setAttribute('placeholder', 'e.g. YT');
 
-		const label = getDialogElementByID(bookmarkLabel);
-		label.setAttribute('maxlength', 4);
-		label.setAttribute('placeholder', 'e.g. YT');
+			const address = getDialogElementByID(bookmarkAddress);
+			address.setAttribute('placeholder', 'e.g. youtube.com');
+			address.value = 'https://';
 
-		const address = getDialogElementByID(bookmarkAddress);
-		address.setAttribute('placeholder', 'e.g. youtube.com');
-		address.value = 'https://';
-
-		navigator.clipboard.readText().then((res) => {
-			if (isUrlValid(res)) address.value = res;
-		}).catch((err) => {
-			console.log(err);
-		});
-	};
-	getDetailsForNewBookmark();
+			navigator.clipboard.readText().then((res) => {
+				if (isUrlValid(res)) address.value = res;
+			}).catch((err) => {
+				console.log(err);
+			});
+		},
+	).then((res) => {
+		const id = Date.now();
+		const name = res.inputValues[0];
+		let link = res.inputValues[1];
+		if (!link.startsWith('http')) link = `https://${link}`;
+		// console.log(res.inputValues);
+		addBookmarkToHTML(link, name, id);
+		saveBookmarks(link, name, id);
+	}).catch((e) => console.log(e));
 };
 
 window.changeWallpaper = (event) => {
@@ -212,9 +208,9 @@ addEventListenerOnID('update-username-btn', 'click', askUserName);
 addEventListenerOnID('update-customtext-btn', 'click', askCustomText);
 addEventListenerOnID('deep-search-btn', 'click', (event) => {
 	showNestedOptions('deep-search-nested');
-	const arrow = document.getElementById('deep-search-btn');
-	arrow.childNodes[3].classList.toggle('fa-angle-down');
-	arrow.childNodes[3].classList.toggle('fa-angle-up');
+	const arrow = document.getElementById('deep-search-btn-arrow');
+	arrow.classList.toggle('fa-angle-down');
+	arrow.classList.toggle('fa-angle-up');
 });
 addEventListenerOnID('update-customdomain-btn', 'click', askCustomDomain);
 addEventListenerOnID('fetch-bookmarks-btn', 'click', fetchBookmarks);
@@ -250,20 +246,41 @@ window.addEventListener('resize', () => {
 	isItChristmas();
 });
 
-// Start ----------------------------------------------------------
+window.addEventListener('hashchange', () => {
+	const url = document.URL;
 
-document.addEventListener('DOMContentLoaded', async () => {
+	if (!url.includes('#wallpapers')) {
+		// console.log('url found');
+		hideWallpapers('body');
+		closeAdvancedSettings();
+	}
+	// console.log('go back');
+});
+
+window.addEventListener('blur', () => {
+	hideLoading();
+	// console.log("no focus");
+});
+
+window.addEventListener('appinstalled', (event) => {
+	console.log('installed');
+});
+
+onload = (event) => {
+	document.getElementById('main-heading-slider')
+		.classList.remove('nowrap');
+};
+
+const postOnboarding = () => {
 	const btnInstall = document.getElementById('btn-install');
 	let deferredPrompt;
-
-	setDefaultPreferences();
 	applyPreferences();
 	loadBookmarks();
 	loadDropdownPositions();
 	wrap.style.opacity = 1;
 
-	await fetchWallpapersList();
-	setWallpaper(selectedWallpaper, color);
+	fetchWallpapersList();
+	// setWallpaper(selectedWallpaper, color);
 	highlightSetWallpaper();
 
 
@@ -292,31 +309,24 @@ document.addEventListener('DOMContentLoaded', async () => {
 	getLastUpdated('version-preview');
 	isItChristmas();
 	loadSelectedWidgetStyle();
-});
+};
+
+// Start ----------------------------------------------------------
+
+document.addEventListener('DOMContentLoaded', () => {
+	// preOnboarding();
+
+	if (localStorage.getItem('onBoarding') == '1') {
+		postOnboarding();
+		console.log('Already onboard.');
+	} else {
+		console.log('Onboarding...');
+		preOnboarding().then(() => {
+			postOnboarding();
+			console.log('Onboarding complete.');
+		});
+	}
+}, { once: true });
 
 // ---------------------------------------------------------- End
 
-window.addEventListener('hashchange', () => {
-	const url = document.URL;
-
-	if (!url.includes('#wallpapers')) {
-		// console.log('url found');
-		hideWallpapers('body');
-		closeAdvancedSettings();
-	}
-	// console.log('go back');
-});
-
-window.addEventListener('blur', () => {
-	hideLoading();
-	// console.log("no focus");
-});
-
-window.addEventListener('appinstalled', (event) => {
-	console.log('installed');
-});
-
-onload = (event) => {
-	document.getElementById('main-heading-slider')
-		.classList.remove('nowrap');
-};

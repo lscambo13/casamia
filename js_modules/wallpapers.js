@@ -2,35 +2,27 @@ import { changeGlow, changeSelectionColor } from './colors.js';
 import { WALLPAPERS_URL } from './constants.js';
 import { applyPreferences } from './load_preferences.js';
 import { changeTextAccentColor } from './colors.js';
-import { redoOnboarding } from './utils/redoOnboarding.js';
 
-export let selectedWallpaper = null;
-export let color = null;
+export let selectedWallpaper;
+export let color;
 export let wallpapersList = [];
 
-export async function fetchWallpapersList() {
+export function fetchWallpapersList() {
 	// Add wallpapers to HTML
-	let response = await fetch(
-		WALLPAPERS_URL + 'wallpapers_list.json',
-	);
-	for (let i = 0; i <= 3 && response.status != 200; i++) {
-		console.log(`CONNECTION ERROR: ${response.status}\nRetrying ${i}...`);
-		response = await fetch(
-			WALLPAPERS_URL + 'wallpapers_list.json',
-		);
-		if (i == 3) window.open('./pages/error', '_self');
-	};
-	// if (response.status == 200) {
-	//     console.log(`Connection established: ${response.status}`);
-	// }
-	const text = await response.text();
-
-	wallpapersList = JSON.parse(text);
-	resolveWallpapers();
-	populateWallpapersInDOM();
+	fetch(WALLPAPERS_URL + 'wallpapers_list.json').then((response) => {
+		response.text().then((text) => {
+			wallpapersList = JSON.parse(text);
+			resolveWallpapers();
+			populateWallpapersInDOM();
+			highlightSetWallpaper();
+		});
+	}).catch((e) => {
+		console.log(e);
+		window.open('./pages/error', '_self');
+	});
 }
 
-export async function setWallpaper(fileName, color) {
+export function setWallpaper(fileName, color) {
 	selectedWallpaper = fileName;
 	const overlay = document.getElementById('overlay');
 	// console.log('test ' + overlay.style.backdropFilter);
@@ -100,19 +92,10 @@ export function getWallpaperDetails(title) {
 
 function resolveWallpapers() {
 	selectedWallpaper = localStorage.getItem('wallpaper');
-	if (selectedWallpaper == null) {
-		selectedWallpaper = wallpapersList[3].file;
-		// var color = wallpapers_list[4].color;
-		console.log(wallpapersList);
-	}
-
-	try {
-		color = wallpapersList.filter((item) => {
-			return item.file == selectedWallpaper;
-		})[0].color[1];
-	} catch (err) {
-		// redoOnboarding();
-	}
+	color = wallpapersList.filter((item) => {
+		return item.file == selectedWallpaper;
+	})[0].color[1];
+	setWallpaper(selectedWallpaper, color);
 }
 
 function populateWallpapersInDOM() {
