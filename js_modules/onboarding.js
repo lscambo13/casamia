@@ -1,6 +1,7 @@
 // import { postOnboarding } from '../index.js';
 import { DEF_PREF, DEF_WALLPAPER } from './constants.js';
 import { updateUserNamePreview } from './load_preferences.js';
+import { refreshGreeting } from './preferences.js';
 import { updateUserNameText } from './strings.js';
 import { getDialogElementByID, showInputDialog } from './utils/dialog.js';
 
@@ -33,13 +34,14 @@ export function askUserName() {
             enableSubmitButton,
             () => {
                 getDialogElementByID('Change name to')
-                    .setAttribute('maxlength', 14);
+                    .setAttribute('maxlength', 17);
                 getDialogElementByID('Change name to').value = userName;
             },
         ).then((res) => {
             userName = res.inputValues[0];
             localStorage.setItem('userName', userName);
             updateUserNamePreview();
+            refreshGreeting();
             return;
         }).catch((e) => {
             console.error(e);
@@ -59,7 +61,7 @@ export function askUserName() {
             null,
             enableSubmitButton,
             () => {
-                getDialogElementByID('Your name').setAttribute('maxlength', 14);
+                getDialogElementByID('Your name').setAttribute('maxlength', 17);
             },
         );
         onBoardingInProgress.then((res) => {

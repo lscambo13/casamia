@@ -26,13 +26,13 @@ export const resetAllWarningText =
 There is no going back.\n
 Are you sure?`;
 
-export const askUserNameText =
-    `Welcome to Casa Mia
-What is your name?`;
+// export const askUserNameText =
+//     `Welcome to Casa Mia
+// What is your name?`;
 
-export const retryUserNameText =
-    `Please enter a valid name to proceed.
-Maximum length allowed is 14 characters.`;
+// export const retryUserNameText =
+//     `Please enter a valid name to proceed.
+// Maximum length allowed is 14 characters.`;
 
 export const updateUserNameText =
-    `Maximum length allowed is 14 characters.`;
+    `Maximum length allowed is 17 characters.`;
