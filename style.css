@@ -308,6 +308,14 @@ body::-webkit-scrollbar {
 	rotate: 0deg
 }
 
+.separator {
+	opacity: 0;
+}
+
+.separator-visible {
+	opacity: 1;
+}
+
 .nowrap {
 	text-wrap: nowrap;
 }

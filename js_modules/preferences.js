@@ -101,10 +101,16 @@ function refreshClock(targetClass) {
 	const minutes = addZero(date.getMinutes().toString());
 	const seconds = addZero(date.getSeconds().toString());
 	amPm = amPm(hours);
+	let separator = ':';
 
 	for (let i = 0; i < target.length; i++) {
-		target[i].innerText =
-			`${hours}:${minutes} ${updateAmPmStyle(amPm.toString())}`;
+		if (seconds % 2 === 0) {
+			separator = `<span class="separator separator-visible">:</span>`;
+		} else {
+			separator = `<span class="separator">:</span>`;
+		}
+		target[i].innerHTML =
+			`${hours}${separator}${minutes} ${updateAmPmStyle(amPm.toString())}`;
 	}
 
 	// subtitle.style.display = 'block';
