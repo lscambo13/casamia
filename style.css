@@ -328,7 +328,7 @@ body::-webkit-scrollbar {
 	height: 0em;
 	opacity: 0.85;
 	overflow: hidden;
-	font-size: 2em;
+	font-size: 1em;
 	z-index: 5;
 	/* background-color: #1e90ff; */
 	text-shadow: 0 2px 0 #000;
@@ -1286,5 +1286,11 @@ input::-webkit-search-cancel-button:hover {
 		width: 50vw;
 		width: 50dvw;
 		top: 0
+	}
+}
+
+@media (hover: none) {
+	#settings_button {
+		display: none;
 	}
 }
