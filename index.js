@@ -44,10 +44,6 @@ import {
 } from './js_modules/preferences.js';
 import { isUrlValid } from './js_modules/validators.js';
 import { askUserName, preOnboarding } from './js_modules/onboarding.js';
-import {
-	closeAdvancedSettings,
-	openAdvancedSettings,
-} from './js_modules/modals/advanced_settings.js';
 import { saveDropdownPositions } from './js_modules/save_preferences.js';
 // eslint-disable-next-line max-len
 import { getLastUpdated } from './js_modules/utils/getLastUpdated.js';
@@ -57,76 +53,55 @@ import {
 	getDialogElementByID,
 	showInputDialog,
 } from './js_modules/utils/dialog.js';
+import { isTouchDevice } from './js_modules/utils/isTouchDevice.js';
 
 const bottomFilmRollContainer = document.getElementById('wallpapers');
 const wrap = document.getElementById('wrap');
 const advancedSettingsButton = document.getElementById('toggle-labs-btn');
+const modal = document.getElementById('advanced-settings-modal');
+const modalBackground =
+	document.getElementById('advanced-settings-modal-background-overlay');
 
-
+let areWallpapersOpen = false;
 let timeout;
-window.hideWallpapers = (str, event) => {
-	if (event) {
-		event.stopPropagation();
-	}
+const wallpapersPanel = (str) => {
 	hideLoading();
 	switch (str) {
-		case 'body': {
-			if (
-				bottomFilmRollContainer.classList.length == 2 &&
-				bottomFilmRollContainer.classList[1] == 'animation_slide_up'
-			) {
-				document.title = document.title
-					.replace('Backgrounds', 'Search');
-				bottomFilmRollContainer.classList.remove('animation_slide_up');
-				setTimeout(() => advancedSettingsButton.classList
-					.remove('animation_slide_right'), 350);
-				bottomFilmRollContainer.classList.add('animation_slide_down');
-				wrap.classList.remove('animation2_slide_up');
-				wrap.classList.add('animation2_slide_down');
-				clearTimeout(timeout);
+		case 'close': {
+			document.title = document.title
+				.replace('Backgrounds', 'Search');
+			bottomFilmRollContainer.classList.remove('animation_slide_up');
+			setTimeout(() => advancedSettingsButton.classList
+				.remove('animation_slide_right'), 350);
+			bottomFilmRollContainer.classList.add('animation_slide_down');
+			wrap.classList.remove('animation2_slide_up');
+			wrap.classList.add('animation2_slide_down');
+			clearTimeout(timeout);
 
-				toggleRemoveButtons('hide');
-				toggleArrows('hide');
-				changeGlow(null, 0);
-				setTimeout(() => blurLevel(1), 400);
-			}
+			toggleRemoveButtons('hide');
+			toggleArrows('hide');
+			changeGlow(null, 0);
+			setTimeout(() => blurLevel(1), 400);
+			areWallpapersOpen = false;
 			break;
 		};
-		case 'button': {
+		case 'open': {
 			bottomFilmRollContainer.style.display = 'flex';
-			if (
-				bottomFilmRollContainer.classList.length < 2 ||
-				bottomFilmRollContainer.classList[1] == 'animation_slide_down'
-			) {
-				blurLevel(0);
-				bottomFilmRollContainer.classList.remove('animation_slide_down');
-				bottomFilmRollContainer.classList.add('animation_slide_up');
-				wrap.classList.remove('animation2_slide_down', 'startup_slide_down');
-				wrap.classList.add('animation2_slide_up');
-				setTimeout(() => {
-					advancedSettingsButton.classList.add('animation_slide_right');
-					scrollHighlightedWallpaperIntoView();
-				}, 350);
-				changeGlow(null, 1);
-				timeout = setTimeout(() => toggleRemoveButtons('show'), 450);
-				toggleArrows('show');
-				document.title = document.title
-					.replace('Search', 'Backgrounds');
-			} else {
-				document.title = document.title
-					.replace('Backgrounds', 'Search');
-				bottomFilmRollContainer.classList.remove('animation_slide_up');
-				setTimeout(() => advancedSettingsButton.classList
-					.remove('animation_slide_right'), 350);
-				bottomFilmRollContainer.classList.add('animation_slide_down');
-				wrap.classList.remove('animation2_slide_up');
-				wrap.classList.add('animation2_slide_down');
-				changeGlow(null, 0);
-				clearTimeout(timeout);
-				toggleRemoveButtons('hide');
-				toggleArrows('hide');
-				setTimeout(() => blurLevel(1), 400);
-			}
+			blurLevel(0);
+			bottomFilmRollContainer.classList.remove('animation_slide_down');
+			bottomFilmRollContainer.classList.add('animation_slide_up');
+			wrap.classList.remove('animation2_slide_down', 'startup_slide_down');
+			wrap.classList.add('animation2_slide_up');
+			setTimeout(() => {
+				advancedSettingsButton.classList.add('animation_slide_right');
+				scrollHighlightedWallpaperIntoView();
+			}, 350);
+			changeGlow(null, 1);
+			timeout = setTimeout(() => toggleRemoveButtons('show'), 450);
+			toggleArrows('show');
+			document.title = document.title
+				.replace('Search', 'Backgrounds');
+			areWallpapersOpen = true;
 			break;
 		}
 	}
@@ -219,6 +194,26 @@ addEventListenerOnID('reset-all-btn', 'click', resetAll);
 
 // addEventListenerOnID('toggle-blur-cb', 'click', toggleBlur);
 // addEventListenerOnID('toggle-wallpaper-cb', 'click', toggleWallpaper);
+
+function openAdvancedSettings() {
+	wallpapersPanel('close');
+	setTimeout(() => blurLevel(0), 420);
+	document.title = document.title.replace('Backgrounds', 'Settings');
+	document.body.classList.add('justifySpaceBetween');
+	wrap.style.opacity = 0;
+	modal.style.display = 'block';
+	modalBackground.style.display = 'block';
+};
+
+function closeAdvancedSettings() {
+	document.title = document.title.replace('Settings', 'Search');
+	document.body.classList.remove('justifySpaceBetween');
+	wrap.style.opacity = 1;
+	modal.style.display = 'none';
+	modalBackground.style.display = 'none';
+	setTimeout(() => blurLevel(1), 100);
+};
+
 addEventListenerOnClass('modal-close-btn', 'click', closeAdvancedSettings);
 addEventListenerOnID('toggle-labs-btn', 'click', openAdvancedSettings);
 
@@ -248,18 +243,14 @@ window.addEventListener('resize', () => {
 
 window.addEventListener('hashchange', () => {
 	const url = document.URL;
-
 	if (!url.includes('#wallpapers')) {
-		// console.log('url found');
-		hideWallpapers('body');
+		wallpapersPanel('close');
 		closeAdvancedSettings();
 	}
-	// console.log('go back');
 });
 
 window.addEventListener('blur', () => {
 	hideLoading();
-	// console.log("no focus");
 });
 
 window.addEventListener('appinstalled', (event) => {
@@ -269,6 +260,46 @@ window.addEventListener('appinstalled', (event) => {
 onload = (event) => {
 	document.getElementById('main-heading-slider')
 		.classList.remove('nowrap');
+};
+
+addEventListenerOnID('settings_button', 'click', (event) => {
+	if (areWallpapersOpen) wallpapersPanel('close', event);
+	else if (!areWallpapersOpen) wallpapersPanel('open', event);
+});
+
+export const pressAndHold = () => {
+	const target = document.getElementsByTagName('body')[0];
+	let timerId;
+	const timer = 200;
+	const clearTimer = () => {
+		clearInterval(timerId);
+		timerId = null;
+	};
+
+	const clickEvent = (event) => {
+		timerId = setInterval(() => {
+			if (areWallpapersOpen) wallpapersPanel('close', event);
+			else if (!areWallpapersOpen) wallpapersPanel('open', event);
+			clearTimer();
+		}, timer);
+	};
+
+	target.addEventListener('mousedown', clickEvent);
+	target.addEventListener('mouseup', clearTimer);
+	target.addEventListener('mouseout', clearTimer);
+
+	target.addEventListener('touchstart', clickEvent);
+	target.addEventListener('touchend', clearTimer);
+	target.addEventListener('touchcancel', clearTimer);
+
+	return () => {
+		target.removeEventListener('mousedown', clickEvent);
+		target.removeEventListener('mouseup', clearTimer);
+		target.removeEventListener('mouseout', clearTimer);
+		target.removeEventListener('touchstart', clickEvent);
+		target.removeEventListener('touchend', clearTimer);
+		target.removeEventListener('touchcancel', clearTimer);
+	};
 };
 
 const postOnboarding = () => {
@@ -283,7 +314,7 @@ const postOnboarding = () => {
 	// setWallpaper(selectedWallpaper, color);
 	highlightSetWallpaper();
 
-
+	pressAndHold();
 	addEventListenerOnClass('clickable', 'keypress', clickToEnter);
 	addEventListenerOnClass('custom_bookmark', 'click', displayLoading);
 	addEventListenerOnClass('cross', 'click', removeBookmark);
@@ -322,6 +353,11 @@ document.addEventListener('DOMContentLoaded', () => {
 	} else {
 		console.log('Onboarding...');
 		preOnboarding().then(() => {
+			if (isTouchDevice()) {
+				setTimeout(() => {
+					alert('Press and hold anywhere to open settings.');
+				}, 5000);
+			}
 			postOnboarding();
 			console.log('Onboarding complete.');
 		});

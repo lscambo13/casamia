@@ -3,12 +3,6 @@ import { importBookmarks } from './preferences.js';
 import { headingStyles } from './styles.js';
 
 
-// export function getAdvancedSetting(key) {
-//     let settings = localStorage.getItem('advDropdownValues');
-//     settings = JSON.parse(settings);
-//     return settings[key];
-// }
-
 export function getSearchTerm() {
 	return document.getElementsByClassName('searchTerm')[0];
 }
@@ -21,7 +15,6 @@ export function addEventListenerOnID(id, event, func) {
 
 export function addEventListenerOnClass(className, event, func) {
 	const classList = document.getElementsByClassName(className);
-	// console.log('on class length ' + classList.length);
 	for (let i = 0; i < classList.length; i++) {
 		classList[i].addEventListener(event, func);
 	};
@@ -29,7 +22,6 @@ export function addEventListenerOnClass(className, event, func) {
 
 export function addEventListenerOnTag(tagName, event, func) {
 	const tagList = document.getElementsByTagName(tagName);
-	// console.log('on class length ' + classList.length);
 	for (let i = 0; i < tagList.length; i++) {
 		tagList[i].addEventListener(event, func);
 	};
@@ -66,13 +58,11 @@ let i = 0;
 export function changeHeadingStyles(event = null, int) {
 	if (event) event.stopPropagation();
 
-	// console.log('in ' + int);
 	i += int;
 	if (i < 0) {
 		i = headingStyles.length - 1;
 	};
 	if (i >= headingStyles.length) i = 0;
-	// console.log(i);
 	stylizeText('main-heading', i);
 };
 
@@ -94,12 +84,11 @@ export function toggleArrows(str) {
 	}
 };
 
-let prevSlide = 0;
 export function changeSlide(element, int) {
-	const w = document.getElementById('main-heading-slider')
-	let width = w.scrollWidth
+	const w = document.getElementById('main-heading-slider');
+	const width = w.scrollWidth;
 	const el = document.getElementsByClassName(element);
-	let currentPos = w.scrollLeft;
+	const currentPos = w.scrollLeft;
 	let newPos;
 	const step = w.scrollWidth / el.length;
 	// console.log(width, w.clientWidth)
@@ -116,18 +105,8 @@ export function changeSlide(element, int) {
 			newPos = 0;
 		};
 		console.log(newPos);
-		w.scrollLeft = newPos
+		w.scrollLeft = newPos;
 	}
-	// const totalSlides = el.length;
-	// const currentSlide = prevSlide - int;
-	// if (currentSlide < 0 || currentSlide >= totalSlides) {
-	// 	// prevSlide = currentSlide;
-	// 	return;
-	// } else {
-	// 	el[currentSlide].scrollIntoView();
-	// 	prevSlide = currentSlide;
-	// }
-	// console.log(currentSlide)
 };
 
 export function changeWidgetStyle() {

@@ -35,7 +35,7 @@
 	<script src="./index.js?v=1703602562282" type="module"></script>
 </head>
 
-<body onclick="hideWallpapers('body', null)">
+<body>
 	<div id="overlay"></div>
 	<canvas id="canvasFar"></canvas>
 	<div id="gradient_overlay"></div>
@@ -50,7 +50,7 @@
 		<div class="flex-main-container-vertical">
 			<div id="home-widget-container"><i id="left-arrow" class="arrows fa fa-caret-left"></i>
 				<div class="home-widget">
-					<div id="main-heading-slider" class="nowrap">
+					<div id="main-heading-slider" class="nowrap disable-select">
 						<h1 id="widget-1" class="widget-slide default-text-style">Welcome</h1>
 						<h1 id="widget-3" class="widget-slide brush-text-style-2">Welcome</h1>
 						<h1 id="widget-4" class="widget-slide brush-text-style-3 has-shadow">Welcome</h1>
@@ -87,15 +87,14 @@
 				<div onclick="createNewBookmark()" class="clickable" id="add_bookmark_button" tabindex="2">
 					<i class="fa fa-plus"></i>
 				</div>
-				<a href="#wallpapers" onclick="hideWallpapers('button', event)" class="clickable" id="settings_button"
-				   tabindex="2">
+				<a href="#wallpapers" class="clickable" id="settings_button" tabindex="2">
 					<i class="fa fa-gear"></i>
 				</a>
 			</div>
 		</div>
 	</div>
 	<div id="advanced-settings-modal-background-overlay"></div>
-	<div id="advanced-settings-modal">
+	<div id="advanced-settings-modal" class="disable-select">
 		<div class="modal-page-title">
 			<p class="modal-close-btn fa fa-angle-left"></p>
 			<p class="">Advanced Settings</p>
