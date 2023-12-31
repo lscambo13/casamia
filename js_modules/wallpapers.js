@@ -109,7 +109,6 @@ function populateWallpapersInDOM() {
 		thumb.className = 'thumb-group';
 		thumb.setAttribute('onclick', 'changeWallpaper(event)');
 		thumb.setAttribute('onkeypress', 'click_to_enter(event)');
-
 		thumb.setAttribute('tabindex', '3');
 
 		const div = document.createElement('div');
@@ -121,6 +120,7 @@ function populateWallpapersInDOM() {
 		img.src = WALLPAPERS_URL + input;
 		img.className = 'thumbnail';
 		img.title = n.title;
+		img.setAttribute('draggable', 'false');
 		thumb.appendChild(img);
 
 		bar.appendChild(thumb);

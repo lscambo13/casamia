@@ -258,8 +258,8 @@ window.addEventListener('appinstalled', (event) => {
 });
 
 onload = (event) => {
-	document.getElementById('main-heading-slider')
-		.classList.remove('nowrap');
+	const slider = document.getElementById('main-heading-slider');
+	slider.classList.remove('nowrap');
 };
 
 addEventListenerOnID('settings_button', 'click', (event) => {
@@ -277,6 +277,7 @@ export const pressAndHold = () => {
 	};
 
 	const clickEvent = (event) => {
+		if (event.target.parentNode.id == 'main-heading-slider') return;
 		timerId = setInterval(() => {
 			if (areWallpapersOpen) wallpapersPanel('close', event);
 			else if (!areWallpapersOpen) wallpapersPanel('open', event);
