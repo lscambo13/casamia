@@ -1,15 +1,11 @@
-// import { customBookmarks, setCustomBookmarks } from './database.js';
-
-import { removableBorder } from './utils/toggleBorder.js';
+import { getDialogElementByID, showInputDialog } from './utils/dialog.js';
+import { enableSubmitButton } from './utils/enableSubmitButton.js';
 import { crossDisplay } from './utils/toggleDisplay.js';
 
 export let customBookmarks =
     JSON.parse(localStorage.getItem('saved_bookmarks'));
 
-
 export function loadBookmarks() {
-    // setCustomBookmarks(JSON.parse(localStorage.getItem('saved_bookmarks')));
-
     if (customBookmarks == null) {
         customBookmarks = [];
         return;
@@ -24,6 +20,8 @@ export function addBookmarkToHTML(link, name, id) {
         'flex-sub-container-horizontal',
     )[0];
     bookmarkContainer.appendChild(createBookmark(link, name, id));
+    const justAdded = document.getElementsByClassName('cross');
+    justAdded[justAdded.length - 1].addEventListener('click', editBookmark);
 }
 
 function createBookmark(link, name, id) {
@@ -32,22 +30,17 @@ function createBookmark(link, name, id) {
     i.className = 'custom_link_name';
 
     const d = document.createElement('div');
-    d.innerHTML = '&#215;';
-    d.classList.add('cross');
-    // d.setAttribute('onclick', 'remove_bookmark(event)');
-    // d.setAttribute('onkeypress', 'click_to_enter(event)');
+    d.className = 'cross';
+    d.title = 'Modify bookmark details';
     d.setAttribute('tabindex', '5');
 
     const newBookmark = document.createElement('a');
-    // newBookmark.setAttribute('onclick', 'displayLoading(event)');
-    // newBookmark.setAttribute('onkeypress', 'click_to_enter(event)');
     newBookmark.className = 'custom_bookmark clickable';
     newBookmark.setAttribute('href', link);
     newBookmark.setAttribute('id', id);
     newBookmark.setAttribute('tabindex', '1');
     newBookmark.appendChild(i);
     newBookmark.appendChild(d);
-
     return newBookmark;
 }
 
@@ -67,15 +60,29 @@ export function removeBookmarkFromLocalStorage(id) {
     localStorage.setItem('saved_bookmarks', JSON.stringify(customBookmarks));
 }
 
+export function editBookmarkInLocalStorage(id, newName, newLink) {
+    const edit = customBookmarks.filter((elem) => {
+        return id == elem.id;
+    });
+    edit[0].name = newName;
+    edit[0].link = newLink;
+    localStorage.setItem('saved_bookmarks', JSON.stringify(customBookmarks));
+}
+
+export function getBookmarkDetailsFromLocalStorage(id) {
+    const edit = customBookmarks.filter((elem) => {
+        return id == elem.id;
+    });
+    return [edit[0].id, edit[0].name, edit[0].link];
+}
+
 export function toggleRemoveButtons(visible) {
     switch (visible) {
         case 'show': {
-            removableBorder('.1em solid tomato');
             crossDisplay(`block`);
             break;
         }
         case 'hide': {
-            removableBorder('1px solid #ffffff38');
             crossDisplay(`none`);
             break;
         }
@@ -98,15 +105,64 @@ export function downloadBookmarks(filename, text) {
     document.body.removeChild(element);
 }
 
-export function removeBookmark(event) {
+export function editBookmark(event) {
     event.preventDefault();
     console.log('click ' + event.target.parentNode.id);
     event.stopPropagation();
-    if (confirm('Remove this bookmark?')) {
-        removeBookmarkFromLocalStorage(event.target.parentNode.id);
-        event.target.parentNode.style.display = 'none';
-        // event.target.style.display = "none";
-    }
+    const targetElement = event.target.parentNode;
+
+    const onChange = () => {
+        const tick = document.getElementById('tickBoxField');
+        const modalSubmitButton = document.getElementById('modalSubmitButton');
+        const inputFields = document.getElementsByClassName('inputField');
+
+        if (tick.checked) {
+            modalSubmitButton.textContent = 'Delete';
+            modalSubmitButton.classList.add('deleteButton');
+            for (const i of inputFields) {
+                i.disabled = true;
+            }
+            modalSubmitButton.disabled = false;
+        } else if (!tick.checked) {
+            modalSubmitButton.textContent = 'Save';
+            modalSubmitButton.classList.remove('deleteButton');
+            for (const i of inputFields) {
+                i.disabled = false;
+            }
+        };
+    };
+
+    const details = getBookmarkDetailsFromLocalStorage(targetElement.id);
+
+    showInputDialog('Edit bookmark',
+        null,
+        ['Name', 'Address'],
+        'Save',
+        'Cancel',
+        'Delete this bookmark',
+        [enableSubmitButton, onChange],
+        () => {
+            getDialogElementByID('Name').setAttribute('maxlength', '4');
+            getDialogElementByID('Name').value = details[1];
+            getDialogElementByID('Address').value = details[2];
+        },
+    ).then((res) => {
+        if (res.checkboxChecked) {
+            removeBookmarkFromLocalStorage(targetElement.id);
+            targetElement.style.display = 'none';
+            return;
+        }
+
+        targetElement.href = res.inputValues[1];
+        targetElement.firstChild.innerHTML = res.inputValues[0];
+
+        editBookmarkInLocalStorage(
+            targetElement.id,
+            res.inputValues[0],
+            res.inputValues[1],
+        );
+    }).catch((e) => console.log(e));
+
     return;
 }
 
