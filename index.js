@@ -277,7 +277,9 @@ export const pressAndHold = () => {
 	};
 
 	const clickEvent = (event) => {
-		if (event.target.parentNode.id == 'main-heading-slider') return;
+		const x = event.target.classList;
+		if (x.contains('widget-slide') || x.contains('thumbnail')) return;
+
 		timerId = setInterval(() => {
 			if (areWallpapersOpen) wallpapersPanel('close', event);
 			else if (!areWallpapersOpen) wallpapersPanel('open', event);
