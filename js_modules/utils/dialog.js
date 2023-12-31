@@ -5,7 +5,7 @@ export const showInputDialog = (
 	submitButtonName = 'Submit',
 	cancelButtonName = 'Cancel',
 	tickBox = null,
-	onInput = null,
+	listeners = [onInput = null, onChange = null],
 	onInit = null,
 ) => {
 	const modalContainer = document.getElementById('modalContainer');
@@ -22,7 +22,7 @@ export const showInputDialog = (
 
 	document.body
 		.insertAdjacentHTML('afterbegin', `
-		<div id="modalContainer" class="modalContainer">
+		<div id="modalContainer" class="modalContainer disable-select">
 			<form autocomplete="off" action="#" class="modal">
 				${title}
 				${description}
@@ -43,7 +43,9 @@ export const showInputDialog = (
 		</div>
 	`);
 	inputFields.forEach((e) => {
-		const id = e.replaceAll(' ', '-').toLowerCase();
+		let id = e.replaceAll(' ', '-').toLowerCase();
+		id = `MODAL-INPUT-${id}`;
+		console.log(id);
 		document.getElementById('modalButtonsBar')
 			.insertAdjacentHTML('beforebegin', `
 					<label
@@ -76,7 +78,6 @@ export const showInputDialog = (
 		const modalCancelButton = document.getElementById('modalCancelButton');
 		const inputFields = document.getElementsByClassName('inputField');
 		let tickBoxField = document.getElementById('tickBoxField');
-		if (tickBoxField) tickBoxField = tickBoxField.ariaChecked;
 		inputFields[0].focus();
 		modalContainer.style.paddingBlockStart = '4em';
 		if (!cancelButtonName) modalCancelButton.style.display = 'none';
@@ -89,13 +90,17 @@ export const showInputDialog = (
 
 		const resolveModal = () => {
 			modalSubmitButton.removeEventListener('click', resolveModal);
+			if (tickBoxField) {
+				tickBoxField.removeEventListener('change', listeners[1]);
+				tickBoxField = tickBoxField.checked;
+			}
 			const inputValues = [];
 			for (const e of inputFields) {
 				inputValues.push(e.value);
-				if (onInput) e.removeEventListener('input', onInput);
+				if (listeners) e.removeEventListener('input', listeners);
 			}
 			const result = {
-				'inputValues': inputValues, 'checkBoxChecked': tickBoxField,
+				'inputValues': inputValues, 'checkboxChecked': tickBoxField,
 			};
 			modalContainer.remove();
 			console.log(result);
@@ -104,8 +109,11 @@ export const showInputDialog = (
 
 		modalCancelButton.addEventListener('click', rejectModal);
 		modalSubmitButton.addEventListener('click', resolveModal);
-		if (onInput) {
-			for (const e of inputFields) e.addEventListener('input', onInput);
+		if (listeners[0]) {
+			for (const e of inputFields) e.addEventListener('input', listeners[0]);
+		}
+		if (listeners[1]) {
+			tickBoxField.addEventListener('change', listeners[1]);
 		}
 	});
 
@@ -115,7 +123,9 @@ export const showInputDialog = (
 
 export const getDialogElementByID = (id) => {
 	let element = id.replaceAll(' ', '-').toLowerCase();
+	element = `MODAL-INPUT-${element}`;
 	element = document.getElementById(element);
+
 	return element;
 };
 
