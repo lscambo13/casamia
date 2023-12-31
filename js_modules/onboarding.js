@@ -31,7 +31,7 @@ export function askUserName() {
             'Update',
             'Cancel',
             null,
-            enableSubmitButton,
+            [enableSubmitButton, null],
             () => {
                 getDialogElementByID('Change name to')
                     .setAttribute('maxlength', 17);

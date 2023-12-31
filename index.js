@@ -14,7 +14,6 @@ import { changeGlow } from './js_modules/colors.js';
 import {
 	addBookmarkToHTML,
 	loadBookmarks,
-	removeBookmark,
 	saveBookmarks,
 	toggleRemoveButtons,
 } from './js_modules/custom_bookmarks.js';
@@ -54,6 +53,7 @@ import {
 	showInputDialog,
 } from './js_modules/utils/dialog.js';
 import { isTouchDevice } from './js_modules/utils/isTouchDevice.js';
+import { enableSubmitButton } from './js_modules/utils/enableSubmitButton.js';
 
 const bottomFilmRollContainer = document.getElementById('wallpapers');
 const wrap = document.getElementById('wrap');
@@ -114,21 +114,6 @@ window.createNewBookmark = () => {
 	const bookmarkLabel = 'Bookmark name';
 	const bookmarkAddress = 'Link to website';
 
-	const enableSubmitButton = () => {
-		const modalSubmitButton = document.getElementById('modalSubmitButton');
-		const inputFields = document.getElementsByClassName('inputField');
-		for (const e of inputFields) {
-			if (e.value.length) modalSubmitButton.disabled = false;
-			else {
-				modalSubmitButton.disabled = true;
-				return;
-			}
-		}
-		if (isUrlValid(inputFields[1].value)) {
-			modalSubmitButton.disabled = false;
-		} else modalSubmitButton.disabled = true;
-	};
-
 	showInputDialog(
 		dialogTitle,
 		dialogDescription,
@@ -136,7 +121,7 @@ window.createNewBookmark = () => {
 		'Save',
 		undefined,
 		null,
-		enableSubmitButton,
+		[enableSubmitButton, null],
 		() => {
 			const label = getDialogElementByID(bookmarkLabel);
 			label.setAttribute('maxlength', 4);
@@ -278,7 +263,9 @@ export const pressAndHold = () => {
 
 	const clickEvent = (event) => {
 		const x = event.target.classList;
-		if (x.contains('widget-slide') || x.contains('thumbnail')) return;
+		if (x.contains('widget-slide') ||
+			x.contains('thumbnail') ||
+			x.contains('flex-wallpaper-horizontal')) return;
 
 		timerId = setInterval(() => {
 			if (areWallpapersOpen) wallpapersPanel('close', event);
@@ -320,7 +307,7 @@ const postOnboarding = () => {
 	pressAndHold();
 	addEventListenerOnClass('clickable', 'keypress', clickToEnter);
 	addEventListenerOnClass('custom_bookmark', 'click', displayLoading);
-	addEventListenerOnClass('cross', 'click', removeBookmark);
+	// addEventListenerOnClass('cross', 'click', );
 	addEventListenerOnTag('select', 'change', saveDropdownPositions);
 
 	addEventListenerOnID('btn-install', 'click', (e) => {
