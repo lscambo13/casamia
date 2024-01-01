@@ -1135,8 +1135,9 @@ input::-webkit-search-cancel-button:hover {
 	display: flex;
 	align-items: flex-start;
 	justify-content: center;
-	padding-block-start: 0em;
-	transition: 600ms;
+	padding-block-start: 2em;
+	opacity: 0;
+	transition: 125ms;
 }
 
 .modal {
