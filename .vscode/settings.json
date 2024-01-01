@@ -1,38 +1,48 @@
 {
-	"editor.formatOnSave": true,
-	"editor.formatOnPaste": true,
-	"editor.formatOnType": true,
-	"editor.defaultFormatter": "dbaeumer.vscode-eslint",
-	"[html]": {
-		"editor.defaultFormatter": "vscode.html-language-features"
-	},
-	"[css]": {
-		"editor.defaultFormatter": "vscode.css-language-features"
-	},
-	"[javascript]": {
-		"editor.defaultFormatter": "vscode.typescript-language-features"
-	},
-	"[json]": {
-		"editor.defaultFormatter": "vscode.json-language-features"
-	},
-	"editor.insertSpaces": false,
-	"editor.smoothScrolling": true,
-	"cSpell.words": [
-		"animatetop",
-		"mydivheader",
-		"Nanum",
-		"Vujahday",
-		"Widgetstyle"
-	],
-	"liveServer.settings.port": 5558,
-	"javascript.suggest.completeFunctionCalls": true,
-	"html-css-class-completion.JavaScriptLanguages": [
-		"javascript",
-		"javascriptreact",
-		"typescriptreact"
-	],
-	"[jsonc]": {
-		"editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
-	},
-	"html.format.wrapAttributes": "aligned-multiple",
+  //   "editor.formatOnSave": true,
+  //   "editor.formatOnPaste": true,
+  //   "editor.formatOnType": true,
+  //   "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "vscode.css-language-features"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "editor.insertSpaces": false,
+  "editor.smoothScrolling": true,
+  "cSpell.words": [
+    "animatetop",
+    "mydivheader",
+    "Nanum",
+    "Vujahday",
+    "Widgetstyle"
+  ],
+  "liveServer.settings.port": 5558,
+  "javascript.suggest.completeFunctionCalls": true,
+  "html-css-class-completion.JavaScriptLanguages": [
+    "javascript",
+    "javascriptreact",
+    "typescriptreact"
+  ],
+  // "[jsonc]": {
+  // 	"editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+  // },
+  "html.format.wrapAttributes": "aligned-multiple",
+  "editor.unfoldOnClickAfterEndOfLine": false,
+  "files.eol": "\n",
+  // "eslint.format.enable": true,
+  "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+  "editor.formatOnPaste": false, // required
+  "editor.formatOnType": false, // required
+  "editor.formatOnSave": true, // optional
+  "editor.formatOnSaveMode": "file", // required to format on save
+  "files.autoSave": "onFocusChange", // optional but recommended
+  "vs-code-prettier-eslint.prettierLast": false // set as "true" to run 'prettier' last not first
 }

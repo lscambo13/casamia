@@ -15,4 +15,4 @@ export function getLastUpdated(id) {
 		}).catch((e) => {
 			console.error('getLastUpdated', e);
 		});
-}
+};
