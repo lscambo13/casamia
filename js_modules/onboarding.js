@@ -59,7 +59,7 @@ export function askUserName() {
             'Proceed',
             null,
             null,
-            enableSubmitButton,
+            [enableSubmitButton, null],
             () => {
                 getDialogElementByID('Your name').setAttribute('maxlength', 17);
             },
