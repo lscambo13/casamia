@@ -11,6 +11,8 @@ export function getLastUpdated(id) {
 					.replaceAll('-', '.');
 				const element = document.getElementById(id);
 				element.innerHTML = `Version ${time}`;
+			}).catch((e) => {
+				console.error('getLastUpdated', e);
 			});
 		}).catch((e) => {
 			console.error('getLastUpdated', e);
