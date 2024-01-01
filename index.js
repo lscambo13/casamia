@@ -69,6 +69,7 @@ const wallpapersPanel = (str) => {
 		case 'close': {
 			document.title = document.title
 				.replace('Backgrounds', 'Search');
+			history.pushState({ loc: 'home' }, '', '?home');
 			bottomFilmRollContainer.classList.remove('animation_slide_up');
 			setTimeout(() => advancedSettingsButton.classList
 				.remove('animation_slide_right'), 350);
@@ -100,6 +101,7 @@ const wallpapersPanel = (str) => {
 			toggleArrows('show');
 			document.title = document.title
 				.replace('Search', 'Backgrounds');
+			history.pushState({ loc: 'backgrounds' }, '', '?backgrounds');
 			areWallpapersOpen = true;
 			break;
 		}
@@ -153,7 +155,6 @@ window.changeWallpaper = (event) => {
 	event.stopPropagation();
 	let selection = event.target.title;
 	if (!selection) selection = event.target.childNodes[1].title;
-	// console.log("clicks " + selection + event.target.childNodes[1].title);
 	const wall = getWallpaperDetails(selection);
 	setWallpaper(wall[0], wall[1]);
 	highlightSetWallpaper();
@@ -163,8 +164,6 @@ addEventListenerOnID('export-bookmarks-btn', 'click', exportBookmarks);
 addEventListenerOnID('import-bookmarks-btn', 'change', importBookmarks);
 addEventListenerOnID('download-wallpaper-btn', 'click', downloadWallpaper);
 addEventListenerOnID('toggle-favicons-btn', 'click', toggleFavicons);
-// addEventListenerOnID('toggle-clock-btn', 'click', toggleClock);
-// addEventListenerOnID('toggle-glow-btn', 'click', toggleGlow);
 addEventListenerOnID('update-username-btn', 'click', askUserName);
 addEventListenerOnID('update-customtext-btn', 'click', askCustomText);
 addEventListenerOnID('deep-search-btn', 'click', (event) => {
@@ -178,13 +177,11 @@ addEventListenerOnID('fetch-bookmarks-btn', 'click', fetchBookmarks);
 addEventListenerOnID('reset-bookmarks-btn', 'click', resetBookmarks);
 addEventListenerOnID('reset-all-btn', 'click', resetAll);
 
-// addEventListenerOnID('toggle-blur-cb', 'click', toggleBlur);
-// addEventListenerOnID('toggle-wallpaper-cb', 'click', toggleWallpaper);
-
 function openAdvancedSettings() {
 	wallpapersPanel('close');
+	history.pushState({ loc: 'settings' }, '', '?settings');
 	setTimeout(() => blurLevel(0), 420);
-	document.title = document.title.replace('Backgrounds', 'Settings');
+	document.title = document.title.replace('Search', 'Settings');
 	document.body.classList.add('justifySpaceBetween');
 	wrap.style.opacity = 0;
 	modal.style.display = 'block';
@@ -194,6 +191,7 @@ function openAdvancedSettings() {
 
 function closeAdvancedSettings() {
 	document.title = document.title.replace('Settings', 'Search');
+	history.pushState({ loc: 'home' }, '', '?home');
 	document.body.classList.remove('justifySpaceBetween');
 	wrap.style.opacity = 1;
 	modal.style.display = 'none';
@@ -228,14 +226,6 @@ window.addEventListener('resize', () => {
 	applyPreferences();
 	isItChristmas();
 });
-
-// window.addEventListener('hashchange', () => {
-// 	const url = document.URL;
-// 	if (!url.includes('#wallpapers')) {
-// 		wallpapersPanel('close');
-// 		closeAdvancedSettings();
-// 	}
-// });
 
 window.addEventListener('blur', () => {
 	hideLoading();
@@ -296,6 +286,25 @@ export const pressAndHold = () => {
 	};
 };
 
+const switchPage = () => {
+	window.addEventListener('popstate', (e) => {
+		if (areWallpapersOpen) {
+			wallpapersPanel('close');
+		} else if (areAdvancedSettingsOpen) {
+			closeAdvancedSettings();
+		} else if (!areWallpapersOpen && !areAdvancedSettingsOpen) {
+			history.go(-1);
+			console.log('cant go back anymore', -history.length - 1);
+		}
+	});
+
+	let page = window.location.href;
+	page = page.split('/?')[1];
+	if (page == 'settings') openAdvancedSettings();
+	else if (page == 'backgrounds') wallpapersPanel('open');
+	// else if (page == '' || page=='home') openAdvancedSettings();
+};
+
 const postOnboarding = () => {
 	const btnInstall = document.getElementById('btn-install');
 	let deferredPrompt;
@@ -305,13 +314,11 @@ const postOnboarding = () => {
 	wrap.style.opacity = 1;
 
 	fetchWallpapersList();
-	// setWallpaper(selectedWallpaper, color);
 	highlightSetWallpaper();
 
 	pressAndHold();
 	addEventListenerOnClass('clickable', 'keypress', clickToEnter);
 	addEventListenerOnClass('custom_bookmark', 'click', displayLoading);
-	// addEventListenerOnClass('cross', 'click', );
 	addEventListenerOnTag('select', 'change', saveDropdownPositions);
 
 	addEventListenerOnID('btn-install', 'click', (e) => {
@@ -334,6 +341,7 @@ const postOnboarding = () => {
 	getLastUpdated('version-preview');
 	isItChristmas();
 	loadSelectedWidgetStyle();
+	switchPage();
 };
 
 // Start ----------------------------------------------------------
