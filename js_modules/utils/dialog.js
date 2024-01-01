@@ -1,14 +1,20 @@
-export const showInputDialog = (
+let modalContainer;
+let modalSubmitButton;
+let modalCancelButton;
+let tickBoxField;
+let inputFields;
+
+const showInputDialog = (
 	title = null,
 	description = null,
-	inputFields = ['Input A', 'Input B'],
+	inputBoxes = ['Input A', 'Input B'],
 	submitButtonName = 'Submit',
 	cancelButtonName = 'Cancel',
 	tickBox = null,
 	listeners = [onInput = null, onChange = null],
 	onInit = null,
 ) => {
-	const modalContainer = document.getElementById('modalContainer');
+	modalContainer = document.getElementById('modalContainer');
 	if (modalContainer) modalContainer.remove();
 
 	if (title) {
@@ -42,10 +48,9 @@ export const showInputDialog = (
 				<form>
 		</div>
 	`);
-	inputFields.forEach((e) => {
+	inputBoxes.forEach((e) => {
 		let id = e.replaceAll(' ', '-').toLowerCase();
 		id = `MODAL-INPUT-${id}`;
-		console.log(id);
 		document.getElementById('modalButtonsBar')
 			.insertAdjacentHTML('beforebegin', `
 					<label
@@ -70,27 +75,32 @@ export const showInputDialog = (
 						<span>${tickBox}</span>
 					 </label>
 		`);
+		tickBoxField = document.getElementById('tickBoxField');
 	};
 
+	modalContainer = document.getElementById('modalContainer');
+	modalSubmitButton = document.getElementById('modalSubmitButton');
+	modalCancelButton = document.getElementById('modalCancelButton');
+	inputFields = document.getElementsByClassName('inputField');
+	document.body.style.overflow = 'hidden';
+
+	inputFields[0].focus();
+	if (!cancelButtonName) modalCancelButton.style.display = 'none';
+
 	const promise = new Promise((resolve, reject) => {
-		const modalContainer = document.getElementById('modalContainer');
-		const modalSubmitButton = document.getElementById('modalSubmitButton');
-		const modalCancelButton = document.getElementById('modalCancelButton');
-		const inputFields = document.getElementsByClassName('inputField');
-		let tickBoxField = document.getElementById('tickBoxField');
-		inputFields[0].focus();
 		modalContainer.style.paddingBlockStart = '4em';
-		if (!cancelButtonName) modalCancelButton.style.display = 'none';
+		modalContainer.style.opacity = '1';
 
 		const rejectModal = () => {
 			modalCancelButton.removeEventListener('click', rejectModal);
 			modalContainer.remove();
+			document.body.style.overflow = 'auto';
 			reject(Error(null));
 		};
 
 		const resolveModal = () => {
 			modalSubmitButton.removeEventListener('click', resolveModal);
-			if (tickBoxField) {
+			if (tickBox) {
 				tickBoxField.removeEventListener('change', listeners[1]);
 				tickBoxField = tickBoxField.checked;
 			}
@@ -103,6 +113,8 @@ export const showInputDialog = (
 				'inputValues': inputValues, 'checkboxChecked': tickBoxField,
 			};
 			modalContainer.remove();
+			document.body.style.overflow = 'auto';
+
 			console.log(result);
 			resolve(result);
 		};
@@ -112,7 +124,7 @@ export const showInputDialog = (
 		if (listeners[0]) {
 			for (const e of inputFields) e.addEventListener('input', listeners[0]);
 		}
-		if (listeners[1]) {
+		if (listeners[1] && tickBox) {
 			tickBoxField.addEventListener('change', listeners[1]);
 		}
 	});
@@ -121,11 +133,28 @@ export const showInputDialog = (
 	return promise;
 };
 
-export const getDialogElementByID = (id) => {
-	let element = id.replaceAll(' ', '-').toLowerCase();
-	element = `MODAL-INPUT-${element}`;
-	element = document.getElementById(element);
+// export const getDialogElementByID = (id) => {
+// 	let element = id.replaceAll(' ', '-').toLowerCase();
+// 	element = `MODAL-INPUT-${element}`;
+// 	element = document.getElementById(element);
+// 	return element;
+// };
 
-	return element;
+export const Dialog = {
+	show: showInputDialog,
+	getSubmitButton: () => {
+		return modalSubmitButton;
+	},
+	getCancelButton: () => {
+		return modalCancelButton;
+	},
+	getInputFields: () => {
+		return inputFields;
+	},
+	// getInputField: (n) => {
+	// 	return inputFields[n];
+	// },
+	getCheckboxField: (n) => {
+		return tickBoxField;
+	},
 };
-

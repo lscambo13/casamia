@@ -1,18 +1,15 @@
-// import { postOnboarding } from '../index.js';
 import { DEF_PREF, DEF_WALLPAPER } from './constants.js';
 import { updateUserNamePreview } from './load_preferences.js';
 import { refreshGreeting } from './preferences.js';
 import { updateUserNameText } from './strings.js';
-import { getDialogElementByID, showInputDialog } from './utils/dialog.js';
+import { Dialog } from './utils/dialog.js';
 
 export function askUserName() {
     let userName = localStorage.getItem('userName');
-    // const onBoarding = localStorage.getItem('onBoarding');
 
     const enableSubmitButton = () => {
         const button = document.getElementById('modalSubmitButton');
         const input = document.getElementsByClassName('inputField');
-
         for (const e of input) {
             if (e.value.length > 0) {
                 button.disabled = false;
@@ -24,7 +21,7 @@ export function askUserName() {
     };
 
     if (userName) {
-        showInputDialog(
+        Dialog.show(
             'Update your name',
             updateUserNameText,
             ['Change name to'],
@@ -33,9 +30,8 @@ export function askUserName() {
             null,
             [enableSubmitButton, null],
             () => {
-                getDialogElementByID('Change name to')
-                    .setAttribute('maxlength', 17);
-                getDialogElementByID('Change name to').value = userName;
+                Dialog.getInputFields()[0].setAttribute('maxlength', 17);
+                Dialog.getInputFields()[0].value = userName;
             },
         ).then((res) => {
             userName = res.inputValues[0];
@@ -51,7 +47,7 @@ export function askUserName() {
     };
 
     if (!userName) {
-        const onBoardingInProgress = showInputDialog(
+        const onBoardingInProgress = Dialog.show(
             'Welcome to Casa Mia',
             `Hi! We are so excited to see you here.
             Please fill out the following details before moving forward. `,
@@ -61,7 +57,7 @@ export function askUserName() {
             null,
             [enableSubmitButton, null],
             () => {
-                getDialogElementByID('Your name').setAttribute('maxlength', 17);
+                Dialog.getInputFields()[0].setAttribute('maxlength', 17);
             },
         );
         onBoardingInProgress.then((res) => {

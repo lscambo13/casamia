@@ -1,4 +1,4 @@
-import { getDialogElementByID, showInputDialog } from './utils/dialog.js';
+import { Dialog } from './utils/dialog.js';
 import { enableSubmitButton } from './utils/enableSubmitButton.js';
 import { crossDisplay } from './utils/toggleDisplay.js';
 
@@ -106,24 +106,24 @@ export function downloadBookmarks(filename, text) {
 }
 
 export function editBookmark(event) {
+    // console.log('click ' + event.target.parentNode.id);
     event.preventDefault();
-    console.log('click ' + event.target.parentNode.id);
     event.stopPropagation();
     const targetElement = event.target.parentNode;
 
     const onChange = () => {
-        const tick = document.getElementById('tickBoxField');
-        const modalSubmitButton = document.getElementById('modalSubmitButton');
-        const inputFields = document.getElementsByClassName('inputField');
+        const checkbox = Dialog.getCheckboxField();
+        const modalSubmitButton = Dialog.getSubmitButton();
+        const inputFields = Dialog.getInputFields();
 
-        if (tick.checked) {
+        if (checkbox.checked) {
             modalSubmitButton.textContent = 'Delete';
             modalSubmitButton.classList.add('deleteButton');
             for (const i of inputFields) {
                 i.disabled = true;
             }
             modalSubmitButton.disabled = false;
-        } else if (!tick.checked) {
+        } else if (!checkbox.checked) {
             modalSubmitButton.textContent = 'Save';
             modalSubmitButton.classList.remove('deleteButton');
             for (const i of inputFields) {
@@ -134,7 +134,7 @@ export function editBookmark(event) {
 
     const details = getBookmarkDetailsFromLocalStorage(targetElement.id);
 
-    showInputDialog('Edit bookmark',
+    Dialog.show('Edit bookmark',
         null,
         ['Name', 'Address'],
         'Save',
@@ -142,9 +142,9 @@ export function editBookmark(event) {
         'Delete this bookmark',
         [enableSubmitButton, onChange],
         () => {
-            getDialogElementByID('Name').setAttribute('maxlength', '4');
-            getDialogElementByID('Name').value = details[1];
-            getDialogElementByID('Address').value = details[2];
+            Dialog.getInputFields()[0].setAttribute('maxlength', '4');
+            Dialog.getInputFields()[0].value = details[1];
+            Dialog.getInputFields()[1].value = details[2];
         },
     ).then((res) => {
         if (res.checkboxChecked) {
@@ -153,13 +153,13 @@ export function editBookmark(event) {
             return;
         }
 
-        targetElement.href = res.inputValues[1];
+        targetElement.href = res.inputValues[1].replaceAll(' ', '');
         targetElement.firstChild.innerHTML = res.inputValues[0];
 
         editBookmarkInLocalStorage(
             targetElement.id,
             res.inputValues[0],
-            res.inputValues[1],
+            res.inputValues[1].replaceAll(' ', ''),
         );
     }).catch((e) => console.log(e));
 
