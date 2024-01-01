@@ -229,13 +229,13 @@ window.addEventListener('resize', () => {
 	isItChristmas();
 });
 
-window.addEventListener('hashchange', () => {
-	const url = document.URL;
-	if (!url.includes('#wallpapers')) {
-		wallpapersPanel('close');
-		closeAdvancedSettings();
-	}
-});
+// window.addEventListener('hashchange', () => {
+// 	const url = document.URL;
+// 	if (!url.includes('#wallpapers')) {
+// 		wallpapersPanel('close');
+// 		closeAdvancedSettings();
+// 	}
+// });
 
 window.addEventListener('blur', () => {
 	hideLoading();
