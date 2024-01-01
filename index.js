@@ -59,6 +59,8 @@ const modal = document.getElementById('advanced-settings-modal');
 const modalBackground =
 	document.getElementById('advanced-settings-modal-background-overlay');
 
+let areAdvancedSettingsOpen = false;
+
 let areWallpapersOpen = false;
 let timeout;
 const wallpapersPanel = (str) => {
@@ -187,6 +189,7 @@ function openAdvancedSettings() {
 	wrap.style.opacity = 0;
 	modal.style.display = 'block';
 	modalBackground.style.display = 'block';
+	areAdvancedSettingsOpen = true;
 };
 
 function closeAdvancedSettings() {
@@ -196,6 +199,7 @@ function closeAdvancedSettings() {
 	modal.style.display = 'none';
 	modalBackground.style.display = 'none';
 	setTimeout(() => blurLevel(1), 100);
+	areAdvancedSettingsOpen = false;
 };
 
 addEventListenerOnClass('modal-close-btn', 'click', closeAdvancedSettings);
@@ -264,7 +268,8 @@ export const pressAndHold = () => {
 		const x = event.target.classList;
 		if (x.contains('widget-slide') ||
 			x.contains('thumbnail') ||
-			x.contains('flex-wallpaper-horizontal')) return;
+			x.contains('flex-wallpaper-horizontal') ||
+			areAdvancedSettingsOpen) return;
 
 		timerId = setInterval(() => {
 			if (areWallpapersOpen) wallpapersPanel('close', event);
