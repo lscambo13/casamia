@@ -387,7 +387,7 @@ body::-webkit-scrollbar {
 	outline: 0;
 	/* color: var(--secondary-color); */
 	/* margin-inline-end: 0; */
-	caret-color: var(--primary-color);
+	/* caret-color: gray; */
 	/* transition: .2s;*/
 }
 
@@ -489,6 +489,7 @@ input::-webkit-search-cancel-button:hover {
 .searchbox-style-glass>:nth-child(1) {
 	color: #ffffff92;
 	transition: 125ms;
+	caret-color: white;
 }
 
 .searchbox-style-glass>:nth-child(2)>i {
@@ -536,6 +537,7 @@ input::-webkit-search-cancel-button:hover {
 
 .searchbox-style-light>:nth-child(1) {
 	color: #00000092;
+	caret-color: black;
 	transition: 125ms;
 }
 
@@ -584,6 +586,7 @@ input::-webkit-search-cancel-button:hover {
 }
 
 .searchbox-style-dark>:nth-child(1) {
+	caret-color: white;
 	color: #ffffff92;
 	transition: 125ms;
 }
