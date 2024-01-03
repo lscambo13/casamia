@@ -4,6 +4,7 @@ import {
 import { resetAll, resetBookmarks } from './preferences.js';
 import { cliUnexpectedCmdText } from './strings.js';
 import { fetchBookmarks } from './utils.js';
+import { genericAlert } from './utils/alertDialog.js';
 import { downloadFile } from './utils/downloadFile.js';
 
 
@@ -32,7 +33,8 @@ function searchViaCli(url, searchTerm) {
         // value = encodeURIComponent(value);
         const o = window.open(`${url}${value}`, '_blank');
         if (o == null) {
-            alert(`Allow pop-ups for this feature to work properly`);
+            genericAlert('Information',
+                'Allow pop-ups for this feature to work properly.');
             return;
         };
     });
@@ -50,14 +52,14 @@ export function cliParse(input) {
         case 'reset':
             if (input[1] == 'bookmarks') resetBookmarks();
             else if (input[1] == 'all') resetAll();
-            else alert(cliUnexpectedCmdText);
+            else genericAlert('Error', cliUnexpectedCmdText);
             break;
         case 'fetch default':
             fetchBookmarks();
             break;
         case 'dl':
             if (input[1]) parseDL(input[1]);
-            else alert(cliUnexpectedCmdText);
+            else genericAlert('Error', cliUnexpectedCmdText);
             break;
         case 'g':
             searchViaCli(GOOGLE_SEARCH_DOMAIN, forBatchSearch);
@@ -69,7 +71,7 @@ export function cliParse(input) {
             searchViaCli(DUCKDUCKGO_SEARCH_DOMAIN, forBatchSearch);
             break;
         default:
-            alert(cliUnexpectedCmdText);
+            genericAlert('Error', cliUnexpectedCmdText);
     };
 }
 

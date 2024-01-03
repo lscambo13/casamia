@@ -51,6 +51,7 @@ import { isItChristmas } from './js_modules/utils/letItSnow.js';
 import { InputDialog } from './js_modules/utils/inputDialog.js';
 import { isTouchDevice } from './js_modules/utils/isTouchDevice.js';
 import { enableSubmitButton } from './js_modules/utils/enableSubmitButton.js';
+import { genericAlert } from './js_modules/utils/alertDialog.js';
 
 const bottomFilmRollContainer = document.getElementById('wallpapers');
 const wrap = document.getElementById('wrap');
@@ -372,7 +373,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		preOnboarding().then(() => {
 			if (isTouchDevice()) {
 				setTimeout(() => {
-					alert('Press and hold anywhere to open settings.');
+					genericAlert('Information',
+						'Press and hold on empty area to open settings.');
 				}, 5000);
 			}
 			postOnboarding();

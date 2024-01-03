@@ -10,6 +10,9 @@ import {
     cliParse,
 } from './cli.js';
 import { isUrlValid } from './validators.js';
+import { genericAlert } from './utils/alertDialog.js';
+
+const MSG = 'You must enter a search query to continue.';
 
 function loadSearchDomain(input) {
     let domain = localStorage.getItem('default-search-url');
@@ -35,7 +38,7 @@ export function webSearch() {
             window.open(url, '_self');
         } else cliParse(input);
     } else {
-        alert('You need to enter a search query.');
+        genericAlert('Error', MSG);
     }
 }
 
@@ -47,7 +50,7 @@ export function movies() {
         const url = EXT_SEARCH_DOMAIN + input + '/Movies/time/desc/1/';
         window.open(url);
     } else {
-        alert('You need to enter a search query.');
+        genericAlert('Error', MSG);
     }
 }
 
@@ -58,7 +61,7 @@ export function tv() {
         const url = EXT_SEARCH_DOMAIN + input + '/TV/size/desc/1/';
         window.open(url);
     } else {
-        alert('You need to enter a search query.');
+        genericAlert('Error', MSG);
     }
 }
 
@@ -69,7 +72,7 @@ export function games() {
         const url = EXT_SEARCH_DOMAIN + input + '/Games/time/desc/1/';
         window.open(url);
     } else {
-        alert('You need to enter a search query.');
+        genericAlert('Error', MSG);
     }
 }
 export function ebooks() {
@@ -79,7 +82,7 @@ export function ebooks() {
         const url = EXT_SEARCH_DOMAIN + input + '/Other/seeders/desc/1/';
         window.open(url);
     } else {
-        alert('You need to enter a search query.');
+        genericAlert('Error', MSG);
     }
 };
 
@@ -91,6 +94,7 @@ export function switchToCLI(event) {
     } else {
         btnIcon.className = currentIcon;
     }
+    console.log(event.target.value);
 };
 
 export function enterToSearch(event) {
