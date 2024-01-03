@@ -122,7 +122,7 @@ window.createNewBookmark = () => {
 		'Save',
 		undefined,
 		null,
-		[enableSubmitButton, null],
+		[() => enableSubmitButton(event, true), null],
 		() => {
 			const label = Dialog.getInputFields()[0];
 			label.setAttribute('maxlength', 4);
@@ -250,7 +250,7 @@ addEventListenerOnID('settings_button', 'click', (event) => {
 export const pressAndHold = () => {
 	const target = document.getElementsByTagName('body')[0];
 	let timerId;
-	const timer = 250;
+	let timer = 250;
 	const clearTimer = () => {
 		clearInterval(timerId);
 		timerId = null;
@@ -261,13 +261,17 @@ export const pressAndHold = () => {
 		if (x.contains('widget-slide') ||
 			x.contains('thumbnail') ||
 			x.contains('custom_bookmark') ||
+			x.contains('advanced-settings-button-icon') ||
 			x.contains('flex-wallpaper-horizontal') ||
 			areAdvancedSettingsOpen ||
 			x.contains('searchTerm')) return;
 
+		if (areWallpapersOpen) timer = 1;
+		else timer = 250;
+
 		timerId = setInterval(() => {
-			if (areWallpapersOpen) wallpapersPanel('close', event);
-			else if (!areWallpapersOpen) wallpapersPanel('open', event);
+			if (areWallpapersOpen) wallpapersPanel('close');
+			else if (!areWallpapersOpen) wallpapersPanel('open');
 			clearTimer();
 		}, timer);
 	};
@@ -280,14 +284,15 @@ export const pressAndHold = () => {
 	target.addEventListener('touchend', clearTimer);
 	target.addEventListener('touchcancel', clearTimer);
 
-	return () => {
-		target.removeEventListener('mousedown', clickEvent);
-		target.removeEventListener('mouseup', clearTimer);
-		target.removeEventListener('mouseout', clearTimer);
-		target.removeEventListener('touchstart', clickEvent);
-		target.removeEventListener('touchend', clearTimer);
-		target.removeEventListener('touchcancel', clearTimer);
-	};
+	// return () => {
+	// 	target.removeEventListener('mousedown', clickEvent);
+	// 	target.removeEventListener('mouseup', clearTimer);
+	// 	target.removeEventListener('mouseout', clearTimer);
+	// 	console.log('un-focuss', timerId);
+	// 	target.removeEventListener('touchstart', clickEvent);
+	// 	target.removeEventListener('touchend', clearTimer);
+	// 	target.removeEventListener('touchcancel', clearTimer);
+	// };
 };
 
 const switchPage = () => {
@@ -341,7 +346,10 @@ const postOnboarding = () => {
 		btnInstall.style.display = 'block';
 	});
 	scrollToBottom();
-	// focusSearchBar('auto');
+	if (sessionStorage.getItem('focus') == 'on') {
+		document.getElementById('searchTerm').focus();
+		document.getElementById('searchTerm').click();
+	}
 	getLastUpdated('version-preview');
 	isItChristmas();
 	loadSelectedWidgetStyle();

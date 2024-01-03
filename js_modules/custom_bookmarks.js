@@ -140,7 +140,7 @@ export function editBookmark(event) {
         'Save',
         'Cancel',
         'Delete this bookmark',
-        [enableSubmitButton, onChange],
+        [() => enableSubmitButton(event, true), onChange],
         () => {
             Dialog.getInputFields()[0].setAttribute('maxlength', '4');
             Dialog.getInputFields()[0].value = details[1];

@@ -17,6 +17,8 @@ const showInputDialog = (
 	modalContainer = document.getElementById('modalContainer');
 	if (modalContainer) modalContainer.remove();
 
+	document.activeElement.blur();
+
 	if (title) {
 		title = `<h3 id="modalTitle" class="modalTitle">${title}</h3>`;
 	} else (title = '');
@@ -57,7 +59,7 @@ const showInputDialog = (
 					 class="label"
 					 for="${id}">${e}</label>
 					<input
-					 class="inputField"
+					 class="modalInputField"
 					 type="text"
 					 id="${id}">
 		`);
@@ -81,7 +83,7 @@ const showInputDialog = (
 	modalContainer = document.getElementById('modalContainer');
 	modalSubmitButton = document.getElementById('modalSubmitButton');
 	modalCancelButton = document.getElementById('modalCancelButton');
-	inputFields = document.getElementsByClassName('inputField');
+	inputFields = document.getElementsByClassName('modalInputField');
 	document.body.style.overflow = 'hidden';
 
 	inputFields[0].focus();
@@ -133,13 +135,6 @@ const showInputDialog = (
 	return promise;
 };
 
-// export const getDialogElementByID = (id) => {
-// 	let element = id.replaceAll(' ', '-').toLowerCase();
-// 	element = `MODAL-INPUT-${element}`;
-// 	element = document.getElementById(element);
-// 	return element;
-// };
-
 export const Dialog = {
 	show: showInputDialog,
 	getSubmitButton: () => {
@@ -151,9 +146,6 @@ export const Dialog = {
 	getInputFields: () => {
 		return inputFields;
 	},
-	// getInputField: (n) => {
-	// 	return inputFields[n];
-	// },
 	getCheckboxField: (n) => {
 		return tickBoxField;
 	},

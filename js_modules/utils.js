@@ -108,7 +108,3 @@ export function changeSlide(element, int) {
 		w.scrollLeft = newPos;
 	}
 };
-
-export function changeWidgetStyle() {
-
-};

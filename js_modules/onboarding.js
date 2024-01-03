@@ -3,22 +3,23 @@ import { updateUserNamePreview } from './load_preferences.js';
 import { refreshGreeting } from './preferences.js';
 import { updateUserNameText } from './strings.js';
 import { Dialog } from './utils/dialog.js';
+import { enableSubmitButton } from './utils/enableSubmitButton.js';
 
 export function askUserName() {
     let userName = localStorage.getItem('userName');
 
-    const enableSubmitButton = () => {
-        const button = document.getElementById('modalSubmitButton');
-        const input = document.getElementsByClassName('inputField');
-        for (const e of input) {
-            if (e.value.length > 0) {
-                button.disabled = false;
-            } else {
-                button.disabled = true;
-                return;
-            }
-        }
-    };
+    // const enableSubmitButton = () => {
+    //     const button = document.getElementById('modalSubmitButton');
+    //     const input = document.getElementsByClassName('inputField');
+    //     for (const e of input) {
+    //         if (e.value.length > 0) {
+    //             button.disabled = false;
+    //         } else {
+    //             button.disabled = true;
+    //             return;
+    //         }
+    //     }
+    // };
 
     if (userName) {
         Dialog.show(

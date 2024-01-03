@@ -6,6 +6,8 @@ import {
 } from './constants.js';
 import { displayClock, refreshGreeting } from './preferences.js';
 import { fixBackgroundBlurOnResize } from './utils.js';
+import { Dialog } from './utils/dialog.js';
+import { enableSubmitButton } from './utils/enableSubmitButton.js';
 import { intersectionObserver } from './utils/intersectionObserver.js';
 
 const PREF_MAP = {
@@ -85,29 +87,20 @@ function displayFooter(value) {
 };
 
 export function focusSearchBar(value) {
-	const searchbar = document.getElementById('searchTerm');
+	sessionStorage.setItem('focus', value);
 
-	switch (value) {
-		case 'off': {
-			// searchbar.focus();
-			// sessionStorage.setItem('focus', 'off');
-			break;
-		};
-		case 'on': {
-			searchbar.focus();
-			searchbar.click();
-			// sessionStorage.setItem('focus', 'on');
-			break;
-		};
-		case 'auto': {
-			// if (sessionStorage.getItem('focus') == 'on'); {
-			// 	searchbar.focus();
-			// 	searchbar.click();
-			// }
-			// console.log(sessionStorage.getItem('focus'));
-			break;
-		}
-	}
+	// const searchbar = document.getElementById('searchTerm');
+	// switch (value) {
+	// 	case 'off': {
+	// 		// searchbar.focus();
+	// 		// sessionStorage.setItem('focus', 'off');
+	// 		break;
+	// 	};
+	// 	case 'on': {
+	// 		// searchbar.focus();
+	// 		// searchbar.click();
+	// 		break;
+	// 	};
 };
 
 function displayWidget(value) {
@@ -196,7 +189,7 @@ function defaultWidget(value) {
 		if (customText == null) {
 			localStorage.setItem('customWidgetText', DEF_CUSTOM_TEXT);
 			customText = localStorage.getItem('customWidgetText');
-			customText = askCustomText();
+			askCustomText();
 		}
 		applyText(customText);
 		// return customText;
@@ -246,22 +239,46 @@ function defaultWidget(value) {
 
 export function askCustomText() {
 	const savedText = localStorage.getItem('customWidgetText');
-	const customText = prompt('Enter custom text...', savedText);
-	if (customText == null) return;
-	localStorage.setItem('customWidgetText', customText);
-	applyText(customText);
-	updateCustomTextPreview();
-	return customText;
+	Dialog.show(
+		'Custom widget text',
+		'Enter text you want to set as the main widget.',
+		['Custom text'],
+		'Save',
+		'Cancel',
+		null,
+		[enableSubmitButton, null],
+		() => {
+			Dialog.getInputFields()[0].value = savedText;
+		},
+	).then((res) => {
+		localStorage.setItem('customWidgetText', res.inputValues[0]);
+		applyText(res.inputValues[0]);
+		updateCustomTextPreview();
+	}).catch((e) => {
+		console.error(e);
+	});
 }
 
 export function askCustomDomain() {
 	const savedDomain = localStorage.getItem('customDomain');
-	const customDomain = prompt('Enter custom domain...', savedDomain);
-	if (customDomain == null) return;
-	localStorage.setItem('customDomain', customDomain);
-	applyDomain(customDomain);
-	updateCustomDomainPreview();
-	return customDomain;
+	Dialog.show(
+		'Custom widget text',
+		'Enter text you want to set as the main widget.',
+		['Custom text'],
+		'Save',
+		'Cancel',
+		null,
+		[enableSubmitButton, null],
+		() => {
+			Dialog.getInputFields()[0].value = savedDomain;
+		},
+	).then((res) => {
+		localStorage.setItem('customDomain', res.inputValues[0]);
+		applyDomain(res.inputValues[0]);
+		updateCustomDomainPreview();
+	}).catch((e) => {
+		console.error(e);
+	});
 }
 
 // function widgetStyle() { };
@@ -300,7 +317,7 @@ export function defaultSearchEngine(value) {
 		if (customDomain == null) {
 			localStorage.setItem('customDomain', GOOGLE_SEARCH_DOMAIN);
 			customDomain = localStorage.getItem('customDomain');
-			customDomain = askCustomDomain();
+			askCustomDomain();
 		}
 		applyDomain(customDomain);
 		// return customText;
