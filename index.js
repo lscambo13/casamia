@@ -183,7 +183,8 @@ function openAdvancedSettings() {
 	setTimeout(() => blurLevel(0), 420);
 	document.title = document.title.replace('Search', 'Settings');
 	document.body.classList.add('justifySpaceBetween');
-	wrap.style.opacity = 0;
+	// wrap.style.opacity = 0;
+	wrap.style.display = 'none';
 	modal.style.display = 'block';
 	modalBackground.style.display = 'block';
 	areAdvancedSettingsOpen = true;
@@ -193,7 +194,8 @@ function closeAdvancedSettings() {
 	document.title = document.title.replace('Settings', 'Search');
 	history.pushState({ loc: 'home' }, '', '?home');
 	document.body.classList.remove('justifySpaceBetween');
-	wrap.style.opacity = 1;
+	wrap.style.display = 'block';
+	// wrap.style.opacity = 1;
 	modal.style.display = 'none';
 	modalBackground.style.display = 'none';
 	setTimeout(() => blurLevel(1), 100);
@@ -339,7 +341,7 @@ const postOnboarding = () => {
 		btnInstall.style.display = 'block';
 	});
 	scrollToBottom();
-	focusSearchBar('auto');
+	// focusSearchBar('auto');
 	getLastUpdated('version-preview');
 	isItChristmas();
 	loadSelectedWidgetStyle();

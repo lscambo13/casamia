@@ -90,18 +90,20 @@ export function focusSearchBar(value) {
 	switch (value) {
 		case 'off': {
 			// searchbar.focus();
-			sessionStorage.setItem('focus', 'off');
+			// sessionStorage.setItem('focus', 'off');
 			break;
 		};
 		case 'on': {
-			sessionStorage.setItem('focus', 'on');
+			searchbar.focus();
+			searchbar.click();
+			// sessionStorage.setItem('focus', 'on');
 			break;
 		};
 		case 'auto': {
-			if (sessionStorage.getItem('focus') == 'on'); {
-				searchbar.focus();
-				searchbar.click();
-			}
+			// if (sessionStorage.getItem('focus') == 'on'); {
+			// 	searchbar.focus();
+			// 	searchbar.click();
+			// }
 			// console.log(sessionStorage.getItem('focus'));
 			break;
 		}
