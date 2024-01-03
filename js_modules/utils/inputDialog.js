@@ -14,35 +14,35 @@ const showInputDialog = (
 	listeners = [onInput = null, onChange = null],
 	onInit = null,
 ) => {
-	modalContainer = document.getElementById('modalContainer');
+	modalContainer = document.getElementById('inputDialogContainer');
 	if (modalContainer) modalContainer.remove();
 
 	document.activeElement.blur();
 
 	if (title) {
-		title = `<h3 id="modalTitle" class="modalTitle">${title}</h3>`;
+		title = `<h3 id="inputDialogTitle" class="modalTitle">${title}</h3>`;
 	} else (title = '');
 	if (description) {
 		description = `
-		<h4 id="modalDescription" class="modalDescription">${description}</h4>
+		<h4 id="inputDialogDescription" class="modalDescription">${description}</h4>
 	`;
 	} else (description = '');
 
 	document.body
 		.insertAdjacentHTML('afterbegin', `
-		<div id="modalContainer" class="modalContainer disable-select">
+		<div id="inputDialogContainer" class="modalContainer disable-select">
 			<form autocomplete="off" action="#" class="modal">
 				${title}
 				${description}
-				<div id="modalButtonsBar" class="modalButtonsBar">
+				<div id="inputDialogButtonsBar" class="modalButtonsBar">
 					<button
-					 id="modalSubmitButton"
+					 id="inputDialogSubmitButton"
 					 class="mainButton button"
 					 disabled = "true"
 					 onclick=""
 					 type="submit">${submitButtonName}</button>
 					<button
-					 id="modalCancelButton"
+					 id="inputDialogCancelButton"
 					 class="button"
 					 onclick=""
 					 type="button">${cancelButtonName}</button>
@@ -53,7 +53,7 @@ const showInputDialog = (
 	inputBoxes.forEach((e) => {
 		let id = e.replaceAll(' ', '-').toLowerCase();
 		id = `MODAL-INPUT-${id}`;
-		document.getElementById('modalButtonsBar')
+		document.getElementById('inputDialogButtonsBar')
 			.insertAdjacentHTML('beforebegin', `
 					<label
 					 class="label"
@@ -65,7 +65,7 @@ const showInputDialog = (
 		`);
 	});
 	if (tickBox) {
-		document.getElementById('modalButtonsBar')
+		document.getElementById('inputDialogButtonsBar')
 			.insertAdjacentHTML('beforebegin', `
 					<label
 					 class="label"
@@ -80,9 +80,9 @@ const showInputDialog = (
 		tickBoxField = document.getElementById('tickBoxField');
 	};
 
-	modalContainer = document.getElementById('modalContainer');
-	modalSubmitButton = document.getElementById('modalSubmitButton');
-	modalCancelButton = document.getElementById('modalCancelButton');
+	modalContainer = document.getElementById('inputDialogContainer');
+	modalSubmitButton = document.getElementById('inputDialogSubmitButton');
+	modalCancelButton = document.getElementById('inputDialogCancelButton');
 	inputFields = document.getElementsByClassName('modalInputField');
 	document.body.style.overflow = 'hidden';
 
