@@ -1185,7 +1185,7 @@ input::-webkit-search-cancel-button:hover {
 	}
 }
 
-@media (hover: none) {
+@media (pointer: coarse) {
 	#settings_button {
 		display: none;
 	}
