@@ -4,7 +4,7 @@ let modalCancelButton;
 let tickBoxField;
 let inputFields;
 
-const showInputInputDialog = (
+const showInputDialog = (
 	title = null,
 	description = null,
 	inputBoxes = ['Input A', 'Input B'],
@@ -136,7 +136,7 @@ const showInputInputDialog = (
 };
 
 export const InputDialog = {
-	show: showInputInputDialog,
+	show: showInputDialog,
 	getSubmitButton: () => {
 		return modalSubmitButton;
 	},
