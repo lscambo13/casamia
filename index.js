@@ -247,8 +247,8 @@ addEventListenerOnID('settings_button', 'click', (event) => {
 	else if (!areWallpapersOpen) wallpapersPanel('open', event);
 });
 
-export const pressAndHold = () => {
-	const target = document.getElementsByTagName('body')[0];
+const pressAndHold = () => {
+	const target = document.getElementById('wrap');
 	let timerId;
 	let timer = 250;
 	const clearTimer = () => {
@@ -257,14 +257,17 @@ export const pressAndHold = () => {
 	};
 
 	const clickEvent = (event) => {
-		const x = event.target.classList;
-		if (x.contains('widget-slide') ||
-			x.contains('thumbnail') ||
-			x.contains('custom_bookmark') ||
-			x.contains('advanced-settings-button-icon') ||
-			x.contains('flex-wallpaper-horizontal') ||
+		const x = event.target.classList.value;
+		console.log(x);
+		if (x.includes('widget-slide') ||
+			x.includes('thumbnail') ||
+			x.includes('cross') ||
+			x.includes('fa-plus') ||
+			x.includes('custom_bookmark') ||
+			x.includes('advanced-settings-button-icon') ||
+			x.includes('flex-wallpaper-horizontal') ||
 			areAdvancedSettingsOpen ||
-			x.contains('searchTerm')) return;
+			x.includes('searchTerm')) return;
 
 		if (areWallpapersOpen) timer = 1;
 		else timer = 250;
@@ -284,15 +287,15 @@ export const pressAndHold = () => {
 	target.addEventListener('touchend', clearTimer);
 	target.addEventListener('touchcancel', clearTimer);
 
-	// return () => {
-	// 	target.removeEventListener('mousedown', clickEvent);
-	// 	target.removeEventListener('mouseup', clearTimer);
-	// 	target.removeEventListener('mouseout', clearTimer);
-	// 	console.log('un-focuss', timerId);
-	// 	target.removeEventListener('touchstart', clickEvent);
-	// 	target.removeEventListener('touchend', clearTimer);
-	// 	target.removeEventListener('touchcancel', clearTimer);
-	// };
+	return () => {
+		target.removeEventListener('mousedown', clickEvent);
+		target.removeEventListener('mouseup', clearTimer);
+		target.removeEventListener('mouseout', clearTimer);
+		target.removeEventListener('touchstart', clickEvent);
+		target.removeEventListener('touchend', clearTimer);
+		target.removeEventListener('touchcancel', clearTimer);
+		console.log('un-focuss', timerId);
+	};
 };
 
 const switchPage = () => {
