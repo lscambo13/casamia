@@ -248,7 +248,7 @@ addEventListenerOnID('settings_button', 'click', (event) => {
 export const pressAndHold = () => {
 	const target = document.getElementsByTagName('body')[0];
 	let timerId;
-	const timer = 200;
+	const timer = 250;
 	const clearTimer = () => {
 		clearInterval(timerId);
 		timerId = null;
@@ -258,8 +258,10 @@ export const pressAndHold = () => {
 		const x = event.target.classList;
 		if (x.contains('widget-slide') ||
 			x.contains('thumbnail') ||
+			x.contains('custom_bookmark') ||
 			x.contains('flex-wallpaper-horizontal') ||
-			areAdvancedSettingsOpen) return;
+			areAdvancedSettingsOpen ||
+			x.contains('searchTerm')) return;
 
 		timerId = setInterval(() => {
 			if (areWallpapersOpen) wallpapersPanel('close', event);
