@@ -2,7 +2,7 @@ import { DEF_PREF, DEF_WALLPAPER } from './constants.js';
 import { updateUserNamePreview } from './load_preferences.js';
 import { refreshGreeting } from './preferences.js';
 import { updateUserNameText } from './strings.js';
-import { Dialog } from './utils/dialog.js';
+import { InputDialog } from './utils/inputDialog.js';
 import { enableSubmitButton } from './utils/enableSubmitButton.js';
 
 export function askUserName() {
@@ -22,7 +22,7 @@ export function askUserName() {
     // };
 
     if (userName) {
-        Dialog.show(
+        InputDialog.show(
             'Update your name',
             updateUserNameText,
             ['Change name to'],
@@ -31,8 +31,8 @@ export function askUserName() {
             null,
             [enableSubmitButton, null],
             () => {
-                Dialog.getInputFields()[0].setAttribute('maxlength', 17);
-                Dialog.getInputFields()[0].value = userName;
+                InputDialog.getInputFields()[0].setAttribute('maxlength', 17);
+                InputDialog.getInputFields()[0].value = userName;
             },
         ).then((res) => {
             userName = res.inputValues[0];
@@ -48,7 +48,7 @@ export function askUserName() {
     };
 
     if (!userName) {
-        const onBoardingInProgress = Dialog.show(
+        const onBoardingInProgress = InputDialog.show(
             'Welcome to Casa Mia',
             `Hi! We are so excited to see you here.
             Please fill out the following details before moving forward. `,
@@ -58,7 +58,7 @@ export function askUserName() {
             null,
             [enableSubmitButton, null],
             () => {
-                Dialog.getInputFields()[0].setAttribute('maxlength', 17);
+                InputDialog.getInputFields()[0].setAttribute('maxlength', 17);
             },
         );
         onBoardingInProgress.then((res) => {

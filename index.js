@@ -48,7 +48,7 @@ import { saveDropdownPositions } from './js_modules/save_preferences.js';
 import { getLastUpdated } from './js_modules/utils/getLastUpdated.js';
 import { blurLevel } from './js_modules/utils/blurLevel.js';
 import { isItChristmas } from './js_modules/utils/letItSnow.js';
-import { Dialog } from './js_modules/utils/dialog.js';
+import { InputDialog } from './js_modules/utils/inputDialog.js';
 import { isTouchDevice } from './js_modules/utils/isTouchDevice.js';
 import { enableSubmitButton } from './js_modules/utils/enableSubmitButton.js';
 
@@ -109,26 +109,26 @@ const wallpapersPanel = (str) => {
 };
 
 window.createNewBookmark = () => {
-	const dialogTitle = 'Add new bookmark';
-	const dialogDescription = `
+	const inputDialogTitle = 'Add new bookmark';
+	const inputDialogDescription = `
 	You may only use upto four letters as the bookmark name.`;
 	const bookmarkLabel = 'Bookmark name';
 	const bookmarkAddress = 'Link to website';
 
-	Dialog.show(
-		dialogTitle,
-		dialogDescription,
+	InputDialog.show(
+		inputDialogTitle,
+		inputDialogDescription,
 		[bookmarkLabel, bookmarkAddress],
 		'Save',
 		undefined,
 		null,
 		[() => enableSubmitButton(event, true), null],
 		() => {
-			const label = Dialog.getInputFields()[0];
+			const label = InputDialog.getInputFields()[0];
 			label.setAttribute('maxlength', 4);
 			label.setAttribute('placeholder', 'e.g. YT');
 
-			const address = Dialog.getInputFields()[1];
+			const address = InputDialog.getInputFields()[1];
 			address.setAttribute('placeholder', 'e.g. youtube.com');
 			address.value = 'https://';
 

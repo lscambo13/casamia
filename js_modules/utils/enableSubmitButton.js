@@ -1,9 +1,9 @@
 import { isUrlValid } from '../validators.js';
-import { Dialog } from './dialog.js';
+import { InputDialog } from './inputDialog.js';
 
 export const enableSubmitButton = (event, alt = false) => {
-	const modalSubmitButton = Dialog.getSubmitButton();
-	const inputFields = Dialog.getInputFields();
+	const modalSubmitButton = InputDialog.getSubmitButton();
+	const inputFields = InputDialog.getInputFields();
 	for (const e of inputFields) {
 		if (e.value.length) modalSubmitButton.disabled = false;
 		else {

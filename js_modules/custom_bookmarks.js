@@ -1,4 +1,4 @@
-import { Dialog } from './utils/dialog.js';
+import { InputDialog } from './utils/inputDialog.js';
 import { enableSubmitButton } from './utils/enableSubmitButton.js';
 import { crossDisplay } from './utils/toggleDisplay.js';
 
@@ -112,9 +112,9 @@ export function editBookmark(event) {
     const targetElement = event.target.parentNode;
 
     const onChange = () => {
-        const checkbox = Dialog.getCheckboxField();
-        const modalSubmitButton = Dialog.getSubmitButton();
-        const inputFields = Dialog.getInputFields();
+        const checkbox = InputDialog.getCheckboxField();
+        const modalSubmitButton = InputDialog.getSubmitButton();
+        const inputFields = InputDialog.getInputFields();
 
         if (checkbox.checked) {
             modalSubmitButton.textContent = 'Delete';
@@ -134,7 +134,7 @@ export function editBookmark(event) {
 
     const details = getBookmarkDetailsFromLocalStorage(targetElement.id);
 
-    Dialog.show('Edit bookmark',
+    InputDialog.show('Edit bookmark',
         null,
         ['Name', 'Address'],
         'Save',
@@ -142,9 +142,9 @@ export function editBookmark(event) {
         'Delete this bookmark',
         [() => enableSubmitButton(event, true), onChange],
         () => {
-            Dialog.getInputFields()[0].setAttribute('maxlength', '4');
-            Dialog.getInputFields()[0].value = details[1];
-            Dialog.getInputFields()[1].value = details[2];
+            InputDialog.getInputFields()[0].setAttribute('maxlength', '4');
+            InputDialog.getInputFields()[0].value = details[1];
+            InputDialog.getInputFields()[1].value = details[2];
         },
     ).then((res) => {
         if (res.checkboxChecked) {

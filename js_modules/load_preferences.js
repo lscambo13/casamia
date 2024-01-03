@@ -6,7 +6,7 @@ import {
 } from './constants.js';
 import { displayClock, refreshGreeting } from './preferences.js';
 import { fixBackgroundBlurOnResize } from './utils.js';
-import { Dialog } from './utils/dialog.js';
+import { InputDialog } from './utils/inputDialog.js';
 import { enableSubmitButton } from './utils/enableSubmitButton.js';
 import { intersectionObserver } from './utils/intersectionObserver.js';
 
@@ -239,7 +239,7 @@ function defaultWidget(value) {
 
 export function askCustomText() {
 	const savedText = localStorage.getItem('customWidgetText');
-	Dialog.show(
+	InputDialog.show(
 		'Custom widget text',
 		'Enter text you want to set as the main widget.',
 		['Custom text'],
@@ -248,7 +248,7 @@ export function askCustomText() {
 		null,
 		[enableSubmitButton, null],
 		() => {
-			Dialog.getInputFields()[0].value = savedText;
+			InputDialog.getInputFields()[0].value = savedText;
 		},
 	).then((res) => {
 		localStorage.setItem('customWidgetText', res.inputValues[0]);
@@ -261,7 +261,7 @@ export function askCustomText() {
 
 export function askCustomDomain() {
 	const savedDomain = localStorage.getItem('customDomain');
-	Dialog.show(
+	InputDialog.show(
 		'Custom widget text',
 		'Enter text you want to set as the main widget.',
 		['Custom text'],
@@ -270,7 +270,7 @@ export function askCustomDomain() {
 		null,
 		[enableSubmitButton, null],
 		() => {
-			Dialog.getInputFields()[0].value = savedDomain;
+			InputDialog.getInputFields()[0].value = savedDomain;
 		},
 	).then((res) => {
 		localStorage.setItem('customDomain', res.inputValues[0]);
