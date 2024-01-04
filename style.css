@@ -832,7 +832,7 @@ input::-webkit-search-cancel-button:hover {
 	margin: .5em;
 	padding-inline: .5em;
 	padding-block: .75em;
-	font-size: 1.4em;
+	font-size: 1.5em;
 	align-items: center;
 	justify-content: flex-start;
 	font-weight: 700;
@@ -871,14 +871,14 @@ input::-webkit-search-cancel-button:hover {
 .modal-title {
 	display: flex;
 	flex-direction: column;
-	font-size: 1.25em;
+	font-size: 1.3em;
 	font-weight: 700;
-	padding: .5em
+	padding: .375em
 }
 
 .modal-option {
 	display: flex;
-	font-size: 1em;
+	font-size: 1.1em;
 	padding-block: .5em;
 	font-weight: 400;
 	justify-content: space-between;
@@ -902,7 +902,7 @@ input::-webkit-search-cancel-button:hover {
 	overflow: hidden;
 	white-space: nowrap;
 	text-align: end;
-	font-size: .9em;
+	font-size: 0.9em;
 	padding-inline-end: 0.5em;
 	font-family: 'Ubuntu';
 	color: var(--white-half-alpha);
@@ -919,7 +919,7 @@ input::-webkit-search-cancel-button:hover {
 	overflow: hidden;
 	white-space: nowrap;
 	text-align: center;
-	font-size: .6em;
+	font-size: .7em;
 	font-family: Ubuntu;
 	color: var(--white-half-alpha);
 	animation-name: animatetop;
@@ -947,7 +947,7 @@ input::-webkit-search-cancel-button:hover {
 	display: flex;
 	color: rgba(255, 255, 255, .5);
 	gap: 1em;
-	font-size: .85em;
+	font-size: .875em;
 	line-height: 1.5em;
 	list-style: none;
 	transition: 150ms;
