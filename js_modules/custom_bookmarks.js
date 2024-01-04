@@ -96,17 +96,13 @@ export function downloadBookmarks(filename, text) {
         'data:text/plain;charset=utf-8,' + encodeURIComponent(text),
     );
     element.setAttribute('download', filename);
-
     element.style.display = 'none';
     document.body.appendChild(element);
-
     element.click();
-
     document.body.removeChild(element);
 }
 
 export function editBookmark(event) {
-    // console.log('click ' + event.target.parentNode.id);
     event.preventDefault();
     event.stopPropagation();
     const targetElement = event.target.parentNode;

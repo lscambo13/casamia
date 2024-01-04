@@ -77,15 +77,7 @@ const showAlertDialog = (
 
 	const promise = new Promise((resolve, reject) => {
 		alertModalContainer.style.alignItems = 'center';
-		// alertModalContainer.style.paddingBlockStart = '0em';
 		alertModalContainer.style.opacity = '1';
-
-		// const rejectModal = () => {
-		// 	// modalCancelButton.removeEventListener('click', rejectModal);
-		// 	// alertModalContainer.remove();
-		// 	// document.body.style.overflow = 'auto';
-		// 	reject(Error(null));
-		// };
 
 		const resolveModal = () => {
 			modalCancelButton.removeEventListener('click', resolveModal);

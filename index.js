@@ -27,7 +27,6 @@ import {
 	applyPreferences,
 	askCustomDomain,
 	askCustomText,
-	focusSearchBar,
 	loadDropdownPositions,
 	loadSelectedWidgetStyle,
 	scrollToBottom,

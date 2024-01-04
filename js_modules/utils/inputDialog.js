@@ -90,7 +90,7 @@ const showInputDialog = (
 	if (!cancelButtonName) modalCancelButton.style.display = 'none';
 
 	const promise = new Promise((resolve, reject) => {
-		modalContainer.style.paddingBlockStart = '4em';
+		// modalContainer.style.paddingBlockStart = '4em';
 		modalContainer.style.opacity = '1';
 
 		const rejectModal = () => {
