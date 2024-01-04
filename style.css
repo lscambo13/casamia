@@ -980,7 +980,7 @@ input::-webkit-search-cancel-button:hover {
 #deep-search-nested {
 	overflow: hidden;
 	height: auto;
-	height: 8.1em;
+	height: 9.5em;
 	transition: 200ms;
 }
 
