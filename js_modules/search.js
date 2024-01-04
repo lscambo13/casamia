@@ -11,6 +11,7 @@ import {
 } from './cli.js';
 import { isUrlValid } from './validators.js';
 import { genericAlert } from './utils/alertDialog.js';
+import { Notify } from './utils/notifyDialog.js';
 
 const MSG = 'You must enter a search query to continue.';
 
@@ -38,7 +39,7 @@ export function webSearch() {
             window.open(url, '_self');
         } else cliParse(input);
     } else {
-        genericAlert('Error', MSG);
+        Notify.show(MSG);
     }
 }
 
@@ -50,7 +51,7 @@ export function movies() {
         const url = EXT_SEARCH_DOMAIN + input + '/Movies/time/desc/1/';
         window.open(url);
     } else {
-        genericAlert('Error', MSG);
+        Notify.show(MSG);
     }
 }
 
@@ -61,7 +62,7 @@ export function tv() {
         const url = EXT_SEARCH_DOMAIN + input + '/TV/size/desc/1/';
         window.open(url);
     } else {
-        genericAlert('Error', MSG);
+        Notify.show(MSG);
     }
 }
 
@@ -72,7 +73,7 @@ export function games() {
         const url = EXT_SEARCH_DOMAIN + input + '/Games/time/desc/1/';
         window.open(url);
     } else {
-        genericAlert('Error', MSG);
+        Notify.show(MSG);
     }
 }
 export function ebooks() {
@@ -82,7 +83,7 @@ export function ebooks() {
         const url = EXT_SEARCH_DOMAIN + input + '/Other/seeders/desc/1/';
         window.open(url);
     } else {
-        genericAlert('Error', MSG);
+        Notify.show(MSG);
     }
 };
 

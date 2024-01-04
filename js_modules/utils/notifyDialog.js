@@ -1,152 +1,56 @@
-let modalContainer;
-let modalSubmitButton;
+const notifyModalContainer = document.getElementById('notifyContainer');
 let modalCancelButton;
-let tickBoxField;
-let inputFields;
+let notify;
 
-const showInputDialog = (
-	title = null,
-	description = null,
-	inputBoxes = ['Input A', 'Input B'],
-	submitButtonName = 'Submit',
-	cancelButtonName = 'Cancel',
-	tickBox = null,
-	listeners = [onInput = null, onChange = null],
-	onInit = null,
+const showNotifyDialog = (
+	description,
+	ms = '5000',
+	onClick = null,
 ) => {
-	modalContainer = document.getElementById('inputDialogContainer');
-	if (modalContainer) modalContainer.remove();
+	const id = Date.now();
+	notify = document.getElementById(`notifyModal-${id}`);
+	if (notify) notify.parentNode.remove();
 
-	document.activeElement.blur();
-
-	if (title) {
-		title = `<h3 id="inputDialogTitle" class="modalTitle">${title}</h3>`;
-	} else (title = '');
-	if (description) {
-		description = `
-		<h4 id="inputDialogDescription" class="modalDescription">${description}</h4>
-	`;
-	} else (description = '');
-
-	document.body
-		.insertAdjacentHTML('afterbegin', `
-		<div id="inputDialogContainer" class="modalContainer disable-select">
-			<form autocomplete="off" action="#" class="modal">
-				${title}
-				${description}
-				<div id="inputDialogButtonsBar" class="modalButtonsBar">
-					<button
-					 id="inputDialogSubmitButton"
-					 class="mainButton button"
-					 disabled = "true"
-					 onclick=""
-					 type="submit">${submitButtonName}</button>
-					<button
-					 id="inputDialogCancelButton"
-					 class="button"
-					 onclick=""
-					 type="button">${cancelButtonName}</button>
-				</div>
-				<form>
+	notifyModalContainer.insertAdjacentHTML('afterbegin', `
+		<div id="notifyModal-${id}" class="notifyModal">
+			<div class="notifyDescriptionContainer">
+				<h3 id="notifyDescription-${id}" class="notifyDescription">
+					${description}
+				</h3>
+				<hr id="notifyLoader-${id}" class="notifyLoader">
+			</div>	
+			<button id="notifyDialogCancelButton-${id}" class="button tinyButton">
+				x
+			</button>
 		</div>
 	`);
-	inputBoxes.forEach((e) => {
-		let id = e.replaceAll(' ', '-').toLowerCase();
-		id = `MODAL-INPUT-${id}`;
-		document.getElementById('inputDialogButtonsBar')
-			.insertAdjacentHTML('beforebegin', `
-					<label
-					 class="label"
-					 for="${id}">${e}</label>
-					<input
-					 class="modalInputField"
-					 type="text"
-					 id="${id}">
-		`);
-	});
-	if (tickBox) {
-		document.getElementById('inputDialogButtonsBar')
-			.insertAdjacentHTML('beforebegin', `
-					<label
-					 class="label"
-					 for="tickBoxField">
-						<input
-						class="tickBoxField"
-						type="checkbox"
-						id="tickBoxField">
-						<span>${tickBox}</span>
-					 </label>
-		`);
-		tickBoxField = document.getElementById('tickBoxField');
+
+	const notifyLoader = document.getElementById(`notifyLoader-${id}`);
+
+	notify = document.getElementById(`notifyModal-${id}`);
+	if (onClick) notify.addEventListner('click', onClick);
+
+	const closeNotification = (event) => {
+		if (onClick) notify.removeEventListner('click', onClick);
+		modalCancelButton.removeEventListener('click', closeNotification);
+		event.target.parentNode.remove();
 	};
 
-	modalContainer = document.getElementById('inputDialogContainer');
-	modalSubmitButton = document.getElementById('inputDialogSubmitButton');
-	modalCancelButton = document.getElementById('inputDialogCancelButton');
-	inputFields = document.getElementsByClassName('modalInputField');
-	document.body.style.overflow = 'hidden';
+	modalCancelButton = document.getElementById(`notifyDialogCancelButton-${id}`);
+	modalCancelButton.addEventListener('click', closeNotification);
 
-	inputFields[0].focus();
-	if (!cancelButtonName) modalCancelButton.style.display = 'none';
-
-	const promise = new Promise((resolve, reject) => {
-		modalContainer.style.paddingBlockStart = '4em';
-		modalContainer.style.opacity = '1';
-
-		const rejectModal = () => {
-			modalCancelButton.removeEventListener('click', rejectModal);
-			modalContainer.remove();
-			document.body.style.overflow = 'auto';
-			reject(Error(null));
-		};
-
-		const resolveModal = () => {
-			modalSubmitButton.removeEventListener('click', resolveModal);
-			if (tickBox) {
-				tickBoxField.removeEventListener('change', listeners[1]);
-				tickBoxField = tickBoxField.checked;
-			}
-			const inputValues = [];
-			for (const e of inputFields) {
-				inputValues.push(e.value);
-				if (listeners) e.removeEventListener('input', listeners);
-			}
-			const result = {
-				'inputValues': inputValues, 'checkboxChecked': tickBoxField,
-			};
-			modalContainer.remove();
-			document.body.style.overflow = 'auto';
-
-			console.log(result);
-			resolve(result);
-		};
-
-		modalCancelButton.addEventListener('click', rejectModal);
-		modalSubmitButton.addEventListener('click', resolveModal);
-		if (listeners[0]) {
-			for (const e of inputFields) e.addEventListener('input', listeners[0]);
-		}
-		if (listeners[1] && tickBox) {
-			tickBoxField.addEventListener('change', listeners[1]);
-		}
-	});
-
-	if (onInit) onInit();
-	return promise;
+	setTimeout(() => {
+		const close = modalCancelButton;
+		setTimeout(() => {
+			close.click();
+		}, ms);
+		notifyLoader.style.transition = ms + 'ms';
+		notify.style.opacity = '1';
+		notify.style.marginTop = '2em';
+		notifyLoader.style.width = '0%';
+	}, 50);
 };
 
-export const InputDialog = {
-	show: showInputDialog,
-	getSubmitButton: () => {
-		return modalSubmitButton;
-	},
-	getCancelButton: () => {
-		return modalCancelButton;
-	},
-	getInputFields: () => {
-		return inputFields;
-	},
-	getCheckboxField: (n) => {
-		return tickBoxField;
-	},
+export const Notify = {
+	show: showNotifyDialog,
 };

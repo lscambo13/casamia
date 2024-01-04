@@ -1045,6 +1045,23 @@ input::-webkit-search-cancel-button:hover {
 	transition: 200ms;
 }
 
+.notifyContainer {
+	color: white;
+	font-family: 'Ubuntu';
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: auto;
+	background-color: transparent;
+	z-index: 5;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 1;
+	transition: 200ms;
+	flex-direction: column-reverse;
+}
+
 .modal {
 	min-width: 10em;
 	width: 90%;
@@ -1058,6 +1075,27 @@ input::-webkit-search-cancel-button:hover {
 	box-shadow: rgba(0, 0, 0, 0.2) 0 0 2em 0;
 }
 
+.notifyModal {
+	min-width: 10em;
+	width: 90%;
+	max-width: 30em;
+	display: flex;
+	flex-direction: row;
+	background: #2b2b2b;
+	padding: 1.5em;
+	margin-top: 0em;
+	margin-bottom: -1em;
+	z-index: 5;
+	border-radius: 1em;
+	border: 1px solid #ffffff24;
+	box-shadow: rgba(0, 0, 0, 0.2) 0 0 2em 0;
+	align-items: center;
+	opacity: 0;
+	transition: 200ms;
+	gap: 1em;
+	justify-content: space-between;
+}
+
 .modalTitle {
 	padding-bottom: 0.5em;
 }
@@ -1066,6 +1104,17 @@ input::-webkit-search-cancel-button:hover {
 	padding-bottom: 2em;
 	font-size: 0.9em;
 	font-weight: 100;
+}
+
+.notifyDescriptionContainer {
+	width: 90%;
+}
+
+.notifyDescription {
+	overflow: hidden;
+	word-wrap: break-word;
+	font-size: 1em;
+	font-weight: 200;
 }
 
 .modalButtonsBar {
@@ -1126,6 +1175,21 @@ input::-webkit-search-cancel-button:hover {
 	transition: 100ms;
 }
 
+.tinyButton {
+	min-width: 1.75em;
+	min-height: 1.75em;
+	max-width: 1.75em;
+	max-height: 1.75em;
+	padding-bottom: 2px;
+}
+
+.notifyLoader {
+	width: 100%;
+	margin-top: 1em;
+	margin-bottom: -1em;
+	opacity: 0.1;
+}
+
 .button:disabled {
 	background-color: #fff;
 	opacity: 0.75;
@@ -1138,7 +1202,6 @@ input::-webkit-search-cancel-button:hover {
 .button:active {
 	opacity: 0.75;
 }
-
 
 .mainButton {
 	/* background-color: #8cffc9; */
