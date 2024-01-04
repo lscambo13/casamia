@@ -249,7 +249,7 @@ addEventListenerOnID('settings_button', 'click', (event) => {
 });
 
 const pressAndHold = () => {
-	const target = document.getElementById('wrap');
+	const target = document.body;
 	let timerId;
 	let timer = 250;
 	const clearTimer = () => {
@@ -258,26 +258,25 @@ const pressAndHold = () => {
 	};
 
 	const clickEvent = (event) => {
-		const x = event.target.classList.value;
-		console.log(x);
-		if (x.includes('widget-slide') ||
-			x.includes('thumbnail') ||
-			x.includes('cross') ||
-			x.includes('fa-plus') ||
-			x.includes('custom_bookmark') ||
-			x.includes('advanced-settings-button-icon') ||
-			x.includes('flex-wallpaper-horizontal') ||
-			areAdvancedSettingsOpen ||
-			x.includes('searchTerm')) return;
+		const x = event.target.id;
+		const validElements = ['gradient_overlay',
+			'wrap',
+			'bookmarks',
+			'flex-main-container-vertical',
+			'subtitle',
+			'footer'];
+		if (
+			validElements.includes(x)
+		) {
+			if (areWallpapersOpen) timer = 1;
+			else timer = 250;
 
-		if (areWallpapersOpen) timer = 1;
-		else timer = 250;
-
-		timerId = setInterval(() => {
-			if (areWallpapersOpen) wallpapersPanel('close');
-			else if (!areWallpapersOpen) wallpapersPanel('open');
-			clearTimer();
-		}, timer);
+			timerId = setInterval(() => {
+				if (areWallpapersOpen) wallpapersPanel('close');
+				else if (!areWallpapersOpen) wallpapersPanel('open');
+				clearTimer();
+			}, timer);
+		}
 	};
 
 	target.addEventListener('mousedown', clickEvent);
