@@ -4,6 +4,7 @@ import {
 import {
     EXT_SEARCH_DOMAIN,
     GOOGLE_SEARCH_DOMAIN,
+    SAMPLE_AUTOFILL,
 } from './constants.js';
 import {
     cliCheck,
@@ -102,6 +103,9 @@ export function switchToCLI(event) {
     };
     const autocompleteDatabase =
         JSON.parse(localStorage.getItem('autocompleteDatabase'));
+    if (!autocompleteDatabase) {
+        localStorage.setItem('autocompleteDatabase', SAMPLE_AUTOFILL);
+    }
     const filter = autocompleteDatabase.filter((e) => {
         return e.startsWith(event.target.value);
     });
