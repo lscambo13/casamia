@@ -122,7 +122,7 @@ window.createNewBookmark = () => {
 		'Save',
 		undefined,
 		null,
-		[() => enableSubmitButton(event, true), null],
+		[() => enableSubmitButton(null, true), null],
 		() => {
 			const label = InputDialog.getInputFields()[0];
 			label.setAttribute('maxlength', 4);
@@ -212,6 +212,7 @@ addEventListenerOnID('games-search', 'click', Search.games);
 addEventListenerOnID('ebooks-search', 'click', Search.ebooks);
 addEventListenerOnID('searchTerm', 'input', Search.switchToCLI);
 addEventListenerOnID('searchTerm', 'keypress', Search.enterToSearch);
+addEventListenerOnID('searchTermPlaceholderItem', 'click', Search.autofill);
 addEventListenerOnID('fetch-bookmarks-btn', 'click', fetchBookmarks);
 
 addEventListenerOnID('left-arrow', 'click', (event) => {

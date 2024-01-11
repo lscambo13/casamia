@@ -1,4 +1,4 @@
-import { DEF_PREF, DEF_WALLPAPER } from './constants.js';
+import { DEF_PREF, DEF_WALLPAPER, SAMPLE_AUTOFILL } from './constants.js';
 import { updateUserNamePreview } from './load_preferences.js';
 import { refreshGreeting } from './preferences.js';
 import { updateUserNameText } from './strings.js';
@@ -7,19 +7,6 @@ import { enableSubmitButton } from './utils/enableSubmitButton.js';
 
 export function askUserName() {
     let userName = localStorage.getItem('userName');
-
-    // const enableSubmitButton = () => {
-    //     const button = document.getElementById('modalSubmitButton');
-    //     const input = document.getElementsByClassName('inputField');
-    //     for (const e of input) {
-    //         if (e.value.length > 0) {
-    //             button.disabled = false;
-    //         } else {
-    //             button.disabled = true;
-    //             return;
-    //         }
-    //     }
-    // };
 
     if (userName) {
         InputDialog.show(
@@ -79,6 +66,7 @@ export function preOnboarding() {
     localStorage.setItem('onBoarding', '0');
     localStorage.setItem('advDropdownValues', JSON.stringify(DEF_PREF));
     localStorage.setItem('wallpaper', DEF_WALLPAPER);
+    localStorage.setItem('autocompleteDatabase', SAMPLE_AUTOFILL);
     localStorage.setItem('selected-widget-style', 'widget-1');
     return onBoardingInProgress;
 }

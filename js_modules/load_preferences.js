@@ -374,24 +374,38 @@ export function defaultSearchEngine(value) {
 
 function searchbarTheme(value) {
 	const searchContainer = document.getElementById('searchContainer');
+	const searchAutofill = document.getElementById('searchTermPlaceholderItem');
+
 
 	switch (value) {
 		case 'glass': {
 			searchContainer.classList.add('searchbox-style-glass');
 			searchContainer.classList.remove('searchbox-style-light');
 			searchContainer.classList.remove('searchbox-style-dark');
+
+			searchAutofill.classList.add('searchbox-style-glass');
+			searchAutofill.classList.remove('searchbox-style-light');
+			searchAutofill.classList.remove('searchbox-style-dark');
 			break;
 		};
 		case 'light': {
 			searchContainer.classList.remove('searchbox-style-glass');
 			searchContainer.classList.add('searchbox-style-light');
 			searchContainer.classList.remove('searchbox-style-dark');
+
+			searchAutofill.classList.remove('searchbox-style-glass');
+			searchAutofill.classList.add('searchbox-style-light');
+			searchAutofill.classList.remove('searchbox-style-dark');
 			break;
 		};
 		case 'dark': {
 			searchContainer.classList.remove('searchbox-style-glass');
 			searchContainer.classList.remove('searchbox-style-light');
 			searchContainer.classList.add('searchbox-style-dark');
+
+			searchAutofill.classList.remove('searchbox-style-glass');
+			searchAutofill.classList.remove('searchbox-style-light');
+			searchAutofill.classList.add('searchbox-style-dark');
 			break;
 		};
 	}

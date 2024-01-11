@@ -6,6 +6,8 @@ export const DUCKDUCKGO_SEARCH_DOMAIN = 'https://duckduckgo.com/?q=';
 //     document.getElementsByClassName('searchButton').item(0).childNodes[1];
 export const BOOKMARKS_SAMPLE_URL =
 	'https://raw.githubusercontent.com/lscambo13/casamia/main/custom_bookmarks_sample/home-page-bookmarks-2023-1-23.json';
+// eslint-disable-next-line max-len
+export const SAMPLE_AUTOFILL = '["--help","--dl","--g","--b","--d","--reset","--reset bookmarks","--reset all"]'
 export const WALLPAPERS_URL = './wallpapers/';
 export const DOWNLOAD_WALLPAPERS_URL = './wallpapers/backups/';
 export const DEF_WALLPAPER = '085.webp';

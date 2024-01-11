@@ -26,6 +26,7 @@ function loadSearchDomain(input) {
 export function webSearch() {
     let input = getSearchTerm().value;
     if (input != '') {
+        updateAutocompleteDatabase(input);
         if (isUrlValid(input) && !input.includes(' ')) {
             if (!input.startsWith('http')) input = `http://${input}`;
             window.open(input, '_self');
@@ -87,19 +88,58 @@ export function ebooks() {
 };
 
 export function switchToCLI(event) {
+    sessionStorage.setItem('input', event.target.value);
     const btnIcon = document.getElementById('search-btn-icon');
+    const placeholder = document
+        .querySelector('.searchTermPlaceholder');
+    const placeholderItem = document
+        .querySelector('.searchTermPlaceholderItem');
     const currentIcon = localStorage.getItem('default-search-icon');
     if (cliCheck(event.target.value)) {
         btnIcon.className = 'fa fa-terminal';
     } else {
         btnIcon.className = currentIcon;
+    };
+    const autocompleteDatabase =
+        JSON.parse(localStorage.getItem('autocompleteDatabase'));
+    const filter = autocompleteDatabase.filter((e) => {
+        return e.startsWith(event.target.value);
+    });
+    if (filter[0]) {
+        placeholderItem.innerHTML = filter[0];
+        placeholder.style.height = '3em';
+    } else {
+        placeholderItem.innerHTML = '';
+        placeholder.style.height = '0em';
     }
-    sessionStorage.setItem('input', event.target.value);
-    console.log(event.target.value);
+
+    if (!event.target.value) {
+        placeholderItem.innerHTML = '';
+        placeholder.style.height = '0em';
+    }
+    console.log(filter[0]);
 };
 
 export function enterToSearch(event) {
     if (event.key == 'Enter') {
         webSearch();
     }
+};
+
+export function autofill() {
+    const placeholderItem = document
+        .querySelector('.searchTermPlaceholderItem');
+    getSearchTerm().value = placeholderItem.innerHTML;
+};
+
+const updateAutocompleteDatabase = (entry) => {
+    const autocompleteDatabase =
+        JSON.parse(localStorage.getItem('autocompleteDatabase'));
+    const set = new Set(autocompleteDatabase);
+
+    set.add(entry);
+    const updatedDatabase = Array.from(set);
+    localStorage
+        .setItem('autocompleteDatabase', JSON.stringify(updatedDatabase));
+    // console.log(x, entry);
 };

@@ -328,9 +328,8 @@ body::-webkit-scrollbar {
 
 .search {
 	display: flex;
-	flex-wrap: nowrap;
+	flex-wrap: wrap;
 	width: 100%;
-	height: 3em;
 	justify-content: center;
 	align-items: stretch;
 	margin-bottom: 2em;
@@ -341,13 +340,18 @@ body::-webkit-scrollbar {
 .searchContainer {
 	display: flex;
 	width: 100%;
-	border-radius: 3em;
+	height: 3em;
+	border-radius: 1.5em;
 	overflow: hidden;
 	margin-inline: 1.85em;
 	min-width: 4em;
 	max-width: 44em;
 	justify-content: center;
 	align-items: center;
+}
+
+.searchContainer:has(.searchTerm:focus) {
+	border-radius: 1em;
 }
 
 .searchTerm {
@@ -358,6 +362,43 @@ body::-webkit-scrollbar {
 	background: transparent;
 	font-size: 1em;
 	outline: 0;
+}
+
+.searchTermPlaceholder {
+	display: flex;
+	width: 100%;
+	height: 0em;
+	/* overflow-y: scroll; */
+	background-color: transparent;
+	overflow: hidden;
+	margin-inline: 1.85em;
+	min-width: 4em;
+	max-width: 44em;
+	justify-content: flex-start;
+	align-items: flex-start;
+	flex-direction: column;
+	transition: 300ms;
+
+}
+
+.searchTermPlaceholderItem {
+	min-height: 2em;
+	max-height: 2em;
+	min-width: 4em;
+	width: 100%;
+	text-wrap: nowrap;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	max-width: 44em;
+	margin-block-start: 0.5em;
+	/* margin-inline: 2em; */
+	border-radius: 0.75em;
+	/* background-color: #ffffff43; */
+	border: 1px solid transparent !important;
+	text-align: start;
+	padding-block-start: 0.4em;
+	/* vertical-align: middle; */
+	padding-inline: 1em;
 }
 
 input::-webkit-search-cancel-button {
@@ -409,6 +450,7 @@ input::-webkit-search-cancel-button:hover {
 	-webkit-backdrop-filter: var(--blur-one-em);
 	background: var(--white-quarter-alpha);
 	transition: 125ms;
+	color: #ffffff92;
 }
 
 .searchbox-style-glass>:nth-child(1)::placeholder {
@@ -431,6 +473,7 @@ input::-webkit-search-cancel-button:hover {
 
 .searchbox-style-glass:hover {
 	border: 1px solid #ffffffce;
+	color: #ffffff;
 }
 
 .searchbox-style-glass:hover>:nth-child(1) {
@@ -455,6 +498,7 @@ input::-webkit-search-cancel-button:hover {
 	border: 1px solid #ffffff;
 	background: white;
 	transition: 125ms;
+	color: #00000092;
 }
 
 .searchbox-style-light>:nth-child(1)::placeholder {
@@ -477,6 +521,7 @@ input::-webkit-search-cancel-button:hover {
 
 .searchbox-style-light:hover {
 	border: 1px solid var(--selection-color);
+	color: #000000;
 }
 
 .searchbox-style-light:hover>:nth-child(1) {
@@ -496,12 +541,11 @@ input::-webkit-search-cancel-button:hover {
 	filter: grayscale() invert() brightness(50%);
 }
 
-
-
 .searchbox-style-dark {
 	border: 1px solid #ffffff1e;
 	background: rgb(0, 0, 0);
 	transition: 125ms;
+	color: #ffffff92;
 }
 
 .searchbox-style-dark>:nth-child(1)::placeholder {
@@ -524,6 +568,8 @@ input::-webkit-search-cancel-button:hover {
 
 .searchbox-style-dark:hover {
 	border: 1px solid var(--selection-color);
+	color: #ffffff;
+
 }
 
 .searchbox-style-dark:hover>:nth-child(1) {
