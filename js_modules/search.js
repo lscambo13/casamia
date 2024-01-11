@@ -10,7 +10,6 @@ import {
     cliParse,
 } from './cli.js';
 import { isUrlValid } from './validators.js';
-import { genericAlert } from './utils/alertDialog.js';
 import { Notify } from './utils/notifyDialog.js';
 
 const MSG = 'You must enter a search query to continue.';
@@ -95,6 +94,7 @@ export function switchToCLI(event) {
     } else {
         btnIcon.className = currentIcon;
     }
+    sessionStorage.setItem('input', event.target.value);
     console.log(event.target.value);
 };
 

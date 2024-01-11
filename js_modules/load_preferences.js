@@ -442,6 +442,9 @@ export function applyPreferences() {
 	updateUserNamePreview();
 	updateCustomTextPreview();
 	updateCustomDomainPreview();
+
+	const lastSession = sessionStorage.getItem('input');
+	if (lastSession) document.getElementById('searchTerm').value = lastSession;
 }
 
 export function loadDropdownPositions() {
