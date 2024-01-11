@@ -3,7 +3,6 @@ import {
 } from './constants.js';
 import { resetAll, resetBookmarks } from './preferences.js';
 import { cliUnexpectedCmdText } from './strings.js';
-import { fetchBookmarks } from './utils.js';
 import { genericAlert } from './utils/alertDialog.js';
 import { downloadFile } from './utils/downloadFile.js';
 
@@ -54,12 +53,9 @@ export function cliParse(input) {
             else if (input[1] == 'all') resetAll();
             else genericAlert('Error', cliUnexpectedCmdText);
             break;
-        case 'fetch default':
-            fetchBookmarks();
-            break;
         case 'dl':
             if (input[1]) parseDL(input[1]);
-            else genericAlert('Error', cliUnexpectedCmdText);
+            else genericAlert('Failed', `Enter a valid YT address`);
             break;
         case 'g':
             searchViaCli(GOOGLE_SEARCH_DOMAIN, forBatchSearch);
