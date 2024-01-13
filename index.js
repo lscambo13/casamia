@@ -8,6 +8,7 @@ import {
 	toggleArrows,
 	changeSlide,
 	addEventListenerOnTag,
+	getSearchTerm,
 } from './js_modules/utils.js';
 import { displayLoading, hideLoading } from './js_modules/loading_spinner.js';
 import { changeGlow } from './js_modules/colors.js';
@@ -210,9 +211,13 @@ addEventListenerOnID('movies-search', 'click', Search.movies);
 addEventListenerOnID('tv-search', 'click', Search.tv);
 addEventListenerOnID('games-search', 'click', Search.games);
 addEventListenerOnID('ebooks-search', 'click', Search.ebooks);
-addEventListenerOnID('searchTerm', 'input', Search.switchToCLI);
+addEventListenerOnID('searchTerm', 'input', Search.processSearchboxInput);
+addEventListenerOnID('searchTerm', 'click', () => {
+	const x = new InputEvent('input');
+	getSearchTerm().dispatchEvent(x);
+});
+addEventListenerOnID('searchBarFocusMode', 'click', Search.hideSearchBG);
 addEventListenerOnID('searchTerm', 'keypress', Search.enterToSearch);
-addEventListenerOnID('searchTermPlaceholderItem', 'click', Search.autofill);
 addEventListenerOnID('fetch-bookmarks-btn', 'click', fetchBookmarks);
 
 addEventListenerOnID('left-arrow', 'click', (event) => {
@@ -262,9 +267,11 @@ const pressAndHold = () => {
 		const validElements = ['gradient_overlay',
 			'wrap',
 			'bookmarks',
+			'autofillContainer',
 			'flex-main-container-vertical',
 			'subtitle',
-			'footer'];
+			'footer',
+		];
 		if (
 			validElements.includes(x)
 		) {

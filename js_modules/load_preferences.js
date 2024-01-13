@@ -374,38 +374,24 @@ export function defaultSearchEngine(value) {
 
 function searchbarTheme(value) {
 	const searchContainer = document.getElementById('searchContainer');
-	const searchAutofill = document.getElementById('searchTermPlaceholderItem');
-
-
+	sessionStorage.setItem('searchbar-color-theme-drop', value);
 	switch (value) {
 		case 'glass': {
 			searchContainer.classList.add('searchbox-style-glass');
 			searchContainer.classList.remove('searchbox-style-light');
 			searchContainer.classList.remove('searchbox-style-dark');
-
-			searchAutofill.classList.add('searchbox-style-glass');
-			searchAutofill.classList.remove('searchbox-style-light');
-			searchAutofill.classList.remove('searchbox-style-dark');
 			break;
 		};
 		case 'light': {
 			searchContainer.classList.remove('searchbox-style-glass');
 			searchContainer.classList.add('searchbox-style-light');
 			searchContainer.classList.remove('searchbox-style-dark');
-
-			searchAutofill.classList.remove('searchbox-style-glass');
-			searchAutofill.classList.add('searchbox-style-light');
-			searchAutofill.classList.remove('searchbox-style-dark');
 			break;
 		};
 		case 'dark': {
 			searchContainer.classList.remove('searchbox-style-glass');
 			searchContainer.classList.remove('searchbox-style-light');
 			searchContainer.classList.add('searchbox-style-dark');
-
-			searchAutofill.classList.remove('searchbox-style-glass');
-			searchAutofill.classList.remove('searchbox-style-light');
-			searchAutofill.classList.add('searchbox-style-dark');
 			break;
 		};
 	}
@@ -413,21 +399,32 @@ function searchbarTheme(value) {
 
 function defaultSearchbarPosition(value) {
 	const searchbar = document.getElementById('searchbar');
+	const autofillContainer = document.getElementById('autofillContainer');
 	const wrap = document.getElementById('wrap');
+	sessionStorage.setItem('searchbar-position-drop', value);
 
 	switch (value) {
 		case 'top': {
 			searchbar.style.order = '0';
+			autofillContainer.style.order = '1';
+			autofillContainer.style.bottom = '0em';
+			autofillContainer.style.top = '3em';
 			wrap.style.margin = '0 auto auto auto';
 			break;
 		};
 		case 'bottom': {
 			searchbar.style.order = '1';
+			autofillContainer.style.order = '0';
+			autofillContainer.style.bottom = '2em';
+			autofillContainer.style.top = '';
 			wrap.style.margin = 'auto auto 0 auto';
 			break;
 		};
 		case 'middle': {
 			searchbar.style.order = '0';
+			autofillContainer.style.order = '1';
+			autofillContainer.style.bottom = '0em';
+			autofillContainer.style.top = '3em';
 			wrap.style.margin = 'auto auto auto auto';
 			break;
 		};

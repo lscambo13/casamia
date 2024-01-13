@@ -17,8 +17,8 @@
       });
     }
   </script> -->
-	<link rel="manifest" href="manifest.json?v=1703602562288">
-	<link rel="icon" type="image/x-icon" href="./favicon.ico?v=1703602562288">
+	<link rel="manifest" href="manifest.json?v=1703602562289">
+	<link rel="icon" type="image/x-icon" href="./favicon.ico?v=1703602562289">
 	<title>Search &bull; Casa Mia</title>
 	<meta name="theme-color" content="black">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,10 +29,10 @@
 		  rel="stylesheet" />
 	<link rel="stylesheet" href="./icons.css" />
 	<link rel="stylesheet"
-		  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css?v=1703602562288">
-	<link rel="stylesheet" href="./animations.css?v=1703602562288">
-	<link rel="stylesheet" href="./style.css?v=1703602562288" />
-	<script src="./index.js?v=1703602562288" type="module"></script>
+		  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css?v=1703602562289">
+	<link rel="stylesheet" href="./animations.css?v=1703602562289">
+	<link rel="stylesheet" href="./style.css?v=1703602562289" />
+	<script src="./index.js?v=1703602562289" type="module"></script>
 </head>
 
 <body>
@@ -64,16 +64,15 @@
 				</div><i id="right-arrow" class="arrows fa fa-caret-right"></i>
 			</div>
 			<div class="search" id="searchbar">
+				<div id="searchBarFocusMode" class="searchBarFocusMode"></div>
 				<div id="searchContainer" class="searchContainer">
 					<input title="Search" type="search" class="searchTerm" id="searchTerm"
 						   placeholder="What's on your mind?" name="casamia-search" autocomplete="off" tabindex="1">
-					<button type="submit" class="searchButton" id="search-btn" title="Search the web" tabindex="1">
+					<button type="submit" class="searchButton" id="search-btn" title="Search the web">
 						<i id="search-btn-icon" class="fa fa-google"></i>
 					</button>
 				</div>
-				<div class="searchTermPlaceholder" id="searchTermPlaceholder">
-					<span class="searchTermPlaceholderItem" id="searchTermPlaceholderItem"></span>
-				</div>
+				<div class="autofillContainer" id="autofillContainer"></div>
 			</div>
 			<div id="bookmarks" class="flex-sub-container-horizontal disable-select">
 				<div id="movies-search" class="predefined-bookmark clickable" tabindex="1">
