@@ -408,14 +408,14 @@ function defaultSearchbarPosition(value) {
 			searchbar.style.order = '0';
 			autofillContainer.style.order = '1';
 			autofillContainer.style.bottom = '0em';
-			autofillContainer.style.top = '3em';
+			autofillContainer.style.top = '3.25em';
 			wrap.style.margin = '0 auto auto auto';
 			break;
 		};
 		case 'bottom': {
 			searchbar.style.order = '1';
 			autofillContainer.style.order = '0';
-			autofillContainer.style.bottom = '2em';
+			autofillContainer.style.bottom = '3.75em';
 			autofillContainer.style.top = '';
 			wrap.style.margin = 'auto auto 0 auto';
 			break;
@@ -424,7 +424,7 @@ function defaultSearchbarPosition(value) {
 			searchbar.style.order = '0';
 			autofillContainer.style.order = '1';
 			autofillContainer.style.bottom = '0em';
-			autofillContainer.style.top = '3em';
+			autofillContainer.style.top = '3.25em';
 			wrap.style.margin = 'auto auto auto auto';
 			break;
 		};
