@@ -216,7 +216,7 @@ addEventListenerOnID('searchTerm', 'click', () => {
 	const x = new InputEvent('input');
 	getSearchTerm().dispatchEvent(x);
 });
-addEventListenerOnID('searchBarFocusMode', 'click', Search.hideSearchBG);
+addEventListenerOnID('searchBarFocusMode', 'click', Search.collapseAutofill);
 addEventListenerOnID('searchTerm', 'keypress', Search.enterToSearch);
 addEventListenerOnID('fetch-bookmarks-btn', 'click', fetchBookmarks);
 
