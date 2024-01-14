@@ -94,18 +94,13 @@ export function processSearchboxInput(event) {
     const input = event.target.value;
     sessionStorage.setItem('input', input);
     switchToCLI(input);
-    showAutofillBox(input);
-    const autofillItems = document.querySelectorAll('.autofillItem');
-    if (autofillItems.length) {
-        const calc = 2.8 * autofillItems.length + 1;
-        searchBG.style.display = 'block';
+    if (!input) {
         setTimeout(() => {
-            // container.style.opacity = '1';
-            container.style.height = `${calc}em`;
-            container.style.paddingBlock = '0.5em';
-            searchBG.style.opacity = '1';
+            collapseAutofill();
         }, 1);
-    } else hideSearchBG();
+        return;
+    }
+    showAutofillBox(input);
 };
 
 const switchToCLI = (input) => {
@@ -118,18 +113,37 @@ const switchToCLI = (input) => {
     };
 };
 
-export const hideSearchBG = () => {
-    // getSearchTerm().blur();
+export const collapseAutofill = () => {
     searchBG.style.opacity = '0';
-    // container.style.opacity = '0';
     container.style.paddingBlock = '0em';
-    container.style.height = '0em';
+    container.style.height = '0px';
     setTimeout(() => {
         searchBG.style.display = 'none';
     }, 200);
 };
 
+export const expandAutofill = () => {
+    const autofillItems = document.querySelectorAll('.autofillItem');
+    if (autofillItems.length) {
+        const d = autofillItems[0].getBoundingClientRect();
+        const calc = (d.height * autofillItems.length) + (d.height * 1);
+        searchBG.style.display = 'block';
+        setTimeout(() => {
+            container.style.height = `${calc}px`;
+            container.style.paddingBlockStart = '0em';
+            searchBG.style.opacity = '1';
+        }, 1);
+    }
+};
+
 const showAutofillBox = (input) => {
+    const clearSuggestions = () => {
+        const items = document.querySelectorAll('.autofillItem');
+        items.forEach((e) => {
+            e.remove();
+        });
+    };
+
     input = input.toLowerCase();
     const db = JSON.parse(localStorage.getItem('autocompleteDatabase'));
     if (!db) localStorage.setItem('autocompleteDatabase', SAMPLE_AUTOFILL);
@@ -150,13 +164,13 @@ const showAutofillBox = (input) => {
         clearSuggestions();
         if (!input) return;
         const theme = sessionStorage.getItem('searchbar-color-theme-drop');
-        let sortOrder = sessionStorage.getItem('searchbar-position-drop');
-        if (sortOrder == 'bottom') sortOrder = 'afterbegin';
-        else sortOrder = 'beforeend';
+        const order = sessionStorage.getItem('searchbar-position-drop');
+        if (order == 'bottom') container.style.flexDirection = 'column-reverse';
+        else container.style.flexDirection = 'column';
         let i = 0;
         for (const e of filteredArray) {
             if (i == 5) return;
-            container.insertAdjacentHTML(sortOrder, `
+            container.insertAdjacentHTML('beforeend', `
 				<span 
                     class="autofillItem disable-select searchbox-style-${theme}"
                     tabindex="1">${e}</span>
@@ -165,11 +179,8 @@ const showAutofillBox = (input) => {
         }
     };
 
-    const clearSuggestions = () => {
-        container.innerHTML = '';
-    };
-
     generateSuggestions(filteredArray);
+    expandAutofill();
     const items = document.querySelectorAll('.autofillItem');
     items.forEach((e) => {
         e.addEventListener('click', autofill);
