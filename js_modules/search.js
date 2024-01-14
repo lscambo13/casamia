@@ -31,7 +31,7 @@ export function webSearch() {
     if (input != '') {
         updateAutocompleteDatabase(input);
         if (isUrlValid(input) && !input.includes(' ')) {
-            if (!input.startsWith('http')) input = `http://${input}`;
+            // if (!input.startsWith('http')) input = `http://${input}`;
             window.open(input, '_self');
             return;
         }
@@ -94,6 +94,7 @@ export function processSearchboxInput(event) {
     const input = event.target.value;
     sessionStorage.setItem('input', input);
     switchToCLI(input);
+    switchToURL(input);
     if (!input) {
         setTimeout(() => {
             collapseAutofill();
@@ -108,6 +109,15 @@ const switchToCLI = (input) => {
     const currentIcon = localStorage.getItem('default-search-icon');
     if (cliCheck(input)) {
         btnIcon.className = 'fa fa-terminal';
+    } else {
+        btnIcon.className = currentIcon;
+    };
+};
+const switchToURL = (input) => {
+    const btnIcon = document.getElementById('search-btn-icon');
+    const currentIcon = localStorage.getItem('default-search-icon');
+    if (isUrlValid(input)) {
+        btnIcon.className = 'fa fa-globe';
     } else {
         btnIcon.className = currentIcon;
     };

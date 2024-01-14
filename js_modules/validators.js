@@ -1,7 +1,7 @@
 export function isUrlValid(userInput) {
-    if (!URL.canParse) return true; // for Samshit and Opera mobile
     try {
-        return URL.canParse(userInput);
+        new URL(userInput);
+        return true;
     } catch (err) {
         return false;
     }
