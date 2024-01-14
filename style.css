@@ -392,14 +392,12 @@ body::-webkit-scrollbar {
 	height: 0em;
 	background-color: transparent;
 	overflow: hidden;
-	/* margin-inline: 1.85em; */
+	overflow: hidden;
 	min-width: 4em;
 	max-width: 44em;
-	padding-block: 0.5em;
 	padding-inline: 0.1em;
 	justify-content: flex-start;
-	align-items: flex-start;
-	flex-direction: column;
+	align-items: center;
 	transition: 125ms;
 }
 
