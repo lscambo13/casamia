@@ -181,11 +181,11 @@ const showAutofillBox = (input) => {
         else container.style.flexDirection = 'column';
         let i = 0;
         for (const e of filteredArray) {
-            if (i == 5) return;
+            if (i == 10) return;
             container.insertAdjacentHTML('beforeend', `
 				<span 
                     class="autofillItem disable-select searchbox-style-${theme}"
-                    tabindex="1">${e}</span>
+                    tabindex="1" title="${e}">${e}</span>
             `);
             i++;
         }

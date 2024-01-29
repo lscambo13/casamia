@@ -421,6 +421,20 @@ body::-webkit-scrollbar {
 	z-index: 2;
 }
 
+/* .marquee p:hover {
+	animation: marquee 3s linear infinite;
+}
+
+@keyframes marquee {
+	0% {
+		transform: translate(0, 0);
+	}
+
+	100% {
+		transform: translate(-10%, 0);
+	}
+} */
+
 input::-webkit-search-cancel-button {
 	margin-inline-start: .7em;
 	margin-inline-end: -1.25em;
