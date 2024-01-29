@@ -34,7 +34,9 @@ import {
 } from './js_modules/load_preferences.js';
 import {
 	downloadWallpaper,
+	exportBackup,
 	exportBookmarks,
+	importBackup,
 	importBookmarks,
 	resetAll,
 	resetBookmarks,
@@ -163,6 +165,8 @@ window.changeWallpaper = (event) => {
 
 addEventListenerOnID('export-bookmarks-btn', 'click', exportBookmarks);
 addEventListenerOnID('import-bookmarks-btn', 'change', importBookmarks);
+addEventListenerOnID('export-backup-btn', 'click', exportBackup);
+addEventListenerOnID('import-backup-btn', 'change', importBackup);
 addEventListenerOnID('download-wallpaper-btn', 'click', downloadWallpaper);
 addEventListenerOnID('toggle-favicons-btn', 'click', toggleFavicons);
 addEventListenerOnID('update-username-btn', 'click', askUserName);

@@ -857,7 +857,8 @@ input::-webkit-search-cancel-button:hover {
 }
 
 
-#import-bookmarks-btn {
+#import-bookmarks-btn,
+#import-backup-btn {
 	display: none
 }
 

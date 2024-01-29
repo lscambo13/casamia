@@ -284,18 +284,23 @@
 					<option value="hidden">Disabled</option>
 				</select>
 			</label>
-			<div id="fetch-bookmarks-btn" class="modal-option">
-				<p>Download sample bookmarks</p>
-				<!-- <p class="setting-preview"> </p> -->
+			<div id="export-bookmarks-btn" class="modal-option">
+				<p>Backup bookmarks only</p>
+				<p class="setting-preview">Save locally</p>
 			</div>
+			<label for="import-bookmarks-btn" class="modal-option">Restore bookmarks only<input type="file"
+					   id="import-bookmarks-btn" accept=".json">
+				<p class="setting-preview">*.json</p>
+			</label>
 		</div>
 		<div class="modal-group">
 			<p class="modal-title">Backup & Restore</p>
-			<div id="export-bookmarks-btn" class="modal-option">
-				<p>Backup bookmarks</p>
-				<p class="setting-preview">Save to local storage</p>
-			</div><label for="import-bookmarks-btn" class="modal-option">Restore Backup <input type="file"
-					   id="import-bookmarks-btn" accept=".json">
+			<div id="export-backup-btn" class="modal-option">
+				<p>Backup everything</p>
+				<p class="setting-preview">Save locally</p>
+			</div>
+			<label for="import-backup-btn" class="modal-option">Restore backup<input type="file" id="import-backup-btn"
+					   accept=".json">
 				<p class="setting-preview">*.json</p>
 			</label>
 		</div>
@@ -304,6 +309,10 @@
 			<div id="download-wallpaper-btn" class="modal-option">
 				<p>Download background image</p>
 				<!-- <p id="download-wallpaper-btn-preview" class="setting-preview"></p> -->
+			</div>
+			<div id="fetch-bookmarks-btn" class="modal-option">
+				<p>Fetch sample bookmarks</p>
+				<!-- <p class="setting-preview"> </p> -->
 			</div>
 			<div id="btn-install" class="modal-option">
 				<p>Install</p>

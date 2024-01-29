@@ -10,6 +10,7 @@ import {
 	resetBookmarksWarningText,
 } from './strings.js';
 import { addZero } from './utils/addZero.js';
+import { genericAlert } from './utils/alertDialog.js';
 import { changeExtension } from './utils/changeExtension.js';
 import { wait } from './utils/wait.js';
 import { selectedWallpaper } from './wallpapers.js';
@@ -19,9 +20,21 @@ export function exportBookmarks(event) {
 	const bookmarksString = localStorage.saved_bookmarks;
 	const d = new Date();
 	downloadBookmarks(
-		`home-page-bookmarks-${d.getFullYear()}-${d.getMonth() + 1
+		`casamia-bookmarks-only-${d.getFullYear()}-${d.getMonth() + 1
 		}-${d.getDate()}.json`,
 		bookmarksString,
+	);
+};
+
+export function exportBackup(event) {
+	event.stopPropagation();
+	const data = { ...localStorage };
+	const backupString = JSON.stringify(data);
+	const d = new Date();
+	downloadBookmarks(
+		`casamia-full-backup-${d.getFullYear()}-${d.getMonth() + 1
+		}-${d.getDate()}.json`,
+		backupString,
 	);
 };
 
@@ -173,12 +186,16 @@ export function importBookmarks(event, text = '') {
 
 	function result(file) {
 		const importedBookmarks = JSON.parse(file);
+		if (!importedBookmarks[0]?.id) {
+			console.log(importedBookmarks);
+			genericAlert('Failed', 'The backup does not seem to be valid.');
+			event.target.value = null;
+			return;
+		}
 		const ids = [];
-
 		for (const bookmark of customBookmarks) {
 			ids.push(bookmark.id);
 		}
-
 		for (const i of importedBookmarks) {
 			if (ids.includes(i.id)) {
 				wait(1);
@@ -187,8 +204,32 @@ export function importBookmarks(event, text = '') {
 			ids.push(i.id);
 			saveBookmarks(i.link, i.name, i.id);
 		}
-
 		window.location.reload();
+	}
+
+	file.then(result);
+};
+
+export function importBackup(event, text = '') {
+	let file;
+	if (event) {
+		event.stopPropagation();
+		file = event.target.files[0].text();
+	} else file = text;
+
+	function result(file) {
+		const importedBackup = JSON.parse(file);
+		if (importedBackup.onBoarding) {
+			const keys = Object.keys(importedBackup);
+			keys.forEach((e, i) => {
+				localStorage.setItem(e, importedBackup[keys[i]]);
+			});
+			window.location.reload();
+		} else {
+			console.log(importedBackup);
+			genericAlert('Failed', 'The backup does not seem to be valid.');
+			event.target.value = null;
+		};
 	}
 
 	file.then(result);
