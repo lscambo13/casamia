@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-R1Y9J6ZFHP"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'G-R1Y9J6ZFHP');
+	</script>
+
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./style.css">
+	<!-- <link rel="stylesheet" href="../../style.css"> -->
+	<title>Clock · Casa Mia</title>
+</head>
+
+<body>
+	<div class="main-content">
+		<img id="clock_shadow" class="clock_shadow" src="./system.png"></img>
+		<img id="clock_shadow_more" class="clock_shadow_more" src="./system.png"></img>
+		<img id="clock" src="./system.png"></img>
+
+		<img id="clock_h_shadow" class="clock_hands_shadow" src="./system_h.png"></img>
+		<img id="clock_h_shadow_more" class="clock_hands_shadow_more" src="./system_h.png"></img>
+		<img id="clock_h" class="clock_hands" src="./system_h.png"></img>
+		<img id="clock_m_shadow" class="clock_hands_shadow" src="./system_m.png"></img>
+		<img id="clock_m_shadow_more" class="clock_hands_shadow_more" src="./system_m.png"></img>
+
+		<img id="clock_m" class="clock_hands" src="./system_m.png"></img>
+		<img id="clock_s_shadow" class="clock_hands_shadow" src="./system_s.png"></img>
+		<img id="clock_s_shadow_more" class="clock_hands_shadow_more" src="./system_s.png"></img>
+
+		<img id="clock_s" class="clock_hands" src="./system_s.png"></img>
+		<!-- <img id="clock_d" class="clock_hands" src="./system_dot.png"></img> -->
+	</div>
+	<footer class="footer">
+		<ul>
+			<li><a href="/" title="Home" tabindex="4">Home</a></li>
+			<li><a href="https://github.com/lscambo13/casamia" title="GitHub" tabindex="4">GitHub</a></li>
+			<li><a href="https://t.me/lscambo13_projects" title="Telegram" tabindex="4">Telegram</a></li>
+			<li><a href="#" title="Terms" tabindex="4">Terms</a></li>
+			<li><a href="https://github.com/lscambo13/casamia/blob/main/README.md" title="About" tabindex="4">About</a>
+			</li>
+		</ul>
+		<ul>
+			<li><a href="https://github.com/lscambo13" title="© 2023 lscambo13" tabindex="4">© 2023 lscambo13</a></li>
+		</ul>
+	</footer>
+</body>
+<script>
+	console.log('Clock by lscambo13')
+	const clock = document.getElementById('clock')
+	const clock_h = document.getElementById('clock_h');
+	const clock_m = document.getElementById('clock_m');
+	const clock_s = document.getElementById('clock_s');
+	const clock_h_shadow = document.getElementById('clock_h_shadow');
+	const clock_m_shadow = document.getElementById('clock_m_shadow');
+	const clock_s_shadow = document.getElementById('clock_s_shadow');
+	const clock_h_shadow_more = document.getElementById('clock_h_shadow_more');
+	const clock_m_shadow_more = document.getElementById('clock_m_shadow_more');
+	const clock_s_shadow_more = document.getElementById('clock_s_shadow_more');
+	// const clock_hands = document.getElementsByClassName('clock_hands');
+	// const clock_hands_shadow = document.getElementsByClassName('clock_hands_shadow');
+
+	// const clock_origin = clock.width / 2;
+
+	// for (const e of clock_hands) {
+	// 	// e.style.left = 0 + 'px'
+	// }
+
+	// for (const e of clock_hands_shadow) {
+	// 	// e.style.left = clock_origin + 'px'
+	// 	// e.style.left = 6 + 'px'
+	// 	// e.style.top = 12 + 'px'
+	// }
+
+	let turnS = 0;
+	const multiplyS = (int) => {
+		if (int === 0) turnS++
+		let x = int + (360 * turnS);
+		return x;
+	}
+	let turnH = 0;
+	const multiplyH = (int) => {
+		if (int === 0) turnH++
+		let x = int + (360 * turnH);
+		return x;
+	}
+	let turnM = 0;
+	const multiplyM = (int) => {
+		if (int === 0) turnM++
+		let x = int + (360 * turnM);
+		return x;
+	}
+
+	const clockRotation = () => {
+		let sec = new Date().getSeconds();
+		let min = new Date().getMinutes();
+		let hr = new Date().getHours();
+
+		let final_sec = multiplyS((sec * 6));
+		clock_s.style.transform = `rotate(${final_sec}deg)`
+		clock_s_shadow.style.transform = `rotate(${final_sec}deg)`
+		clock_s_shadow_more.style.transform = `rotate(${final_sec}deg)`
+
+		let final_min = multiplyM((min * 6) + (sec / 10));
+		clock_m.style.transform = `rotate(${final_min}deg)`
+		clock_m_shadow.style.transform = `rotate(${final_min}deg)`
+		clock_m_shadow_more.style.transform = `rotate(${final_min}deg)`
+
+
+		let final_hr = multiplyH((hr * 30) + (min / 2));
+		clock_h.style.transform = `rotate(${final_hr}deg)`
+		clock_h_shadow.style.transform = `rotate(${final_hr}deg)`
+		clock_h_shadow_more.style.transform = `rotate(${final_hr}deg)`
+	}
+
+	setInterval(clockRotation, 1000);
+
+	setTimeout(() => {
+		document.body.style.opacity = '1';
+	}, 850)
+
+	// window.onfocus = () => { window.location.reload() }
+</script>
+
+</html>

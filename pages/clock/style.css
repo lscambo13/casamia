@@ -1,0 +1,108 @@
+* {
+    /* padding: 0;
+    margin: 0; */
+    box-sizing: border-box;
+    /* background-color: rgb(40, 40, 40); */
+    color: black;
+    /* outline: red solid 1px; */
+
+}
+
+body {
+    background: url(./canvas-bg.jpg);
+    object-fit: fill;
+    display: flex;
+    transition: 500ms;
+    opacity: 0;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100svh;
+}
+
+.main-content {
+    position: relative;
+}
+
+.clock_hands {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: linear 1s;
+}
+
+.clock_shadow {
+    position: absolute;
+    top: 12px;
+    left: 6px;
+    z-index: -1;
+    filter: blur(8px) brightness(0);
+    opacity: 0.25;
+    transition: linear 1s;
+}
+
+.clock_hands_shadow {
+    position: absolute;
+    top: 6px;
+    left: 3px;
+    /* z-index: -1; */
+    filter: blur(4px) brightness(0);
+    opacity: 0.15;
+    transition: linear 1s;
+}
+
+.clock_hands_shadow_more {
+    position: absolute;
+    top: 4px;
+    left: 2px;
+    /* z-index: -1; */
+    filter: blur(2px) brightness(0);
+    opacity: 0.3;
+    transition: linear 1s;
+}
+
+.clock_shadow_more {
+    position: absolute;
+    top: 8px;
+    left: 2px;
+    z-index: -1;
+    filter: blur(2px) brightness(0);
+    opacity: 0.15;
+    transition: linear 1s;
+}
+
+#clock_d {
+    transform: scale(1.5);
+}
+
+.footer {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+    gap: .25em;
+    padding: .5em
+}
+
+.footer * {
+    display: flex;
+    color: rgba(0, 0, 0, 0.5);
+    gap: 1em;
+    /* font-size: .85em; */
+    line-height: 1.5em;
+    list-style: none;
+    transition: 150ms;
+    text-decoration: none
+}
+
+.footer :focus,
+.footer :hover {
+    color: rgb(0, 0, 0)
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
