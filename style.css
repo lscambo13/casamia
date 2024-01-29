@@ -415,6 +415,7 @@ body::-webkit-scrollbar {
 	box-shadow: #0000002e 0 2px 2px 0px;
 	border: 1px solid transparent !important;
 	text-align: start;
+	overflow: hidden;
 	padding-block-start: 0.5em;
 	padding-inline: 1em;
 	z-index: 2;
