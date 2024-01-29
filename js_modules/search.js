@@ -17,7 +17,7 @@ const MSG = 'You must enter a search query to continue.';
 const container = document.querySelector('.autofillContainer');
 const searchBG = document.querySelector('#searchBarFocusMode');
 
-function loadSearchDomain(input) {
+function loadSearchDomain() {
     let domain = localStorage.getItem('default-search-url');
     if (domain == null) {
         localStorage.setItem('default-search-url', GOOGLE_SEARCH_DOMAIN);
@@ -132,15 +132,17 @@ export const collapseAutofill = () => {
     }, 200);
 };
 
-export const expandAutofill = () => {
+const expandAutofill = (input) => {
     const autofillItems = document.querySelectorAll('.autofillItem');
-    if (autofillItems.length) {
-        const d = autofillItems[0].getBoundingClientRect();
-        const calc = (d.height * autofillItems.length) + (d.height * 1);
+    if (autofillItems.length || input.length) {
         searchBG.style.display = 'block';
         setTimeout(() => {
-            container.style.height = `${calc}px`;
-            container.style.paddingBlockStart = '0em';
+            if (autofillItems.length) {
+                const d = autofillItems[0].getBoundingClientRect();
+                const calc = (d.height * autofillItems.length) + (d.height * 1);
+                container.style.height = `${calc}px`;
+                container.style.paddingBlockStart = '0em';
+            }
             searchBG.style.opacity = '1';
         }, 1);
     }
@@ -190,7 +192,7 @@ const showAutofillBox = (input) => {
     };
 
     generateSuggestions(filteredArray);
-    expandAutofill();
+    expandAutofill(input);
     const items = document.querySelectorAll('.autofillItem');
     items.forEach((e) => {
         e.addEventListener('click', autofill);
