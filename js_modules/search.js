@@ -1,4 +1,5 @@
 import {
+    clickToEnter,
     getSearchTerm,
 } from './utils.js';
 import {
@@ -16,6 +17,7 @@ import { Notify } from './utils/notifyDialog.js';
 const MSG = 'You must enter a search query to continue.';
 const container = document.querySelector('.autofillContainer');
 const searchBG = document.querySelector('#searchBarFocusMode');
+let myScript = '';
 
 function loadSearchDomain() {
     let domain = localStorage.getItem('default-search-url');
@@ -79,6 +81,7 @@ export function games() {
         Notify.show(MSG);
     }
 }
+
 export function ebooks() {
     let input = getSearchTerm().value;
     if (input != '') {
@@ -90,18 +93,43 @@ export function ebooks() {
     }
 };
 
+let returnedSuggestions = [];
+window.googleSuggestions = (data) => {
+    returnedSuggestions = [];
+    const inputQuery = getSearchTerm().value;
+    returnedSuggestions = data[1];
+    if (inputQuery) {
+        showAutofillBox(inputQuery, returnedSuggestions);
+        expandAutofill(inputQuery);
+        // console.log(returnedSuggestions);
+    }
+};
+
 export function processSearchboxInput(event) {
+    const oldInput = sessionStorage.getItem('input');
     const input = event.target.value;
     sessionStorage.setItem('input', input);
     switchToCLI(input);
     switchToURL(input);
     if (!input) {
+        clearSuggestions();
         setTimeout(() => {
             collapseAutofill();
         }, 1);
         return;
     }
-    showAutofillBox(input);
+    expandAutofill(input);
+    if (input != oldInput) googleAutocomplete(input);
+};
+
+const googleAutocomplete = (input) => {
+    if (myScript !== '') {
+        document.body.removeChild(myScript);
+    }
+    const provider = 'http://suggestqueries.google.com/complete/search?client=firefox&callback=googleSuggestions&q=';
+    myScript = document.createElement('script');
+    myScript.src = `${provider}${input}`;
+    document.body.appendChild(myScript);
 };
 
 const switchToCLI = (input) => {
@@ -113,6 +141,7 @@ const switchToCLI = (input) => {
         btnIcon.className = currentIcon;
     };
 };
+
 const switchToURL = (input) => {
     const btnIcon = document.getElementById('search-btn-icon');
     const currentIcon = localStorage.getItem('default-search-icon');
@@ -134,7 +163,7 @@ export const collapseAutofill = () => {
 
 const expandAutofill = (input) => {
     const autofillItems = document.querySelectorAll('.autofillItem');
-    if (autofillItems.length || input.length) {
+    if (input.length) {
         searchBG.style.display = 'block';
         setTimeout(() => {
             if (autofillItems.length) {
@@ -148,14 +177,14 @@ const expandAutofill = (input) => {
     }
 };
 
-const showAutofillBox = (input) => {
-    const clearSuggestions = () => {
-        const items = document.querySelectorAll('.autofillItem');
-        items.forEach((e) => {
-            e.remove();
-        });
-    };
+const clearSuggestions = () => {
+    const items = document.querySelectorAll('.autofillItem');
+    items.forEach((e) => {
+        e.remove();
+    });
+};
 
+const showAutofillBox = (input, cloudInput) => {
     input = input.toLowerCase();
     const db = JSON.parse(localStorage.getItem('autocompleteDatabase'));
     if (!db) localStorage.setItem('autocompleteDatabase', SAMPLE_AUTOFILL);
@@ -181,9 +210,18 @@ const showAutofillBox = (input) => {
         else container.style.flexDirection = 'column';
         let i = 0;
         for (const e of filteredArray) {
-            if (i == 10) return;
+            if (i == 6) break;
             container.insertAdjacentHTML('beforeend', `
 				<span 
+                    class="autofillItem disable-select searchbox-style-${theme}"
+                    tabindex="1" title="${e}">${e}</span>
+            `);
+            i++;
+        }
+        for (const e of cloudInput) {
+            if (i == 10) break;
+            container.insertAdjacentHTML('beforeend', `
+        		<span 
                     class="autofillItem disable-select searchbox-style-${theme}"
                     tabindex="1" title="${e}">${e}</span>
             `);
@@ -192,11 +230,11 @@ const showAutofillBox = (input) => {
     };
 
     generateSuggestions(filteredArray);
-    expandAutofill(input);
     const items = document.querySelectorAll('.autofillItem');
     items.forEach((e) => {
         e.addEventListener('click', autofill);
-        e.addEventListener('focus', autofill);
+        // e.addEventListener('focus', autofill);
+        e.addEventListener('keydown', clickToEnter);
     });
 };
 
