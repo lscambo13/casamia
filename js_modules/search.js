@@ -162,13 +162,13 @@ export const collapseAutofill = () => {
 };
 
 const expandAutofill = (input) => {
-    const autofillItems = document.querySelectorAll('.autofillItem');
+    const items = document.querySelectorAll('.autofillItem');
     if (input.length) {
         searchBG.style.display = 'block';
         setTimeout(() => {
-            if (autofillItems.length) {
-                const d = autofillItems[0].getBoundingClientRect();
-                const calc = (d.height * autofillItems.length) + (d.height * 1);
+            if (items.length) {
+                const d = items[0].getBoundingClientRect();
+                const calc = (d.height * items.length) + (d.height * 1.5);
                 container.style.height = `${calc}px`;
                 container.style.paddingBlockStart = '0em';
             }
