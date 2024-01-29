@@ -7,7 +7,7 @@ export const DUCKDUCKGO_SEARCH_DOMAIN = 'https://duckduckgo.com/?q=';
 export const BOOKMARKS_SAMPLE_URL =
 	'https://raw.githubusercontent.com/lscambo13/casamia/main/custom_bookmarks_sample/home-page-bookmarks-2023-1-23.json';
 // eslint-disable-next-line max-len
-export const SAMPLE_AUTOFILL = '["--help","--dl","--g","--b","--d","--reset","--reset bookmarks","--reset all"]'
+export const SAMPLE_AUTOFILL = '["--help","--dl","--clock","--countdown"]';
 export const WALLPAPERS_URL = './wallpapers/';
 export const DOWNLOAD_WALLPAPERS_URL = './wallpapers/backups/';
 export const DEF_WALLPAPER = '085.webp';
