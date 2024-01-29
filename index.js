@@ -319,9 +319,9 @@ const switchPage = () => {
 
 	let page = window.location.href;
 	page = page.split('/?')[1];
-	if (page == 'settings') openAdvancedSettings();
+	if (!page) history.pushState({ loc: 'home' }, '', '?home');
+	else if (page == 'settings') openAdvancedSettings();
 	else if (page == 'backgrounds') wallpapersPanel('open');
-	// else if (page == '' || page=='home') openAdvancedSettings();
 };
 
 const postOnboarding = () => {
