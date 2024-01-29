@@ -28,7 +28,7 @@ export function addEventListenerOnTag(tagName, event, func) {
 }
 
 export function clickToEnter(event) {
-	if (event.key === 'Enter') event.target.click();
+	if (event.key === 'Enter' || event.key === ' ') event.target.click();
 };
 
 export function fetchBookmarks() {
