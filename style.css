@@ -414,6 +414,8 @@ body::-webkit-scrollbar {
 	border-radius: 0.5em;
 	box-shadow: #0000002e 0 2px 2px 0px;
 	border: 1px solid transparent !important;
+	font-family: 'Ubuntu';
+	font-weight: 100;
 	text-align: start;
 	overflow: hidden;
 	padding-block-start: 0.5em;
