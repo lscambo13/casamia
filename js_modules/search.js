@@ -126,7 +126,7 @@ const googleAutocomplete = (input) => {
     if (myScript !== '') {
         document.body.removeChild(myScript);
     }
-    const provider = 'http://suggestqueries.google.com/complete/search?client=firefox&callback=googleSuggestions&q=';
+    const provider = 'https://suggestqueries.google.com/complete/search?client=firefox&callback=googleSuggestions&q=';
     myScript = document.createElement('script');
     myScript.src = `${provider}${input}`;
     document.body.appendChild(myScript);
