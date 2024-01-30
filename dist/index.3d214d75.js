@@ -615,7 +615,7 @@ const wallpapersPanel = (str)=>{
                 loc: "home"
             }, "", "?home");
             bottomFilmRollContainer.classList.remove("animation_slide_up");
-            setTimeout(()=>advancedSettingsButton.classList.remove("animation_slide_right"), 350);
+            setTimeout(()=>advancedSettingsButton.classList.remove("advanced-settings-button-right"), 350);
             bottomFilmRollContainer.classList.add("animation_slide_down");
             wrap.classList.remove("animation2_slide_up");
             wrap.classList.add("animation2_slide_down");
@@ -634,7 +634,7 @@ const wallpapersPanel = (str)=>{
             wrap.classList.remove("animation2_slide_down", "startup_slide_down");
             wrap.classList.add("animation2_slide_up");
             setTimeout(()=>{
-                advancedSettingsButton.classList.add("animation_slide_right");
+                advancedSettingsButton.classList.add("advanced-settings-button-right");
                 (0, _utilsJs.scrollHighlightedWallpaperIntoView)();
             }, 350);
             (0, _colorsJs.changeGlow)(null, 1);
@@ -986,8 +986,8 @@ function processSearchboxInput(event) {
     const oldInput = sessionStorage.getItem("input");
     const input = event.target.value;
     sessionStorage.setItem("input", input);
-    switchToCLI(input);
-    switchToURL(input);
+    // switchToCLI(input);
+    switchSearchIcon(input);
     if (!input) {
         clearSuggestions();
         setTimeout(()=>{
@@ -1005,17 +1005,30 @@ const googleAutocomplete = (input)=>{
     myScript.src = `${provider}${input}`;
     document.body.appendChild(myScript);
 };
-const switchToCLI = (input)=>{
+// const switchToCLI = (input) => {
+//     const btnIcon = document.getElementById('search-btn-icon');
+//     const currentIcon = localStorage.getItem('default-search-icon');
+//     if (cliCheck(input)) {
+//         console.log('cfs')
+//         btnIcon.className = 'fa-solid fa-terminal';
+//         return;
+//     } else {
+//         btnIcon.className = currentIcon;
+//     };
+// };
+const switchSearchIcon = (input)=>{
     const btnIcon = document.getElementById("search-btn-icon");
     const currentIcon = localStorage.getItem("default-search-icon");
-    if ((0, _cliJs.cliCheck)(input)) btnIcon.className = "fa fa-terminal";
-    else btnIcon.className = currentIcon;
-};
-const switchToURL = (input)=>{
-    const btnIcon = document.getElementById("search-btn-icon");
-    const currentIcon = localStorage.getItem("default-search-icon");
-    if ((0, _validatorsJs.isUrlValid)(input)) btnIcon.className = "fa fa-globe";
-    else btnIcon.className = currentIcon;
+    if ((0, _validatorsJs.isUrlValid)(input)) {
+        btnIcon.className = "fa fa-globe";
+        return;
+    } else if ((0, _cliJs.cliCheck)(input)) {
+        btnIcon.className = "fa fa-terminal";
+        return;
+    } else {
+        btnIcon.className = currentIcon;
+        return;
+    }
 };
 const collapseAutofill = ()=>{
     searchBG.style.opacity = "0";
@@ -1027,6 +1040,7 @@ const collapseAutofill = ()=>{
 };
 const expandAutofill = (input)=>{
     const items = document.querySelectorAll(".autofillItem");
+    const searchbar = document.getElementById("searchbar");
     if (input.length) {
         searchBG.style.display = "block";
         setTimeout(()=>{
@@ -1035,6 +1049,7 @@ const expandAutofill = (input)=>{
                 const calc = d.height * items.length + d.height * 1.5;
                 container.style.height = `${calc}px`;
                 container.style.paddingBlockStart = "0em";
+                searchbar.scrollIntoView();
             }
             searchBG.style.opacity = "1";
         }, 1);
@@ -2162,23 +2177,23 @@ function defaultSearchEngine(value) {
         case "google":
             toggleCustomDomainButton("hide");
             applyDomain((0, _constantsJs.GOOGLE_SEARCH_DOMAIN));
-            applyIcon("fa fa-google");
+            applyIcon("fa-brands fa-google");
             break;
         case "bing":
             toggleCustomDomainButton("hide");
             applyDomain((0, _constantsJs.BING_SEARCH_DOMAIN));
-            applyIcon("fa fa-search");
+            applyIcon("fa fa-magnifying-glass");
             break;
         case "duckduckgo":
             toggleCustomDomainButton("hide");
             applyDomain((0, _constantsJs.DUCKDUCKGO_SEARCH_DOMAIN));
-            applyIcon("fa fa-search");
+            applyIcon("fa fa-magnifying-glass");
             break;
         case "custom":
             toggleCustomDomainButton("show");
             loadCustomDomain();
             // applyDomain(GOOGLE_SEARCH_DOMAIN);
-            applyIcon("fa fa-search");
+            applyIcon("fa fa-magnifying-glass");
             break;
     }
 }
@@ -2213,7 +2228,7 @@ function defaultSearchbarPosition(value) {
             searchbar.style.order = "0";
             autofillContainer.style.order = "1";
             autofillContainer.style.bottom = "0em";
-            autofillContainer.style.top = "3.25em";
+            autofillContainer.style.top = "3.75em";
             wrap.style.margin = "0 auto auto auto";
             break;
         case "bottom":
@@ -2227,7 +2242,7 @@ function defaultSearchbarPosition(value) {
             searchbar.style.order = "0";
             autofillContainer.style.order = "1";
             autofillContainer.style.bottom = "0em";
-            autofillContainer.style.top = "3.25em";
+            autofillContainer.style.top = "3.75em";
             wrap.style.margin = "auto auto auto auto";
             break;
     }

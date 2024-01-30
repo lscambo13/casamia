@@ -154,7 +154,7 @@ body::-webkit-scrollbar {
   justify-content: center;
   align-items: flex-end;
   width: 100%;
-  margin-bottom: 1em;
+  margin-bottom: .5em;
   padding-inline: 0;
   font-size: 2em;
   display: flex;
@@ -307,6 +307,7 @@ body::-webkit-scrollbar {
   width: 100%;
   height: 3em;
   margin-bottom: 2em;
+  padding-top: .5em;
   display: flex;
   position: relative;
 }
@@ -401,7 +402,7 @@ input::-webkit-search-cancel-button:hover {
 }
 
 input::-webkit-search-cancel-button:hover {
-  scale: 1.1;
+  transform: scale(1.1);
 }
 
 .searchButton {
@@ -599,7 +600,7 @@ input::-webkit-search-cancel-button:hover {
 }
 
 .flex-sub-container-horizontal > div > i {
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 #add_bookmark_button:focus, #add_bookmark_button:hover, #settings_button:focus, #settings_button:hover, .flex-sub-container-horizontal > :focus, .flex-sub-container-horizontal > :hover {
@@ -641,19 +642,15 @@ input::-webkit-search-cancel-button:hover {
   padding-block: .5em;
   padding-inline: 1em;
   font-size: .5em;
+  transition: all .5s;
   display: flex;
   position: sticky;
   left: 0;
-  transform: translateX(-10em);
-}
-
-.advanced-settings-button:hover > i {
-  transform: scale(1.125);
+  transform: translateX(-10em)scale(1.125);
 }
 
 .advanced-settings-button:active > i {
   opacity: .5;
-  transform: scale(1);
 }
 
 .advanced-settings-button > i {
@@ -661,6 +658,10 @@ input::-webkit-search-cancel-button:hover {
   opacity: .8;
   font-size: 4em;
   transition: all .125s;
+}
+
+.advanced-settings-button-right {
+  transform: translateX(0)scale(1.125);
 }
 
 .thumb-group:focus, .thumb-group:hover {
@@ -842,15 +843,16 @@ input::-webkit-search-cancel-button:hover {
 }
 
 .modal-close-btn {
-  border-radius: 8px;
+  border-radius: 6px;
+  padding-block: .25em;
   padding-inline: .25em .3em;
-  font-size: 1.4em;
+  font-size: 1em;
   transition: all .125s;
 }
 
 .modal-close-btn:hover {
   background-color: #ffffff45;
-  transform: scale(1.25);
+  transform: scale(1.125);
 }
 
 .modal-close-btn:active {

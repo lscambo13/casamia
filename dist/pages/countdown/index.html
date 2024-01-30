@@ -1,1 +1,269 @@
-<html><head><title>Countdown by Casa Mia</title><style>*{box-sizing:border-box;color:#000;padding:0}body{opacity:0;background:#d3d3d3;flex-direction:column;justify-content:space-evenly;align-items:center;height:96svh;transition:all 1s;display:flex}.main-container{background-color:#fff;border-radius:20px;flex-direction:column;justify-content:center;align-items:center;width:100%;min-width:400px;max-width:700px;height:100%;min-height:300px;max-height:450px;margin:200px 30px;display:flex;box-shadow:4px 4px 20px}.timer-container{justify-content:center;display:flex}.timer-container *{font-family:monospace;font-size:100px}.input-box{width:40px;display:none}.button{width:70px;margin:10px;transition:all 50ms}button:hover{outline-offset:1px;outline:2px double #be8b0098}button:disabled{opacity:.5;outline:2px double #1e00ff00}button:active{opacity:.5}.preset{border:1px solid gray;border-radius:20px;width:40px;height:30px;margin:10px}#start-btn{color:green;border:2px solid green;border-radius:20px}#stop-btn{color:red;border:2px solid red;border-radius:20px}#reset-btn{color:red;border:2px solid red;border-radius:20px;width:40px}.half-size{font-size:xxx-large}.buttons-container{justify-content:center;gap:18px;display:flex}.footer{z-index:1;flex-direction:column;align-items:center;gap:.25em;width:100%;padding:.5em;font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;display:flex}.footer *{color:#00000080;gap:1em;line-height:1.5em;text-decoration:none;list-style:none;transition:all .15s;display:flex}.footer :focus,.footer :hover{color:#000}ul{margin:0;padding:0}</style></head><body> <div class="main-container" id="main-container"> <div class="timer-container"> <div><span id="timer-mins">00</span><sub class="half-size">m</sub><span>:</span><span id="timer-secs">00</span><sub class="half-size">s</sub></div> </div> <div class="buttons-container"> <input class="input-box" type="number" max="99" min="0" value="0" id="input-box-mins"> <input class="input-box" type="number" max="60" min="1" value="0" id="input-box-secs"> <button id="start-btn" class="button">Start</button> <button id="stop-btn" class="button">Stop</button> <button id="reset-btn" data-min="0" data-sec="0" class="button preset">x</button> </div> <div class="buttons-container"> <button data-min="0" data-sec="10" class="button preset">10s</button> <button data-min="0" data-sec="30" class="button preset">30s</button> <button data-min="1" data-sec="0" class="button preset">1m</button> <button data-min="2" data-sec="0" class="button preset">2m</button> <button data-min="5" data-sec="0" class="button preset">5m</button> <button data-min="10" data-sec="0" class="button preset">10m</button> </div> </div> <footer class="footer"> <ul> <li><a href="/" title="Home" tabindex="4">Home</a></li> <li><a href="https://github.com/lscambo13/casamia" title="GitHub" tabindex="4">GitHub</a></li> <li><a href="https://t.me/lscambo13_projects" title="Telegram" tabindex="4">Telegram</a></li> <li><a href="#" title="Terms" tabindex="4">Terms</a></li> <li><a href="https://github.com/lscambo13/casamia/blob/main/README.md" title="About" tabindex="4">About</a> </li> </ul> <ul> <li><a href="https://github.com/lscambo13" title="© 2023 lscambo13" tabindex="4">© 2023 lscambo13</a></li> </ul> </footer> </body><script>console.log("hi"),document.getElementById("main-container");const e=document.getElementById("timer-secs"),t=document.getElementById("timer-mins"),l=document.getElementById("start-btn"),n=document.getElementById("input-box-secs"),a=document.getElementById("input-box-mins"),d=document.getElementById("stop-btn"),u=document.getElementsByClassName("preset"),s=()=>{if(n.value--,n.value<0&a.value>0)n.value=59,a.value--;else if(n.value<0&&a.value>=0){v(),console.log("the end!");return}c(),r(),console.log("secs--",a.value,n.value)};let o=null;const i=()=>{d.disabled=!1,l.disabled=!0,o=setInterval(s,1e3),e.removeEventListener("mousewheel",E),t.removeEventListener("mousewheel",g)},v=()=>{clearInterval(o),d.disabled=!0,l.disabled=!1,e.addEventListener("mousewheel",E),t.addEventListener("mousewheel",g)},m=(e,t)=>{v(),g(null,e),E(null,t),i()};l.addEventListener("click",i),d.addEventListener("click",v);const c=()=>{let t=n.value;t<10&&(t=`0${t}`),e.innerHTML=t},r=()=>{let e=a.value;e<10&&(e=`0${e}`),t.innerHTML=e},E=(e=null,t=null)=>{null==e?n.value=t:(e.deltaY<0&n.value<60&&n.value++,e.deltaY>0&n.value>0&&n.value--),c()},g=(e=null,t=null)=>{null==e?a.value=t:(e.deltaY<0&a.value<99&&a.value++,e.deltaY>0&a.value>0&&a.value--),r()},L=e=>{m(e.target.getAttribute("data-min"),e.target.getAttribute("data-sec"))};for(const e of u)e.addEventListener("click",L);n.addEventListener("change",c),a.addEventListener("change",r),e.addEventListener("mousewheel",E),t.addEventListener("mousewheel",g),setTimeout(()=>{d.disabled="true",document.body.style.opacity="1"},1e3);</script></html>
+<html>
+
+<head>
+	<title>Countdown by Casa Mia</title>
+	<style>* {
+  box-sizing: border-box;
+  color: #000;
+  padding: 0;
+}
+
+body {
+  opacity: 0;
+  background: #d3d3d3;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 96svh;
+  transition: all 1s;
+  display: flex;
+}
+
+.main-container {
+  background-color: #fff;
+  border-radius: 20px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-width: 400px;
+  max-width: 700px;
+  height: 100%;
+  min-height: 300px;
+  max-height: 450px;
+  margin: 200px 30px;
+  display: flex;
+  box-shadow: 4px 4px 20px;
+}
+
+.timer-container {
+  justify-content: center;
+  display: flex;
+}
+
+.timer-container * {
+  font-family: monospace;
+  font-size: 100px;
+}
+
+.input-box {
+  width: 40px;
+  display: none;
+}
+
+.button {
+  width: 70px;
+  margin: 10px;
+  transition: all 50ms;
+}
+
+button:hover {
+  outline-offset: 1px;
+  outline: 2px double #be8b0098;
+}
+
+button:disabled {
+  opacity: .5;
+  outline: 2px double #1e00ff00;
+}
+
+button:active {
+  opacity: .5;
+}
+
+.preset {
+  border: 1px solid gray;
+  border-radius: 20px;
+  width: 40px;
+  height: 30px;
+  margin: 10px;
+}
+
+#start-btn {
+  color: green;
+  border: 2px solid green;
+  border-radius: 20px;
+}
+
+#stop-btn {
+  color: red;
+  border: 2px solid red;
+  border-radius: 20px;
+}
+
+#reset-btn {
+  color: red;
+  border: 2px solid red;
+  border-radius: 20px;
+  width: 40px;
+}
+
+.half-size {
+  font-size: xxx-large;
+}
+
+.buttons-container {
+  justify-content: center;
+  gap: 18px;
+  display: flex;
+}
+
+.footer {
+  z-index: 1;
+  flex-direction: column;
+  align-items: center;
+  gap: .25em;
+  width: 100%;
+  padding: .5em;
+  font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+}
+
+.footer * {
+  color: #00000080;
+  gap: 1em;
+  line-height: 1.5em;
+  text-decoration: none;
+  list-style: none;
+  transition: all .15s;
+  display: flex;
+}
+
+.footer :focus, .footer :hover {
+  color: #000;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+</style>
+</head>
+
+<body>
+	<div class="main-container" id="main-container">
+		<div class="timer-container">
+			<div><span id="timer-mins">00</span><sub class="half-size">m</sub><span>:</span><span id="timer-secs">00</span><sub class="half-size">s</sub></div>
+		</div>
+		<div class="buttons-container">
+			<input class="input-box" type="number" max="99" min="0" value="0" id="input-box-mins">
+			<input class="input-box" type="number" max="60" min="1" value="0" id="input-box-secs">
+			<button id="start-btn" class="button">Start</button>
+			<button id="stop-btn" class="button">Stop</button>
+			<button id="reset-btn" data-min="0" data-sec="0" class="button preset">x</button>
+
+		</div>
+		<div class="buttons-container">
+			<button id="" data-min="0" data-sec="10" class="button preset">10s</button>
+			<button id="" data-min="0" data-sec="30" class="button preset">30s</button>
+			<button id="" data-min="1" data-sec="0" class="button preset">1m</button>
+			<button id="" data-min="2" data-sec="0" class="button preset">2m</button>
+			<button id="" data-min="5" data-sec="0" class="button preset">5m</button>
+			<button id="" data-min="10" data-sec="0" class="button preset">10m</button>
+		</div>
+	</div>
+	<footer class="footer">
+		<ul>
+			<li><a href="/" title="Home" tabindex="4">Home</a></li>
+			<li><a href="https://github.com/lscambo13/casamia" title="GitHub" tabindex="4">GitHub</a></li>
+			<li><a href="https://t.me/lscambo13_projects" title="Telegram" tabindex="4">Telegram</a></li>
+			<li><a href="#" title="Terms" tabindex="4">Terms</a></li>
+			<li><a href="https://github.com/lscambo13/casamia/blob/main/README.md" title="About" tabindex="4">About</a>
+			</li>
+		</ul>
+		<ul>
+			<li><a href="https://github.com/lscambo13" title="© 2023 lscambo13" tabindex="4">© 2023 lscambo13</a></li>
+		</ul>
+	</footer>
+<script src="/countdown.622478f6.js"></script></body>
+<script>console.log("hi");
+const mainContainer = document.getElementById("main-container");
+const timerSecs = document.getElementById("timer-secs");
+const timerMins = document.getElementById("timer-mins");
+const startBtn = document.getElementById("start-btn");
+const inputBoxSecs = document.getElementById("input-box-secs");
+const inputBoxMins = document.getElementById("input-box-mins");
+const stopBtn = document.getElementById("stop-btn");
+const presets = document.getElementsByClassName("preset");
+const countdown = ()=>{
+    inputBoxSecs.value--;
+    if (inputBoxSecs.value < 0 & inputBoxMins.value > 0) {
+        inputBoxSecs.value = 59;
+        inputBoxMins.value--;
+    } else if (inputBoxSecs.value < 0 && inputBoxMins.value >= 0) {
+        stop();
+        console.log("the end!");
+        return;
+    }
+    updateSecs();
+    updateMins();
+    console.log("secs--", inputBoxMins.value, inputBoxSecs.value);
+};
+let timerLoop = null;
+const start = ()=>{
+    stopBtn.disabled = false;
+    startBtn.disabled = true;
+    timerLoop = setInterval(countdown, 1000);
+    timerSecs.removeEventListener("mousewheel", updateSecsWheel);
+    timerMins.removeEventListener("mousewheel", updateMinsWheel);
+};
+const stop = ()=>{
+    clearInterval(timerLoop);
+    stopBtn.disabled = true;
+    startBtn.disabled = false;
+    timerSecs.addEventListener("mousewheel", updateSecsWheel);
+    timerMins.addEventListener("mousewheel", updateMinsWheel);
+};
+const startByPreset = (m, s)=>{
+    stop();
+    updateMinsWheel(null, m);
+    updateSecsWheel(null, s);
+    start();
+};
+startBtn.addEventListener("click", start);
+stopBtn.addEventListener("click", stop);
+const updateSecs = ()=>{
+    let val = inputBoxSecs.value;
+    if (val < 10) val = `0${val}`;
+    timerSecs.innerHTML = val;
+};
+const updateMins = ()=>{
+    let val = inputBoxMins.value;
+    if (val < 10) val = `0${val}`;
+    timerMins.innerHTML = val;
+};
+const updateSecsWheel = (e = null, s = null)=>{
+    if (e == null) inputBoxSecs.value = s;
+    else {
+        if (e.deltaY < 0 & inputBoxSecs.value < 60) inputBoxSecs.value++;
+        if (e.deltaY > 0 & inputBoxSecs.value > 0) inputBoxSecs.value--;
+    }
+    updateSecs();
+};
+const updateMinsWheel = (e = null, m = null)=>{
+    if (e == null) inputBoxMins.value = m;
+    else {
+        if (e.deltaY < 0 & inputBoxMins.value < 99) inputBoxMins.value++;
+        if (e.deltaY > 0 & inputBoxMins.value > 0) inputBoxMins.value--;
+    }
+    updateMins();
+};
+const startPreset = (e)=>{
+    const m = e.target.getAttribute("data-min");
+    const s = e.target.getAttribute("data-sec");
+    startByPreset(m, s);
+};
+for (const e of presets)e.addEventListener("click", startPreset);
+inputBoxSecs.addEventListener("change", updateSecs);
+inputBoxMins.addEventListener("change", updateMins);
+timerSecs.addEventListener("mousewheel", updateSecsWheel);
+timerMins.addEventListener("mousewheel", updateMinsWheel);
+setTimeout(()=>{
+    stopBtn.disabled = "true";
+    document.body.style.opacity = "1";
+}, 1000);
+
+</script>
+
+</html>
