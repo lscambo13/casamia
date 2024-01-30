@@ -9,7 +9,7 @@ export const BOOKMARKS_SAMPLE_URL = './samples/bookmarks.json';
 // eslint-disable-next-line max-len
 export const SAMPLE_AUTOFILL = '["--help","--dl","--clock","--countdown"]';
 export const WALLPAPERS_URL = './wallpapers/';
-export const DOWNLOAD_WALLPAPERS_URL = './wallpapers/backups/';
+export const DOWNLOAD_WALLPAPERS_URL = './wallpapers-hi-res/';
 export const DEF_WALLPAPER = '085.webp';
 export const DEF_CUSTOM_TEXT = 'Custom Text';
 export const DEF_PREF =
