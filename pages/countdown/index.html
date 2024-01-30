@@ -21,16 +21,17 @@
 		}
 
 		.main-container {
+			font-size: 10rem;
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
 			min-height: 300px;
 			height: 100%;
-			max-height: 450px;
+			max-height: 60vh;
 			min-width: 400px;
 			width: 100%;
-			max-width: 700px;
+			max-width: 90vw;
 			background-color: white;
 			margin: 200px 30px;
 			border-radius: 20px;
@@ -38,12 +39,14 @@
 		}
 
 		.timer-container {
+			font-size: 12rem;
+
 			display: flex;
 			justify-content: center;
 		}
 
 		.timer-container * {
-			font-size: 100px;
+			/* font-size: 100px; */
 			font-family: monospace;
 		}
 
@@ -53,9 +56,11 @@
 		}
 
 		.button {
-			width: 70px;
+			font-size: 1.5rem;
+			width: 6rem;
 			margin: 10px;
 			transition: 50ms;
+			border-radius: 3rem
 		}
 
 		button:hover {
@@ -73,34 +78,32 @@
 		}
 
 		.preset {
-			height: 30px;
-			width: 40px;
+			height: 4rem;
+			width: 6rem;
 			margin: 10px;
 			border: 1px solid grey;
-			border-radius: 20px
+			border-radius: 3rem
 		}
 
 		#start-btn {
 			color: green;
-			border-radius: 20px;
 			border: 2px solid green;
 		}
 
 		#stop-btn {
 			color: red;
-			border-radius: 20px;
 			border: 2px solid red;
 		}
 
 		#reset-btn {
-			width: 40px;
+			width: 4rem;
+			height: 4rem;
 			color: red;
-			border-radius: 20px;
 			border: 2px solid red;
 		}
 
 		.half-size {
-			font-size: xxx-large;
+			font-size: 5rem;
 		}
 
 		.buttons-container {
