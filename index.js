@@ -75,7 +75,7 @@ const wallpapersPanel = (str) => {
 			history.pushState({ loc: 'home' }, '', '?home');
 			bottomFilmRollContainer.classList.remove('animation_slide_up');
 			setTimeout(() => advancedSettingsButton.classList
-				.remove('animation_slide_right'), 350);
+				.remove('advanced-settings-button-right'), 350);
 			bottomFilmRollContainer.classList.add('animation_slide_down');
 			wrap.classList.remove('animation2_slide_up');
 			wrap.classList.add('animation2_slide_down');
@@ -96,7 +96,8 @@ const wallpapersPanel = (str) => {
 			wrap.classList.remove('animation2_slide_down', 'startup_slide_down');
 			wrap.classList.add('animation2_slide_up');
 			setTimeout(() => {
-				advancedSettingsButton.classList.add('animation_slide_right');
+				advancedSettingsButton.classList
+					.add('advanced-settings-button-right');
 				scrollHighlightedWallpaperIntoView();
 			}, 350);
 			changeGlow(null, 1);
