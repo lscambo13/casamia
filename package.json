@@ -7,8 +7,8 @@
 		"first-run": "npm config set script-shell powershell",
 		"push": "git push; sshgo \" sudo ./deploy.sh casamia \" ",
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"build": "parcel build ./index.html",
-		"dev": "copy -recurse -force ./wallpapers ./dist/; copy -recurse -force ./samples ./dist/; npx parcel ./index.html"
+		"build": "rm -recurse -force ./dist; parcel build ./index.html; copy -recurse -force ./wallpapers ./dist/; copy -recurse -force ./samples ./dist/",
+		"dev": "npx parcel ./index.html"
 	},
 	"author": "lscambo13",
 	"license": "ISC",
