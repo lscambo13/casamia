@@ -347,26 +347,26 @@ export function defaultSearchEngine(value) {
 		case 'google': {
 			toggleCustomDomainButton('hide');
 			applyDomain(GOOGLE_SEARCH_DOMAIN);
-			applyIcon('fa fa-google');
+			applyIcon('fa-brands fa-google');
 			break;
 		};
 		case 'bing': {
 			toggleCustomDomainButton('hide');
 			applyDomain(BING_SEARCH_DOMAIN);
-			applyIcon('fa fa-search');
+			applyIcon('fa fa-magnifying-glass');
 			break;
 		};
 		case 'duckduckgo': {
 			toggleCustomDomainButton('hide');
 			applyDomain(DUCKDUCKGO_SEARCH_DOMAIN);
-			applyIcon('fa fa-search');
+			applyIcon('fa fa-magnifying-glass');
 			break;
 		};
 		case 'custom': {
 			toggleCustomDomainButton('show');
 			loadCustomDomain();
 			// applyDomain(GOOGLE_SEARCH_DOMAIN);
-			applyIcon('fa fa-search');
+			applyIcon('fa fa-magnifying-glass');
 			break;
 		};
 	}
@@ -408,7 +408,7 @@ function defaultSearchbarPosition(value) {
 			searchbar.style.order = '0';
 			autofillContainer.style.order = '1';
 			autofillContainer.style.bottom = '0em';
-			autofillContainer.style.top = '3.25em';
+			autofillContainer.style.top = '3.75em';
 			wrap.style.margin = '0 auto auto auto';
 			break;
 		};
@@ -424,7 +424,7 @@ function defaultSearchbarPosition(value) {
 			searchbar.style.order = '0';
 			autofillContainer.style.order = '1';
 			autofillContainer.style.bottom = '0em';
-			autofillContainer.style.top = '3.25em';
+			autofillContainer.style.top = '3.75em';
 			wrap.style.margin = 'auto auto auto auto';
 			break;
 		};
