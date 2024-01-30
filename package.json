@@ -5,7 +5,9 @@
 	"main": "index.js",
 	"scripts": {
 		"push": "git push && sshgo \" sudo ./deploy.sh casamia \" ",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "parcel build",
+		"dev": "copy -recurse -force ./wallpapers ./dist/; copy -recurse -force ./samples ./dist/; npx parcel ./index.html"
 	},
 	"author": "lscambo13",
 	"license": "ISC",
@@ -14,12 +16,15 @@
 		"expressjs": "^1.0.1"
 	},
 	"devDependencies": {
+		"@parcel/packager-raw-url": "^2.11.0",
+		"@parcel/transformer-webmanifest": "^2.11.0",
 		"eslint": "^8.7.0",
 		"eslint-config-google": "^0.14.0",
 		"eslint-config-standard": "^17.1.0",
 		"eslint-plugin-import": "^2.29.1",
 		"eslint-plugin-n": "^16.6.0",
 		"eslint-plugin-promise": "^6.1.1",
+		"parcel": "^2.11.0",
 		"prettier": "^2.5.1"
 	}
 }
