@@ -352,8 +352,8 @@ body::-webkit-scrollbar {
 	opacity: 0;
 	background-color: #ffffff1f;
 	transition: 200ms;
-	backdrop-filter: blur(0.5em);
 	-webkit-backdrop-filter: blur(1em);
+	backdrop-filter: blur(0.5em);
 }
 
 .searchContainer {
@@ -482,8 +482,8 @@ input::-webkit-search-cancel-button:hover {
 
 .searchbox-style-glass {
 	border: 1px solid #ffffff38;
-	backdrop-filter: var(--blur-one-em);
 	-webkit-backdrop-filter: var(--blur-one-em);
+	backdrop-filter: var(--blur-one-em);
 	background: var(--white-quarter-alpha);
 	transition: 125ms;
 	color: #ffffffdd;
@@ -885,8 +885,8 @@ input::-webkit-search-cancel-button:hover {
 	width: 100vw;
 	height: 100vh;
 	background-color: #45454576;
-	backdrop-filter: blur(3em);
 	-webkit-backdrop-filter: blur(3em);
+	backdrop-filter: blur(3em);
 	z-index: 2;
 	display: none;
 }
@@ -1117,8 +1117,8 @@ input::-webkit-search-cancel-button:hover {
 	width: 100%;
 	height: 100%;
 	background-color: #b3b3b34c;
-	backdrop-filter: blur(2px);
 	-webkit-backdrop-filter: blur(2px);
+	backdrop-filter: blur(2px);
 	z-index: 5;
 	display: flex;
 	align-items: flex-start;
