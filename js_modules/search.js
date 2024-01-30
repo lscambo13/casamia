@@ -109,8 +109,8 @@ export function processSearchboxInput(event) {
     const oldInput = sessionStorage.getItem('input');
     const input = event.target.value;
     sessionStorage.setItem('input', input);
-    switchToCLI(input);
-    switchToURL(input);
+    // switchToCLI(input);
+    switchSearchIcon(input);
     if (!input) {
         clearSuggestions();
         setTimeout(() => {
@@ -132,23 +132,30 @@ const googleAutocomplete = (input) => {
     document.body.appendChild(myScript);
 };
 
-const switchToCLI = (input) => {
-    const btnIcon = document.getElementById('search-btn-icon');
-    const currentIcon = localStorage.getItem('default-search-icon');
-    if (cliCheck(input)) {
-        btnIcon.className = 'fa fa-terminal';
-    } else {
-        btnIcon.className = currentIcon;
-    };
-};
+// const switchToCLI = (input) => {
+//     const btnIcon = document.getElementById('search-btn-icon');
+//     const currentIcon = localStorage.getItem('default-search-icon');
+//     if (cliCheck(input)) {
+//         console.log('cfs')
+//         btnIcon.className = 'fa-solid fa-terminal';
+//         return;
+//     } else {
+//         btnIcon.className = currentIcon;
+//     };
+// };
 
-const switchToURL = (input) => {
+const switchSearchIcon = (input) => {
     const btnIcon = document.getElementById('search-btn-icon');
     const currentIcon = localStorage.getItem('default-search-icon');
     if (isUrlValid(input)) {
         btnIcon.className = 'fa fa-globe';
+        return;
+    } else if (cliCheck(input)) {
+        btnIcon.className = 'fa fa-terminal';
+        return;
     } else {
         btnIcon.className = currentIcon;
+        return;
     };
 };
 
@@ -163,6 +170,7 @@ export const collapseAutofill = () => {
 
 const expandAutofill = (input) => {
     const items = document.querySelectorAll('.autofillItem');
+    const searchbar = document.getElementById('searchbar');
     if (input.length) {
         searchBG.style.display = 'block';
         setTimeout(() => {
@@ -171,6 +179,7 @@ const expandAutofill = (input) => {
                 const calc = (d.height * items.length) + (d.height * 1.5);
                 container.style.height = `${calc}px`;
                 container.style.paddingBlockStart = '0em';
+                searchbar.scrollIntoView();
             }
             searchBG.style.opacity = '1';
         }, 1);
