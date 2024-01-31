@@ -4,12 +4,12 @@ export const BING_SEARCH_DOMAIN = 'https://www.bing.com/search?q=';
 export const DUCKDUCKGO_SEARCH_DOMAIN = 'https://duckduckgo.com/?q=';
 // export const SEARCH_BUTTON_DOM =
 //     document.getElementsByClassName('searchButton').item(0).childNodes[1];
-export const BOOKMARKS_SAMPLE_URL = './samples/bookmarks.json';
+export const BOOKMARKS_SAMPLE_URL = './assets/samples/bookmarks.json';
 // 'https://raw.githubusercontent.com/lscambo13/casamia/main/custom_bookmarks_sample/home-page-bookmarks-2023-1-23.json';
 // eslint-disable-next-line max-len
 export const SAMPLE_AUTOFILL = '["--help","--dl","--clock","--countdown"]';
-export const WALLPAPERS_URL = './wallpapers/';
-export const DOWNLOAD_WALLPAPERS_URL = './wallpapers-hi-res/';
+export const WALLPAPERS_URL = './assets/wallpapers/';
+export const DOWNLOAD_WALLPAPERS_URL = './assets/wallpapers-hi-res/';
 export const DEF_WALLPAPER = '085.webp';
 export const DEF_CUSTOM_TEXT = 'Custom Text';
 export const DEF_PREF =
