@@ -9,8 +9,8 @@
 }
 
 body {
-    background: url(./canvas-bg.webp);
-    object-fit: fill;
+    /* background: url(./canvas-bg.webp); */
+    /* object-fit: fill; */
     display: flex;
     transition: 500ms;
     opacity: 0;
