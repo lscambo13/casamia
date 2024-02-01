@@ -200,7 +200,7 @@ const showAutofillBox = (input, cloudInput) => {
 
     const filteredArray = db.filter((e) => {
         if (e == input) return;
-        else return e.toLowerCase().startsWith(input);
+        else return e.toLowerCase().includes(input);
     });
 
     function autofill(event) {
