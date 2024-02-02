@@ -1001,10 +1001,14 @@ input::-webkit-search-cancel-button:hover {
 	outline: 0;
 }
 
+#deep-search-btn-arrow {
+	padding-inline-end: 0;
+}
+
 .version-preview {
 	width: auto;
-	max-height: 1;
-	border-radius: 6px;
+	/* max-height: 1; */
+	/* border-radius: 6px; */
 	text-overflow: ellipsis;
 	overflow: hidden;
 	white-space: nowrap;
@@ -1012,8 +1016,8 @@ input::-webkit-search-cancel-button:hover {
 	font-size: .7em;
 	font-family: Ubuntu;
 	color: var(--white-half-alpha);
-	animation-name: animatetop;
-	animation-duration: 1s
+	/* animation-name: animatetop; */
+	/* animation-duration: 1s */
 }
 
 .setting-preview option {
