@@ -39,6 +39,16 @@
 
 <body>
 	<div id="notifyContainer" class="notifyContainer disable-select"></div>
+	<div id="downloadContainer" class="downloadContainer disable-select hidden">
+		<div class="downloadItemContainer loadingPlaceholder" aria-busy="true" aria-describedby="progress-bar">
+			<p id="downloadContainer-close-btn" class="modal-close-btn fa fa-chevron-left"></p>
+			<progress id="progress-bar" class="" aria-label="Content loading…"></progress>
+			<h1 id="downloadContainerTitle" class="hidden">Results</h1>
+		</div>
+		<!-- <div class="downloadItemContainer loadingPlaceholder" aria-busy="true" aria-describedby="progress-bar">
+			<span>Log</span>
+		</div> -->
+	</div>
 	<div id="overlay"></div>
 	<canvas id="canvasFar"></canvas>
 	<div id="gradient_overlay"></div>
@@ -101,7 +111,7 @@
 	<div id="advanced-settings-modal-background-overlay"></div>
 	<div id="advanced-settings-modal" class="disable-select">
 		<div class="modal-page-title">
-			<p class="modal-close-btn fa fa-chevron-left"></p>
+			<p id="modal-close-btn" class="modal-close-btn fa fa-chevron-left"></p>
 			<p class="">Advanced Settings</p>
 		</div>
 		<div class="modal-group">

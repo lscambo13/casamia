@@ -39,7 +39,6 @@ export function exportBackup(event) {
 };
 
 export function downloadWallpaper() {
-	// console.log(DOWNLOAD_WALLPAPERS_URL + selectedWallpaper);
 	const element = document.createElement('a');
 	const hiResWall = changeExtension(selectedWallpaper, 'png');
 	element
@@ -49,9 +48,6 @@ export function downloadWallpaper() {
 	document.body.appendChild(element);
 	element.click();
 	document.body.removeChild(element);
-	/* alert(
-	"If the download doesn't start, disable the pop-up blocker extensions."
-  ); */
 };
 
 export function toggleFavicons(event) {

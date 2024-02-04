@@ -208,7 +208,7 @@ function closeAdvancedSettings() {
 	areAdvancedSettingsOpen = false;
 };
 
-addEventListenerOnClass('modal-close-btn', 'click', closeAdvancedSettings);
+addEventListenerOnID('modal-close-btn', 'click', closeAdvancedSettings);
 addEventListenerOnID('toggle-labs-btn', 'click', openAdvancedSettings);
 
 addEventListenerOnID('search-btn', 'click', Search.webSearch);

@@ -3,8 +3,13 @@ import {
 } from './constants.js';
 import { resetAll, resetBookmarks } from './preferences.js';
 import { cliUnexpectedCmdText } from './strings.js';
-import { fetchBookmarks } from './utils.js';
+import { addEventListenerOnID, fetchBookmarks } from './utils.js';
 import { genericAlert } from './utils/alertDialog.js';
+import {
+    displayDownloadError,
+    displayLoadingPlaceholder,
+    populateDownloadList,
+} from './utils/downloadDialog.js';
 import { downloadFile } from './utils/downloadFile.js';
 import { Notify } from './utils/notifyDialog.js';
 
@@ -18,18 +23,42 @@ export function cliCheck(input) {
 }
 
 function parseDL(url) {
+    displayLoadingPlaceholder();
     fetch(`https://casamia.cambo.in/api/dl/?url=${url}`).then((result) => {
         if (result.status !== 200) {
             Notify.show(`Error ${result.status} ${result.statusText}`);
             return;
         }
-
+        if (result.status !== 200) {
+            result.json()
+                .then((res) => {
+                    displayDownloadError(res);
+                });
+            return;
+        }
         result.json()
             .then((res) => {
-                console.log(res)
-                const download = confirm('Download video?');
-                if (download) downloadFile(res.url, 'CasaMia_Downloader.mp4');
-                console.log(res.url);
+                console.log(res);
+                res.forEach((i) => {
+                    populateDownloadList(i.title, i.url, i.thumb, i.res);
+                });
+                const close = () => {
+                    const c = document.getElementById('downloadContainer');
+                    c.classList.add('hidden');
+                    const items = document
+                        .getElementsByClassName('downloadItemContainer');
+                    // for (const i of items) {
+                    //     i.remove();
+                    // }
+
+                    document.getElementById('downloadContainer-close-btn')
+                        .removeEventListener('click', close);
+                };
+                addEventListenerOnID('downloadContainer-close-btn', 'click', close);
+                // downloadFile(res[0].url, `${res[0].title}.mp4`);
+                // const download = confirm('Download video?');
+                // if (download) downloadFile(res[0].url, `${res[0].title}.mp4`);
+                // console.log(res.url);
             });
     });
 };

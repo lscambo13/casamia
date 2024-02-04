@@ -14,17 +14,12 @@
 //     document.body.removeChild(anchor);
 // };
 
-export function downloadFile(url) {
-  // console.log(WALLPAPERS_URL + selectedWallpaper);
-  const element = document.createElement('a');
-  element.setAttribute('href', url);
-  element.setAttribute('download', 'CasaMia-Downloaer');
-  element.target = '_blank';
-  element.style.display = 'none';
-  document.body.appendChild(element);
-  element.click();
-  document.body.removeChild(element);
-  /* alert(
-  "If the download doesn't start, disable the pop-up blocker extensions."
-); */
+export function downloadFile(url, title) {
+  const e = document.createElement('a');
+  e.setAttribute('href', url);
+  e.setAttribute('download', title);
+  e.style.display = 'none';
+  document.body.appendChild(e);
+  e.click();
+  document.body.removeChild(e);
 };
