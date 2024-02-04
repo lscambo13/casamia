@@ -6,6 +6,7 @@ import { cliUnexpectedCmdText } from './strings.js';
 import { fetchBookmarks } from './utils.js';
 import { genericAlert } from './utils/alertDialog.js';
 import { downloadFile } from './utils/downloadFile.js';
+import { Notify } from './utils/notifyDialog.js';
 
 
 export function cliCheck(input) {
@@ -17,14 +18,21 @@ export function cliCheck(input) {
 }
 
 function parseDL(url) {
-    fetch(`https://casamia.cambo.in/api/?url=${url}`).then((results) => {
-        return results.json();
-    }).then((res) => {
-        const download = confirm('Download video?');
-        if (download) downloadFile(res.url, 'CasaMia_Downloader.mp4');
-        console.log(res.url);
+    fetch(`https://casamia.cambo.in/api/dl/?url=${url}`).then((result) => {
+        if (result.status !== 200) {
+            Notify.show(`Error ${result.status} ${result.statusText}`);
+            return;
+        }
+
+        result.json()
+            .then((res) => {
+                console.log(res)
+                const download = confirm('Download video?');
+                if (download) downloadFile(res.url, 'CasaMia_Downloader.mp4');
+                console.log(res.url);
+            });
     });
-}
+};
 
 function searchViaCli(url, searchTerm) {
     let searchQuery = searchTerm.substr(4);
