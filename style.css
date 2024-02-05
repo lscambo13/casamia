@@ -1124,7 +1124,7 @@ input::-webkit-search-cancel-button:hover {
 	background-color: #b3b3b34c;
 	-webkit-backdrop-filter: blur(2px);
 	backdrop-filter: blur(2px);
-	z-index: 5;
+	z-index: 10;
 	display: flex;
 	align-items: flex-start;
 	justify-content: center;
@@ -1141,7 +1141,7 @@ input::-webkit-search-cancel-button:hover {
 	width: 100%;
 	height: auto;
 	background-color: transparent;
-	z-index: 5;
+	z-index: 10;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -1261,7 +1261,7 @@ input::-webkit-search-cancel-button:hover {
 	padding: 1.5em;
 	margin-top: 0em;
 	margin-bottom: -1em;
-	z-index: 5;
+	z-index: 10;
 	border-radius: 1em;
 	border: 1px solid #ffffff24;
 	box-shadow: rgba(0, 0, 0, 0.2) 0 0 2em 0;
