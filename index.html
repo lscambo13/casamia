@@ -40,14 +40,11 @@
 <body>
 	<div id="notifyContainer" class="notifyContainer disable-select"></div>
 	<div id="downloadContainer" class="downloadContainer disable-select hidden">
-		<div class="downloadItemContainer loadingPlaceholder" aria-busy="true" aria-describedby="progress-bar">
+		<div class="downloadContainerTitleBar modal-page-title">
 			<p id="downloadContainer-close-btn" class="modal-close-btn fa fa-chevron-left"></p>
-			<progress id="progress-bar" class="" aria-label="Content loading…"></progress>
-			<h1 id="downloadContainerTitle" class="hidden">Results</h1>
+			<h2 id="downloadContainerTitle">Download Videos</h2>
 		</div>
-		<!-- <div class="downloadItemContainer loadingPlaceholder" aria-busy="true" aria-describedby="progress-bar">
-			<span>Log</span>
-		</div> -->
+		<progress id="progress-bar" class="progressBar hidden" aria-label="loading"></progress>
 	</div>
 	<div id="overlay"></div>
 	<canvas id="canvasFar"></canvas>

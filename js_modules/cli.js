@@ -9,12 +9,8 @@ import { cliUnexpectedCmdText } from './strings.js';
 import { addEventListenerOnID, fetchBookmarks } from './utils.js';
 import { genericAlert } from './utils/alertDialog.js';
 import {
-    displayDownloadError,
-    displayLoadingPlaceholder,
     populateDownloadList,
 } from './utils/downloadDialog.js';
-import { downloadFile } from './utils/downloadFile.js';
-import { Notify } from './utils/notifyDialog.js';
 
 
 export function cliCheck(input) {
@@ -26,15 +22,45 @@ export function cliCheck(input) {
 }
 
 function parseDL(url) {
-    displayLoadingPlaceholder();
+    const container = document.getElementById('downloadContainer');
+    const p = document.getElementById('progress-bar');
+    container.classList.remove('hidden');
+    p.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+
+    const cleanDownloadContainer = () => {
+        const items = document.querySelectorAll('.downloadItemContainer');
+        for (const i of items) {
+            i.remove();
+        }
+    };
+
+    const closeContainer = () => {
+        p.classList.remove('hidden');
+        container.classList.add('hidden');
+        container.removeEventListener('click', closeContainer);
+        document.body.style.overflow = 'auto';
+
+        cleanDownloadContainer();
+    };
+    addEventListenerOnID(
+        'downloadContainer-close-btn',
+        'click',
+        closeContainer);
+
     fetch(`${BACKEND_URL}/dl/?url=${url}`).then((result) => {
         if (result.status !== 200) {
-            // Notify.show(`Error ${result.status} ${result.statusText}`);
             result.json().then((res) => {
-                // console.log()
-                genericAlert(`Error ${result.status}`, res[0].err);
-                document.getElementById('downloadContainer-close-btn').click();
-                // displayDownloadError(res);
+                if (res[0]?.err) {
+                    genericAlert(
+                        `Error ${result.status} (${result.statusText})`,
+                        res[0].err);
+                } else {
+                    genericAlert(
+                        `Unknown Error ${result.status} (${result.statusText})`,
+                        res.stderr);
+                }
+                closeContainer();
             });
             return;
         }
@@ -42,6 +68,8 @@ function parseDL(url) {
             console.log(res);
             res.forEach((i) => {
                 populateDownloadList(i.title, i.url, i.thumb, i.res);
+                document.body.style.overflow = 'auto';
+                p.classList.add('hidden');
             });
 
             // downloadFile(res[0].url, `${res[0].title}.mp4`);
@@ -49,6 +77,11 @@ function parseDL(url) {
             // if (download) downloadFile(res[0].url, `${res[0].title}.mp4`);
             // console.log(res.url);
         });
+    }).catch((e) => {
+        genericAlert(
+            `Fatal Error`,
+            e);
+        closeContainer();
     });
 };
 
@@ -71,6 +104,8 @@ export function cliParse(input) {
     let cmd = input.toLowerCase();
     cmd = cmd.split('--').join('');
     cmd = cmd.split(' ');
+
+    const cmdAlt = input.split('--').join('').split(' ');
     switch (cmd[0]) {
         case 'help':
             window.open(`/pages/help/index.html`, '_self');
@@ -88,7 +123,7 @@ export function cliParse(input) {
             else genericAlert('Error', cliUnexpectedCmdText);
             break;
         case 'dl':
-            if (cmd[1]) parseDL(cmd[1]);
+            if (cmd[1]) parseDL(cmdAlt[1]);
             else genericAlert('Failed', `Enter a valid YT address`);
             break;
         case 'clock':

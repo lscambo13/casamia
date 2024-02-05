@@ -1152,30 +1152,30 @@ input::-webkit-search-cancel-button:hover {
 
 .downloadContainer {
 	color: #fff;
-	-webkit-backdrop-filter: blur(.5em);
-	backdrop-filter: blur(.5em);
+	-webkit-backdrop-filter: blur(1em);
+	backdrop-filter: blur(1em);
 	z-index: 5;
-	background-color: #b3b3b34c;
+	padding-block-start: 2em;
+	background-color: var(--selection-color);
+	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
-	width: 100%;
-	/* height: auto; */
-	min-height: 100%;
-	/* overflow: scroll; */
 	gap: 1em;
-	padding-block-start: 2em;
-	padding: 0.5em;
-	font-family: Ubuntu;
+	/* overflow: scroll; */
+	width: 100%;
+	/* height: max-content; */
+	min-height: 100%;
+	padding: .5em;
+	font-family: Arial, Helvetica, sans-serif;
 	transition: all .2s;
 	display: flex;
-	position: fixed;
+	position: absolute;
 	top: 0;
-	flex-direction: column;
 }
 
 .downloadItemContainer {
 	background-color: #2b2b2b;
-	max-width: 30em;
+	max-width: 50em;
 	width: 100%;
 	min-width: 20em;
 	padding: 1em;
@@ -1191,25 +1191,43 @@ input::-webkit-search-cancel-button:hover {
 	align-items: stretch;
 }
 
-.loadingPlaceholder {
+.downloadContainerTitleBar {
+	background-color: #2b2b2b;
+	border: 1px solid #fff3;
+	border-radius: 1em;
+	width: 100%;
+	max-width: 50em;
+	height: 4em;
+	font-size: 1em;
+	padding-inline-start: 1em;
 	display: flex;
-	/* flex-direction: column; */
-	/* overflow: hidden; */
-	justify-content: center;
-	align-items: center;
-	max-height: 4em;
+	overflow: hidden;
+}
+
+.progressBar:indeterminate {
+	/* position: fixed; */
+	width: 48em;
+	height: 1em;
+	/* opacity: 0.5; */
+	/* top: 50%; */
 }
 
 .downloadItemThumbnail {
-	border-radius: 0.5em;
+	max-width: 10em;
+	/* max-height: 4.5em; */
+	object-fit: cover;
+	border-radius: .5em;
 }
 
 .downloadButton {
-	text-decoration: none !important;
-	vertical-align: middle !important;
-	text-align: center !important;
-	color: black;
-	padding: 0.5em;
+	vertical-align: middle;
+	color: #000;
+	justify-content: space-evenly;
+	align-items: center;
+	text-decoration: none;
+	max-width: 6em;
+	max-height: 2.25em;
+	display: flex;
 }
 
 .downloadInfoContainer {
@@ -1231,7 +1249,7 @@ input::-webkit-search-cancel-button:hover {
 }
 
 .downloadInfoContainer div {
-	justify-content: space-between;
+	justify-content: flex-end;
 	align-items: flex-end;
 	max-height: min-content;
 	width: 100%;

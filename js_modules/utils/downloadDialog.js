@@ -1,40 +1,30 @@
-import { downloadFile } from "./downloadFile";
+import { BACKEND_URL } from "../constants";
+import { downloadFile, downloadMe } from "./downloadFile";
 
 const container = document.getElementById('downloadContainer');
 
-export const displayLoadingPlaceholder = () => {
-	// container.insertAdjacentHTML('afterbegin', `
-	// 	<div class="downloadItemContainer loadingPlaceholder" aria-busy="true" aria-describedby="progress-bar">
-	// 		<p id="downloadContainer-close-btn" class="modal-close-btn fa fa-chevron-left"></p>
-	// 		<progress id="progress-bar" aria-label="Content loading…"></progress>
-	// 	</div>
-	// `)
-	container.classList.remove('hidden');
-};
-
 export const displayDownloadError = (err) => {
-	document.getElementById('progress-bar').classList.add('hidden');
-	document.getElementById('downloadContainerTitle').classList.remove('hidden');
-
 	container.insertAdjacentHTML('beforeend', `
 	<div class="downloadItemContainer">
 		<span>${err}</span>
 	</div>
 	`);
-}
+};
 
 export const populateDownloadList = (title, url, thumb, res) => {
-	document.getElementById('progress-bar').classList.add('hidden');
-	document.getElementById('downloadContainerTitle').classList.remove('hidden');
-
+	const quality = res.match(/\((.*)\)/).pop();
 	container.insertAdjacentHTML('beforeend', `
 		<div class="downloadItemContainer">
 			<img src="${thumb}" alt="Thumbnail" class="downloadItemThumbnail">
 			<div class="downloadInfoContainer">
 				<span class="downloadItemTitle">${title}</span>
 				<div>
-					<span class="downloadItemResolution">${res}</span>
-					<a href="${url}" class="downloadButton button">Download</a>
+					<span class="downloadItemResolution hidden">${res}</span>
+					<a href="${url}" 
+					class="downloadButton button">
+					<span title="${res}">${quality}</span>
+					<span class="fa-solid fa-download"></span>
+					</a>
 				</div>
 			</div>
 		</div>
@@ -48,7 +38,15 @@ export const populateDownloadList = (title, url, thumb, res) => {
 		document.body.appendChild(e);
 		e.click();
 		document.body.removeChild(e);
-		console.log('clicked')
+		console.log('clicked');
 		// downloadFile(url, `${title}.mp4`);
+	});
+	const thumbnail = document.getElementsByClassName('downloadItemThumbnail');
+	thumbnail[thumbnail.length - 1].addEventListener('click', () => {
+		downloadMe(url);
+		return;
+		fetch(`${BACKEND_URL}/stream/?url=${url}`).then((response) => {
+			console.log(response.body)
+		}).catch((e) => console.log(e))
 	});
 };
