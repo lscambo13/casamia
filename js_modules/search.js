@@ -256,7 +256,7 @@ export function enterToSearch(event) {
 const updateAutocompleteDatabase = (entry) => {
     const db = JSON.parse(localStorage.getItem('autocompleteDatabase'));
     const set = new Set(db);
-    set.add(entry.toLowerCase());
+    set.add(entry);
     const update = Array.from(set);
     localStorage.setItem('autocompleteDatabase', JSON.stringify(update));
 };
