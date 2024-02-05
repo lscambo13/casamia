@@ -203,7 +203,7 @@ const showAutofillBox = (input, cloudInput) => {
     });
 
     function autofill(event) {
-        getSearchTerm().value = event.target.innerHTML;
+        getSearchTerm().value = event.target.innerText;
         const e = new InputEvent('input');
         getSearchTerm().dispatchEvent(e);
         getSearchTerm().focus();
@@ -222,11 +222,14 @@ const showAutofillBox = (input, cloudInput) => {
             container.insertAdjacentHTML('beforeend', `
 				<span 
                     class="autofillItem disable-select searchbox-style-${theme}"
-                    tabindex="1" title="${e}">
-                        <span class="autofillItemText">${e}</span>
+                    tabindex="1">
+                        <span class="autofillItemText"></span>
                         <span class="autofillItemRem fa-solid fa-xmark"></span>
                     </span>
             `);
+            const x = document.getElementsByClassName('autofillItemText')
+            x[x.length - 1].innerText = e;
+            x[x.length - 1].title = e;
             i++;
         }
         for (const e of cloudInput) {
@@ -270,10 +273,11 @@ const updateAutocompleteDatabase = (entry) => {
 };
 
 const deleteFromAutocompleteDatabase = (event) => {
-    const entry = event.target.parentNode.children[0].innerHTML;
+    const entry = event.target.parentNode.children[0].innerText;
+    // console.log(entry);
     const db = JSON.parse(localStorage.getItem('autocompleteDatabase'));
     const set = new Set(db);
-    set.delete(entry);
+    console.log(set.delete(entry));
     const update = Array.from(set);
     localStorage.setItem('autocompleteDatabase', JSON.stringify(update));
 };
