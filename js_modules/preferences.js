@@ -1,4 +1,4 @@
-import { DOWNLOAD_WALLPAPERS_URL } from './constants.js';
+import { DOWNLOAD_WALLPAPERS_URL, SAMPLE_AUTOFILL } from './constants.js';
 import {
 	customBookmarks,
 	downloadBookmarks,
@@ -238,6 +238,11 @@ export function resetBookmarks(event) {
 		localStorage.removeItem('saved_bookmarks');
 		window.location.reload();
 	}
+};
+
+export function resetHistory(event) {
+	localStorage.setItem('autocompleteDatabase', SAMPLE_AUTOFILL);
+	window.location.reload();
 };
 
 export function resetAll(event) {

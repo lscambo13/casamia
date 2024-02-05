@@ -38,6 +38,12 @@ export const DEF_PREF =
 	'ebooks-search-display-drop': 'shown',
 	'add-bookmark-display-drop': 'shown',
 };
+export let BACKEND_URL;
+if (process.env.NODE_ENV !== 'production') {
+	BACKEND_URL = 'http://localhost:8081';
+} else {
+	BACKEND_URL = 'https://casamia.cambo.in/api';
+}
 
 // 'https://github.com/lscambo13/casamia/raw/main/wallpapers/'
 // 'https://raw.githubusercontent.com/lscambo13/casamia/main/wallpapers/'

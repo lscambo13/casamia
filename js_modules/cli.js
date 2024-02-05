@@ -1,7 +1,10 @@
 import {
-    BING_SEARCH_DOMAIN, DUCKDUCKGO_SEARCH_DOMAIN, GOOGLE_SEARCH_DOMAIN,
+    BING_SEARCH_DOMAIN,
+    DUCKDUCKGO_SEARCH_DOMAIN,
+    GOOGLE_SEARCH_DOMAIN,
+    BACKEND_URL,
 } from './constants.js';
-import { resetAll, resetBookmarks } from './preferences.js';
+import { resetAll, resetBookmarks, resetHistory } from './preferences.js';
 import { cliUnexpectedCmdText } from './strings.js';
 import { addEventListenerOnID, fetchBookmarks } from './utils.js';
 import { genericAlert } from './utils/alertDialog.js';
@@ -24,42 +27,28 @@ export function cliCheck(input) {
 
 function parseDL(url) {
     displayLoadingPlaceholder();
-    fetch(`https://casamia.cambo.in/api/dl/?url=${url}`).then((result) => {
+    fetch(`${BACKEND_URL}/dl/?url=${url}`).then((result) => {
         if (result.status !== 200) {
-            Notify.show(`Error ${result.status} ${result.statusText}`);
-            return;
-        }
-        if (result.status !== 200) {
-            result.json()
-                .then((res) => {
-                    displayDownloadError(res);
-                });
-            return;
-        }
-        result.json()
-            .then((res) => {
-                console.log(res);
-                res.forEach((i) => {
-                    populateDownloadList(i.title, i.url, i.thumb, i.res);
-                });
-                const close = () => {
-                    const c = document.getElementById('downloadContainer');
-                    c.classList.add('hidden');
-                    const items = document
-                        .getElementsByClassName('downloadItemContainer');
-                    // for (const i of items) {
-                    //     i.remove();
-                    // }
-
-                    document.getElementById('downloadContainer-close-btn')
-                        .removeEventListener('click', close);
-                };
-                addEventListenerOnID('downloadContainer-close-btn', 'click', close);
-                // downloadFile(res[0].url, `${res[0].title}.mp4`);
-                // const download = confirm('Download video?');
-                // if (download) downloadFile(res[0].url, `${res[0].title}.mp4`);
-                // console.log(res.url);
+            // Notify.show(`Error ${result.status} ${result.statusText}`);
+            result.json().then((res) => {
+                // console.log()
+                genericAlert(`Error ${result.status}`, res[0].err);
+                document.getElementById('downloadContainer-close-btn').click();
+                // displayDownloadError(res);
             });
+            return;
+        }
+        result.json().then((res) => {
+            console.log(res);
+            res.forEach((i) => {
+                populateDownloadList(i.title, i.url, i.thumb, i.res);
+            });
+
+            // downloadFile(res[0].url, `${res[0].title}.mp4`);
+            // const download = confirm('Download video?');
+            // if (download) downloadFile(res[0].url, `${res[0].title}.mp4`);
+            // console.log(res.url);
+        });
     });
 };
 
@@ -79,25 +68,27 @@ function searchViaCli(url, searchTerm) {
 
 export function cliParse(input) {
     const forBatchSearch = input;
-    input = input.split('--').join('');
-    input = input.split(' ');
-    switch (input[0].toLowerCase()) {
+    let cmd = input.toLowerCase();
+    cmd = cmd.split('--').join('');
+    cmd = cmd.split(' ');
+    switch (cmd[0]) {
         case 'help':
             window.open(`/pages/help/index.html`, '_self');
             // alert(cliHelpText);
             break;
         case 'reset':
-            if (input[1] == 'bookmarks') resetBookmarks();
-            else if (input[1] == 'all') resetAll();
+            if (cmd[1] == 'bookmarks') resetBookmarks();
+            else if (cmd[1] == 'history') resetHistory();
+            else if (cmd[1] == 'all') resetAll();
             else genericAlert('Error', cliUnexpectedCmdText);
             break;
         case 'fetch':
-            if (input[1] == 'default') fetchBookmarks();
-            // else if (input[1] == 'all') resetAll();
+            if (cmd[1] == 'default') fetchBookmarks();
+            // else if (cmd[1] == 'all') resetAll();
             else genericAlert('Error', cliUnexpectedCmdText);
             break;
         case 'dl':
-            if (input[1]) parseDL(input[1]);
+            if (cmd[1]) parseDL(cmd[1]);
             else genericAlert('Failed', `Enter a valid YT address`);
             break;
         case 'clock':
