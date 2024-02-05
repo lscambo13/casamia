@@ -26,11 +26,11 @@ const showAlertDialog = (
 
 	document.body
 		.insertAdjacentHTML('afterbegin', `
-		<div id="alertDialogContainer" class="modalContainer disable-select">
+		<div id="alertDialogContainer" class="modalContainer">
 			<div class="modal">
 				${title}
 				${description}
-				<div id="alertDialogButtonsBar" class="modalButtonsBar">
+				<div id="alertDialogButtonsBar" class="modalButtonsBar disable-select">
 					<button
 					 id="alertDialogCancelButton"
 					 class="button"
