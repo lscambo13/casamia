@@ -78,7 +78,7 @@ function searchViaCli(url, searchTerm) {
 }
 
 export function cliParse(input) {
-    const forBatchSearch = input.toLowerCase();
+    const forBatchSearch = input;
     input = input.split('--').join('');
     input = input.split(' ');
     switch (input[0].toLowerCase()) {

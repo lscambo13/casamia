@@ -194,13 +194,12 @@ const clearSuggestions = () => {
 };
 
 const showAutofillBox = (input, cloudInput) => {
-    input = input.toLowerCase();
     const db = JSON.parse(localStorage.getItem('autocompleteDatabase'));
     if (!db) localStorage.setItem('autocompleteDatabase', SAMPLE_AUTOFILL);
 
     const filteredArray = db.filter((e) => {
-        if (e == input) return;
-        else return e.toLowerCase().includes(input);
+        if (e.toLowerCase() == input.toLowerCase()) return;
+        else return e.toLowerCase().includes(input.toLowerCase());
     });
 
     function autofill(event) {
@@ -223,7 +222,10 @@ const showAutofillBox = (input, cloudInput) => {
             container.insertAdjacentHTML('beforeend', `
 				<span 
                     class="autofillItem disable-select searchbox-style-${theme}"
-                    tabindex="1" title="${e}">${e}</span>
+                    tabindex="1" title="${e}">
+                        <span class="autofillItemText">${e}</span>
+                        <span class="autofillItemRem fa-solid fa-xmark"></span>
+                    </span>
             `);
             i++;
         }
@@ -232,7 +234,9 @@ const showAutofillBox = (input, cloudInput) => {
             container.insertAdjacentHTML('beforeend', `
         		<span 
                     class="autofillItem disable-select searchbox-style-${theme}"
-                    tabindex="1" title="${e}">${e}</span>
+                    tabindex="1" title="${e}">
+                    <span class="autofillItemText">${e}</span>
+                    </span>
             `);
             i++;
         }
@@ -244,6 +248,10 @@ const showAutofillBox = (input, cloudInput) => {
         e.addEventListener('click', autofill);
         // e.addEventListener('focus', autofill);
         e.addEventListener('keydown', clickToEnter);
+    });
+    const deleteButtons = document.querySelectorAll('.autofillItemRem');
+    deleteButtons.forEach((e) => {
+        e.addEventListener('click', deleteFromAutocompleteDatabase);
     });
 };
 
@@ -257,6 +265,15 @@ const updateAutocompleteDatabase = (entry) => {
     const db = JSON.parse(localStorage.getItem('autocompleteDatabase'));
     const set = new Set(db);
     set.add(entry);
+    const update = Array.from(set);
+    localStorage.setItem('autocompleteDatabase', JSON.stringify(update));
+};
+
+const deleteFromAutocompleteDatabase = (event) => {
+    const entry = event.target.parentNode.children[0].innerHTML;
+    const db = JSON.parse(localStorage.getItem('autocompleteDatabase'));
+    const set = new Set(db);
+    set.delete(entry);
     const update = Array.from(set);
     localStorage.setItem('autocompleteDatabase', JSON.stringify(update));
 };

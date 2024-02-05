@@ -407,9 +407,6 @@ body::-webkit-scrollbar {
 	max-height: 2.25em;
 	min-width: 4em;
 	width: 100%;
-	text-wrap: nowrap;
-	text-overflow: ellipsis;
-	white-space: nowrap;
 	max-width: 44em;
 	margin-block-start: 0.25em;
 	border-radius: 0.5em;
@@ -417,26 +414,23 @@ body::-webkit-scrollbar {
 	border: 1px solid transparent !important;
 	font-family: 'Ubuntu';
 	font-weight: 100;
-	text-align: start;
-	overflow: hidden;
-	padding-block-start: 0.5em;
+	/* padding-block-start: 0.5em; */
 	padding-inline: 1em;
 	z-index: 2;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
-/* .marquee p:hover {
-	animation: marquee 3s linear infinite;
+.autofillItem span {
+	text-wrap: nowrap;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	text-align: start;
+	max-width: 95%;
+	overflow: hidden;
+
 }
-
-@keyframes marquee {
-	0% {
-		transform: translate(0, 0);
-	}
-
-	100% {
-		transform: translate(-10%, 0);
-	}
-} */
 
 input::-webkit-search-cancel-button {
 	margin-inline-start: .7em;
