@@ -40,7 +40,9 @@ export const DEF_PREF =
 };
 export let BACKEND_URL;
 if (process.env.NODE_ENV !== 'production') {
-	BACKEND_URL = 'http://localhost:8081';
+	// BACKEND_URL = 'http://localhost:8081';
+	BACKEND_URL = 'http://192.168.29.31:8081';
+	// BACKEND_URL = 'http://192.168.29.110:8081';
 } else {
 	BACKEND_URL = 'https://casamia.cambo.in/api';
 }
