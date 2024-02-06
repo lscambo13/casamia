@@ -87,6 +87,56 @@ body {
 	justify-content: space-between;
 }
 
+.button {
+	width: 7em;
+	height: 2.5em;
+	font-size: 0.85em;
+	font-weight: 400;
+	font-family: 'Ubuntu';
+	border-radius: 6px;
+	background-color: #ececec;
+	border: 1px solid rgba(206, 206, 206, 0.5);
+	opacity: 1;
+	transition: 100ms;
+}
+
+.tinyButton {
+	min-width: 1.75em;
+	min-height: 1.75em;
+	max-width: 1.75em;
+	max-height: 1.75em;
+	padding-bottom: 2px;
+}
+
+.notifyLoader {
+	width: 100%;
+	margin-top: 1em;
+	margin-bottom: -1em;
+	opacity: 0.1;
+}
+
+.button:disabled {
+	background-color: #fff;
+	opacity: 0.75;
+}
+
+.button:hover {
+	background-color: #fff;
+}
+
+.button:active {
+	opacity: 0.75;
+}
+
+.mainButton {
+	/* background-color: #8cffc9; */
+	/* border: 1px solid rgba(206, 206, 206, 0.5); */
+}
+
+.deleteButton {
+	color: tomato;
+}
+
 .justifySpaceBetween {
 	justify-content: space-between !important;
 }
@@ -1163,9 +1213,11 @@ input::-webkit-search-cancel-button:hover {
 	gap: 1em;
 	/* overflow: scroll; */
 	width: 100%;
-	/* height: max-content; */
+	width: 100vw;
 	min-height: 100%;
-	padding: .5em;
+	min-height: 100svh;
+	/* max-height: 100svh; */
+	padding: 1em;
 	font-family: Arial, Helvetica, sans-serif;
 	transition: all .2s;
 	display: flex;
@@ -1173,50 +1225,86 @@ input::-webkit-search-cancel-button:hover {
 	top: 0;
 }
 
+
 .downloadItemContainer {
 	background-color: #2b2b2b;
-	max-width: 50em;
+	border: 1px solid #fff3;
+	border-radius: 1em;
+	justify-content: space-between;
+	gap: 1em;
 	width: 100%;
 	min-width: 20em;
+	max-width: 40em;
+	/* height: 8em; */
+	/* min-height: 8em; */
 	padding: 1em;
-	min-height: 8em;
-	height: 8em;
-	/* max-height: 8em; */
-	border: 1px solid rgba(255, 255, 255, 0.2);
-	border-radius: 1em;
-	overflow: hidden;
 	display: flex;
-	gap: 1em;
-	justify-content: space-between;
-	align-items: stretch;
+	overflow: hidden;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	align-content: center;
 }
+
 
 .downloadContainerTitleBar {
 	background-color: #2b2b2b;
 	border: 1px solid #fff3;
 	border-radius: 1em;
 	width: 100%;
-	max-width: 50em;
+	max-width: 40em;
 	height: 4em;
-	font-size: 1em;
 	padding-inline-start: 1em;
+	font-size: 1em;
 	display: flex;
 	overflow: hidden;
 }
 
 .progressBar:indeterminate {
 	/* position: fixed; */
-	width: 48em;
-	height: 1em;
+	width: 90%;
+	max-width: 38em;
+	/* height: 1em; */
 	/* opacity: 0.5; */
 	/* top: 50%; */
 }
 
 .downloadItemThumbnail {
-	max-width: 10em;
-	/* max-height: 4.5em; */
 	object-fit: cover;
 	border-radius: .5em;
+	width: 100%;
+	/* max-width: 30em; */
+}
+
+video::-webkit-media-controls-fullscreen-button {
+	display: none;
+}
+
+video::-webkit-media-controls-play-button {
+	/* display: none; */
+}
+
+video::-webkit-media-controls-timeline {
+	display: none;
+}
+
+video::-webkit-media-controls-current-time-display {
+	display: none;
+}
+
+video::-webkit-media-controls-time-remaining-display {
+	display: none;
+}
+
+video::-webkit-media-controls-mute-button {
+	display: none;
+}
+
+video::-webkit-media-controls-toggle-closed-captions-button {
+	display: none;
+}
+
+video::-webkit-media-controls-volume-slider {
+	display: none;
 }
 
 .downloadButton {
@@ -1224,22 +1312,30 @@ input::-webkit-search-cancel-button:hover {
 	color: #000;
 	justify-content: space-evenly;
 	align-items: center;
-	text-decoration: none;
+	width: 100%;
+	height: 100%;
+	padding: 0.5em;
 	max-width: 6em;
-	max-height: 2.25em;
+	max-height: 4em;
+	text-decoration: none;
 	display: flex;
+	flex-direction: column-reverse;
 }
 
+
 .downloadInfoContainer {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
 	width: 100%;
-	align-items: flex-start;
+	display: flex;
+	gap: 1em;
+	margin-block-end: 0.5em;
 }
 
 .downloadItemTitle {
-	max-height: 2.35em;
+	height: 100%;
+	max-height: 3.75em;
 	overflow: hidden;
 }
 
@@ -1249,10 +1345,10 @@ input::-webkit-search-cancel-button:hover {
 }
 
 .downloadInfoContainer div {
-	justify-content: flex-end;
+	justify-content: flex-start;
 	align-items: flex-end;
+	/* width: 100%; */
 	max-height: min-content;
-	width: 100%;
 	display: flex;
 }
 
@@ -1354,56 +1450,6 @@ input::-webkit-search-cancel-button:hover {
 .modalInputField:focus {
 	background-color: #ffffff;
 	border: 2px solid var(--selection-color);
-}
-
-.button {
-	width: 7em;
-	height: 2.5em;
-	font-size: 0.85em;
-	font-weight: 400;
-	font-family: 'Ubuntu';
-	border-radius: 6px;
-	background-color: #ececec;
-	border: 1px solid rgba(206, 206, 206, 0.5);
-	opacity: 1;
-	transition: 100ms;
-}
-
-.tinyButton {
-	min-width: 1.75em;
-	min-height: 1.75em;
-	max-width: 1.75em;
-	max-height: 1.75em;
-	padding-bottom: 2px;
-}
-
-.notifyLoader {
-	width: 100%;
-	margin-top: 1em;
-	margin-bottom: -1em;
-	opacity: 0.1;
-}
-
-.button:disabled {
-	background-color: #fff;
-	opacity: 0.75;
-}
-
-.button:hover {
-	background-color: #fff;
-}
-
-.button:active {
-	opacity: 0.75;
-}
-
-.mainButton {
-	/* background-color: #8cffc9; */
-	/* border: 1px solid rgba(206, 206, 206, 0.5); */
-}
-
-.deleteButton {
-	color: tomato;
 }
 
 @media only screen and (min-width:370px) {
