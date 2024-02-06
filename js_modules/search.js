@@ -182,6 +182,8 @@ const expandAutofill = (input) => {
                 searchbar.scrollIntoView();
             }
             searchBG.style.opacity = '1';
+            const dlContainer = document.getElementById('downloadContainer');
+            if (!dlContainer.classList.contains('hidden')) collapseAutofill();
         }, 1);
     }
 };
