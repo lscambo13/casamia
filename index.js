@@ -64,8 +64,8 @@ const modalBackground =
 	document.getElementById('advanced-settings-modal-background-overlay');
 
 let areAdvancedSettingsOpen = false;
-
 let areWallpapersOpen = false;
+
 let timeout;
 const wallpapersPanel = (str) => {
 	hideLoading();

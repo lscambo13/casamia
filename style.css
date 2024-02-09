@@ -483,6 +483,7 @@ body::-webkit-scrollbar {
 }
 
 input::-webkit-search-cancel-button {
+	padding: 0.15em;
 	margin-inline-start: .7em;
 	margin-inline-end: -1.25em;
 	transition: .2s;
@@ -929,7 +930,7 @@ input::-webkit-search-cancel-button:hover {
 	display: none
 }
 
-#advanced-settings-modal-background-overlay {
+.modal-background {
 	position: fixed;
 	top: 0;
 	width: 100vw;
@@ -1202,11 +1203,11 @@ input::-webkit-search-cancel-button:hover {
 
 .downloadContainer {
 	color: #fff;
-	-webkit-backdrop-filter: blur(1em);
-	backdrop-filter: blur(1em);
+	/* -webkit-backdrop-filter: blur(1em); */
+	/* backdrop-filter: blur(1em); */
 	z-index: 5;
 	padding-block-start: 2em;
-	background-color: var(--selection-color);
+	/* background-color: var(--selection-color); */
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
@@ -1215,9 +1216,6 @@ input::-webkit-search-cancel-button:hover {
 	width: 100%;
 	width: 100vw;
 	min-height: 100%;
-	min-height: 100vh;
-	min-height: 100dvh;
-	height: 100%;
 	/* max-height: 100svh; */
 	padding: 1em;
 	font-family: Arial, Helvetica, sans-serif;
@@ -1261,13 +1259,73 @@ input::-webkit-search-cancel-button:hover {
 	overflow: hidden;
 }
 
-.progressBar:indeterminate {
-	/* position: fixed; */
-	width: 90%;
+.progressBar {
+	font-family: 'Ubuntu';
+	/* width: 90%; */
 	max-width: 38em;
-	/* height: 1em; */
-	/* opacity: 0.5; */
-	/* top: 50%; */
+	border: 1px solid #fff3;
+	font-size: 1.25em;
+	background-color: #2b2b2b;
+	padding-inline: 2em;
+	padding-block: 1em;
+	border-radius: 0.75em;
+	display: flex;
+	position: fixed;
+	gap: 1em;
+	top: 50%;
+	align-items: center;
+	justify-content: center;
+}
+
+.progressBar>div {
+	height: .8em;
+	width: .8em;
+	border: 2px solid var(--selection-color) !important;
+	border-top: 2px solid var(--highlight-color) !important;
+}
+
+.proDownloadContainer {
+	border-radius: .5em;
+	flex-direction: row;
+	align-items: flex-start;
+	gap: .5em;
+	width: 100%;
+	/* padding: .5em; */
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.disabled {
+	opacity: 0.4 !important;
+}
+
+.proDownloadOptions {
+	flex-direction: row;
+	/* width: 100%; */
+	display: flex;
+	align-items: center;
+	gap: 1em;
+	justify-content: space-between;
+}
+
+.premiumDownloadButton {
+	font-family: 'Advent Pro';
+	color: #ffe799;
+	background-color: #ffffff12;
+	border-radius: .375em;
+	padding: .25em;
+	padding-inline: .5em;
+	text-decoration: none;
+}
+
+.proDownloadContainerLabel {
+	color: #fff;
+}
+
+.videoResolution {
+	font-family: 'Advent Pro';
 }
 
 .downloadItemThumbnail {

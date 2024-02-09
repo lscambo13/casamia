@@ -44,7 +44,10 @@
 			<p id="downloadContainer-close-btn" class="modal-close-btn fa fa-chevron-left"></p>
 			<h2 id="downloadContainerTitle">Download Videos</h2>
 		</div>
-		<progress id="progress-bar" class="progressBar hidden" aria-label="loading"></progress>
+		<div id="progress-bar" class="progressBar hidden" aria-label="loading">
+			<span class="loadingText" id="loadingText">Loading</span>
+			<div class="loader"></div>
+		</div>
 	</div>
 	<div id="overlay"></div>
 	<canvas id="canvasFar"></canvas>
@@ -108,7 +111,7 @@
 			</div>
 		</div>
 	</div>
-	<div id="advanced-settings-modal-background-overlay"></div>
+	<div id="advanced-settings-modal-background-overlay" class="modal-background"></div>
 	<div id="advanced-settings-modal" class="disable-select">
 		<div class="modal-page-title">
 			<p id="modal-close-btn" class="modal-close-btn fa fa-chevron-left"></p>
@@ -240,8 +243,8 @@
 						<option value="off" selected="true">Disabled</option>
 					</select>
 				</label>
-				<label for="searchbar-color-theme-drop" class="modal-option custom-dropdown">Search bar theme <select
-							class="setting-preview" name="searchbar-color-theme-drop" id="searchbar-color-theme-drop">
+				<label for="searchbar-color-theme-drop" class="modal-option custom-dropdown">Search bar theme
+					<select class="setting-preview" name="searchbar-color-theme-drop" id="searchbar-color-theme-drop">
 						<option value="glass">Glass</option>
 						<option value="light">Light</option>
 						<option value="dark">Dark</option>
