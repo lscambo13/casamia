@@ -1118,7 +1118,7 @@ input::-webkit-search-cancel-button:hover {
 #deep-search-nested {
 	overflow: hidden;
 	height: auto;
-	height: 9.5em;
+	height: 11.875em;
 	transition: 200ms;
 }
 
@@ -1217,6 +1217,7 @@ input::-webkit-search-cancel-button:hover {
 	min-height: 100%;
 	min-height: 100vh;
 	min-height: 100dvh;
+	height: 100%;
 	/* max-height: 100svh; */
 	padding: 1em;
 	font-family: Arial, Helvetica, sans-serif;

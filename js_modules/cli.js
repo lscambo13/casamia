@@ -56,7 +56,7 @@ export function cliParse(input) {
             else genericAlert('Error', cliUnexpectedCmdText);
             break;
         case 'dl':
-            if (cmd[1]) parseDl(cmdAlt[1]);
+            if (cmd[1]) parseDl(null, cmdAlt[1]);
             else genericAlert('Failed', `Enter a valid YT address`);
             break;
         case 'clock':

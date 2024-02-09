@@ -54,6 +54,7 @@ import { InputDialog } from './js_modules/utils/inputDialog.js';
 import { isTouchDevice } from './js_modules/utils/isTouchDevice.js';
 import { enableSubmitButton } from './js_modules/utils/enableSubmitButton.js';
 import { genericAlert } from './js_modules/utils/alertDialog.js';
+import { parseDl } from './js_modules/dl.js';
 
 const bottomFilmRollContainer = document.getElementById('wallpapers');
 const wrap = document.getElementById('wrap');
@@ -216,6 +217,7 @@ addEventListenerOnID('movies-search', 'click', Search.movies);
 addEventListenerOnID('tv-search', 'click', Search.tv);
 addEventListenerOnID('games-search', 'click', Search.games);
 addEventListenerOnID('ebooks-search', 'click', Search.ebooks);
+addEventListenerOnID('downloader-button', 'click', parseDl);
 addEventListenerOnID('searchTerm', 'input', Search.processSearchboxInput);
 addEventListenerOnID('searchTerm', 'click', () => {
 	const x = new InputEvent('input');

@@ -33,6 +33,7 @@ const PREF_MAP = {
 	'tv-search-display-drop': tvSearch,
 	'games-search-display-drop': gamesSearch,
 	'ebooks-search-display-drop': ebooksSearch,
+	'downloader-button-display-drop': downloaderButton,
 	'add-bookmark-display-drop': displayAddBookmark,
 };
 
@@ -543,6 +544,19 @@ function gamesSearch(value) {
 }
 function ebooksSearch(value) {
 	const button = document.getElementById('ebooks-search');
+	switch (value) {
+		case 'hidden': {
+			button.style.display = 'none';
+			break;
+		};
+		case 'shown': {
+			button.style.display = 'flex';
+			break;
+		};
+	}
+}
+function downloaderButton(value) {
+	const button = document.getElementById('downloader-button');
 	switch (value) {
 		case 'hidden': {
 			button.style.display = 'none';

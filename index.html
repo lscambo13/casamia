@@ -96,10 +96,13 @@
 				<div id="ebooks-search" class="predefined-bookmark clickable" tabindex="1">
 					<i class="fa fa-book"></i>
 				</div>
-				<div onclick="createNewBookmark()" class="clickable" id="add_bookmark_button" tabindex="2">
+				<div id="downloader-button" class="predefined-bookmark clickable" tabindex="1">
+					<i class="fa-solid fa-download"></i>
+				</div>
+				<div id="add_bookmark_button" onclick="createNewBookmark()" class="clickable" tabindex="2">
 					<i class="fa fa-plus"></i>
 				</div>
-				<div class="clickable" id="settings_button" tabindex="2">
+				<div id="settings_button" class="clickable" tabindex="2">
 					<i class="fa fa-gear"></i>
 				</div>
 			</div>
@@ -272,6 +275,13 @@
 				</label>
 				<label for="ebooks-search-display-drop" class="modal-option custom-dropdown">Ebooks button
 					<select class="setting-preview" name="ebooks-search-display-drop" id="ebooks-search-display-drop">
+						<option value="shown">Enabled</option>
+						<option value="hidden">Disabled</option>
+					</select>
+				</label>
+				<label for="downloader-button-display-drop" class="modal-option custom-dropdown">Downloader button
+					<select class="setting-preview" name="downloader-button-display-drop"
+							id="downloader-button-display-drop">
 						<option value="shown">Enabled</option>
 						<option value="hidden">Disabled</option>
 					</select>
