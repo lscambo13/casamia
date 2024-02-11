@@ -1231,7 +1231,7 @@ input::-webkit-search-cancel-button:hover {
 	border: 1px solid #fff3;
 	border-radius: 1em;
 	justify-content: space-between;
-	gap: 1em;
+	gap: 0.75em;
 	width: 100%;
 	min-width: 20em;
 	max-width: 40em;
@@ -1243,8 +1243,16 @@ input::-webkit-search-cancel-button:hover {
 	flex-wrap: wrap;
 	align-items: flex-start;
 	align-content: center;
+	transition: 125ms;
 }
 
+.downloadItemContainer:hover {
+	background-color: #2b2b2bdc;
+}
+
+.downloadItemContainer:active {
+	background-color: #2b2b2bb7;
+}
 
 .downloadContainerTitleBar {
 	background-color: #2b2b2b;
@@ -1286,42 +1294,63 @@ input::-webkit-search-cancel-button:hover {
 
 .proDownloadContainer {
 	border-radius: .5em;
-	flex-direction: row;
-	align-items: flex-start;
-	gap: .5em;
-	width: 100%;
-	/* padding: .5em; */
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
+	flex-flow: wrap;
 	justify-content: space-between;
+	align-items: center;
+	gap: 1em;
+	width: 100%;
+	display: flex;
 }
 
 .disabled {
-	opacity: 0.4 !important;
+	opacity: 0.6 !important;
+	filter: grayscale(1);
 }
 
 .proDownloadOptions {
-	flex-direction: row;
-	/* width: 100%; */
-	display: flex;
+	flex-flow: wrap;
+	justify-content: flex-end;
 	align-items: center;
 	gap: 1em;
-	justify-content: space-between;
+	max-width: 82%;
+	display: flex;
 }
 
 .premiumDownloadButton {
-	font-family: 'Advent Pro';
-	color: #ffe799;
-	background-color: #ffffff12;
+	color: #ffe799d1;
+	white-space: nowrap;
+	background-color: #00000070;
+	/* border: 1px solid #ffe79924; */
 	border-radius: .375em;
 	padding: .25em;
+	box-shadow: #ffe79911 1px 1px 0px 0px;
 	padding-inline: .5em;
+	font-family: Advent Pro;
 	text-decoration: none;
+	transition: 125ms;
+}
+
+.premiumDownloadButton:hover {
+	box-shadow: #ffe79928 2px 2px 0px 0px;
+}
+
+.premiumDownloadButton:active {
+	box-shadow: #ffe79911 0px 0px 0px 0px;
+	opacity: 0.5;
 }
 
 .proDownloadContainerLabel {
-	color: #fff;
+	color: #000;
+	/* font-weight: bold; */
+	font-family: 'Ubuntu Mono';
+	background: #ffffff54;
+	box-shadow: 0 0 #000;
+}
+
+.proDownloadContainerLabel:hover,
+.proDownloadContainerLabel:active {
+	box-shadow: 0 0 #000;
+	opacity: 1;
 }
 
 .videoResolution {
