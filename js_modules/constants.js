@@ -38,6 +38,7 @@ export const DEF_PREF =
 	'ebooks-search-display-drop': 'shown',
 	'downloader-button-display-drop': 'shown',
 	'add-bookmark-display-drop': 'shown',
+	'bookmark-labels-display-drop': 'shown',
 };
 export let BACKEND_URL;
 if (process.env.NODE_ENV !== 'production') {

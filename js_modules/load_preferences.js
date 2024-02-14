@@ -35,6 +35,7 @@ const PREF_MAP = {
 	'ebooks-search-display-drop': ebooksSearch,
 	'downloader-button-display-drop': downloaderButton,
 	'add-bookmark-display-drop': displayAddBookmark,
+	'bookmark-labels-display-drop': displayBookmarkLabels,
 };
 
 function backgroundImage(value) {
@@ -577,6 +578,25 @@ function displayAddBookmark(value) {
 		};
 		case 'shown': {
 			button.style.display = 'flex';
+			break;
+		};
+	}
+}
+
+function displayBookmarkLabels(value) {
+	const labels = document.getElementsByClassName('bookmark-title');
+	sessionStorage.setItem('labels', value);
+	switch (value) {
+		case 'hidden': {
+			for (const l of labels) {
+				l.classList.add('hidden');
+			};
+			break;
+		};
+		case 'shown': {
+			for (const l of labels) {
+				l.classList.remove('hidden');
+			};
 			break;
 		};
 	}

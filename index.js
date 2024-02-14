@@ -344,7 +344,17 @@ const postOnboarding = () => {
 
 	pressAndHold();
 	addEventListenerOnClass('clickable', 'keypress', clickToEnter);
-	addEventListenerOnClass('custom_bookmark', 'click', displayLoading);
+
+	addEventListenerOnClass('bookmark-container', 'click', (e) => {
+		// e.preventDefault();
+		const target = e.target.closest('.bookmark-container').querySelector('a');
+		if (target.href) {
+			displayLoading(target);
+			window.open(target.href, '_self');
+			return;
+		}
+	});
+
 	addEventListenerOnTag('select', 'change', saveDropdownPositions);
 
 	addEventListenerOnID('btn-install', 'click', (e) => {

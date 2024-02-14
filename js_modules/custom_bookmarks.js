@@ -16,17 +16,17 @@ export function loadBookmarks() {
 }
 
 export function addBookmarkToHTML(link, name, id) {
-    const bookmarkContainer = document.getElementsByClassName(
+    const allBookmarksContainer = document.getElementsByClassName(
         'flex-sub-container-horizontal',
     )[0];
-    bookmarkContainer.appendChild(createBookmark(link, name, id));
+    allBookmarksContainer.appendChild(createBookmark(link, name, id));
     const justAdded = document.getElementsByClassName('cross');
     justAdded[justAdded.length - 1].addEventListener('click', editBookmark);
 }
 
 function createBookmark(link, name, id) {
     const i = document.createElement('span');
-    i.textContent = name;
+    i.textContent = name.substring(0, 3);
     i.className = 'custom_link_name';
 
     const d = document.createElement('div');
@@ -35,13 +35,28 @@ function createBookmark(link, name, id) {
     d.setAttribute('tabindex', '5');
 
     const newBookmark = document.createElement('a');
-    newBookmark.className = 'custom_bookmark clickable';
+    newBookmark.className = 'custom_bookmark bookmark-icon clickable';
     newBookmark.setAttribute('href', link);
     newBookmark.setAttribute('id', id);
     newBookmark.setAttribute('tabindex', '1');
     newBookmark.appendChild(i);
     newBookmark.appendChild(d);
-    return newBookmark;
+
+    const newBookmarkTitle = document.createElement('span');
+    newBookmarkTitle.className = 'bookmark-title';
+    newBookmarkTitle.textContent = name;
+    if (sessionStorage.getItem('labels') === 'hidden') {
+        newBookmarkTitle.classList.add('hidden');
+    }
+
+    const newBookmarkContainer = document.createElement('div');
+    newBookmarkContainer.className = 'bookmark-container';
+    newBookmarkContainer.title = name;
+
+    newBookmarkContainer.appendChild(newBookmark);
+    newBookmarkContainer.appendChild(newBookmarkTitle);
+
+    return newBookmarkContainer;
 }
 
 export function saveBookmarks(link, name, id) {
@@ -138,7 +153,7 @@ export function editBookmark(event) {
         'Delete this bookmark',
         [() => enableSubmitButton(event, true), onChange],
         () => {
-            InputDialog.getInputFields()[0].setAttribute('maxlength', '4');
+            // InputDialog.getInputFields()[0].setAttribute('maxlength', '4');
             InputDialog.getInputFields()[0].value = details[1];
             InputDialog.getInputFields()[1].value = details[2];
         },
@@ -148,9 +163,9 @@ export function editBookmark(event) {
             targetElement.style.display = 'none';
             return;
         }
-
         targetElement.href = res.inputValues[1].replaceAll(' ', '');
-        targetElement.firstChild.innerHTML = res.inputValues[0];
+        targetElement.firstChild.innerHTML = res.inputValues[0].substring(0, 3);
+        targetElement.nextSibling.innerHTML = res.inputValues[0];
 
         editBookmarkInLocalStorage(
             targetElement.id,

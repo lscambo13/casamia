@@ -87,26 +87,49 @@
 				<div class="autofillContainer" id="autofillContainer"></div>
 			</div>
 			<div id="bookmarks" class="flex-sub-container-horizontal disable-select">
-				<div id="movies-search" class="predefined-bookmark clickable" tabindex="1">
-					<i class="fa fa-clapperboard"></i>
+				<div class="bookmark-container">
+					<a id="movies-search" class="predefined-bookmark bookmark-icon clickable" tabindex="1">
+						<i class="fa fa-clapperboard"></i>
+					</a>
+					<span class="bookmark-title">Movies</span>
 				</div>
-				<div id="tv-search" class="predefined-bookmark clickable" tabindex="1">
-					<i class="fa fa-display"></i>
+				<div class="bookmark-container">
+					<a id="tv-search" class="predefined-bookmark bookmark-icon clickable" tabindex="1">
+						<i class="fa fa-display"></i>
+					</a>
+					<span class="bookmark-title">TV Shows</span>
 				</div>
-				<div id="games-search" class="predefined-bookmark clickable" tabindex="1">
-					<i class="fa fa-gamepad"></i>
+				<div class="bookmark-container">
+					<a id="games-search" class="predefined-bookmark bookmark-icon clickable" tabindex="1">
+						<i class="fa fa-gamepad"></i>
+					</a>
+					<span class="bookmark-title">Games</span>
 				</div>
-				<div id="ebooks-search" class="predefined-bookmark clickable" tabindex="1">
-					<i class="fa fa-book"></i>
+				<div class="bookmark-container">
+					<a id="ebooks-search" class="predefined-bookmark bookmark-icon clickable" tabindex="1">
+						<i class="fa fa-book"></i>
+					</a>
+					<span class="bookmark-title">Books</span>
 				</div>
-				<div id="downloader-button" class="predefined-bookmark clickable" tabindex="1">
-					<i class="fa-solid fa-download"></i>
+				<div class="bookmark-container">
+					<a id="downloader-button" class="predefined-bookmark bookmark-icon clickable" tabindex="1">
+						<i class="fa-solid fa-download"></i>
+					</a>
+					<span class="bookmark-title">Download</span>
 				</div>
-				<div id="add_bookmark_button" onclick="createNewBookmark()" class="clickable" tabindex="2">
-					<i class="fa fa-plus"></i>
+				<div class="bookmark-container add_bookmark_button">
+					<a id="add_bookmark_button" onclick="createNewBookmark()"
+					   class="predefined-bookmark bookmark-icon add_bookmark_button_icon clickable" tabindex="2">
+						<i class="fa fa-plus"></i>
+					</a>
+					<span class="bookmark-title">Add Bookmark</span>
 				</div>
-				<div id="settings_button" class="clickable" tabindex="2">
-					<i class="fa fa-gear"></i>
+				<div class="bookmark-container settings_button">
+					<a id="settings_button" class="predefined-bookmark bookmark-icon settings_button_icon clickable"
+					   tabindex="2">
+						<i class="fa fa-gear"></i>
+					</a>
+					<span class="bookmark-title">Settings</span>
 				</div>
 			</div>
 		</div>
@@ -294,12 +317,12 @@
 		</div>
 		<div class="modal-group">
 			<p class="modal-title">Bookmarks</p>
-			<!-- <label for="show-titles-drop"
-				class="modal-option custom-dropdown hidden">Show
-				titles <select class="setting-preview" name="show-titles-drop" id="show-titles-drop">
-					<option value="on">On</option>
-					<option value="off">Off</option>
-				</select></label> -->
+			<label for="bookmark-labels-display-drop" class="modal-option custom-dropdown">Show labels
+				<select class="setting-preview" name="bookmark-labels-display-drop" id="bookmark-labels-display-drop">
+					<option value="shown">Enabled</option>
+					<option value="hidden">Disabled</option>
+				</select>
+			</label>
 			<label for="add-bookmark-display-drop" class="modal-option custom-dropdown">Add Bookmark button
 				<select class="setting-preview" name="add-bookmark-display-drop" id="add-bookmark-display-drop">
 					<option value="shown">Enabled</option>

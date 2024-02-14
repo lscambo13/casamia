@@ -6,12 +6,12 @@ export function hideLoading() {
     }
     previousClick = null;
 }
-export function displayLoading(event) {
+export function displayLoading(target) {
     // console.log(event);
-    event.stopPropagation();
-    // event.preventDefault();
-    hideLoading();
-    const click = event.target;
+    // event.stopPropagation();
+    // // event.preventDefault();
+    // hideLoading();
+    const click = target;
     previousClick = click;
     click.classList.toggle('loader');
 }
