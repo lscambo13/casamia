@@ -345,15 +345,19 @@ const postOnboarding = () => {
 	pressAndHold();
 	addEventListenerOnClass('clickable', 'keypress', clickToEnter);
 
-	addEventListenerOnClass('bookmark-container', 'click', (e) => {
-		// e.preventDefault();
-		const target = e.target.closest('.bookmark-container').querySelector('a');
-		if (target.href) {
-			displayLoading(target);
-			window.open(target.href, '_self');
-			return;
-		}
-	});
+	// addEventListenerOnClass('bookmark-container', 'click', (e) => {
+	// 	// e.preventDefault();
+	// 	// e.stopPropagation();
+	// 	const target = e.target.closest('.bookmark-container').querySelector('a');
+	// 	if (target.href) {
+	// 		displayLoading(target);
+	// 		window.open(target.href, '_self');
+	// 		return;
+	// 	} else if (target.classList.contains('bookmark-icon')) {
+	// 		console.log('xx');
+	// 		target.click();
+	// 	}
+	// });
 
 	addEventListenerOnTag('select', 'change', saveDropdownPositions);
 
