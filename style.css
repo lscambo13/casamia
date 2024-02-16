@@ -765,11 +765,6 @@ input::-webkit-search-cancel-button:hover {
 }
 
 
-.add_bookmark_button_icon:not(:active)>i {
-	transition: 750ms;
-	rotate: 360deg
-}
-
 .settings_button {
 	order: 1336
 }
@@ -779,7 +774,8 @@ input::-webkit-search-cancel-button:hover {
 }
 
 
-.settings_button_icon:not(:active)>i {
+.bookmark-container:not(:active)>.settings_button_icon>i,
+.bookmark-container:not(:active)>.add_bookmark_button_icon>i {
 	transition: 750ms;
 	rotate: 360deg
 }
