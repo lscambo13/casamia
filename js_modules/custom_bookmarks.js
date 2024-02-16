@@ -160,7 +160,7 @@ export function editBookmark(event) {
     ).then((res) => {
         if (res.checkboxChecked) {
             removeBookmarkFromLocalStorage(targetElement.id);
-            targetElement.style.display = 'none';
+            targetElement.parentNode.style.display = 'none';
             return;
         }
         targetElement.href = res.inputValues[1].replaceAll(' ', '');
