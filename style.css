@@ -728,32 +728,32 @@ input::-webkit-search-cancel-button:hover {
 	aspect-ratio: 1/1;
 	transition: all .125s;
 	display: flex;
+	height: 3.5em;
+	font-size: 1em;
+	font-family: 'Advent Pro';
+	font-weight: 700;
 }
 
 .predefined-bookmark {
 	background-color: var(--predefined-bookmark);
-	/* width: 2.5em; */
-	height: 2.5em;
-	font-size: 1.5em;
 }
 
 .custom_bookmark {
 	background-color: var(--custom-bookmark);
-	/* width: 4.25em; */
-	height: 4.25em;
-	font-size: .9em;
+}
+
+.custom_link_name {
+	letter-spacing: 0.15em;
+	margin-inline-end: -0.15em;
 }
 
 .bookmark-container:hover>.bookmark-icon {
 	border: 1px solid #ffffff7b;
-	/* border: 1px solid var(--highlight-color); */
 }
 
 .bookmark-container:active>.bookmark-icon {
 	opacity: 0.9;
 	transform: scale(0.9);
-	/* border: 2px solid #ffffff38; */
-	/* border: 1px solid var(--highlight-color); */
 }
 
 .add_bookmark_button {
