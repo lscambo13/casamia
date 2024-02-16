@@ -47,7 +47,7 @@ function backgroundImage(value) {
 			break;
 		};
 		case 'shown': {
-			overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.375)';
+			overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
 			// console.log(value);
 			break;
 		};
