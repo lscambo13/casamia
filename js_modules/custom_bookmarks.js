@@ -26,7 +26,7 @@ export function addBookmarkToHTML(link, name, id) {
 
 function createBookmark(link, name, id) {
     const i = document.createElement('span');
-    i.textContent = name.substring(0, 3);
+    i.textContent = name.substring(0, 3).toUpperCase();
     i.className = 'custom_link_name';
 
     const d = document.createElement('div');
@@ -51,7 +51,7 @@ function createBookmark(link, name, id) {
 
     const newBookmarkContainer = document.createElement('div');
     newBookmarkContainer.className = 'bookmark-container';
-    newBookmarkContainer.title = name;
+    // newBookmarkContainer.title = name;
 
     newBookmarkContainer.appendChild(newBookmark);
     newBookmarkContainer.appendChild(newBookmarkTitle);
