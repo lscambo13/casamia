@@ -67,6 +67,7 @@
 * {
 	margin: 0;
 	padding: 0;
+	font-family: 'Ubuntu';
 	box-sizing: border-box !important;
 	caret-color: transparent;
 	scroll-behavior: smooth;
@@ -92,7 +93,7 @@ body {
 	height: 2.5em;
 	font-size: 0.85em;
 	font-weight: 400;
-	font-family: 'Ubuntu';
+	/* font-family: 'Ubuntu'; */
 	border-radius: 6px;
 	background-color: #ececec;
 	border: 1px solid rgba(206, 206, 206, 0.5);
@@ -375,7 +376,7 @@ body::-webkit-scrollbar {
 }
 
 #subtitle {
-	font-family: Ubuntu;
+	/* font-family: Ubuntu; */
 	font-size: .65em;
 }
 
@@ -431,6 +432,7 @@ body::-webkit-scrollbar {
 	height: 100%;
 	padding: 0 2em 0 1em;
 	border: 0px;
+	font-weight: 300;
 	background: transparent;
 	font-size: 1em;
 	outline: 0;
@@ -462,7 +464,7 @@ body::-webkit-scrollbar {
 	border-radius: 0.5em;
 	box-shadow: #0000002e 0 2px 2px 0px;
 	border: 1px solid transparent !important;
-	font-family: 'Ubuntu';
+	/* font-family: 'Ubuntu'; */
 	font-weight: 100;
 	/* padding-block-start: 0.5em; */
 	padding-inline: 1em;
@@ -731,7 +733,7 @@ input::-webkit-search-cancel-button:hover {
 	height: 3.5em;
 	font-size: 1em;
 	font-family: 'Advent Pro';
-	font-weight: 700;
+	font-weight: 500;
 }
 
 .predefined-bookmark {
@@ -743,8 +745,8 @@ input::-webkit-search-cancel-button:hover {
 }
 
 .custom_link_name {
-	letter-spacing: 0.15em;
-	margin-inline-end: -0.15em;
+	letter-spacing: 0.1em;
+	margin-inline-end: -0.1em;
 }
 
 .bookmark-container:hover>.bookmark-icon {
@@ -949,7 +951,7 @@ input::-webkit-search-cancel-button:hover {
 	width: 100dvw;
 	/* z-index: 2; */
 	color: var(--white);
-	font-family: Ubuntu;
+	/* font-family: Ubuntu; */
 	z-index: 3;
 	cursor: default;
 	display: none;
@@ -1038,7 +1040,7 @@ input::-webkit-search-cancel-button:hover {
 	text-align: end;
 	font-size: 0.9em;
 	padding-inline-end: 0.5em;
-	font-family: 'Ubuntu';
+	/* font-family: 'Ubuntu'; */
 	color: var(--white-half-alpha);
 	animation-name: animatetop;
 	animation-duration: 1s;
@@ -1058,7 +1060,7 @@ input::-webkit-search-cancel-button:hover {
 	white-space: nowrap;
 	text-align: center;
 	font-size: .7em;
-	font-family: Ubuntu;
+	/* font-family: Ubuntu; */
 	color: var(--white-half-alpha);
 	/* animation-name: animatetop; */
 	/* animation-duration: 1s */
@@ -1166,7 +1168,7 @@ input::-webkit-search-cancel-button:hover {
 
 .modalContainer {
 	color: white;
-	font-family: 'Ubuntu';
+	/* font-family: 'Ubuntu'; */
 	position: fixed;
 	top: 0;
 	width: 100%;
@@ -1185,7 +1187,7 @@ input::-webkit-search-cancel-button:hover {
 
 .notifyContainer {
 	color: white;
-	font-family: 'Ubuntu';
+	/* font-family: 'Ubuntu'; */
 	position: fixed;
 	top: 0;
 	width: 100%;
@@ -1267,7 +1269,7 @@ input::-webkit-search-cancel-button:hover {
 }
 
 .progressBar {
-	font-family: 'Ubuntu';
+	/* font-family: 'Ubuntu'; */
 	/* width: 90%; */
 	max-width: 38em;
 	border: 1px solid #fff3;
