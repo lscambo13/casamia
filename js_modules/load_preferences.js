@@ -508,11 +508,11 @@ function moviesSearch(value) {
 	const button = document.getElementById('movies-search');
 	switch (value) {
 		case 'hidden': {
-			button.parentNode.style.display = 'none';
+			button.style.display = 'none';
 			break;
 		};
 		case 'shown': {
-			button.parentNode.style.display = 'flex';
+			button.style.display = 'flex';
 			break;
 		};
 	}
@@ -521,11 +521,11 @@ function tvSearch(value) {
 	const button = document.getElementById('tv-search');
 	switch (value) {
 		case 'hidden': {
-			button.parentNode.style.display = 'none';
+			button.style.display = 'none';
 			break;
 		};
 		case 'shown': {
-			button.parentNode.style.display = 'flex';
+			button.style.display = 'flex';
 			break;
 		};
 	}
@@ -534,11 +534,11 @@ function gamesSearch(value) {
 	const button = document.getElementById('games-search');
 	switch (value) {
 		case 'hidden': {
-			button.parentNode.style.display = 'none';
+			button.style.display = 'none';
 			break;
 		};
 		case 'shown': {
-			button.parentNode.style.display = 'flex';
+			button.style.display = 'flex';
 			break;
 		};
 	}
@@ -547,11 +547,11 @@ function ebooksSearch(value) {
 	const button = document.getElementById('ebooks-search');
 	switch (value) {
 		case 'hidden': {
-			button.parentNode.style.display = 'none';
+			button.style.display = 'none';
 			break;
 		};
 		case 'shown': {
-			button.parentNode.style.display = 'flex';
+			button.style.display = 'flex';
 			break;
 		};
 	}
@@ -560,11 +560,11 @@ function downloaderButton(value) {
 	const button = document.getElementById('downloader-button');
 	switch (value) {
 		case 'hidden': {
-			button.parentNode.style.display = 'none';
+			button.style.display = 'none';
 			break;
 		};
 		case 'shown': {
-			button.parentNode.style.display = 'flex';
+			button.style.display = 'flex';
 			break;
 		};
 	}
@@ -573,11 +573,11 @@ function displayAddBookmark(value) {
 	const button = document.getElementById('add_bookmark_button');
 	switch (value) {
 		case 'hidden': {
-			button.parentNode.style.display = 'none';
+			button.style.display = 'none';
 			break;
 		};
 		case 'shown': {
-			button.parentNode.style.display = 'flex';
+			button.style.display = 'flex';
 			break;
 		};
 	}

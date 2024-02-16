@@ -130,7 +130,7 @@ window.createNewBookmark = () => {
 		[() => enableSubmitButton(null, true), null],
 		() => {
 			const label = InputDialog.getInputFields()[0];
-			label.setAttribute('maxlength', 4);
+			// label.setAttribute('maxlength', 4);
 			label.setAttribute('placeholder', 'e.g. YT');
 
 			const address = InputDialog.getInputFields()[1];
@@ -308,7 +308,7 @@ const pressAndHold = () => {
 		target.removeEventListener('touchstart', clickEvent);
 		target.removeEventListener('touchend', clearTimer);
 		target.removeEventListener('touchcancel', clearTimer);
-		console.log('un-focuss', timerId);
+		console.log('un-focus', timerId);
 	};
 };
 
@@ -345,19 +345,13 @@ const postOnboarding = () => {
 	pressAndHold();
 	addEventListenerOnClass('clickable', 'keypress', clickToEnter);
 
-	// addEventListenerOnClass('bookmark-container', 'click', (e) => {
-	// 	// e.preventDefault();
-	// 	// e.stopPropagation();
-	// 	const target = e.target.closest('.bookmark-container').querySelector('a');
-	// 	if (target.href) {
-	// 		displayLoading(target);
-	// 		window.open(target.href, '_self');
-	// 		return;
-	// 	} else if (target.classList.contains('bookmark-icon')) {
-	// 		console.log('xx');
-	// 		target.click();
-	// 	}
-	// });
+	addEventListenerOnClass('bookmark-container', 'click', (e) => {
+		const target = e.target.closest('.bookmark-container').querySelector('a');
+		if (target.href) {
+			displayLoading(target);
+			window.open(target.href, '_self');
+		}
+	});
 
 	addEventListenerOnTag('select', 'change', saveDropdownPositions);
 
