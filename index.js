@@ -55,6 +55,7 @@ import { isTouchDevice } from './js_modules/utils/isTouchDevice.js';
 import { enableSubmitButton } from './js_modules/utils/enableSubmitButton.js';
 import { genericAlert } from './js_modules/utils/alertDialog.js';
 import { parseDl } from './js_modules/dl.js';
+import { setCopyrightDate } from './js_modules/utils/setCopyrightDate.js';
 
 const bottomFilmRollContainer = document.getElementById('wallpapers');
 const wrap = document.getElementById('wrap');
@@ -385,7 +386,7 @@ const postOnboarding = () => {
 
 document.addEventListener('DOMContentLoaded', () => {
 	// preOnboarding();
-
+	setCopyrightDate();
 	if (localStorage.getItem('onBoarding') == '1') {
 		postOnboarding();
 		console.log('Already onboard.');
