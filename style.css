@@ -747,6 +747,7 @@ input::-webkit-search-cancel-button:hover {
 .custom_link_name {
 	letter-spacing: 0.1em;
 	margin-inline-end: -0.1em;
+	font-size: 0.85em;
 }
 
 .bookmark-container:hover>.bookmark-icon {
