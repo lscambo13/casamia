@@ -489,7 +489,7 @@ export function updateCustomDomainPreview() {
 
 export function loadSelectedWidgetStyle() {
 	document.getElementById(localStorage.getItem('selected-widget-style'))
-		.scrollIntoView();
+		.scrollIntoView({ behavior: 'instant' });
 
 	setTimeout(() => {
 		intersectionObserver('main-heading-slider', 'widget-slide');
