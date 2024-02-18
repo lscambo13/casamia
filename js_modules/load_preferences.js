@@ -492,7 +492,7 @@ export function loadSelectedWidgetStyle() {
 		.scrollIntoView({ behavior: 'instant' });
 
 	setTimeout(() => {
-		intersectionObserver('main-heading-slider', 'widget-slide');
+		intersectionObserver('widget-slide');
 	}, 500);
 }
 

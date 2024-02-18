@@ -1,7 +1,7 @@
-export function intersectionObserver(rootID, targetClass) {
+export function intersectionObserver(targetClass) {
 	const targetClasses = document.getElementsByClassName(targetClass);
 	const options = {
-		root: document.getElementById(rootID),
+		// root: document.getElementById(rootID),
 		rootMargin: '0px',
 		threshold: 0.5,
 	};
