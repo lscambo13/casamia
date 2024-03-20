@@ -36,8 +36,6 @@ function createBookmark(link, name, id) {
 
     const l = document.createElement('div');
     l.className = 'loading';
-    l.title = 'Loading';
-    l.setAttribute('tabindex', '5');
 
     const newBookmark = document.createElement('a');
     newBookmark.className = 'custom_bookmark bookmark-icon clickable';
@@ -45,8 +43,8 @@ function createBookmark(link, name, id) {
     newBookmark.setAttribute('id', id);
     newBookmark.setAttribute('tabindex', '1');
     newBookmark.appendChild(i);
-    newBookmark.appendChild(d);
     newBookmark.appendChild(l);
+    newBookmark.appendChild(d);
 
     const newBookmarkTitle = document.createElement('span');
     newBookmarkTitle.className = 'bookmark-title';
