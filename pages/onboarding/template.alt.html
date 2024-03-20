@@ -1,0 +1,84 @@
+<html><head><style>
+*{
+outline:red dashed 0px;
+box-sizing: border-box;
+transition:1.5s
+}
+
+body{
+display:flex;
+font-family: fantasy;
+background-color:lightgrey;
+align-items: center;
+justify-content: center;
+overflow:hidden;
+}
+
+.main-content{
+font-size: 44px;
+position:relative;
+width:max-content;
+}
+
+p{
+width:max-content;
+display:block;
+font-size: 4em;
+color: black;
+text-shadow: transparent 0 0 2px;
+margin: 0;
+overflow: hidden;
+text-align: center;
+}
+
+.p1{
+transform: translateY(0.375em);
+height: 0.62em;
+opacity:0.05;
+}
+
+.p2{
+transform: translateY(0.175em);
+height: 0.75em;
+opacity:0.20;
+}
+
+.p3{
+
+}
+
+.p4{
+transform: translateY(-0.175em);
+line-height: 0.25em;
+height: 0.65em;
+opacity:0.20;
+}
+
+.p5{
+transform: translateY(-0.3em);
+line-height: 0em;
+height: 0.65em;
+opacity:0.05;
+}
+
+.p0>*{
+opacity:0;
+transform: translateY(0em);
+height: 1em;
+line-height: 1em;
+}
+
+</style></head><body>
+
+<div class="main-content p0">
+<p class="p1">CASAMIA</p>
+<p class="p2">CASAMIA</p>
+<p class="p3">CASAMIA</p>
+<p class="p4">CASAMIA</p>
+<p class="p5">CASAMIA</p>
+</div>
+</body><script>
+setTimeout(()=>{
+document.querySelector('.main-content').classList.remove('p0')
+},100)
+</script></html>
