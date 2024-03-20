@@ -129,11 +129,6 @@ body {
 	opacity: 0.75;
 }
 
-.mainButton {
-	/* background-color: #8cffc9; */
-	/* border: 1px solid rgba(206, 206, 206, 0.5); */
-}
-
 .deleteButton {
 	color: tomato;
 }
@@ -788,12 +783,8 @@ input::-webkit-search-cancel-button:hover {
 	background-color: var(--selection-color);
 	border: 3px dashed tomato;
 	border-radius: 50%;
-	/* justify-content: center; */
-	/* align-items: center; */
 	width: 100%;
 	height: inherit;
-	/* padding-top: 1em; */
-	/* padding-left: 2.5em; */
 	animation: 10s linear infinite spin;
 	position: fixed;
 }
@@ -803,16 +794,6 @@ input::-webkit-search-cancel-button:hover {
 	height: 100%;
 	position: fixed;
 }
-
-/* #add_bookmark_button:focus,
-#add_bookmark_button:hover,
-#settings_button:focus,
-#settings_button:hover,
-.flex-sub-container-horizontal>:focus,
-.flex-sub-container-horizontal>:hover {
-	background-color: var(--highlight-color);
-	transition: .5s
-} */
 
 .flex-wallpaper-horizontal {
 	max-height: 10em;
@@ -956,9 +937,7 @@ input::-webkit-search-cancel-button:hover {
 	height: auto;
 	width: 100vw;
 	width: 100dvw;
-	/* z-index: 2; */
 	color: var(--white);
-	/* font-family: Ubuntu; */
 	z-index: 3;
 	cursor: default;
 	display: none;
@@ -1047,7 +1026,6 @@ input::-webkit-search-cancel-button:hover {
 	text-align: end;
 	font-size: 0.9em;
 	padding-inline-end: 0.5em;
-	/* font-family: 'Ubuntu'; */
 	color: var(--white-half-alpha);
 	animation-name: animatetop;
 	animation-duration: 1s;
@@ -1060,17 +1038,12 @@ input::-webkit-search-cancel-button:hover {
 
 .version-preview {
 	width: auto;
-	/* max-height: 1; */
-	/* border-radius: 6px; */
 	text-overflow: ellipsis;
 	overflow: hidden;
 	white-space: nowrap;
 	text-align: center;
 	font-size: .7em;
-	/* font-family: Ubuntu; */
 	color: var(--white-half-alpha);
-	/* animation-name: animatetop; */
-	/* animation-duration: 1s */
 }
 
 .setting-preview option {
@@ -1211,20 +1184,15 @@ input::-webkit-search-cancel-button:hover {
 
 .downloadContainer {
 	color: #fff;
-	/* -webkit-backdrop-filter: blur(1em); */
-	/* backdrop-filter: blur(1em); */
 	z-index: 5;
 	padding-block-start: 2em;
-	/* background-color: var(--selection-color); */
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
 	gap: 1em;
-	/* overflow: scroll; */
 	width: 100%;
 	width: 100vw;
 	min-height: 100%;
-	/* max-height: 100svh; */
 	padding: 1em;
 	font-family: Arial, Helvetica, sans-serif;
 	transition: all .2s;
@@ -1243,8 +1211,6 @@ input::-webkit-search-cancel-button:hover {
 	width: 100%;
 	min-width: 20em;
 	max-width: 40em;
-	/* height: 8em; */
-	/* min-height: 8em; */
 	padding: 1em;
 	display: flex;
 	overflow: hidden;
@@ -1328,7 +1294,6 @@ input::-webkit-search-cancel-button:hover {
 	color: #ffe799d1;
 	white-space: nowrap;
 	background-color: #00000070;
-	/* border: 1px solid #ffe79924; */
 	border-radius: .375em;
 	padding: .25em;
 	box-shadow: #ffe79911 1px 1px 0px 0px;
@@ -1349,7 +1314,6 @@ input::-webkit-search-cancel-button:hover {
 
 .proDownloadContainerLabel {
 	color: #000;
-	/* font-weight: bold; */
 	font-family: 'Ubuntu Mono';
 	background: #ffffff54;
 	box-shadow: 0 0 #000;
@@ -1369,7 +1333,6 @@ input::-webkit-search-cancel-button:hover {
 	object-fit: cover;
 	border-radius: .5em;
 	width: 100%;
-	/* max-width: 30em; */
 }
 
 video::-webkit-media-controls-fullscreen-button {
@@ -1444,7 +1407,6 @@ video::-webkit-media-controls-volume-slider {
 .downloadInfoContainer div {
 	justify-content: flex-start;
 	align-items: flex-end;
-	/* width: 100%; */
 	max-height: min-content;
 	display: flex;
 }
@@ -1563,11 +1525,6 @@ video::-webkit-media-controls-volume-slider {
 	#home-widget-container {
 		padding-inline: 2em
 	}
-
-	/* 
-	.bookmark-container {
-		width: 6.5em;
-	} */
 
 	.flex-sub-container-horizontal {
 		gap: 1.5em 1.5em;
