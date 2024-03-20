@@ -349,7 +349,8 @@ const postOnboarding = () => {
 	addEventListenerOnClass('bookmark-container', 'click', (e) => {
 		const target = e.target.closest('.bookmark-container').querySelector('a');
 		if (target.href) {
-			displayLoading(target);
+			const loadingTarget = target.querySelector('.loading');
+			displayLoading(loadingTarget);
 			window.open(target.href, '_self');
 		}
 	});

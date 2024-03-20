@@ -798,6 +798,12 @@ input::-webkit-search-cancel-button:hover {
 	position: fixed;
 }
 
+.loading {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+}
+
 /* #add_bookmark_button:focus,
 #add_bookmark_button:hover,
 #settings_button:focus,
