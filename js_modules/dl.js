@@ -11,17 +11,25 @@ const wrap = document.getElementById('wrap');
 const container = document.getElementById('downloadContainer');
 const loading = document.getElementById('progress-bar');
 
-const addEntry = (u, res) => {
+const addEntry = (u, height, source, title) => {
+	const title2 = encodeURIComponent(title);
+	let height2 = height;
+	if (height === 'NA') {
+		height2 = 'AUDIO';
+	} else if (parseInt(height)) {
+		height2 = `${height}P`;
+	};
 	return `
 	<div>
-		<a href="${u}" class="premiumDownloadButton">
-			<span class="videoResolution">${res}</span>
+		<a href="${BACKEND_URL}/getFreeDownload/?url=${source}&height=${height}&title=${title2}" 
+			class="premiumDownloadButton">
+			<span class="videoResolution">${height2}</span>
 		</a>
 	</div>
 	`;
 };
 
-const addProResolutionEntries = (url, res) => {
+const addProResolutionEntries = (url, res, source, title) => {
 	const set = new Set();
 	res[0].forEach((e) => {
 		if (e < 720) set.add('SD');
@@ -41,35 +49,36 @@ const addProResolutionEntries = (url, res) => {
 	`;
 
 	set.forEach((e) => {
-		elements = addEntry(url, e) + elements;
+		elements = addEntry(url, e, source, title) + elements;
 	});
 
 	return elements;
 };
 
-const addFreeResolutionEntries = (streams) => {
+const addFreeResolutionEntries = (streams, source, title) => {
 	let elements = '';
 	Object.keys(streams).forEach((k) => {
-		let title;
+		let height;
 		if (!streams[k].stream.length) return;
 		if (k === 'bestVideoOnly') {
-			title = `${streams[k].info}P MUTED`;
+			height = `${streams[k].info}P MUTED`;
 		} else if (streams[k].info === 'NA') {
-			title = 'AUDIO';
+			height = 'AUDIO';
 		} else {
-			title = `${streams[k].info}P`;
+			height = `${streams[k].info}P`;
 		}
-		if (title) {
-			elements = elements + addEntry(streams[k].stream, title);
+		if (height) {
+			elements = elements + addEntry(streams[k].stream, streams[k].info, source, title);
 		}
 	});
 	return elements;
 };
 
 
-const createDownloadCard = (title, streams, thumb, resolutions) => {
-	const free = addFreeResolutionEntries(streams);
-	const pro = addProResolutionEntries('#', resolutions);
+const createDownloadCard = (title, streams, thumb, resolutions, source) => {
+	const free = addFreeResolutionEntries(streams, source, title);
+	// const pro = addProResolutionEntries('#', resolutions);
+	const pro = addProResolutionEntries('#', resolutions, source, title);
 	container.insertAdjacentHTML('beforeend', `
 		<div class="downloadItemContainer">
 			<video 
@@ -173,7 +182,7 @@ export const parseDl = (event, url = null) => {
 					closeContainer();
 					return;
 				}
-				createDownloadCard(i.title, i.streams, i.thumbnail, i.resolutions);
+				createDownloadCard(i.title, i.streams, i.thumbnail, i.resolutions, i.source);
 				console.log(i.source, i.err);
 			});
 		});
