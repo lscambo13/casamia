@@ -41,8 +41,9 @@ export const DEF_PREF =
 	'bookmark-labels-display-drop': 'shown',
 };
 export let BACKEND_URL;
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV === 'development') {
 	BACKEND_URL = 'http://localhost:8081';
+	console.log(process.env.NODE_ENV, BACKEND_URL);
 	// BACKEND_URL = 'http://192.168.29.31:8081';
 	// BACKEND_URL = 'http://192.168.29.110:8081';
 } else {
