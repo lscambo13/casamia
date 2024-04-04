@@ -11,25 +11,41 @@ const wrap = document.getElementById('wrap');
 const container = document.getElementById('downloadContainer');
 const loading = document.getElementById('progress-bar');
 
-const addEntry = (u, height, source, title) => {
+const getResolutionTitle = (e) => {
+	if (e < 720) return 'SD';
+	else if (e < 1080) return 'HD';
+	else if (e < 1440) return 'FHD';
+	else if (e < 2160) return 'QHD';
+	else if (e < 4320) return 'UHD';
+	else if (e >= 4320) return 'UHD+';
+};
+
+function getResolutionHeight(text) {
+	if (text == 'SD') return '480';
+	else if (text == 'HD') return '720';
+	else if (text == 'FHD') return '1080';
+	else if (text == 'QHD') return '1440';
+	else if (text == 'UHD') return '2160';
+	else if (text == 'UHD+') return '4320';
+	else return text;
+}
+
+const addEntry = (height, source, title, free) => {
 	const title2 = encodeURIComponent(title);
-	let height2 = height;
-	if (height === 'NA') {
-		height2 = 'AUDIO';
-	} else if (parseInt(height)) {
-		height2 = `${height}P`;
-	};
+	let isDisabled = 'disabled';
+	const h = getResolutionHeight(height);
+	if (getResolutionTitle(free) === height) isDisabled = '';
 	return `
 	<div>
-		<a href="${BACKEND_URL}/getFreeDownload/?url=${source}&height=${height}&title=${title2}" 
-			class="premiumDownloadButton">
-			<span class="videoResolution">${height2}</span>
+		<a href="${BACKEND_URL}/getDL/?url=${source}&height=${h}&title=${title2}" 
+			class="premiumDownloadButton ${isDisabled}">
+			<span class="videoResolution">${height}</span>
 		</a>
 	</div>
 	`;
 };
 
-const addProResolutionEntries = (url, res, source, title) => {
+const addProResolutionEntries = (res, source, title, free) => {
 	const set = new Set();
 	res[0].forEach((e) => {
 		if (e < 720) set.add('SD');
@@ -40,45 +56,29 @@ const addProResolutionEntries = (url, res, source, title) => {
 		else if (e >= 4320) set.add('UHD+');
 	});
 
-	let elements = `
-		<div>
-			<a href="${url}" class="premiumDownloadButton">
-				<span class="videoResolution">MP3</span>
-			</a>
-		</div>
-	`;
-
-	set.forEach((e) => {
-		elements = addEntry(url, e, source, title) + elements;
-	});
-
-	return elements;
-};
-
-const addFreeResolutionEntries = (streams, source, title) => {
 	let elements = '';
-	Object.keys(streams).forEach((k) => {
-		let height;
-		if (!streams[k].stream.length) return;
-		if (k === 'bestVideoOnly') {
-			height = `${streams[k].info}P MUTED`;
-		} else if (streams[k].info === 'NA') {
-			height = 'AUDIO';
-		} else {
-			height = `${streams[k].info}P`;
-		}
-		if (height) {
-			elements = elements + addEntry(streams[k].stream, streams[k].info, source, title);
-		}
+	set.forEach((e) => {
+		elements = addEntry(e, source, title, free) + elements;
 	});
+
 	return elements;
 };
+
+// const addFreeResolutionEntries = (streams, source, title) => {
+// 	let elements = '';
+// 	Object.keys(streams).forEach((k) => {
+// 		if (!streams[k].stream.length) return;
+// 		elements = elements +
+// 			addEntry(streams[k].info, source, title);
+// 	});
+// 	return elements;
+// };
 
 
 const createDownloadCard = (title, streams, thumb, resolutions, source) => {
-	const free = addFreeResolutionEntries(streams, source, title);
-	// const pro = addProResolutionEntries('#', resolutions);
-	const pro = addProResolutionEntries('#', resolutions, source, title);
+	// const free = addFreeResolutionEntries(streams, source, title);
+	const free = streams['bestVideoWithAudio'].info;
+	const pro = addProResolutionEntries(resolutions, source, title, free);
 	container.insertAdjacentHTML('beforeend', `
 		<div class="downloadItemContainer">
 			<video 
@@ -91,14 +91,7 @@ const createDownloadCard = (title, streams, thumb, resolutions, source) => {
 			<div class="downloadInfoContainer">
 				<span class="downloadItemTitle">${title}</span>
 			</div>
-			<div class="proDownloadContainer">
-				<span class="proDownloadContainerLabel
-					premiumDownloadButton">FREE</span>
-				<div class="proDownloadOptions">
-					${free}
-				</div>
-			</div>
-			<div class="proDownloadContainer disabled" >
+			<div class="proDownloadContainer" >
 				<span class="proDownloadContainerLabel
 					premiumDownloadButton">PRO</span>
 				<div class="proDownloadOptions">
@@ -182,7 +175,11 @@ export const parseDl = (event, url = null) => {
 					closeContainer();
 					return;
 				}
-				createDownloadCard(i.title, i.streams, i.thumbnail, i.resolutions, i.source);
+				createDownloadCard(i.title,
+					i.streams,
+					i.thumbnail,
+					i.resolutions,
+					i.source);
 				console.log(i.source, i.err);
 			});
 		});
