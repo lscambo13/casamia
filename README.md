@@ -26,7 +26,6 @@ _➖ A Highy Customizable Start Page For Your Favorite Browser_
     <br>
 
 ### **🔖 Save (https://casamia.cambo.in/) as bookmark now**
-### [`🪞 mirror ./>`](https://lscambo13.github.io/casamia/)
 
 
 <br>
